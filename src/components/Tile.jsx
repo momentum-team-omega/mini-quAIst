@@ -5,10 +5,10 @@ const TERRAINS = {
   mountain: 'gray',
   grass: 'green',
   water: 'blue',
-  tree: 'darkgreen'
+  tree: 'darkgreen', 
 };
 
-const Tile = React.memo(({ type, isCharacter, onClick }) => {
+const Tile = React.memo(({ type, isCharacter }) => {
   return (
     <div 
       style={{ 
@@ -17,7 +17,6 @@ const Tile = React.memo(({ type, isCharacter, onClick }) => {
         backgroundColor: isCharacter ? 'red' : TERRAINS[type], // Red color for the character
         cursor: isCharacter ? 'pointer' : 'default'
       }}
-      onClick={onClick}
     />
   );
 });
