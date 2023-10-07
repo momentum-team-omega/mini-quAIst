@@ -110,9 +110,9 @@ const Register = ({ setToken, setIsLoggedIn }) => {
             <input type='submit' value='Register' className='login-button' />
           </div>
         </form>
-        <div className='reg-container'>
-          <p className='reg-text'>Already a member?</p>
-          <Link to='/login' className='reg-link'>
+        <div className='log-container'>
+          <p className='log-text'>Already a member?</p>
+          <Link to='/login' className='log-link'>
             Login
           </Link>
         </div>
