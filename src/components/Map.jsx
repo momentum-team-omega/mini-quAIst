@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Tile from './Tile';
 import { generateTownMap, generateMountainPathMap } from '../utilities/mapGenerator'; // Import the map generation algorithms
+import { fountainColors, houseColors } from '../utilities/mapGenerator';
 
 const Map = () => {
   const TILE_SIZE = 20;
-  const MAP_SIZE = 50;
+  const MAP_SIZE = 10;
 
   const [mapData, setMapData] = useState(null); // Define mapData state variable
-  const [selectedMapGeneration, setSelectedMapGeneration] = useState(1);
+  const [selectedMapGeneration, setSelectedMapGeneration] = useState(3);
   console.log(selectedMapGeneration)
   console.log(mapData)
 
@@ -17,6 +18,8 @@ const Map = () => {
       generatedMap = generateTownMap(MAP_SIZE);
     } else if (selectedMapGeneration === 2) {
       generatedMap = generateMountainPathMap(MAP_SIZE);
+    } else if (selectedMapGeneration === 3) {
+      generatedMap = houseColors;
     }
 
     setMapData(generatedMap);
@@ -77,6 +80,7 @@ const Map = () => {
       {mapData.map((row, rowIndex) => (
         row.map((tile, colIndex) => (
           <Tile
+            TILE_SIZE={TILE_SIZE}
             key={`${rowIndex}-${colIndex}`}
             type={tile}
             isCharacter={rowIndex === characterPosition.y && colIndex === characterPosition.x}

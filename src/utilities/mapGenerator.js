@@ -1,13 +1,17 @@
-const TERRAINS = {
-    mountain: 'gray',
-    grass: 'green',
-    water: 'blue',
-    tree: 'darkgreen',
-  };
+const TERRAINS = [
+  'gray',        // mountain
+  'green',       // grass
+  'blue',        // water
+  'darkgreen',   // tree
+  'brown',       // wood
+  'yellow',      // sand
+  'lightgray',   // stone
+  'red',         // brick
+  'lightblue',   // sky
+];
 
   const generateRandomTerrain = () => {
-    const terrains = Object.keys(TERRAINS);
-    return terrains[Math.floor(Math.random() * terrains.length)];
+    return Terrains[Math.floor(Math.random() * Terrains.length)];
   };
 
 export const generateTownMap = (MAP_SIZE) => {
@@ -25,3 +29,30 @@ const generatedMap = Array.from({ length: MAP_SIZE }, () =>
 
 return generatedMap;
 };
+
+export const houseColors = [
+  ['green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green'],
+  ['green', 'brown', 'brown', 'brown', 'brown', 'brown', 'brown', 'brown', 'brown', 'green'],
+  ['green', 'brown', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'brown', 'green'],
+  ['green', 'brown', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'brown', 'green'],
+  ['green', 'brown', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'brown', 'green'],
+  ['green', 'brown', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'brown', 'green'],
+  ['green', 'brown', 'brown', 'brown', 'brown', 'brown', 'brown', 'brown', 'brown', 'green'],
+  ['green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green'],
+  ['green', 'yellow', 'yellow', 'yellow', 'yellow', 'yellow', 'yellow', 'yellow', 'yellow', 'green'],
+  ['green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green'],
+];
+
+
+export const fountainColors = [
+  ['gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray'],
+  ['gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray'],
+  ['gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray'],
+  ['gray', 'gray', 'gray', 'gray', 'blue', 'blue', 'gray', 'gray', 'gray', 'gray'],
+  ['gray', 'gray', 'gray', 'gray', 'blue', 'blue', 'gray', 'gray', 'gray', 'gray'],
+  ['gray', 'gray', 'gray', 'gray', 'blue', 'blue', 'gray', 'gray', 'gray', 'gray'],
+  ['gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray'],
+  ['gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray'],
+  ['gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray'],
+  ['gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray'],
+];
