@@ -327,6 +327,7 @@ flex-grow: 1;
 
 .password-input {
   margin-top: 5px;
+  color: var(--clr-text);
 }
 
 .confirm-password-input {
@@ -340,6 +341,7 @@ flex-grow: 1;
   font-weight: 400;
   line-height: .8;
   color: var(--clr-light);
+  margin-left: 4px;
 }
 
 .confirm-password-label {
@@ -358,7 +360,7 @@ flex-grow: 1;
   padding-top: 5px;
   font-family: "Avant Garde", sans-serif;
   font-size: 1em;
-  color: var(--clr-light);
+  color: var(--clr-accent);
 }
 .password-input-box:hover {
   border: 1px solid var(--clr-accent);

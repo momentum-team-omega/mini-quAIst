@@ -8,6 +8,8 @@ styled main page ✅
 added routing ✅
 created login and register components (still need back end) ✅
 moved game to it's own component ✅
+created temp battle coponent ✅
+refactored footer and it's position ✅
 
 
 
