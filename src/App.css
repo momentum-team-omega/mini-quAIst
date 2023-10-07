@@ -19,8 +19,8 @@
   --clr-dark: #313131;
   --clr-break: #d6d7db;
   --clr-accent: #9e5f0e;
-  --clr-accent-text: #c87c18;
-  --clr-text: #6f4305;
+  --clr-accent-light: #c87c18;
+  --clr-text: #6f0505;
   --clr-nav: #0000008e; 
 }
 
@@ -393,14 +393,14 @@ button:focus-visible {
   transition: transform 0.2s;
 }
 
-.reg-container {
+.reg-container, .log-container {
   display: flex;
   position: absolute;
   bottom: 10px;
 }
 
-.reg-link {
-  color: var(--clr-accent-text);
+.reg-link, .log-link {
+  color: var(--clr-accent-light);
   margin-left: 5px;
   text-decoration: underline;
 }
@@ -445,7 +445,7 @@ button:focus-visible {
   font-size: 1.1em;
   font-weight: 900;
   line-height: .8;
-  color: var(--clr-accent);
+  color: var(--clr-accent-light);
 }
 .footerLink:hover {
   color: #535bf2;

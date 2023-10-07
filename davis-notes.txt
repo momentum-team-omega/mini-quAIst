@@ -16,3 +16,4 @@ To Do:
 
 intro cutscene with stable diffusion images
 set up back end
+Wiki
