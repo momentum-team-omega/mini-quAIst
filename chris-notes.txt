@@ -1,0 +1,2 @@
+Battle Notes
+-moved sample assets for battle background (road), barbarian and rogueish enemy to assets folder
