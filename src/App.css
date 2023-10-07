@@ -416,6 +416,7 @@ flex-grow: 1;
   justify-content: center;
   flex-direction: column;
   position: relative;
+  margin-top: 40px;
 }
 
 .footerLinks {
