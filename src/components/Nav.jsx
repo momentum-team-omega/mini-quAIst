@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import homeIcon from 'assets/favicon.png';
 
 const Nav = () => {
   const location = useLocation;
@@ -9,7 +10,7 @@ const Nav = () => {
       <div className='navBar'>
         <div className='homeLinkContainer'>
           <Link to='/home' className='nav-home-link'>
-            <img src='/src/assets/favicon.png' className='home-icon'></img>
+            <img src={homeIcon} className='home-icon'></img>
           </Link>
         </div>
         {pathname !== '/login' ? (

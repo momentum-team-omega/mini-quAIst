@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Nav from 'components/Nav';
 import Under from 'components/Under';
 import Footer from 'components/Footer';
+import buttonImg from 'assets/button-img.png';
 
 const Home = () => {
   return (
@@ -17,7 +18,7 @@ const Home = () => {
       <div className='link-container'>
         <p className='link-subtext'>YOUR ADVENTURE AWAITS</p>
         <Link to='/play' className='button-img'>
-          <img src='/src/assets/button-img.png'></img>
+          <img src={buttonImg}></img>
         </Link>
         <p className='link-subtext'>(click on the box)</p>
       </div>
