@@ -1,5 +1,5 @@
-import Nav from 'components/Nav';
-import Map from 'components/Map';
+import Nav from "components/Nav";
+import Battle from "components/Battle";
 
 const BattleTemp = () => {
   return (
@@ -7,7 +7,7 @@ const BattleTemp = () => {
       <Nav />
       <div className='content'>
         <div className='game-container'>
-          <Map />
+          <Battle />
         </div>
       </div>
     </>
