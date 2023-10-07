@@ -1,0 +1,18 @@
+Davis Notes:
+
+
+
+Completed: 
+
+styled main page ✅
+added routing ✅
+created login and register components (still need back end) ✅
+moved game to it's own component ✅
+
+
+
+
+To Do:
+
+intro cutscene with stable diffusion images
+set up back end
