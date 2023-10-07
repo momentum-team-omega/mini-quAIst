@@ -1,21 +1,36 @@
 import React, { useState } from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
-import Map from './components/Map';
+import Home from 'components/Home';
+import Login from 'components/Login';
+import Register from 'components/Register';
+import Game from 'components/Game';
 
 function App() {
-  const [showMap, setShowMap] = useState(false); // this should be a route instead of conditional rendering later
+  const [token, setToken] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <div>
-      <h1>Mini QuAIst!</h1>
-      {showMap ? (
-        <Map />
-      ) : (
-        <button onClick={() => setShowMap(true)}>Show Map</button>
-      )}
-    </div>
+    <>
+      <Routes>
+        <Route path='/' element={<Navigate to='/home' replace />} />;
+        <Route path='/home' element={<Home />} />;
+        <Route
+          path='/login'
+          element={<Login setToken={setToken} setIsLoggedIn={setIsLoggedIn} />}
+        />
+        ;
+        <Route
+          path='/register'
+          element={
+            <Register setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
+          }
+        />
+        ;
+        <Route path='/play' element={<Game />} />;
+      </Routes>
+    </>
   );
 }
 
 export default App;
-
