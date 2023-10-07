@@ -1,12 +1,12 @@
 import Nav from 'components/Nav';
-import Map from 'components/Battle';
+import Map from 'components/Map';
 
 const BattleTemp = () => {
   return (
     <>
       <Nav />
       <div className='game-container'>
-        <Battle />
+        <Map />
       </div>
     </>
   );
