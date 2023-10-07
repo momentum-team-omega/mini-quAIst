@@ -35,86 +35,91 @@ const Register = ({ setToken, setIsLoggedIn }) => {
   return (
     <div className='login-container'>
       <Nav />
-      <div className='welcome-box'>
-        <p className='mini-subtext'>WELCOME TO</p>
-        <p className='mini-quaist'>MINI QUAIST</p>
-        <div className='underline-container'>
-          <Under />
+      <div className='content'>
+        <div className='welcome-box'>
+          <p className='mini-subtext'>WELCOME TO</p>
+          <p className='mini-quaist'>MINI QUAIST</p>
+          <div className='underline-container'>
+            <Under />
+          </div>
         </div>
-      </div>
-      <div className='login-box'>
-        <p className='registration-text'>Who Are Ye?</p>
-        <form className='login-form' onSubmit={handleSubmit}>
-          <div className='username-input'>
-            <label htmlFor='username' className='username-label'>
-              Username:{' '}
-            </label>
-            <input
-              className='username-input-box'
-              type='text'
-              name='username'
-              id='username'
-              required
-              value={form.username}
-              onChange={handleChange}
-            />
+        <div className='login-box'>
+          <p className='registration-text'>Who Are Ye?</p>
+          <form className='login-form' onSubmit={handleSubmit}>
+            <div className='username-input'>
+              <label htmlFor='username' className='username-label'>
+                Username:{' '}
+              </label>
+              <input
+                className='username-input-box'
+                type='text'
+                name='username'
+                id='username'
+                required
+                value={form.username}
+                onChange={handleChange}
+              />
+            </div>
+            <div className='email-input'>
+              <label htmlFor='email' className='email-label'>
+                Email:{' '}
+              </label>
+              <input
+                className='email-input-box'
+                type='email'
+                name='email'
+                id='email'
+                required
+                value={form.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className='password-input'>
+              <label htmlFor='password' className='password-label'>
+                Password:{' '}
+              </label>
+              <input
+                className='password-input-box'
+                type='password'
+                name='password'
+                id='password'
+                required
+                value={form.password}
+                onChange={handleChange}
+                onFocus={() => setError(null)}
+              />
+            </div>
+            <div className='confirm-password-input'>
+              <label
+                htmlFor='confirmPassword'
+                className='confirm-password-label'
+              >
+                Confirm:{' '}
+              </label>
+              <input
+                className='password-input-box'
+                type='password'
+                name='confirmPassword'
+                id='confirmPassword'
+                required
+                value={confirmPassword}
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value);
+                }}
+                onFocus={() => setError(null)}
+              />
+            </div>
+            {error && <div className='error-message'>{error}</div>}
+            <div className='login-button-container'>
+              <input type='submit' value='Register' className='login-button' />
+            </div>
+          </form>
+          <div className='log-container'>
+            <p className='log-text'>Already a member?</p>
+            <Link to='/login' className='log-link'>
+              Login
+            </Link>
           </div>
-          <div className='email-input'>
-            <label htmlFor='email' className='email-label'>
-              Email:{' '}
-            </label>
-            <input
-              className='email-input-box'
-              type='email'
-              name='email'
-              id='email'
-              required
-              value={form.email}
-              onChange={handleChange}
-            />
-          </div>
-          <div className='password-input'>
-            <label htmlFor='password' className='password-label'>
-              Password:{' '}
-            </label>
-            <input
-              className='password-input-box'
-              type='password'
-              name='password'
-              id='password'
-              required
-              value={form.password}
-              onChange={handleChange}
-              onFocus={() => setError(null)}
-            />
-          </div>
-          <div className='confirm-password-input'>
-            <label htmlFor='confirmPassword' className='confirm-password-label'>
-              Confirm:{' '}
-            </label>
-            <input
-              className='password-input-box'
-              type='password'
-              name='confirmPassword'
-              id='confirmPassword'
-              required
-              value={confirmPassword}
-              onChange={(e) => {
-                setConfirmPassword(e.target.value);
-              }}
-              onFocus={() => setError(null)}
-            />
-          </div>
-          {error && <div className='error-message'>{error}</div>}
-          <div className='login-button-container'>
-            <input type='submit' value='Register' className='login-button' />
-          </div>
-        </form>
-        <div className='log-container'>
-          <p className='log-text'>Already a member?</p>
-          <Link to='/login' className='log-link'>
-            Login
-          </Link>
         </div>
       </div>
       <Footer />
