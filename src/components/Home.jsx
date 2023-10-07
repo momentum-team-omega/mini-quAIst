@@ -21,6 +21,11 @@ const Home = () => {
         </Link>
         <p className='link-subtext'>(click on the box)</p>
       </div>
+      <div className='battle-container'>
+        <Link to='/battle' className='battle=link'>
+          BATTLE
+        </Link>
+      </div>
       <Footer />
     </div>
   );

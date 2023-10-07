@@ -16,3 +16,11 @@ To Do:
 
 intro cutscene with stable diffusion images
 set up back end
+
+
+
+
+Considerations
+
+game board currently is just the size of how many tiles there are, we should standardize the size of the game window 
+

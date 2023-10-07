@@ -5,6 +5,7 @@ import Home from 'components/Home';
 import Login from 'components/Login';
 import Register from 'components/Register';
 import Game from 'components/Game';
+import Battle from 'components/Battle';
 
 function App() {
   const [token, setToken] = useState(false);
@@ -28,6 +29,7 @@ function App() {
         />
         ;
         <Route path='/play' element={<Game />} />;
+        <Route path='/battle' element={<Battle-temp />} />;
       </Routes>
     </>
   );
