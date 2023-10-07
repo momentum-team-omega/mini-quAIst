@@ -5,8 +5,10 @@ const BattleTemp = () => {
   return (
     <>
       <Nav />
-      <div className='game-container'>
-        <Map />
+      <div className='content'>
+        <div className='game-container'>
+          <Map />
+        </div>
       </div>
     </>
   );
