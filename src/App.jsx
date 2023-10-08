@@ -16,15 +16,15 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Navigate to='/home' replace />} />;
-        <Route path='/home' element={<Home />} />;
+        <Route path="/" element={<Navigate to="/home" replace />} />;
+        <Route path="/home" element={<Home />} />;
         <Route
-          path='/login'
+          path="/login"
           element={<Login setToken={setToken} setIsLoggedIn={setIsLoggedIn} />}
         />
         ;
         <Route
-          path='/register'
+          path="/register"
           element={
             <Register setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
           }
