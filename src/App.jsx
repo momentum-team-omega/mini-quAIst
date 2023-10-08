@@ -6,7 +6,7 @@ import Login from 'components/Login';
 import Register from 'components/Register';
 import Game from 'components/Game';
 import TempBattle from 'components/Temp-battle';
-import TempDialogue from './components/Dialogue';
+import TempDialogue from './components/Temp-dialogue';
 import TempCreate from './components/Temp-create';
 
 function App() {
@@ -31,7 +31,9 @@ function App() {
         />
         ;
         <Route path='/play' element={<Game />} />;
-        <Route path='/battle' element={<BattleTemp />} />;
+        <Route path='/battle' element={<TempBattle />} />;
+        <Route path='/dialogue' element={<TempDialogue />} />;
+        <Route path='/create' element={<TempCreate />} />;
       </Routes>
     </>
   );

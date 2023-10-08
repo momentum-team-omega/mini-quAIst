@@ -19,7 +19,15 @@ const TempDialogue = () => {
             width: gameWindow.width,
           }}
         >
-          <Dialogue />
+          <Dialogue npcText="Hello, adventurer! How can I help you?"
+              options={[
+                "Ask about quests",
+                "Buy items",
+                "Leave",
+                "Say goodbye",
+              ]}
+              backgroundImage="./assets/lotr.png"
+          />
         </div>
       </div>
     </>
