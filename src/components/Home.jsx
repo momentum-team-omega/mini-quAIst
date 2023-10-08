@@ -25,7 +25,13 @@ const Home = () => {
         </div>
         <div className='battle-container'>
           <Link to='/battle' className='battle=link'>
-            BATTLE
+            BATTLE (temp)
+          </Link>
+          <Link to='/dialogue' className='battle=link'>
+            DIALOGUE (temp)
+          </Link>
+          <Link to='/create' className='battle=link'>
+            CREATE (temp)
           </Link>
         </div>
       </div>
