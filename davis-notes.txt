@@ -10,21 +10,29 @@ created login and register components (still need back end) ✅
 moved game to it's own component ✅
 created temp battle coponent ✅
 refactored footer and it's position ✅
+gave 'game-container' set height/width to be main game window ✅
+switch map being static and character moving freely to character being static and map moving freely. This will keep the character in the center at all times. ✅
 
 
+To Do Now:
+
+collision detection
+
+  
 
 
-To Do:
-
+To Do Later:
 intro cutscene with stable diffusion images
 set up back end
 Wiki
 
 
 
-
 Considerations
 
-game board currently is just the size of how many tiles there are, we should standardize the size of the game window 
+need to think about textures. no need for a 'sky' texture on a top-down map 
+
+map centering is based off of the MAP_SIZE int which may not be compatible with custom maps
 
 
+chris has 2 notes files lol
