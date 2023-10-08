@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
-import "./App.css";
-import Home from "components/Home";
-import Login from "components/Login";
-import Register from "components/Register";
-import Game from "components/Game";
-import BattleTemp from "components/Battle-temp";
-import Dialogue from "./components/Dialogue";
+import React, { useState } from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import './App.css';
+import Home from 'components/Home';
+import Login from 'components/Login';
+import Register from 'components/Register';
+import Game from 'components/Game';
+import TempBattle from 'components/Temp-battle';
+import TempDialogue from './components/Dialogue';
+import TempCreate from './components/Temp-create';
 
 function App() {
   const [token, setToken] = useState(false);
@@ -29,24 +30,8 @@ function App() {
           }
         />
         ;
-        <Route path="/play" element={<Game />} />;
-        <Route path="/battle" element={<BattleTemp />} />;
-        <Route
-          path="/dialogue"
-          element={
-            <Dialogue
-              npcText="Hello, adventurer! How can I help you?"
-              options={[
-                "Ask about quests",
-                "Buy items",
-                "Leave",
-                "Say goodbye",
-              ]}
-              backgroundImage="/src/assets/lotr.png" // Pass the URL as a prop
-            />
-          }
-        />
-        ;
+        <Route path='/play' element={<Game />} />;
+        <Route path='/battle' element={<BattleTemp />} />;
       </Routes>
     </>
   );

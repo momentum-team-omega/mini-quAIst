@@ -12,6 +12,9 @@ created temp battle coponent ✅
 refactored footer and it's position ✅
 gave 'game-container' set height/width to be main game window ✅
 switch map being static and character moving freely to character being static and map moving freely. This will keep the character in the center at all times. ✅
+created temporary routes for game components 'battle', 'dialogue', and 'create' ✅
+
+
 
 
 To Do Now:
@@ -19,7 +22,6 @@ To Do Now:
 collision detection
 
   
-
 
 To Do Later:
 intro cutscene with stable diffusion images
