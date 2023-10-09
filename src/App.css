@@ -55,6 +55,7 @@ body {
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -420,6 +421,8 @@ flex-grow: 1;
   position: relative;
   overflow: hidden;
   border: 1px solid lightgrey; /* remove when window is stable */
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .main-character {
