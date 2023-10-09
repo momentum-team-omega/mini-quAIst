@@ -11,6 +11,9 @@ const Game = () => {
   const TILE_SIZE = 48;
   const MOVE_SPEED = 2;
 
+  const [direction, setDirection] = useState('Down');
+  const [frame, setFrame] = useState(1);
+
   const [mapPosition, setMapPosition] = useState({
     x: 1040,
     y: 600,
@@ -42,10 +45,12 @@ const Game = () => {
               setPosition={setMapPosition}
               TILE_SIZE={TILE_SIZE}
               MOVE_SPEED={MOVE_SPEED}
+              setDirection={setDirection}
+              setFrame={setFrame}
             />
             <Map position={mapPosition} />
-            <Collisions position={mapPosition} TILE_SIZE={TILE_SIZE} />
-            <Char />
+            {/* <Collisions position={mapPosition} TILE_SIZE={TILE_SIZE} /> */}
+            <Char TILE_SIZE={TILE_SIZE} direction={direction} frame={frame} />
           </div>
         </div>
       </CollisionContext.Provider>

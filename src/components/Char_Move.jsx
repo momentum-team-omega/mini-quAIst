@@ -1,7 +1,14 @@
 import { useEffect, useContext } from 'react';
 import CollisionContext from 'contexts/CollisionContext';
 
-const Char_Move = ({ position, setPosition, TILE_SIZE, MOVE_SPEED }) => {
+const Char_Move = ({
+  position,
+  setPosition,
+  TILE_SIZE,
+  MOVE_SPEED,
+  setDirection,
+  setFrame,
+}) => {
   const collisionMap = useContext(CollisionContext);
 
   const keys = {
@@ -21,26 +28,33 @@ const Char_Move = ({ position, setPosition, TILE_SIZE, MOVE_SPEED }) => {
   // };
 
   const moveCharacter = () => {
-    setPosition((currentPos) => {
-      let newX = currentPos.x;
-      let newY = currentPos.y;
+    let isMoving =
+      keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed;
 
-      if (keys.w.pressed) newY -= MOVE_SPEED;
-      if (keys.a.pressed) newX -= MOVE_SPEED;
-      if (keys.s.pressed) newY += MOVE_SPEED;
-      if (keys.d.pressed) newX += MOVE_SPEED;
+    if (isMoving) {
+      setPosition((currentPos) => {
+        let newX = currentPos.x;
+        let newY = currentPos.y;
 
-      // if (checkCollision(Math.floor(newX / 48), Math.floor(currentPos.y / 48)))
-      //   newX = currentPos.x;
-      // if (checkCollision(Math.floor(currentPos.x / 48), Math.floor(newY / 48)))
-      //   newY = currentPos.y;
+        if (keys.w.pressed) newY -= MOVE_SPEED;
+        if (keys.a.pressed) newX -= MOVE_SPEED;
+        if (keys.s.pressed) newY += MOVE_SPEED;
+        if (keys.d.pressed) newX += MOVE_SPEED;
 
-      // console.log(
-      //   `Moving from x: ${currentPos.x}, y: ${currentPos.y} to x: ${newX}, y: ${newY}`
-      // );
+        // if (checkCollision(Math.floor(newX / 48), Math.floor(currentPos.y / 48)))
+        //   newX = currentPos.x;
+        // if (checkCollision(Math.floor(currentPos.x / 48), Math.floor(newY / 48)))
+        //   newY = currentPos.y;
 
-      return { x: newX, y: newY };
-    });
+        // console.log(
+        //   `Moving from x: ${currentPos.x}, y: ${currentPos.y} to x: ${newX}, y: ${newY}`
+        // );
+
+        return { x: newX, y: newY };
+      });
+
+      setFrame((prevFrame) => (prevFrame % 4) + 1);
+    }
   };
 
   useEffect(() => {
@@ -50,18 +64,22 @@ const Char_Move = ({ position, setPosition, TILE_SIZE, MOVE_SPEED }) => {
       switch (e.key) {
         case 'ArrowUp':
         case 'w':
+          setDirection('Up');
           keys.w.pressed = true;
           break;
         case 'ArrowLeft':
         case 'a':
+          setDirection('Left');
           keys.a.pressed = true;
           break;
         case 'ArrowDown':
         case 's':
+          setDirection('Down');
           keys.s.pressed = true;
           break;
         case 'ArrowRight':
         case 'd':
+          setDirection('Right');
           keys.d.pressed = true;
           break;
       }
@@ -98,7 +116,7 @@ const Char_Move = ({ position, setPosition, TILE_SIZE, MOVE_SPEED }) => {
   }, []);
 
   useEffect(() => {
-    const moveInterval = setInterval(moveCharacter, 10);
+    const moveInterval = setInterval(moveCharacter, 20);
 
     return () => {
       clearInterval(moveInterval);
