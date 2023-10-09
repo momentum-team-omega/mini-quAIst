@@ -399,6 +399,13 @@ flex-grow: 1;
   text-decoration: underline;
 }
 
+.battle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .game-container {
   margin: 0;
   margin-top: 40px;
@@ -433,6 +440,22 @@ flex-grow: 1;
   display: grid;
   position: absolute;
   z-index: 1;
+}
+
+.collision-container {
+  display: grid;
+  position: absolute;
+  border: 1px solid black;
+  z-index: 2;
+}
+
+.collision-zone {
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  opacity: 60%;
+  /* border: 1px solid red; */
 }
 
 .footer {
@@ -497,3 +520,53 @@ flex-grow: 1;
 .summary {
   height: 100px;
 }
+
+
+.dialogue-container {
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100vh;
+  width: 100vw; 
+  color: white;
+  text-align: center;
+}
+
+.npc-text {
+  font-family: "Luckiest Guy", cursive;
+  font-size: 24px;
+  text-shadow: 
+    2px 2px 2px black,   /* North-East */
+    -2px -2px 2px black, /* South-West */
+    2px -2px 2px black,  /* South-East */
+    -2px 2px 2px black;  /* North-West */
+  margin-bottom: 20px;
+}
+
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.option {
+  font-family: "Luckiest Guy", cursive;
+  font-size: 18px;
+  text-shadow: 
+    2px 2px 2px black,   /* North-East */
+    -2px -2px 2px black, /* South-West */
+    2px -2px 2px black,  /* South-East */
+    -2px 2px 2px black;  /* North-West */
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.option:hover {
+  text-decoration: underline;
+  color: rgb(220, 187, 0);
+}
+

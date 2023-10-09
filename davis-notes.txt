@@ -1,7 +1,6 @@
 Davis Notes:
 
 
-
 Completed: 
 
 styled main page ✅
@@ -12,23 +11,32 @@ created temp battle coponent ✅
 refactored footer and it's position ✅
 gave 'game-container' set height/width to be main game window ✅
 switch map being static and character moving freely to character being static and map moving freely. This will keep the character in the center at all times. ✅
+created temporary routes for game components 'battle', 'dialogue', and 'create' ✅
+Refactored map again this time to accomodate .png maps generated with Tiled ✅
+Added collisions overlay on top of map ✅
 
 
-To Do Now:
 
-collision detection
+To-Do Now: 🚨
+
+collision detection !!IMPORTANT 
+  -added collision overlay, just need to get logic working 
+
+replace wizard emoji character with character model from itch.io 
+  -animate character model walking and facing the right direction
 
   
 
-
-To Do Later:
+To-Do Later: 🤷‍♂️
 intro cutscene with stable diffusion images
+background music ?
+  -mute icon in nav
 set up back end
-Wiki
+Wiki ?
 
 
 
-Considerations
+Considerations 🧠
 
 need to think about textures. no need for a 'sky' texture on a top-down map 
 
