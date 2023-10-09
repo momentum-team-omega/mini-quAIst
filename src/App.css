@@ -491,3 +491,9 @@ flex-grow: 1;
   color: var(--clr-text);
   margin: 5px;
 }
+
+/* BATTLE CSS */
+
+.summary {
+  height: 100px;
+}
