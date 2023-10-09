@@ -116,7 +116,7 @@ const Char_Move = ({
   }, []);
 
   useEffect(() => {
-    const moveInterval = setInterval(moveCharacter, 20);
+    const moveInterval = setInterval(moveCharacter, 100);
 
     return () => {
       clearInterval(moveInterval);

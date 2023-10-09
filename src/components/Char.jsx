@@ -16,9 +16,9 @@ const Char = ({ TILE_SIZE, direction, frame }) => {
 
   const bgPositionMap = {
     1: '0%',
-    2: '25%',
-    3: '50%',
-    4: '75%',
+    2: '33.33%',
+    3: '66.66%',
+    4: '100%',
   };
 
   return (
