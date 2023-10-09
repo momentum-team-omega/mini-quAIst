@@ -12,7 +12,6 @@ const Char_Move = ({ position, setPosition, TILE_SIZE, MOVE_SPEED }) => {
   };
 
   // const checkCollision = (newX, newY) => {
-
   //   const gridX = Math.floor(newX / TILE_SIZE);
   //   const gridY = Math.floor(newY / TILE_SIZE);
 
@@ -31,8 +30,10 @@ const Char_Move = ({ position, setPosition, TILE_SIZE, MOVE_SPEED }) => {
       if (keys.s.pressed) newY += MOVE_SPEED;
       if (keys.d.pressed) newX += MOVE_SPEED;
 
-      // if (checkCollision(newX, currentPos.y)) newX = currentPos.x;
-      // if (checkCollision(currentPos.x, newY)) newY = currentPos.y;
+      // if (checkCollision(Math.floor(newX / 48), Math.floor(currentPos.y / 48)))
+      //   newX = currentPos.x;
+      // if (checkCollision(Math.floor(currentPos.x / 48), Math.floor(newY / 48)))
+      //   newY = currentPos.y;
 
       // console.log(
       //   `Moving from x: ${currentPos.x}, y: ${currentPos.y} to x: ${newX}, y: ${newY}`

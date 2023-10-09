@@ -44,7 +44,7 @@ const Game = () => {
               MOVE_SPEED={MOVE_SPEED}
             />
             <Map position={mapPosition} />
-            {/* <Collisions position={mapPosition} TILE_SIZE={TILE_SIZE} /> */}
+            <Collisions position={mapPosition} TILE_SIZE={TILE_SIZE} />
             <Char />
           </div>
         </div>

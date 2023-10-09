@@ -8,6 +8,7 @@ import Game from 'components/Game';
 import TempBattle from 'components/Temp-battle';
 import TempDialogue from './components/Temp-dialogue';
 import TempCreate from './components/Temp-create';
+import TempCheck from './components/Temp-check';
 
 function App() {
   const [token, setToken] = useState(false);
@@ -30,10 +31,11 @@ function App() {
           }
         />
         ;
-        <Route path='/play' element={<Game />} />;
-        <Route path='/battle' element={<TempBattle />} />;
-        <Route path='/dialogue' element={<TempDialogue />} />;
-        <Route path='/create' element={<TempCreate />} />;
+        <Route path="/play" element={<Game />} />;
+        <Route path="/battle" element={<TempBattle />} />;
+        <Route path="/dialogue" element={<TempDialogue />} />;
+        <Route path="/create" element={<TempCreate />} />;
+        <Route path="/check" element={<TempCheck />} />;
       </Routes>
     </>
   );
