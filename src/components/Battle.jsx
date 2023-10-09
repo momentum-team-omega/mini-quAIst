@@ -39,7 +39,7 @@ const Battle = () => {
   const [playerHealth, setPlayerHealth] = useState(playerStats.maxHealth);
 
   return (
-    <div className='game-container' style={containerStyle}>
+    <div className='battle-container' style={containerStyle}>
       <h1>Battle</h1>
       <div className='overlay' style={overlayPlayer}></div>
       <div className='overlay' style={overlayEnemy}></div>
@@ -48,9 +48,9 @@ const Battle = () => {
           <PlayerSummary
             value={opponentHealth}
             maxValue={opponentStats.maxHealth}
+            name={opponentStats.name}
+            level={opponentStats.level}
           />
-          name={opponentStats.name}
-          level={opponentStats.level}
         </div>
       </div>
       <div className='player-summary'>
