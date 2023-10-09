@@ -431,12 +431,16 @@ flex-grow: 1;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
   /* border: 2px solid black; */
 }
 
+.character-img {
+
+}
+
 .placeholder {
-  transform: scale(500%);
-  margin-top: 32px;
 }
 
 .map-container {

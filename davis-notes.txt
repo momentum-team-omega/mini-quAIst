@@ -22,9 +22,10 @@ To-Do Now: 🚨
 collision detection !!IMPORTANT 
   -added collision overlay, just need to get logic working 
 
-replace wizard emoji character with character model from itch.io 
-  -animate character model walking and facing the right direction
+fix character icon from sliding in place 
 
+remove diagonal ability (interfere's with character direcion)
+  -if you're holding x direction down and then you hit y direction, it won't realign to looking x direction after you let go of y direction button 
   
 
 To-Do Later: 🤷‍♂️
@@ -38,9 +39,6 @@ Wiki ?
 
 Considerations 🧠
 
-need to think about textures. no need for a 'sky' texture on a top-down map 
-
-map centering is based off of the MAP_SIZE int which may not be compatible with custom maps
-
-
-chris has 2 notes files lol
+disable diagonal movement 
+  -disable 'if last pressed' maybe or something 
+  
