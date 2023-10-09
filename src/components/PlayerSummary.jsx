@@ -11,6 +11,7 @@ export const PlayerSummary = ({
   level,
   value,
   maxValue,
+  onSmackClick,
 }) => {
   return (
     <div
