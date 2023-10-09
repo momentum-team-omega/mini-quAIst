@@ -38,6 +38,12 @@ const Battle = () => {
   const [opponentHealth, setOpponentHealth] = useState(opponentStats.maxHealth);
   const [playerHealth, setPlayerHealth] = useState(playerStats.maxHealth);
 
+  const handleSmackClick = () => {
+    if (opponentHealth > 0) {
+      setOpponentHealth(opponentHealth - 1);
+    }
+  };
+
   return (
     <div className='battle-container' style={containerStyle}>
       <h1>Battle</h1>
@@ -51,6 +57,9 @@ const Battle = () => {
             name={opponentStats.name}
             level={opponentStats.level}
           />
+          <button className='fight-button' onClick={handleSmackClick}>
+            SMACK!
+          </button>
         </div>
       </div>
       <div className='player-summary'>
@@ -61,7 +70,9 @@ const Battle = () => {
             maxHealth={playerStats.maxHealth}
             name={playerStats.name}
             level={playerStats.level}
+            onSmackClick={handleSmackClick}
           />
+          <button className='fight-button'>SMACK!</button>
         </div>
       </div>
     </div>
