@@ -1,13 +1,13 @@
-const Char = ({ tile }) => {
+const Char = ({}) => {
   return (
     <div
-      className='main-character'
+      className="main-character"
       style={{
-        width: `${tile}px`,
-        height: `${tile}px`,
+        width: `12px`,
+        height: `12px`,
       }}
     >
-      <div className='placeholder'>🧙‍♂️</div>
+      <div className="placeholder">🧙‍♂️</div>
     </div>
   );
 };

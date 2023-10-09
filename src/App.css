@@ -442,6 +442,22 @@ flex-grow: 1;
   z-index: 1;
 }
 
+.collision-container {
+  display: grid;
+  position: absolute;
+  border: 1px solid black;
+  z-index: 2;
+}
+
+.collision-zone {
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  opacity: 60%;
+  /* border: 1px solid red; */
+}
+
 .footer {
   padding: 10px;
   display: flex;
