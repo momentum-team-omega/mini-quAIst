@@ -518,6 +518,11 @@ flex-grow: 1;
   margin: 5px;
 }
 
+.char-container {
+  height: 100px;
+  width: 100px;
+}
+
 /* BATTLE CSS */
 
 .summary {
