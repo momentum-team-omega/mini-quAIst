@@ -417,7 +417,6 @@ flex-grow: 1;
   background-color: var(--clr-dark);
   background-size: cover;
   background-position: center;
-  padding: 20px;
   position: relative;
   overflow: hidden;
   border: 1px solid lightgrey; /* remove when window is stable */
@@ -527,7 +526,68 @@ flex-grow: 1;
   width: 100px;
 }
 
-/* BATTLE CSS */
+
+
+/* FIGHT! BATTLE CSS OUCH! OH! NO! BATTLE CSS ENGUARD! */
+.someone-died-box {
+  position: absolute;
+  top: 300px;
+  left: 500px;
+  color: red;
+  font-size: 36px;
+  padding: 20px;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
+};
+
+.battle-options {
+  border: 1px solid black;
+}
+
+.health-change-indicator {
+    position: absolute;
+    top: 350px;
+    right: 115px; 
+    color: red;
+    text-shadow: 1px 1px 1px black;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 24px;
+    /* z-index: 999; */
+    text-align: center;
+}
+
+.enemy-health-change-indicator {
+  position: absolute;
+  top: 400;
+  left: 115px;
+  color: red;
+  text-shadow: 1px 1px 1px black;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 24px;
+  /* z-index: 999; */
+  text-align: center;
+}
+
+.button-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fight-button,
+.chill-button {
+  width: 150px;
+  height: 40px;
+  background-color: rgba(0, 0, 255, 0.5);
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+.player-summary {
+  width: 250px;
+}
 
 .main {
   display: flex;
@@ -687,8 +747,11 @@ flex-grow: 1;
     opacity: 0;
   }
 }
+/* FIGHT! BATTLE CSS OUCH! OH! NO! BATTLE CSS ENGUARD! */
 
-/* BATTLE CSS */
+
+
+
 .dialogue-container {
   background-size: cover;
   background-position: center center;

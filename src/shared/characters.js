@@ -13,11 +13,11 @@ export const playerStats = {
 export const opponentStats = {
   level: 1,
   name: "Mage",
-  maxHealth: 6,
-  img: "/src/assets/enemy-test-4.png",
+  maxHealth: 12,
+  img: "src/assets/mage-placeholder-transp.png",
 
   magic: 5,
-  attack: 1,
+  attack: 4,
   defense: 2,
   magicDefense: 5,
 };

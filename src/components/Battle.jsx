@@ -1,17 +1,16 @@
 // Battle.jsx
-import React from "react";
-import playerImage from "/src/assets/barbarian-test-3.png"; // Adjust the path to your player image
-import enemyImage from "/src/assets/enemy-test-4.png"; // Adjust the path to your enemy image
+import React, { useState, useEffect } from "react";
+import playerImage from "/src/assets/barbarian-test-3.png";
+import enemyImage from "/src/assets/mage-placeholder-transp.png";
 import { opponentStats, playerStats } from "/src/shared";
 import { PlayerSummary } from "./PlayerSummary";
-import { useState } from "react";
 
 const Battle = () => {
   const containerStyle = {
-    background: `url('/src/assets/battle-background-road-test.png')`, // Adjust the path to your background image
+    background: `url(/src/assets/720p-battle-background.png)`,
     backgroundSize: "cover",
-    width: "1000px",
-    height: "1000px",
+    width: "1280px",
+    height: "720px",
     position: "relative",
   };
 
@@ -19,8 +18,8 @@ const Battle = () => {
     width: "200px",
     height: "200px",
     position: "absolute",
-    bottom: "100px",
-    right: "100px",
+    bottom: "30px",
+    right: "150px",
     backgroundImage: `url(${playerImage})`,
     backgroundSize: "cover",
   };
@@ -29,31 +28,94 @@ const Battle = () => {
     width: "200px",
     height: "200px",
     position: "absolute",
-    bottom: "100px",
-    left: "100px",
+    bottom: "30px",
+    left: "150px",
     backgroundImage: `url(${enemyImage})`,
     backgroundSize: "cover",
   };
 
   const [opponentHealth, setOpponentHealth] = useState(opponentStats.maxHealth);
   const [playerHealth, setPlayerHealth] = useState(playerStats.maxHealth);
+  const [showHealthIndicator, setShowHealthIndicator] = useState(false);
+  const [healthIndicatorMessage, setHealthIndicatorMessage] = useState("");
+  const [showEnemyHealthIndicator, setShowEnemyHealthIndicator] =
+    useState(false);
+  const [enemyHealthIndicatorMessage, setEnemyHealthIndicatorMessage] =
+    useState("");
+  const [someoneDied, setSomeoneDied] = useState(false);
 
-  const handleEnemySmackClick = () => {
+  const handleHealthChange = (newValue, source) => {
+    const sign = source === "chill" ? "+" : "-";
+    setHealthIndicatorMessage(
+      `Health: ${sign}${Math.abs(newValue - playerHealth)}`
+    );
+    setShowHealthIndicator(true);
+
+    // TIMER TIMER TIMER TIMER TIMER
+    setTimeout(() => {
+      setShowHealthIndicator(false);
+    }, 3000);
+    setPlayerHealth(newValue);
+  };
+
+  const handleEnemyHealthChange = (newValue, source) => {
+    const sign = source === "smack" ? "-" : "+";
+    setEnemyHealthIndicatorMessage(
+      `Enemy Health: ${sign}${Math.abs(newValue - opponentHealth)}`
+    );
+    setShowEnemyHealthIndicator(true);
+
+    setTimeout(() => {
+      setShowEnemyHealthIndicator(false);
+    }, 3000);
+    setOpponentHealth(newValue);
+  };
+
+  const handleEnemySmackClick = (newValue, source) => {
+    if (opponentHealth && playerHealth > 0) {
+      const playerDamage = playerStats.attack - opponentStats.defense;
+      console.log("playerDamage", playerDamage);
+      const opponentDamage = opponentStats.attack - playerStats.defense;
+      console.log("opponentDamage", opponentDamage);
+
+      const newPlayerHealth = playerHealth - opponentDamage;
+      const newOpponentHealth = opponentHealth - playerDamage;
+
+      handleEnemyHealthChange(newOpponentHealth, "smack");
+      handleHealthChange(newPlayerHealth, "smack");
+
+      setOpponentHealth(newOpponentHealth);
+
+      console.log("ENEMY SMACK BUTTON:", newOpponentHealth);
+      console.log("Player Hit!: ", newPlayerHealth);
+
+      if (newPlayerHealth <= 0 || newOpponentHealth <= 0) {
+        setSomeoneDied(true);
+      }
+    }
+  };
+
+  const handleChill = () => {
     if (opponentHealth > 0) {
-      setOpponentHealth(opponentHealth - 1);
-      console.log("ENEMY SMACK BUTTON:", opponentHealth);
+      const newPlayerHealth = playerHealth + 1;
+      handleHealthChange(newPlayerHealth, "chill");
+      console.log("CHILL!: ", newPlayerHealth);
     }
   };
 
-  const handlePlayerSmackClick = () => {
-    if (playerHealth > 0) {
-      setPlayerHealth(playerHealth - 1);
-      console.log("PLAYER SMACK BUTTON: ", playerHealth);
-    }
-  };
+  useEffect(() => {
+    return () => {
+      setShowHealthIndicator(false);
+    };
+  }, []);
 
   return (
     <div className='battle-container' style={containerStyle}>
+      {someoneDied && (
+        <div className='someone-died-box'>
+          {playerHealth <= 0 ? "YOU DIED!" : "YOU WIN!"}
+        </div>
+      )}
       <h1
         style={{
           textShadow: "2px 2px 2px black",
@@ -64,10 +126,14 @@ const Battle = () => {
       </h1>
       <div className='overlay' style={overlayPlayer}></div>
       <div className='overlay' style={overlayEnemy}></div>
+      {showEnemyHealthIndicator && (
+        <div className='enemy-health-change-indicator'>
+          {enemyHealthIndicatorMessage}
+        </div>
+      )}
       <div
         className='battle-options'
         style={{
-          border: "2px solid black",
           position: "absolute",
           bottom: "0",
           textAlign: "center",
@@ -80,11 +146,15 @@ const Battle = () => {
               maxValue={opponentStats.maxHealth}
               name={opponentStats.name}
               level={opponentStats.level}
-              onSmackClick={handlePlayerSmackClick}
             />
-            <button className='fight-button' onClick={handleEnemySmackClick}>
-              SMACK!
-            </button>
+            <div className='button-box'>
+              <button className='fight-button' onClick={handleEnemySmackClick}>
+                SMACK!
+              </button>
+              <button className='chill-button' onClick={handleChill}>
+                CHILL!
+              </button>
+            </div>
           </div>
         </div>
         <div className='player-summary'>
@@ -97,12 +167,12 @@ const Battle = () => {
               level={playerStats.level}
               onSmackClick={handleEnemySmackClick}
             />
-            <button className='fight-button' onClick={handlePlayerSmackClick}>
-              SMACK!
-            </button>
           </div>
         </div>
       </div>
+      {showHealthIndicator && (
+        <div className='health-change-indicator'>{healthIndicatorMessage}</div>
+      )}
     </div>
   );
 };
