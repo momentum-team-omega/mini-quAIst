@@ -162,7 +162,7 @@ const Battle = () => {
             <PlayerSummary
               main
               value={playerHealth}
-              maxHealth={playerStats.maxHealth}
+              maxValue={playerStats.maxHealth}
               name={playerStats.name}
               level={playerStats.level}
               onSmackClick={handleEnemySmackClick}
