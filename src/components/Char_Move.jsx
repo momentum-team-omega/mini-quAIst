@@ -1,108 +1,136 @@
-import { useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import CollisionContext from 'contexts/CollisionContext';
 
-const Char_Move = ({
-  position,
-  setPosition,
-  TILE_SIZE,
-  MOVE_SPEED,
-  setDirection,
-  setFrame,
-}) => {
+const Char_Move = ({ setPosition, setDirection, setFrame }) => {
   const collisionMap = useContext(CollisionContext);
 
-  const keys = {
+  const [isMoving, setIsMoving] = useState(false);
+  const [isShiftPressed, setIsShiftPressed] = useState(false);
+
+  const [keys, setKeys] = useState({
     w: { pressed: false },
     a: { pressed: false },
     s: { pressed: false },
     d: { pressed: false },
-  };
+  });
 
-  // const checkCollision = (newX, newY) => {
-  //   const gridX = Math.floor(newX / TILE_SIZE);
-  //   const gridY = Math.floor(newY / TILE_SIZE);
+  const [keyOrder, setKeyOrder] = useState([]);
 
-  //   console.log(`Checking collision at gridX: ${gridX}, gridY: ${gridY}`);
-
-  //   return collisionMap[gridY][gridX] === 1025;
-  // };
+  const DEFAULT_MOVE_SPEED = 2.5;
+  const RUN_MOVE_SPEED = 5;
+  const DEFAULT_ANIMATION_SPEED = 80;
+  const RUN_ANIMATION_SPEED = 40;
 
   const moveCharacter = () => {
-    let isMoving =
-      keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed;
+    const actualMoveSpeed = isShiftPressed
+      ? RUN_MOVE_SPEED
+      : DEFAULT_MOVE_SPEED;
 
-    if (isMoving) {
+    if (isMoving && keyOrder.length > 0) {
       setPosition((currentPos) => {
         let newX = currentPos.x;
         let newY = currentPos.y;
-
-        if (keys.w.pressed) newY -= MOVE_SPEED;
-        if (keys.a.pressed) newX -= MOVE_SPEED;
-        if (keys.s.pressed) newY += MOVE_SPEED;
-        if (keys.d.pressed) newX += MOVE_SPEED;
-
-        // if (checkCollision(Math.floor(newX / 48), Math.floor(currentPos.y / 48)))
-        //   newX = currentPos.x;
-        // if (checkCollision(Math.floor(currentPos.x / 48), Math.floor(newY / 48)))
-        //   newY = currentPos.y;
-
-        // console.log(
-        //   `Moving from x: ${currentPos.x}, y: ${currentPos.y} to x: ${newX}, y: ${newY}`
-        // );
-
+        const lastKey = keyOrder[keyOrder.length - 1];
+        switch (lastKey) {
+          case 'ArrowUp':
+          case 'w':
+            newY -= actualMoveSpeed;
+            break;
+          case 'ArrowLeft':
+          case 'a':
+            newX -= actualMoveSpeed;
+            break;
+          case 'ArrowDown':
+          case 's':
+            newY += actualMoveSpeed;
+            break;
+          case 'ArrowRight':
+          case 'd':
+            newX += actualMoveSpeed;
+            break;
+        }
         return { x: newX, y: newY };
       });
+    }
+  };
 
+  const updateAnimationFrame = () => {
+    if (isMoving) {
       setFrame((prevFrame) => (prevFrame % 4) + 1);
+    } else {
+      setFrame(0);
     }
   };
 
   useEffect(() => {
     const handleDownKey = (e) => {
       e.preventDefault();
-
+      let keyPressed = null;
       switch (e.key) {
         case 'ArrowUp':
         case 'w':
-          setDirection('Up');
-          keys.w.pressed = true;
+          keyPressed = 'w';
           break;
         case 'ArrowLeft':
         case 'a':
-          setDirection('Left');
-          keys.a.pressed = true;
+          keyPressed = 'a';
           break;
         case 'ArrowDown':
         case 's':
-          setDirection('Down');
-          keys.s.pressed = true;
+          keyPressed = 's';
           break;
         case 'ArrowRight':
         case 'd':
-          setDirection('Right');
-          keys.d.pressed = true;
+          keyPressed = 'd';
           break;
+      }
+      if (keyPressed) {
+        setDirection({ w: 'Up', a: 'Left', s: 'Down', d: 'Right' }[keyPressed]);
+        setKeyOrder((prevOrder) => [
+          ...prevOrder.filter((key) => key !== keyPressed),
+          keyPressed,
+        ]);
+        setKeys((prevKeys) => ({
+          ...prevKeys,
+          [keyPressed]: { pressed: true },
+        }));
+      }
+      if (e.key === 'Shift') {
+        setIsShiftPressed(true);
       }
     };
 
     const handleUpKey = (e) => {
+      let keyReleased = null;
       switch (e.key) {
         case 'ArrowUp':
         case 'w':
-          keys.w.pressed = false;
+          keyReleased = 'w';
           break;
         case 'ArrowLeft':
         case 'a':
-          keys.a.pressed = false;
+          keyReleased = 'a';
           break;
         case 'ArrowDown':
         case 's':
-          keys.s.pressed = false;
+          keyReleased = 's';
           break;
         case 'ArrowRight':
         case 'd':
-          keys.d.pressed = false;
+          keyReleased = 'd';
           break;
+      }
+      if (keyReleased) {
+        setKeyOrder((prevOrder) =>
+          prevOrder.filter((key) => key !== keyReleased)
+        );
+        setKeys((prevKeys) => ({
+          ...prevKeys,
+          [keyReleased]: { pressed: false },
+        }));
+      }
+      if (e.key === 'Shift') {
+        setIsShiftPressed(false);
       }
     };
 
@@ -116,12 +144,43 @@ const Char_Move = ({
   }, []);
 
   useEffect(() => {
-    const moveInterval = setInterval(moveCharacter, 100);
+    let moveCounter = 0;
+    let frameCounter = 0;
+
+    const frameIntervalSpeed = isShiftPressed
+      ? RUN_ANIMATION_SPEED
+      : DEFAULT_ANIMATION_SPEED;
+
+    // This is the main interval that runs every 20ms
+    const mainInterval = setInterval(() => {
+      moveCharacter(); // Move character every interval
+
+      moveCounter += 20;
+      frameCounter += 20;
+
+      if (frameCounter >= frameIntervalSpeed) {
+        updateAnimationFrame();
+        frameCounter = 0;
+      }
+    }, 20);
 
     return () => {
-      clearInterval(moveInterval);
+      clearInterval(mainInterval);
     };
-  }, []);
+  }, [isMoving, keys, isShiftPressed]);
+
+  useEffect(() => {
+    setIsMoving(
+      keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed
+    );
+  }, [keys]);
+
+  useEffect(() => {
+    if (keyOrder.length > 0) {
+      const lastKey = keyOrder[keyOrder.length - 1];
+      setDirection({ w: 'Up', a: 'Left', s: 'Down', d: 'Right' }[lastKey]);
+    }
+  }, [keyOrder]);
 
   return null;
 };
