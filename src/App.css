@@ -547,7 +547,7 @@ flex-grow: 1;
 .health-change-indicator {
     position: absolute;
     top: 350px;
-    right: 115px; 
+    right: 165px; 
     color: red;
     text-shadow: 1px 1px 1px black;
     padding: 10px;
@@ -559,8 +559,8 @@ flex-grow: 1;
 
 .enemy-health-change-indicator {
   position: absolute;
-  top: 400;
-  left: 115px;
+  top: 650;
+  left: 165px;
   color: red;
   text-shadow: 1px 1px 1px black;
   padding: 10px;
