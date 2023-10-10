@@ -741,4 +741,28 @@ flex-grow: 1;
   color: rgb(220, 187, 0);
 }
 
-/* DIALOGUE CSS - END */
+.dice-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.twenty-sided-die {
+  width: 100px;
+  height: 100px;
+  /* background-color: #fff; */
+  border: 2px solid #000;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.rolled-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}/* DIALOGUE CSS - END */
