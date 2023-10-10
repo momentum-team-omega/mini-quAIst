@@ -87,7 +87,7 @@ button:focus-visible {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url('assets/map.png');
+  background-image: url('assets/home-assets/map.png');
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -463,7 +463,15 @@ flex-grow: 1;
   height: 48px;
   position: absolute;
   opacity: 60%;
-  /* border: 1px solid red; */
+}
+
+.character-zone {
+  position: absolute; 
+  width: 48px; 
+  height: 48px;
+  opacity: 60%;
+  z-index: 11; 
+  background-color: blue;
 }
 
 .footer {
