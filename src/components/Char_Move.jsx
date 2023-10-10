@@ -55,8 +55,6 @@ const Char_Move = ({ setPosition, setDirection, setFrame }) => {
   };
 
   const updateAnimationFrame = () => {
-    console.log('animation. keys:', keys, 'isMoving:', isMoving);
-
     if (isMoving) {
       setFrame((prevFrame) => (prevFrame % 4) + 1);
     } else {
