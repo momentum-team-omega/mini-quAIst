@@ -5,7 +5,7 @@ const Char_Move = ({ setPosition, setDirection, setFrame }) => {
   const collisionMap = useContext(CollisionContext);
 
   const [isMoving, setIsMoving] = useState(false);
-  const [isShiftPressed, setIsShiftPressed] = useState(false);
+  const [isSpacePressed, setIsSpacePressed] = useState(false);
 
   const [keys, setKeys] = useState({
     w: { pressed: false },
@@ -22,7 +22,7 @@ const Char_Move = ({ setPosition, setDirection, setFrame }) => {
   const RUN_ANIMATION_SPEED = 40;
 
   const moveCharacter = () => {
-    const actualMoveSpeed = isShiftPressed
+    const actualMoveSpeed = isSpacePressed
       ? RUN_MOVE_SPEED
       : DEFAULT_MOVE_SPEED;
 
@@ -64,7 +64,6 @@ const Char_Move = ({ setPosition, setDirection, setFrame }) => {
 
   useEffect(() => {
     const handleDownKey = (e) => {
-      e.preventDefault();
       let keyPressed = null;
       switch (e.key) {
         case 'ArrowUp':
@@ -85,6 +84,7 @@ const Char_Move = ({ setPosition, setDirection, setFrame }) => {
           break;
       }
       if (keyPressed) {
+        e.preventDefault();
         setDirection({ w: 'Up', a: 'Left', s: 'Down', d: 'Right' }[keyPressed]);
         setKeyOrder((prevOrder) => [
           ...prevOrder.filter((key) => key !== keyPressed),
@@ -95,8 +95,9 @@ const Char_Move = ({ setPosition, setDirection, setFrame }) => {
           [keyPressed]: { pressed: true },
         }));
       }
-      if (e.key === 'Shift') {
-        setIsShiftPressed(true);
+      if (e.key === ' ') {
+        setIsSpacePressed(true);
+        e.preventDefault();
       }
     };
 
@@ -129,8 +130,8 @@ const Char_Move = ({ setPosition, setDirection, setFrame }) => {
           [keyReleased]: { pressed: false },
         }));
       }
-      if (e.key === 'Shift') {
-        setIsShiftPressed(false);
+      if (e.key === ' ') {
+        setIsSpacePressed(false);
       }
     };
 
@@ -147,7 +148,7 @@ const Char_Move = ({ setPosition, setDirection, setFrame }) => {
     let moveCounter = 0;
     let frameCounter = 0;
 
-    const frameIntervalSpeed = isShiftPressed
+    const frameIntervalSpeed = isSpacePressed
       ? RUN_ANIMATION_SPEED
       : DEFAULT_ANIMATION_SPEED;
 
@@ -167,7 +168,7 @@ const Char_Move = ({ setPosition, setDirection, setFrame }) => {
     return () => {
       clearInterval(mainInterval);
     };
-  }, [isMoving, keys, isShiftPressed]);
+  }, [isMoving, keys, isSpacePressed]);
 
   useEffect(() => {
     setIsMoving(
