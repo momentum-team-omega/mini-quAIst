@@ -1,59 +1,86 @@
-import React, { useState } from "react";
-import Nav from "components/Nav";
-import Char from "components/Char";
-import Char_Move from "components/Char_Move";
-import Map from "components/Map";
-import Collisions from "components/Collisions";
-import { collisions } from "utilities/collisionsData.js";
-import CollisionContext from "contexts/CollisionContext";
+import React, { useState } from 'react';
+import Nav from 'components/Nav';
+import Char from 'components/Char';
+import Char_Move from 'components/Char_Move';
+import Map from 'components/Map';
+import Map_Manager from 'components/Map_Manager';
 
 const Game = () => {
-  const TILE_SIZE = 48;
-  const MOVE_SPEED = 2;
+  const [tileSize, setTileSize] = useState(48);
 
   const [direction, setDirection] = useState('Down');
   const [frame, setFrame] = useState(1);
+
+  const [currentMap, setCurrentMap] = useState('example');
+  const [mapImage, setMapImage] = useState(null);
 
   const [mapPosition, setMapPosition] = useState({
     x: 1040,
     y: 600,
   });
   const [gameWindow, setGameWindow] = useState({
-    height: "720px",
-    width: "1280px",
+    height: '720px',
+    width: '1280px',
   });
 
-  const collisionMap = [];
-  for (let i = 0; i < collisions.length; i += 70) {
-    collisionMap.push(collisions.slice(i, 70 + i));
-  }
+  const [charPosition, setCharPosition] = useState({ x: 0, y: 0 });
+  const [allowedMovements, setAllowedMovements] = useState({
+    up: true,
+    down: true,
+    left: true,
+    right: true,
+  });
+
+  const handleClick = (e) => {
+    setCurrentMap(e.target.value);
+  };
 
   return (
     <>
       <Nav />
-      <CollisionContext.Provider value={collisionMap}>
-        <div className='content'>
-          <div
-            className='game-container'
-            style={{
-              height: gameWindow.height,
-              width: gameWindow.width,
-            }}
-          >
-            <Char_Move
-              position={mapPosition}
-              setPosition={setMapPosition}
-              TILE_SIZE={TILE_SIZE}
-              MOVE_SPEED={MOVE_SPEED}
-              setDirection={setDirection}
-              setFrame={setFrame}
-            />
-            <Map position={mapPosition} />
-            {/* <Collisions position={mapPosition} TILE_SIZE={TILE_SIZE} /> */}
-            <Char TILE_SIZE={TILE_SIZE} direction={direction} frame={frame} />
-          </div>
+      <div className="content">
+        <div
+          className="game-container"
+          style={{
+            height: gameWindow.height,
+            width: gameWindow.width,
+          }}
+        >
+          <Char_Move
+            setPosition={setMapPosition}
+            setDirection={setDirection}
+            setFrame={setFrame}
+            tileSize={tileSize}
+            charPosition={charPosition}
+            setCharPosition={setCharPosition}
+            allowedMovements={allowedMovements}
+          />
+          <Map_Manager
+            currentMap={currentMap}
+            mapImage={mapImage}
+            setMapImage={setMapImage}
+            mapPosition={mapPosition}
+            setMapPosition={setMapPosition}
+            charPosition={charPosition}
+            setAllowedMovements={setAllowedMovements}
+            tileSize={tileSize}
+          />
+          <Map mapPosition={mapPosition} mapImage={mapImage} />
+          <Char tileSize={tileSize} direction={direction} frame={frame} />
         </div>
-      </CollisionContext.Provider>
+        {/* <div className="map-toggle-container">
+          <button className="map-toggle" value="smallMap" onClick={handleClick}>
+            Small
+          </button>
+          <button
+            className="map-toggle"
+            value="exampleMap"
+            onClick={handleClick}
+          >
+            Large
+          </button>
+        </div> */}
+      </div>
     </>
   );
 };
