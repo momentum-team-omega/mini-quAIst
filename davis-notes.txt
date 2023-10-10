@@ -14,6 +14,11 @@ switch map being static and character moving freely to character being static an
 created temporary routes for game components 'battle', 'dialogue', and 'create' ✅
 Refactored map again this time to accomodate .png maps generated with Tiled ✅
 Added collisions overlay on top of map ✅
+fix character icon from sliding in place ✅
+hold shift to speed up character ✅
+remove diagonal ability (interfere's with character direcion) ✅
+  -if you're holding x direction down and then you hit y direction, it won't realign to looking x direction after you let go of y direction button 
+
 
 
 
@@ -22,12 +27,11 @@ To-Do Now: 🚨
 collision detection !!IMPORTANT 
   -added collision overlay, just need to get logic working 
 
-replace wizard emoji character with character model from itch.io 
-  -animate character model walking and facing the right direction
 
-  
+
 
 To-Do Later: 🤷‍♂️
+
 intro cutscene with stable diffusion images
 background music ?
   -mute icon in nav
@@ -36,11 +40,14 @@ Wiki ?
 
 
 
+
 Considerations 🧠
 
-need to think about textures. no need for a 'sky' texture on a top-down map 
+slight delay when moving before moving animation begins
+walking animation sometimes freezes on a walking frame, should implement a 'default' state for when not walking
 
-map centering is based off of the MAP_SIZE int which may not be compatible with custom maps
+disable diagonal movement 
+  -disable 'if last pressed' maybe or something 
 
-
-chris has 2 notes files lol
+maybe add stamina meter for sprint etc ?
+  

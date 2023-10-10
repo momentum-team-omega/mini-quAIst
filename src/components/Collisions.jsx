@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import CollisionContext from 'contexts/CollisionContext';
 
-const Collisions = ({ position, TILE_SIZE }) => {
+const Collisions = ({ position, tileSize }) => {
   const collisionMap = useContext(CollisionContext);
 
   const styles = {
@@ -19,8 +19,8 @@ const Collisions = ({ position, TILE_SIZE }) => {
               className="collision-zone"
               style={{
                 backgroundColor: 'red',
-                top: `${rowIndex * TILE_SIZE}px`,
-                left: `${colIndex * TILE_SIZE}px`,
+                top: `${rowIndex * tileSize}px`,
+                left: `${colIndex * tileSize}px`,
               }}
             />
           ) : null

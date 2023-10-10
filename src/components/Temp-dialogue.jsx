@@ -26,7 +26,6 @@ const TempDialogue = () => {
                 "Leave",
                 "Say goodbye",
               ]}
-              backgroundImage="./assets/lotr.png"
           />
         </div>
       </div>
