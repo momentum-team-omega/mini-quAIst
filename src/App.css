@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 @import url('https://fonts.google.com/specimen/Sofia+Sans+Condensed?stroke=Sans+Serif');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -527,7 +528,7 @@ flex-grow: 1;
   width: 100px;
 }
 
-/* BATTLE CSS */
+/* BATTLE CSS - START */
 
 .main {
   display: flex;
@@ -688,7 +689,10 @@ flex-grow: 1;
   }
 }
 
-/* BATTLE CSS */
+/* BATTLE CSS - END */
+
+
+/* DIALOGUE CSS - START */
 .dialogue-container {
   background-size: cover;
   background-position: center center;
@@ -737,3 +741,4 @@ flex-grow: 1;
   color: rgb(220, 187, 0);
 }
 
+/* DIALOGUE CSS - END */
