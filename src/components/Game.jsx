@@ -1,15 +1,14 @@
-import React, { useState } from "react";
-import Nav from "components/Nav";
-import Char from "components/Char";
-import Char_Move from "components/Char_Move";
-import Map from "components/Map";
-import Collisions from "components/Collisions";
-import { collisions } from "utilities/collisionsData.js";
-import CollisionContext from "contexts/CollisionContext";
+import React, { useState } from 'react';
+import Nav from 'components/Nav';
+import Char from 'components/Char';
+import Char_Move from 'components/Char_Move';
+import Map from 'components/Map';
+import Collisions from 'components/Collisions';
+import { collisions } from 'utilities/collisionsData.js';
+import CollisionContext from 'contexts/CollisionContext';
 
 const Game = () => {
-  const TILE_SIZE = 48;
-  const MOVE_SPEED = 2;
+  const [tileSize, setTileSize] = useState(48);
 
   const [direction, setDirection] = useState('Down');
   const [frame, setFrame] = useState(1);
@@ -19,8 +18,8 @@ const Game = () => {
     y: 600,
   });
   const [gameWindow, setGameWindow] = useState({
-    height: "720px",
-    width: "1280px",
+    height: '720px',
+    width: '1280px',
   });
 
   const collisionMap = [];
@@ -32,25 +31,22 @@ const Game = () => {
     <>
       <Nav />
       <CollisionContext.Provider value={collisionMap}>
-        <div className='content'>
+        <div className="content">
           <div
-            className='game-container'
+            className="game-container"
             style={{
               height: gameWindow.height,
               width: gameWindow.width,
             }}
           >
             <Char_Move
-              position={mapPosition}
               setPosition={setMapPosition}
-              TILE_SIZE={TILE_SIZE}
-              MOVE_SPEED={MOVE_SPEED}
               setDirection={setDirection}
               setFrame={setFrame}
             />
             <Map position={mapPosition} />
-            {/* <Collisions position={mapPosition} TILE_SIZE={TILE_SIZE} /> */}
-            <Char TILE_SIZE={TILE_SIZE} direction={direction} frame={frame} />
+            {/* <Collisions position={mapPosition} tileSize={tileSize} /> */}
+            <Char tileSize={tileSize} direction={direction} frame={frame} />
           </div>
         </div>
       </CollisionContext.Provider>
