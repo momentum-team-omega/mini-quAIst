@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Tile = React.memo(({ TILE_SIZE, type }) => {
+const Tile = React.memo(({ tileSize, type }) => {
   return (
     <div
       style={{
-        width: TILE_SIZE,
-        height: TILE_SIZE,
+        width: tileSize,
+        height: tileSize,
         backgroundColor: type,
       }}
     />

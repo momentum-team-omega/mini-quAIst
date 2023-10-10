@@ -8,8 +8,7 @@ import { collisions } from 'utilities/collisionsData.js';
 import CollisionContext from 'contexts/CollisionContext';
 
 const Game = () => {
-  const TILE_SIZE = 48;
-  const MOVE_SPEED = 2;
+  const [tileSize, setTileSize] = useState(48);
 
   const [direction, setDirection] = useState('Down');
   const [frame, setFrame] = useState(1);
@@ -41,16 +40,13 @@ const Game = () => {
             }}
           >
             <Char_Move
-              position={mapPosition}
               setPosition={setMapPosition}
-              TILE_SIZE={TILE_SIZE}
-              MOVE_SPEED={MOVE_SPEED}
               setDirection={setDirection}
               setFrame={setFrame}
             />
             <Map position={mapPosition} />
-            <Collisions position={mapPosition} TILE_SIZE={TILE_SIZE} />
-            <Char TILE_SIZE={TILE_SIZE} direction={direction} frame={frame} />
+            {/* <Collisions position={mapPosition} tileSize={tileSize} /> */}
+            <Char tileSize={tileSize} direction={direction} frame={frame} />
           </div>
         </div>
       </CollisionContext.Provider>
