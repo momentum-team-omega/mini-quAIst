@@ -741,6 +741,21 @@ flex-grow: 1;
   color: rgb(220, 187, 0);
 }
 
+/* DIALOGUE CSS - END */
+
+
+.select-character {
+  width: 100%;
+  height: 100%;
+}
+
+.character-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+
 .dice-container {
   text-align: center;
   margin-top: 20px;
@@ -765,4 +780,5 @@ flex-grow: 1;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}/* DIALOGUE CSS - END */
+}
+
