@@ -3,7 +3,7 @@ export const npcDialogues = {
         systemContent: 'You are an old wise man in a dungeon and dragons adventure speaking with a 10-year-old kid.',
         '1': {
             text: "What else would you like to know?",
-            options: ['2', '3', '4', 'start']
+            options: ['2', '3', '4', 'leave']
         },
         '2': {
             text: "I'm an adventurer exploring these mountains.",
@@ -15,7 +15,7 @@ export const npcDialogues = {
         },
         '4': {
             text: "Who are you to ask?",
-            options: ['11', '12', 'start']
+            options: ['11', '12', '13', 'start']
         },
         '5': {
             text: "What can you tell me about them?",
@@ -42,11 +42,15 @@ export const npcDialogues = {
             options: ['start', 'leave']
         },
         '11': {
-            text: "Tell me more.",
+            text: "Who are you?",
             options: ['start', 'leave']
         },
         '12': {
-            text: "I'm listening.",
+            text: "Why would you help me?",
+            options: ['start', 'leave']
+        },
+        '13': {
+            text: "Why should I trust you?",
             options: ['start', 'leave']
         },
         'start': {
