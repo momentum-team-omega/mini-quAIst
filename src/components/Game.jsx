@@ -27,7 +27,7 @@ const Game = () => {
         >
           <Overworld currentMap={currentMap} />
         </div>
-        <div className="map-toggle-container">
+        {/* <div className="map-toggle-container">
           <button className="map-toggle" value="smallMap" onClick={handleClick}>
             Small
           </button>
@@ -38,7 +38,7 @@ const Game = () => {
           >
             Large
           </button>
-        </div>
+        </div> */}
       </div>
     </>
   );
