@@ -22,15 +22,15 @@ collision detection version 1.0 !! ✅
   -added collision overlay, still a little touchy especially when running 
 took map etc out of game and made 'overworld' component. Game should just be responsible for game flow logic ✅
 took char_animate out of char_move and separated those responsibilites ✅
-added basic NPCs onto the map (chest, old man) ✅
+added basic npcs onto the map (chest, old man) ✅
 added interactionsData.js and incorporated it into collision logic ✅
-add <NPC /> component to overlay NPCs onto the map. ✅
+add <NPC /> component to overlay npcs onto the map. ✅
 
 
 To-Do Now: 🚨
 
 <NPC /> component not mapping correctly. 
-Need to be able to remove 'dead' NPCs after battle for example. Or change a chest NPC from 'closed' to 'open' etc. 
+Need to be able to remove 'dead' npcs after battle for example. Or change a chest NPC from 'closed' to 'open' etc. 
 
 collision detection version 2.0 
   -add player-zone, figure out running bug
@@ -41,6 +41,8 @@ figure out map switching
 figure out how to trigger an inteaction 
 
 buttons for main menu and inventory in top right of game screen
+
+offset character by half tileSize to get it centered
 
 
 

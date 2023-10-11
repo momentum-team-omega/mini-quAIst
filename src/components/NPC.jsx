@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import oldMan1 from 'assets/npc-assets/old-man-1.png';
 import chestClosed from 'assets/npc-assets/chest-1-closed.png';
 
-const getNPCMap = (NPCs, mapColumns) => {
+const getNPCMap = (npcs, mapColumns) => {
   const npcMap = [];
   for (let i = 0; i < mapColumns; i++) {
     const row = [];
@@ -11,7 +11,7 @@ const getNPCMap = (NPCs, mapColumns) => {
     }
     npcMap.push(row);
   }
-  NPCs.forEach((npc) => {
+  npcs.forEach((npc) => {
     if (npcMap[npc.y] && npcMap[npc.y][npc.x] === null) {
       npcMap[npc.y][npc.x] = npc.id;
     }
@@ -19,17 +19,42 @@ const getNPCMap = (NPCs, mapColumns) => {
   return npcMap;
 };
 
-const NPC = ({ mapPosition, NPCs, tileSize, mapColumns, mapRows }) => {
-  const npcMap = useMemo(() => getNPCMap(NPCs, mapColumns), [NPCs, mapColumns]);
+const NPC = ({
+  currentMap,
+  mapPosition,
+  npcs,
+  tileSize,
+  mapColumns,
+  mapRows,
+}) => {
+  const npcMap = useMemo(() => getNPCMap(npcs, mapColumns), [npcs, mapColumns]);
+  console.log(npcMap);
 
-  const xOffset = 7.8 * tileSize;
-  const yOffset = 1.97 * tileSize;
+  let NPC_IMAGES;
+  let xOffset;
+  let yOffset;
 
-  const NPC_IMAGES = {
-    1: chestClosed,
-    2: oldMan1,
-    3: chestClosed,
-  };
+  if (currentMap === 'small') {
+    NPC_IMAGES = {
+      1: chestClosed,
+      2: oldMan1,
+      3: chestClosed,
+    };
+    xOffset = 7.8 * tileSize;
+    yOffset = 1.97 * tileSize;
+  } else if (currentMap === 'example') {
+    NPC_IMAGES = {
+      1: chestClosed,
+      2: chestClosed,
+      3: chestClosed,
+      4: chestClosed,
+      5: oldMan1,
+      6: chestClosed,
+      7: chestClosed,
+    };
+    xOffset = -21.68 * tileSize;
+    yOffset = 0 * tileSize;
+  }
 
   return (
     <div
@@ -47,8 +72,8 @@ const NPC = ({ mapPosition, NPCs, tileSize, mapColumns, mapRows }) => {
               <img
                 src={NPC_IMAGES[npcId] || oldMan1}
                 alt="NPC"
+                className="NPC"
                 style={{
-                  position: 'absolute',
                   top: `${rowIndex * tileSize - mapPosition.y - yOffset}px`,
                   left: `${colIndex * tileSize - mapPosition.x - xOffset}px`,
                   width: `${tileSize}px`,

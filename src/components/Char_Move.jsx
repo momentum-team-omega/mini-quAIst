@@ -10,6 +10,8 @@ const Char_Move = ({
   setIsMoving,
   isSpacePressed,
   setIsSpacePressed,
+  isShiftPressed,
+  setIsShiftPressed,
 }) => {
   const [keys, setKeys] = useState({
     w: { pressed: false },
@@ -29,9 +31,12 @@ const Char_Move = ({
 
   const DEFAULT_MOVE_SPEED = 2.5;
   const RUN_MOVE_SPEED = 5;
+  const FLY_MOVE_SPEED = 10;
 
   const moveCharacter = () => {
-    const actualMoveSpeed = isSpacePressed
+    const actualMoveSpeed = isShiftPressed
+      ? FLY_MOVE_SPEED
+      : isSpacePressed
       ? RUN_MOVE_SPEED
       : DEFAULT_MOVE_SPEED;
 
@@ -105,6 +110,10 @@ const Char_Move = ({
         setIsSpacePressed(true);
         e.preventDefault();
       }
+      if (e.key === 'Shift') {
+        setIsShiftPressed(true);
+        e.preventDefault();
+      }
     };
 
     const handleUpKey = (e) => {
@@ -138,6 +147,9 @@ const Char_Move = ({
       }
       if (e.key === ' ') {
         setIsSpacePressed(false);
+      }
+      if (e.key === 'Shift') {
+        setIsShiftPressed(false);
       }
     };
 

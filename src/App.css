@@ -458,7 +458,6 @@ flex-grow: 1;
 .collision-container {
   display: grid;
   position: absolute;
-  border: 1px solid black;
   z-index: 2;
 }
 
@@ -472,18 +471,19 @@ flex-grow: 1;
 
 .player-zone {
   position: absolute; 
-  width: 48px; 
-  height: 48px;
   opacity: 60%;
   z-index: 11; 
 }
 
 .interaction-zone {
   position: absolute; 
-  width: 48px; 
-  height: 48px;
   opacity: 60%;
   z-index: 10; 
+}
+
+.NPC {
+  position: absolute; 
+  z-index: 9; 
 }
 
 .footer {

@@ -20,7 +20,7 @@ const Map_Manager = ({
   allowedMovements,
   setAllowedMovements,
   tileSize,
-  setNPCs,
+  setNpcs,
   mapColumns,
   setMapColumns,
   setMapRows,
@@ -49,9 +49,9 @@ const Map_Manager = ({
       setMapColumns(11);
       setMapRows(11);
       setCollisions(smallCollisions);
-      setNPCs([
+      setNpcs([
         { id: 1, x: 1, y: 1 },
-        { id: 2, x: 6, y: 8 },
+        { id: 2, x: 8, y: 6 },
         { id: 3, x: 8, y: 8 },
       ]);
       setInteractions(smallInteractions);
@@ -64,10 +64,14 @@ const Map_Manager = ({
       setMapColumns(70);
       setMapRows(40);
       setCollisions(exampleCollisions);
-      setNPCs([
-        { id: 1, x: 1, y: 1 },
-        { id: 2, x: 6, y: 8 },
-        { id: 3, x: 8, y: 8 },
+      setNpcs([
+        { id: 1, x: 2, y: 3 },
+        { id: 2, x: 10, y: 5 },
+        { id: 3, x: 23, y: 34 },
+        { id: 4, x: 33, y: 4 },
+        { id: 5, x: 52, y: 9 },
+        { id: 6, x: 66, y: 34 },
+        { id: 7, x: 67, y: 2 },
       ]);
       setInteractions(exampleInteractions);
     }
@@ -157,6 +161,8 @@ const Map_Manager = ({
                 style={{
                   top: `${rowIndex * tileSize}px`,
                   left: `${colIndex * tileSize}px`,
+                  width: `${tileSize}px`,
+                  height: `${tileSize}px`,
                   backgroundColor: 'green',
                 }}
               />
@@ -169,6 +175,8 @@ const Map_Manager = ({
                   style={{
                     top: `${rowIndex * tileSize}px`,
                     left: `${colIndex * tileSize}px`,
+                    width: `${tileSize}px`,
+                    height: `${tileSize}px`,
                     backgroundColor: 'blue',
                   }}
                 />
