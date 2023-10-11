@@ -62,6 +62,7 @@ const Game = () => {
             mapPosition={mapPosition}
             setMapPosition={setMapPosition}
             charPosition={charPosition}
+            allowedMovements={allowedMovements}
             setAllowedMovements={setAllowedMovements}
             tileSize={tileSize}
           />

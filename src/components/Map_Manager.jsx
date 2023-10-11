@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   smallCollisions,
   exampleCollisions,
@@ -13,6 +13,7 @@ const Map_Manager = ({
   mapPosition,
   setMapPosition,
   charPosition,
+  allowedMovements,
   setAllowedMovements,
   tileSize,
 }) => {
@@ -49,12 +50,56 @@ const Map_Manager = ({
     }
   }, [currentMap]);
 
-  let collisionMap = [];
-  for (let i = 0; i < smallCollisions.length; i += mapColumns) {
-    collisionMap.push(collisions.slice(i, mapColumns + i));
-  }
+  const collisionMap = useMemo(() => {
+    let tempCollisionMap = [];
+    for (let i = 0; i < collisions.length; i += mapColumns) {
+      tempCollisionMap.push(collisions.slice(i, mapColumns + i));
+    }
+    return tempCollisionMap;
+  }, [collisions, mapColumns]);
 
-  console.log(collisionMap);
+  const checkCollisions = (position, collisionMap) => {
+    const x = Math.floor(position.x);
+    const y = Math.floor(position.y);
+
+    let allowed = {
+      up: true,
+      down: true,
+      left: true,
+      right: true,
+    };
+
+    if (y - 1 >= 0 && collisionMap[y - 1][x] === BLOCKED) {
+      allowed.up = false;
+    }
+
+    if (y + 1 < collisionMap.length && collisionMap[y + 1][x] === BLOCKED) {
+      allowed.down = false;
+    }
+
+    if (x - 1 >= 0 && collisionMap[y][x - 1] === BLOCKED) {
+      allowed.left = false;
+    }
+
+    if (x + 1 < collisionMap[0].length && collisionMap[y][x + 1] === BLOCKED) {
+      allowed.right = false;
+    }
+
+    if (
+      allowed.up !== allowedMovements.up ||
+      allowed.down !== allowedMovements.down ||
+      allowed.left !== allowedMovements.left ||
+      allowed.right !== allowedMovements.right
+    ) {
+      setAllowedMovements(allowed);
+    }
+  };
+
+  useEffect(() => {
+    checkCollisions(charPosition, collisionMap);
+  }, [charPosition, collisionMap]);
+
+  // console.log(collisionMap);
 
   return (
     <div className="collision-container" style={styles}>
@@ -67,7 +112,7 @@ const Map_Manager = ({
               style={{
                 top: `${rowIndex * tileSize}px`,
                 left: `${colIndex * tileSize}px`,
-                backgroundColor: 'red',
+                // backgroundColor: 'red',
               }}
             />
           ) : null
