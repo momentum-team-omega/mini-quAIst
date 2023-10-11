@@ -9,6 +9,7 @@ export default defineConfig({
       components: '/src/components',
       assets: '/src/assets',
       contexts: '/src/contexts',
+      shared: '/src/shared',
       utilities: '/src/utilities',
     },
   },

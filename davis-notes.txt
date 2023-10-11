@@ -18,14 +18,23 @@ fix character icon from sliding in place ✅
 hold shift to speed up character ✅
 remove diagonal ability (interfere's with character direcion) ✅
   -if you're holding x direction down and then you hit y direction, it won't realign to looking x direction after you let go of y direction button 
+collision detection version 1.0 !! ✅
+  -added collision overlay, still a little touchy especially when running 
+took map etc out of game and made 'overworld' component. Game should just be responsible for game flow logic ✅
+took char_animate out of char_move and separated those responsibilites ✅
 
 
 
 
 To-Do Now: 🚨
 
-collision detection !!IMPORTANT 
-  -added collision overlay, just need to get logic working 
+
+collision detection version 2.0 
+  -add player-zone, figure out running bug
+
+figure out map switching
+  -buttons not functional but hard coding currentMap state does work 
+  
 
 
 
@@ -38,6 +47,7 @@ background music ?
 set up back end
 Wiki ?
 
+conditional rendering on 'login' (nav & footer) and 'home' (footer) buttons when pathname === '/login' or '/home' not working currently 
 
 
 
@@ -50,4 +60,8 @@ disable diagonal movement
   -disable 'if last pressed' maybe or something 
 
 maybe add stamina meter for sprint etc ?
+
+chris still has 2 notes lol
+
+can overlay NPC stuff onto the map in specific tiles. Add collision zone to that tile and change the JSON to something other than '1025' (ex. '500'). Adjust collision logic so that if it's '500' there's an interaction that can be had and it's not just a wall 🤔💭
   

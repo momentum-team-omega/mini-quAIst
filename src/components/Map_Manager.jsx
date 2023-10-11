@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   smallCollisions,
   exampleCollisions,
@@ -104,19 +104,34 @@ const Map_Manager = ({
   return (
     <div className="collision-container" style={styles}>
       {collisionMap.map((row, rowIndex) =>
-        row.map((collisionPoint, colIndex) =>
-          collisionPoint === BLOCKED ? (
-            <div
-              key={`${rowIndex}-${colIndex}`}
-              className="collision-zone"
-              style={{
-                top: `${rowIndex * tileSize}px`,
-                left: `${colIndex * tileSize}px`,
-                // backgroundColor: 'red',
-              }}
-            />
-          ) : null
-        )
+        row.map((collisionPoint, colIndex) => (
+          // Attach the key to the fragment
+          <React.Fragment key={`${rowIndex}-${colIndex}`}>
+            {collisionPoint === BLOCKED && (
+              <div
+                className="collision-zone"
+                style={{
+                  top: `${rowIndex * tileSize}px`,
+                  left: `${colIndex * tileSize}px`,
+                  backgroundColor: 'red',
+                }}
+              />
+            )}
+
+            {rowIndex === Math.floor(charPosition.y) &&
+              colIndex === Math.floor(charPosition.x) && (
+                <div
+                  className="player-zone"
+                  style={{
+                    top: `${rowIndex * tileSize}px`,
+                    left: `${colIndex * tileSize}px`,
+                    backgroundColor: 'blue',
+                  }}
+                />
+              )}
+            {/* {console.log(`charPosition: ${charPosition.x}, ${charPosition.y}`)} */}
+          </React.Fragment>
+        ))
       )}
     </div>
   );
