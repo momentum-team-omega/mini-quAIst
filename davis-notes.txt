@@ -1,7 +1,7 @@
-Davis Notes:
+Davis Notes: 📝
 
 
-Completed: 
+Completed: ✅
 
 styled main page ✅
 added routing ✅
@@ -22,7 +22,6 @@ collision detection version 1.0 !! ✅
   -added collision overlay, still a little touchy especially when running 
 took map etc out of game and made 'overworld' component. Game should just be responsible for game flow logic ✅
 took char_animate out of char_move and separated those responsibilites ✅
-
 
 
 
@@ -49,19 +48,18 @@ Wiki ?
 
 conditional rendering on 'login' (nav & footer) and 'home' (footer) buttons when pathname === '/login' or '/home' not working currently 
 
+walking animation sometimes freezes on a walking frame, should implement a 'default' state for when not walking
+
+
+
 
 
 Considerations 🧠
 
-slight delay when moving before moving animation begins
-walking animation sometimes freezes on a walking frame, should implement a 'default' state for when not walking
-
-disable diagonal movement 
-  -disable 'if last pressed' maybe or something 
-
 maybe add stamina meter for sprint etc ?
 
 chris still has 2 notes lol
+'smack' animation blinks too long, 'chill' animation might see the character grow briefly then return to it's original size. 
 
 can overlay NPC stuff onto the map in specific tiles. Add collision zone to that tile and change the JSON to something other than '1025' (ex. '500'). Adjust collision logic so that if it's '500' there's an interaction that can be had and it's not just a wall 🤔💭
   
