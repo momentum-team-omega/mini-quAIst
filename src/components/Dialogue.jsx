@@ -8,13 +8,14 @@ const Dialogue = () => {
     backgroundImage: `url(${lotrImage})`,
   };
 
+  const [currentNPC, setCurrentNPC] = useState("villageLeader"); // ["wiseman", "villageLeader"]
   const [currentDialogueId, setCurrentDialogueId] = useState("1");
   const [response, setResponse] = useState("Hello, young one"); // OpenAI response
 
   const handleOptionClick = async (optionId) => {
     console.log(`Option ${optionId} clicked`);
 
-    const selectedDialogue = npcDialogues.wiseman[optionId];
+    const selectedDialogue = npcDialogues[currentNPC][optionId];
     console.log("SELECTED DIALOGUE", selectedDialogue);
 
     if (optionId == 'leave') {
@@ -41,7 +42,7 @@ const Dialogue = () => {
   };
 
   const handleChatGPT = async (userContent) => {
-    const systemContent = npcDialogues.wiseman.systemContent;
+    const systemContent = npcDialogues[currentNPC].systemContent;
     
     try {
       const messages = [
@@ -78,7 +79,7 @@ const Dialogue = () => {
     }
   };
 
-  const currentDialogue = npcDialogues.wiseman[currentDialogueId];
+  const currentDialogue = npcDialogues[currentNPC][currentDialogueId];
 
   console.log("CURRENT DIALOGUE", currentDialogue);
 
@@ -96,7 +97,7 @@ const Dialogue = () => {
             className="option"
             onClick={() => handleOptionClick(optionId)}
           >
-            {npcDialogues.wiseman[optionId].text}
+            {npcDialogues[currentNPC][optionId].text}
           </div>
         ))}
       </div>
