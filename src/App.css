@@ -539,6 +539,19 @@ flex-grow: 1;
 
 
 /* FIGHT! BATTLE CSS OUCH! OH! NO! BATTLE CSS ENGUARD! */
+.flicker-animation {
+  animation: flicker 0.3s infinite alternate;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
 .someone-died-box {
   position: absolute;
   top: 300px;
