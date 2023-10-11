@@ -71,7 +71,7 @@ const Battle = () => {
       if (source === "smack") {
         setPlayerFlicker(false);
       }
-    }, 1000);
+    }, 1700);
 
     setPlayerHealth(newValue);
   };
@@ -89,7 +89,7 @@ const Battle = () => {
     setTimeout(() => {
       setShowEnemyHealthIndicator(false);
       setEnemyFlicker(false);
-    }, 2000);
+    }, 1700);
     setOpponentHealth(newValue);
   };
 
@@ -109,7 +109,7 @@ const Battle = () => {
 
         // Trigger the health change and flicker
         handleHealthChange(newPlayerHealth, "smack");
-      }, 1000);
+      }, 1700);
 
       handleEnemyHealthChange(opponentHealth - playerDamage, "smack");
 
