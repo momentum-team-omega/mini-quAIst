@@ -2,12 +2,13 @@
 import React, { useState, useEffect } from "react";
 import playerImage from "/src/assets/barbarian-test-3.png";
 import enemyImage from "/src/assets/mage-placeholder-transp.png";
+import battlebackground from "/src/assets/720p-battle-background.png";
 import { opponentStats, playerStats } from "/src/shared";
 import { PlayerSummary } from "./PlayerSummary";
 
 const Battle = () => {
   const containerStyle = {
-    background: `url(/src/assets/720p-battle-background.png)`,
+    background: `url(${battlebackground})`,
     backgroundSize: "cover",
     width: "1280px",
     height: "720px",
