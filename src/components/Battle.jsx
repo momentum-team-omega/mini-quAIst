@@ -43,6 +43,8 @@ const Battle = () => {
   const [enemyHealthIndicatorMessage, setEnemyHealthIndicatorMessage] =
     useState("");
   const [someoneDied, setSomeoneDied] = useState(false);
+  const [playerFlicker, setPlayerFlicker] = useState(false);
+  const [enemyFlicker, setEnemyFlicker] = useState(false);
 
   const handleHealthChange = (newValue, source) => {
     const sign = source === "chill" ? "+" : "-";
@@ -51,9 +53,12 @@ const Battle = () => {
     );
     setShowHealthIndicator(true);
 
+    setPlayerFlicker(true);
+
     // TIMER TIMER TIMER TIMER TIMER
     setTimeout(() => {
       setShowHealthIndicator(false);
+      setPlayerFlicker(false);
     }, 3000);
     setPlayerHealth(newValue);
   };
@@ -65,8 +70,11 @@ const Battle = () => {
     );
     setShowEnemyHealthIndicator(true);
 
+    setEnemyFlicker(true);
+
     setTimeout(() => {
       setShowEnemyHealthIndicator(false);
+      setEnemyFlicker(false);
     }, 3000);
     setOpponentHealth(newValue);
   };
@@ -124,8 +132,14 @@ const Battle = () => {
       >
         {opponentStats.name} VS {playerStats.name}
       </h1>
-      <div className='overlay' style={overlayPlayer}></div>
-      <div className='overlay' style={overlayEnemy}></div>
+      <div
+        className={`overlay ${playerFlicker ? "flicker-animation" : ""}`}
+        style={overlayPlayer}
+      ></div>
+      <div
+        className={`overlay ${enemyFlicker ? "flicker-animation" : ""}`}
+        style={overlayEnemy}
+      ></div>
       {showEnemyHealthIndicator && (
         <div className='enemy-health-change-indicator'>
           {enemyHealthIndicatorMessage}
