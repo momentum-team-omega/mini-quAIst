@@ -1,8 +1,15 @@
 import React, { useEffect } from 'react';
 
-const Char_Animate = ({ isMoving, frame, setFrame, isSpacePressed }) => {
+const Char_Animate = ({
+  isMoving,
+  frame,
+  setFrame,
+  isSpacePressed,
+  isShiftPressed,
+}) => {
   const DEFAULT_ANIMATION_SPEED = 80;
   const RUN_ANIMATION_SPEED = 40;
+  const FLY_ANIMATION_SPEED = 20;
 
   const updateAnimationFrame = () => {
     if (isMoving) {
@@ -13,7 +20,9 @@ const Char_Animate = ({ isMoving, frame, setFrame, isSpacePressed }) => {
   };
 
   useEffect(() => {
-    const frameIntervalSpeed = isSpacePressed
+    const frameIntervalSpeed = isShiftPressed
+      ? FLY_ANIMATION_SPEED
+      : isSpacePressed
       ? RUN_ANIMATION_SPEED
       : DEFAULT_ANIMATION_SPEED;
 

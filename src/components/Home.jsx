@@ -37,7 +37,7 @@ const Home = () => {
             CHECK (temp)
           </Link>
           <Link to="/inventory" className="battle=link">
-            Inventory (temp)
+            INVENTORY (temp)
           </Link>
         </div>
       </div>

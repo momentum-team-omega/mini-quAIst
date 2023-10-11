@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { npcDialogues } from "../utilities/npcDialogues";
-import lotrImage from "/src/assets/lotr.png";
+import lotrImage from "/src/assets/dialogue-assets/lotr.png";
 import axios from "axios";
 
 const Dialogue = () => {
