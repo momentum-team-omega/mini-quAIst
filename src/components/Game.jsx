@@ -3,7 +3,7 @@ import Nav from 'components/Nav';
 import Overworld from './Overworld';
 
 const Game = () => {
-  const [currentMap, setCurrentMap] = useState('small');
+  const [currentMap, setCurrentMap] = useState('example');
 
   const [gameWindow, setGameWindow] = useState({
     height: '720px',
@@ -29,14 +29,14 @@ const Game = () => {
         </div>
         {/* <div className="map-toggle-container">
           <button className="map-toggle" value="smallMap" onClick={handleClick}>
-            Small
+            Small (broken)
           </button>
           <button
             className="map-toggle"
             value="exampleMap"
             onClick={handleClick}
           >
-            Large
+            Large (broken)
           </button>
         </div> */}
       </div>
