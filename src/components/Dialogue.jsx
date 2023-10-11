@@ -9,7 +9,7 @@ const Dialogue = () => {
   };
 
   const [currentDialogueId, setCurrentDialogueId] = useState("1");
-  const [response, setResponse] = useState(""); // OpenAI response
+  const [response, setResponse] = useState("Hello, young one"); // OpenAI response
 
   const handleOptionClick = async (optionId) => {
     console.log(`Option ${optionId} clicked`);
@@ -17,15 +17,11 @@ const Dialogue = () => {
     const selectedDialogue = npcDialogues.wiseman[optionId];
     console.log("SELECTED DIALOGUE", selectedDialogue);
 
-    if (!selectedDialogue?.options || selectedDialogue.options.length === 0) {
+    if (optionId == 'leave') {
       console.log("End of conversation detected.");
-
+      // !selectedDialogue?.options || selectedDialogue.options.length === 0
 
       setResponse("End of conversation."); // or some other message
-
-
-      
-
 
     } else if (optionId == 'start') {
       console.log("Start of conversation detected.");
