@@ -1,7 +1,7 @@
-import playerUp from 'assets/playerUp.png';
-import playerLeft from 'assets/playerLeft.png';
-import playerDown from 'assets/playerDown.png';
-import playerRight from 'assets/playerRight.png';
+import playerUp from 'assets/map-assets/playerUp.png';
+import playerLeft from 'assets/map-assets/playerLeft.png';
+import playerDown from 'assets/map-assets/playerDown.png';
+import playerRight from 'assets/map-assets/playerRight.png';
 
 const Char = ({ tileSize, direction, frame }) => {
   const images = {
@@ -12,7 +12,6 @@ const Char = ({ tileSize, direction, frame }) => {
   };
 
   const backgroundImage = `url(${images[direction]})`;
-  // console.log('backgroundImage: ', backgroundImage);
 
   const bgPositionMap = {
     1: '0%',
@@ -31,9 +30,7 @@ const Char = ({ tileSize, direction, frame }) => {
         backgroundPosition: `${bgPositionMap[frame]} 0%`,
         backgroundSize: '400% 100%',
       }}
-    >
-      {/* <img src={playerDown} className="character-img"></img> */}
-    </div>
+    ></div>
   );
 };
 export default Char;

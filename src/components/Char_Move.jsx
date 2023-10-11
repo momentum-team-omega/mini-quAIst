@@ -1,9 +1,14 @@
 import { useState, useEffect, useContext } from 'react';
-import CollisionContext from 'contexts/CollisionContext';
 
-const Char_Move = ({ setPosition, setDirection, setFrame }) => {
-  const collisionMap = useContext(CollisionContext);
-
+const Char_Move = ({
+  setPosition,
+  setDirection,
+  setFrame,
+  tileSize,
+  charPosition,
+  setCharPosition,
+  allowedMovements,
+}) => {
   const [isMoving, setIsMoving] = useState(false);
   const [isSpacePressed, setIsSpacePressed] = useState(false);
 
@@ -13,6 +18,13 @@ const Char_Move = ({ setPosition, setDirection, setFrame }) => {
     s: { pressed: false },
     d: { pressed: false },
   });
+
+  const pixelToGridPosition = (pixelPosition) => {
+    return {
+      x: Math.floor(pixelPosition.x / tileSize) + 13,
+      y: Math.floor(pixelPosition.y / tileSize) + 8,
+    };
+  };
 
   const [keyOrder, setKeyOrder] = useState([]);
 
@@ -30,25 +42,30 @@ const Char_Move = ({ setPosition, setDirection, setFrame }) => {
       setPosition((currentPos) => {
         let newX = currentPos.x;
         let newY = currentPos.y;
+        // console.log(`currentPos: ${currentPos.x}, ${currentPos.y}`);
         const lastKey = keyOrder[keyOrder.length - 1];
         switch (lastKey) {
           case 'ArrowUp':
           case 'w':
-            newY -= actualMoveSpeed;
+            if (allowedMovements.up) newY -= actualMoveSpeed;
             break;
           case 'ArrowLeft':
           case 'a':
-            newX -= actualMoveSpeed;
+            if (allowedMovements.left) newX -= actualMoveSpeed;
             break;
           case 'ArrowDown':
           case 's':
-            newY += actualMoveSpeed;
+            if (allowedMovements.down) newY += actualMoveSpeed;
             break;
           case 'ArrowRight':
           case 'd':
-            newX += actualMoveSpeed;
+            if (allowedMovements.right) newX += actualMoveSpeed;
             break;
         }
+        const gridPos = pixelToGridPosition({ x: newX, y: newY });
+        setCharPosition(gridPos);
+        console.log(`gridPos: ${JSON.stringify(gridPos)}`);
+
         return { x: newX, y: newY };
       });
     }
@@ -152,9 +169,8 @@ const Char_Move = ({ setPosition, setDirection, setFrame }) => {
       ? RUN_ANIMATION_SPEED
       : DEFAULT_ANIMATION_SPEED;
 
-    // This is the main interval that runs every 20ms
     const mainInterval = setInterval(() => {
-      moveCharacter(); // Move character every interval
+      moveCharacter();
 
       moveCounter += 20;
       frameCounter += 20;
