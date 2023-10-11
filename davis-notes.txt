@@ -22,7 +22,8 @@ collision detection version 1.0 !! ✅
   -added collision overlay, still a little touchy especially when running 
 took map etc out of game and made 'overworld' component. Game should just be responsible for game flow logic ✅
 took char_animate out of char_move and separated those responsibilites ✅
-
+added basic NPCs onto the map (chest, old man) ✅
+added interactionsData.js and incorporated it into collision logic ✅
 
 
 To-Do Now: 🚨
@@ -34,7 +35,7 @@ collision detection version 2.0
 figure out map switching
   -buttons not functional but hard coding currentMap state does work 
   
-
+figure out how to trigger an inteaction 
 
 
 
