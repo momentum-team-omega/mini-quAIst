@@ -1,4 +1,3 @@
-// Battle.jsx
 import React, { useState, useEffect } from "react";
 import playerImage from "/src/assets/barbarian-test-3.png";
 import enemyImage from "/src/assets/mage-placeholder-transp.png";
@@ -58,11 +57,21 @@ const Battle = () => {
 
     setIsChillSource(source === "chill");
 
-    // TIMER TIMER TIMER TIMER TIMER
+    // If the source is "smack," set the player flicker state to true
+    if (source === "smack") {
+      setPlayerFlicker(true);
+    }
+
+    // Delay the health change and flicker by 1 second
     setTimeout(() => {
       setShowHealthIndicator(false);
       setIsChillSource(false);
-    }, 1200);
+
+      // If the source is "smack," set the player flicker state back to false
+      if (source === "smack") {
+        setPlayerFlicker(false);
+      }
+    }, 1000);
 
     setPlayerHealth(newValue);
   };
@@ -84,7 +93,7 @@ const Battle = () => {
     setOpponentHealth(newValue);
   };
 
-  const handleEnemySmackClick = (source) => {
+  const handleEnemySmackClick = () => {
     if (opponentHealth && playerHealth > 0) {
       const playerDamage = playerStats.attack - opponentStats.defense;
       console.log("playerDamage", playerDamage);
@@ -92,36 +101,19 @@ const Battle = () => {
       console.log("opponentDamage", opponentDamage);
 
       const newPlayerHealth = playerHealth - opponentDamage;
-      const newOpponentHealth = opponentHealth - playerDamage;
 
       setIsPaused(true);
-      console.log("source", source);
+
       setTimeout(() => {
         setIsPaused(false);
 
-        // If source is "smack," set the player flicker state to true
-        if (source === "smack") {
-          setPlayerFlicker(true);
-        }
+        // Trigger the health change and flicker
+        handleHealthChange(newPlayerHealth, "smack");
+      }, 1000);
 
-        // Delay the health change by 1 second
-        setTimeout(() => {
-          // If source is "smack," set the player flicker state back to false after 1 second
-          if (source === "smack") {
-            setPlayerFlicker(false);
-          }
+      handleEnemyHealthChange(opponentHealth - playerDamage, "smack");
 
-          handleHealthChange(newPlayerHealth, "smack");
-        }, 1000);
-      }, 500);
-
-      handleEnemyHealthChange(newOpponentHealth, "smack");
-      setOpponentHealth(newOpponentHealth);
-
-      console.log("ENEMY SMACK BUTTON:", newOpponentHealth);
-      console.log("Player Hit!: ", newPlayerHealth);
-
-      if (newPlayerHealth <= 0 || newOpponentHealth <= 0) {
+      if (newPlayerHealth <= 0 || opponentHealth - playerDamage <= 0) {
         setSomeoneDied(true);
       }
     }
@@ -130,8 +122,9 @@ const Battle = () => {
   const handleChill = () => {
     if (opponentHealth > 0) {
       const newPlayerHealth = playerHealth + 1;
+
+      // Trigger the health change
       handleHealthChange(newPlayerHealth, "chill");
-      console.log("CHILL!: ", newPlayerHealth);
     }
   };
 
@@ -192,10 +185,7 @@ const Battle = () => {
               level={opponentStats.level}
             />
             <div className='button-box'>
-              <button
-                className='fight-button'
-                onClick={() => handleEnemySmackClick("smack")}
-              >
+              <button className='fight-button' onClick={handleEnemySmackClick}>
                 SMACK!
               </button>
               <button className='chill-button' onClick={handleChill}>
