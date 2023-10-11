@@ -3,7 +3,7 @@ import Nav from 'components/Nav';
 import Overworld from './Overworld';
 
 const Game = () => {
-  const [currentMap, setCurrentMap] = useState('example');
+  const [currentMap, setCurrentMap] = useState('small');
 
   const [gameWindow, setGameWindow] = useState({
     height: '720px',

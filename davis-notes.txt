@@ -24,10 +24,13 @@ took map etc out of game and made 'overworld' component. Game should just be res
 took char_animate out of char_move and separated those responsibilites ✅
 added basic NPCs onto the map (chest, old man) ✅
 added interactionsData.js and incorporated it into collision logic ✅
+add <NPC /> component to overlay NPCs onto the map. ✅
 
 
 To-Do Now: 🚨
 
+<NPC /> component not mapping correctly. 
+Need to be able to remove 'dead' NPCs after battle for example. Or change a chest NPC from 'closed' to 'open' etc. 
 
 collision detection version 2.0 
   -add player-zone, figure out running bug
@@ -36,6 +39,9 @@ figure out map switching
   -buttons not functional but hard coding currentMap state does work 
   
 figure out how to trigger an inteaction 
+
+buttons for main menu and inventory in top right of game screen
+
 
 
 
