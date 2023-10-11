@@ -3,6 +3,10 @@ import {
   smallCollisions,
   exampleCollisions,
 } from 'utilities/collisionsData.js';
+import {
+  smallInteractions,
+  exampleInteractions,
+} from 'utilities/interactionsData.js';
 import exampleMap from 'assets/map-assets/example-map-zoom.png';
 import smallMap from 'assets/map-assets/small-map-zoom.png';
 
@@ -19,8 +23,10 @@ const Map_Manager = ({
 }) => {
   const [mapColumns, setMapColumns] = useState(11);
   const [collisions, setCollisions] = useState(exampleCollisions);
+  const [interactions, setInteractions] = useState(exampleInteractions);
 
   const BLOCKED = 1025;
+  const INT = 1106;
 
   const styles = {
     top: `${-mapPosition.y}px`,
@@ -39,6 +45,7 @@ const Map_Manager = ({
       });
       setMapColumns(11);
       setCollisions(smallCollisions);
+      setInteractions(smallInteractions);
     } else if (currentMap === 'example') {
       setMapImage(exampleMap);
       setMapPosition({
@@ -47,6 +54,7 @@ const Map_Manager = ({
       });
       setMapColumns(70);
       setCollisions(exampleCollisions);
+      setInteractions(exampleInteractions);
     }
   }, [currentMap]);
 
@@ -57,6 +65,14 @@ const Map_Manager = ({
     }
     return tempCollisionMap;
   }, [collisions, mapColumns]);
+
+  const interactionMap = useMemo(() => {
+    let tempInteractionMap = [];
+    for (let i = 0; i < interactions.length; i += mapColumns) {
+      tempInteractionMap.push(interactions.slice(i, mapColumns + i));
+    }
+    return tempInteractionMap;
+  }, [interactions, mapColumns]);
 
   const checkCollisions = (position, collisionMap) => {
     const x = Math.floor(position.x);
@@ -69,19 +85,22 @@ const Map_Manager = ({
       right: true,
     };
 
-    if (y - 1 >= 0 && collisionMap[y - 1][x] === BLOCKED) {
+    const isBlocked = (y, x) =>
+      collisionMap[y][x] === BLOCKED || interactionMap[y][x] === INT;
+
+    if (y - 1 >= 0 && isBlocked(y - 1, x)) {
       allowed.up = false;
     }
 
-    if (y + 1 < collisionMap.length && collisionMap[y + 1][x] === BLOCKED) {
+    if (y + 1 < collisionMap.length && isBlocked(y + 1, x)) {
       allowed.down = false;
     }
 
-    if (x - 1 >= 0 && collisionMap[y][x - 1] === BLOCKED) {
+    if (x - 1 >= 0 && isBlocked(y, x - 1)) {
       allowed.left = false;
     }
 
-    if (x + 1 < collisionMap[0].length && collisionMap[y][x + 1] === BLOCKED) {
+    if (x + 1 < collisionMap[0].length && isBlocked(y, x + 1)) {
       allowed.right = false;
     }
 
@@ -114,6 +133,16 @@ const Map_Manager = ({
                   top: `${rowIndex * tileSize}px`,
                   left: `${colIndex * tileSize}px`,
                   backgroundColor: 'red',
+                }}
+              />
+            )}
+            {interactionMap[rowIndex][colIndex] === INT && (
+              <div
+                className="interaction-zone"
+                style={{
+                  top: `${rowIndex * tileSize}px`,
+                  left: `${colIndex * tileSize}px`,
+                  // backgroundColor: 'green',
                 }}
               />
             )}
