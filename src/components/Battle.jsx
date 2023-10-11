@@ -1,13 +1,13 @@
-// Battle.jsx
 import React, { useState, useEffect } from "react";
 import playerImage from "/src/assets/barbarian-test-3.png";
 import enemyImage from "/src/assets/mage-placeholder-transp.png";
+import battlebackground from "/src/assets/720p-battle-background.png";
 import { opponentStats, playerStats } from "/src/shared";
 import { PlayerSummary } from "./PlayerSummary";
 
 const Battle = () => {
   const containerStyle = {
-    background: `url(/src/assets/720p-battle-background.png)`,
+    background: `url(${battlebackground})`,
     backgroundSize: "cover",
     width: "1280px",
     height: "720px",
@@ -43,6 +43,10 @@ const Battle = () => {
   const [enemyHealthIndicatorMessage, setEnemyHealthIndicatorMessage] =
     useState("");
   const [someoneDied, setSomeoneDied] = useState(false);
+  const [playerFlicker, setPlayerFlicker] = useState(false);
+  const [enemyFlicker, setEnemyFlicker] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isChillSource, setIsChillSource] = useState(false);
 
   const handleHealthChange = (newValue, source) => {
     const sign = source === "chill" ? "+" : "-";
@@ -51,10 +55,24 @@ const Battle = () => {
     );
     setShowHealthIndicator(true);
 
-    // TIMER TIMER TIMER TIMER TIMER
+    setIsChillSource(source === "chill");
+
+    // If the source is "smack," set the player flicker state to true
+    if (source === "smack") {
+      setPlayerFlicker(true);
+    }
+
+    // Delay the health change and flicker by 1 second
     setTimeout(() => {
       setShowHealthIndicator(false);
-    }, 3000);
+      setIsChillSource(false);
+
+      // If the source is "smack," set the player flicker state back to false
+      if (source === "smack") {
+        setPlayerFlicker(false);
+      }
+    }, 1700);
+
     setPlayerHealth(newValue);
   };
 
@@ -64,14 +82,18 @@ const Battle = () => {
       `Enemy Health: ${sign}${Math.abs(newValue - opponentHealth)}`
     );
     setShowEnemyHealthIndicator(true);
+    console.log("1st source", source);
+
+    setEnemyFlicker(true);
 
     setTimeout(() => {
       setShowEnemyHealthIndicator(false);
-    }, 3000);
+      setEnemyFlicker(false);
+    }, 1700);
     setOpponentHealth(newValue);
   };
 
-  const handleEnemySmackClick = (newValue, source) => {
+  const handleEnemySmackClick = () => {
     if (opponentHealth && playerHealth > 0) {
       const playerDamage = playerStats.attack - opponentStats.defense;
       console.log("playerDamage", playerDamage);
@@ -79,17 +101,19 @@ const Battle = () => {
       console.log("opponentDamage", opponentDamage);
 
       const newPlayerHealth = playerHealth - opponentDamage;
-      const newOpponentHealth = opponentHealth - playerDamage;
 
-      handleEnemyHealthChange(newOpponentHealth, "smack");
-      handleHealthChange(newPlayerHealth, "smack");
+      setIsPaused(true);
 
-      setOpponentHealth(newOpponentHealth);
+      setTimeout(() => {
+        setIsPaused(false);
 
-      console.log("ENEMY SMACK BUTTON:", newOpponentHealth);
-      console.log("Player Hit!: ", newPlayerHealth);
+        // Trigger the health change and flicker
+        handleHealthChange(newPlayerHealth, "smack");
+      }, 1700);
 
-      if (newPlayerHealth <= 0 || newOpponentHealth <= 0) {
+      handleEnemyHealthChange(opponentHealth - playerDamage, "smack");
+
+      if (newPlayerHealth <= 0 || opponentHealth - playerDamage <= 0) {
         setSomeoneDied(true);
       }
     }
@@ -98,8 +122,9 @@ const Battle = () => {
   const handleChill = () => {
     if (opponentHealth > 0) {
       const newPlayerHealth = playerHealth + 1;
+
+      // Trigger the health change
       handleHealthChange(newPlayerHealth, "chill");
-      console.log("CHILL!: ", newPlayerHealth);
     }
   };
 
@@ -124,8 +149,20 @@ const Battle = () => {
       >
         {opponentStats.name} VS {playerStats.name}
       </h1>
-      <div className='overlay' style={overlayPlayer}></div>
-      <div className='overlay' style={overlayEnemy}></div>
+      <div
+        className={`overlay ${
+          isChillSource
+            ? "chill-animation"
+            : playerFlicker
+            ? "flicker-animation"
+            : ""
+        }`}
+        style={overlayPlayer}
+      ></div>
+      <div
+        className={`overlay ${enemyFlicker ? "flicker-animation" : ""}`}
+        style={overlayEnemy}
+      ></div>
       {showEnemyHealthIndicator && (
         <div className='enemy-health-change-indicator'>
           {enemyHealthIndicatorMessage}

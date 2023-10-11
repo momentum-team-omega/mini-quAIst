@@ -6,59 +6,43 @@ import charBackground from 'assets/fantasy-world.png';
 
 const SelectCharacter = ({ onCharacterSelect }) => {
   const characterAttributes = {
-    mage: { strength: 10, health: 10, intelligence: 10 },
-    barbarian: { strength: 10, health: 10, intelligence: 10},
-    rogue: { strength: 10, health: 10, intelligence: 10 },
+    mage: { strength: 10, health: 10, intelligence: 10, description: 'known for their mastery of arcane magic and spellcasting abilities.'},
+    barbarian: { strength: 10, health: 10, intelligence: 10, description: 'known for their primal strength, relentless fury, and connection to the wild.'},
+    rogue: { strength: 10, health: 10, intelligence: 10, description: 'known for their stealth, cunning, and versatility.'},
   };
 
   const [selectedCharacter, setSelectedCharacter] = useState(null);
 
   const handleCharacterSelect = (character) => {
-    setSelectedCharacter({ character, attributes: characterAttributes[character] });
+    setSelectedCharacter(selectedCharacter === character ? null : character);
   };
+
   const handleConfirmClick = () => {
     onCharacterSelect(selectedCharacter);
   };
+
   return (
     <div style={{backgroundImage: `url(${charBackground})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: 'no-repeat'}} className="select-character">
       <h2>Select Your Character</h2>
       <div className="character-options">
-        <div
-          className={`character-option ${
-            selectedCharacter === 'mage' ? 'selected' : ''
-          }`}
-          onClick={() => handleCharacterSelect('mage')}
-        >
-          <img className="char-container" src={mageCharacter} alt="Mage Character" />
-          <p>Mage</p>
-          <p>Strength: {characterAttributes.mage.strength}</p>
-          <p>Health: {characterAttributes.mage.health}</p>
-          <p>Intelligence: {characterAttributes.mage.intelligence}</p>
-        </div>
-        <div
-          className={`character-option ${
-            selectedCharacter === 'barbarian' ? 'selected' : ''
-          }`}
-          onClick={() => handleCharacterSelect('barbarian')}
-        >
-          <img className="char-container" src={barbCharacter} alt="Barbarian Character" />
-          <p>Barbarian</p>
-          <p>Strength: {characterAttributes.barbarian.strength}</p>
-          <p>Health: {characterAttributes.barbarian.health}</p>
-          <p>Intelligence: {characterAttributes.barbarian.intelligence}</p>
-        </div>
-        <div
-          className={`character-option ${
-            selectedCharacter === 'rogue' ? 'selected' : ''
-          }`}
-          onClick={() => handleCharacterSelect('rogue')}
-        >
-          <img className="char-container" src={rogueCharacter} alt="Rogue Character" />
-          <p>Rogue</p>
-          <p>Strength: {characterAttributes.rogue.strength}</p>
-          <p>Health: {characterAttributes.rogue.health}</p>
-          <p>Intelligence: {characterAttributes.rogue.intelligence}</p>
-        </div>
+        {['mage', 'barbarian', 'rogue'].map(character => (
+          <div
+            key={character}
+            className={`character-option ${selectedCharacter === character ? 'selected' : ''}`}
+            onClick={() => handleCharacterSelect(character)}
+          >
+            <img className="char-container" src={character === 'mage' ? mageCharacter : (character === 'barbarian' ? barbCharacter : rogueCharacter)} alt={`${character} Character`} />
+            <p>{character.charAt(0).toUpperCase() + character.slice(1)}</p>
+            <p>Strength: {characterAttributes[character].strength}</p>
+            <p>Health: {characterAttributes[character].health}</p>
+            <p>Intelligence: {characterAttributes[character].intelligence}</p>
+            {selectedCharacter === character && (
+              <p onClick={() => handleCharacterSelect(character)}>
+                {characterAttributes[character].description}
+              </p>
+            )}
+          </div>
+        ))}
       </div>
       <button onClick={handleConfirmClick} disabled={!selectedCharacter}>
         Confirm Selection
@@ -66,4 +50,5 @@ const SelectCharacter = ({ onCharacterSelect }) => {
     </div>
   );
 };
+
 export default SelectCharacter;

@@ -1,8 +1,3 @@
-# React + Vite
+# Mini Quaist
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Momentum Team 19's final project. A D&D video game where a player can choose a character, explore the world, interact with NPCs, follow a story-line, and accomplish a goal.
