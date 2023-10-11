@@ -21,8 +21,8 @@ const Char_Move = ({
 
   const pixelToGridPosition = (pixelPosition) => {
     return {
-      x: Math.floor(pixelPosition.x / tileSize),
-      y: Math.floor(pixelPosition.y / tileSize),
+      x: Math.floor(pixelPosition.x / tileSize) + 13,
+      y: Math.floor(pixelPosition.y / tileSize) + 8,
     };
   };
 
@@ -42,6 +42,7 @@ const Char_Move = ({
       setPosition((currentPos) => {
         let newX = currentPos.x;
         let newY = currentPos.y;
+        // console.log(`currentPos: ${currentPos.x}, ${currentPos.y}`);
         const lastKey = keyOrder[keyOrder.length - 1];
         switch (lastKey) {
           case 'ArrowUp':
@@ -63,7 +64,7 @@ const Char_Move = ({
         }
         const gridPos = pixelToGridPosition({ x: newX, y: newY });
         setCharPosition(gridPos);
-        console.log(`gridPos: ${gridPos}`);
+        console.log(`gridPos: ${JSON.stringify(gridPos)}`);
 
         return { x: newX, y: newY };
       });

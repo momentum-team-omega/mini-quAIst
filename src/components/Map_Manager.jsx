@@ -54,6 +54,8 @@ const Map_Manager = ({
     collisionMap.push(collisions.slice(i, mapColumns + i));
   }
 
+  console.log(collisionMap);
+
   return (
     <div className="collision-container" style={styles}>
       {collisionMap.map((row, rowIndex) =>

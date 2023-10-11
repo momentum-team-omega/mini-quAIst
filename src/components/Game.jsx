@@ -23,7 +23,7 @@ const Game = () => {
     width: '1280px',
   });
 
-  const [charPosition, setCharPosition] = useState({ x: 0, y: 0 });
+  const [charPosition, setCharPosition] = useState({ x: 5, y: 5 });
   const [allowedMovements, setAllowedMovements] = useState({
     up: true,
     down: true,
@@ -68,7 +68,7 @@ const Game = () => {
           <Map mapPosition={mapPosition} mapImage={mapImage} />
           <Char tileSize={tileSize} direction={direction} frame={frame} />
         </div>
-        {/* <div className="map-toggle-container">
+        <div className="map-toggle-container">
           <button className="map-toggle" value="smallMap" onClick={handleClick}>
             Small
           </button>
@@ -79,7 +79,7 @@ const Game = () => {
           >
             Large
           </button>
-        </div> */}
+        </div>
       </div>
     </>
   );
