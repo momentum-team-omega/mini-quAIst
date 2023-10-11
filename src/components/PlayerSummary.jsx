@@ -18,7 +18,6 @@ export const PlayerSummary = ({
       style={{ backgroundColor: main ? red : blue }}
       className='player-summary'
     >
-      Player Summary Component
       <div className='info'>
         <div className='name'>{name}</div>
         <div className='level'>LVL: {level}</div>

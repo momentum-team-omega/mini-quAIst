@@ -560,7 +560,7 @@ flex-grow: 1;
 }
 
 .chill-animation {
-  animation: chill .3s infinite alternate;
+  animation: chill .28s infinite alternate;
 }
 
 @keyframes chill {
