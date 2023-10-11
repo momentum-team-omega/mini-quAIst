@@ -551,6 +551,19 @@ flex-grow: 1;
   }
 }
 
+.chill-animation {
+  animation: chill .3s infinite alternate;
+}
+
+@keyframes chill {
+  0% {
+    transform: scale(100%);
+  }
+  100% {
+    transform: scale(150%);
+  }
+}
+
 .someone-died-box {
   position: absolute;
   top: 300px;
