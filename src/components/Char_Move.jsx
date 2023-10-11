@@ -1,17 +1,16 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 
 const Char_Move = ({
   setPosition,
   setDirection,
-  setFrame,
   tileSize,
-  charPosition,
   setCharPosition,
   allowedMovements,
+  isMoving,
+  setIsMoving,
+  isSpacePressed,
+  setIsSpacePressed,
 }) => {
-  const [isMoving, setIsMoving] = useState(false);
-  const [isSpacePressed, setIsSpacePressed] = useState(false);
-
   const [keys, setKeys] = useState({
     w: { pressed: false },
     a: { pressed: false },
@@ -30,8 +29,6 @@ const Char_Move = ({
 
   const DEFAULT_MOVE_SPEED = 2.5;
   const RUN_MOVE_SPEED = 5;
-  const DEFAULT_ANIMATION_SPEED = 80;
-  const RUN_ANIMATION_SPEED = 40;
 
   const moveCharacter = () => {
     const actualMoveSpeed = isSpacePressed
@@ -64,18 +61,10 @@ const Char_Move = ({
         }
         const gridPos = pixelToGridPosition({ x: newX, y: newY });
         setCharPosition(gridPos);
-        console.log(`gridPos: ${JSON.stringify(gridPos)}`);
+        // console.log(`gridPos: ${JSON.stringify(gridPos)}`);
 
         return { x: newX, y: newY };
       });
-    }
-  };
-
-  const updateAnimationFrame = () => {
-    if (isMoving) {
-      setFrame((prevFrame) => (prevFrame % 4) + 1);
-    } else {
-      setFrame(0);
     }
   };
 
@@ -162,34 +151,9 @@ const Char_Move = ({
   }, []);
 
   useEffect(() => {
-    let moveCounter = 0;
-    let frameCounter = 0;
-
-    const frameIntervalSpeed = isSpacePressed
-      ? RUN_ANIMATION_SPEED
-      : DEFAULT_ANIMATION_SPEED;
-
-    const mainInterval = setInterval(() => {
-      moveCharacter();
-
-      moveCounter += 20;
-      frameCounter += 20;
-
-      if (frameCounter >= frameIntervalSpeed) {
-        updateAnimationFrame();
-        frameCounter = 0;
-      }
-    }, 20);
-
-    return () => {
-      clearInterval(mainInterval);
-    };
-  }, [isMoving, keys, isSpacePressed]);
-
-  useEffect(() => {
-    setIsMoving(
-      keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed
-    );
+    const isAnyKeyPressed =
+      keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed;
+    setIsMoving(isAnyKeyPressed);
   }, [keys]);
 
   useEffect(() => {
@@ -198,6 +162,24 @@ const Char_Move = ({
       setDirection({ w: 'Up', a: 'Left', s: 'Down', d: 'Right' }[lastKey]);
     }
   }, [keyOrder]);
+
+  useEffect(() => {
+    let intervalId;
+
+    if (isMoving) {
+      intervalId = setInterval(() => {
+        moveCharacter();
+      }, 20);
+    } else if (intervalId) {
+      clearInterval(intervalId);
+    }
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [isMoving, keyOrder, isSpacePressed]);
 
   return null;
 };

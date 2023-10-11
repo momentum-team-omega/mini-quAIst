@@ -464,13 +464,12 @@ flex-grow: 1;
   opacity: 60%;
 }
 
-.character-zone {
+.player-zone {
   position: absolute; 
   width: 48px; 
   height: 48px;
   opacity: 60%;
   z-index: 11; 
-  background-color: blue;
 }
 
 .footer {
