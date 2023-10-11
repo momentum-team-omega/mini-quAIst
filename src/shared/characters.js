@@ -24,7 +24,7 @@ export const opponentStats = {
   img: "src/assets/mage-placeholder-transp.png",
 
   magic: 5,
-  attack: 10,
+  attack: 5,
   defense: 2,
   magicDefense: 5,
 
