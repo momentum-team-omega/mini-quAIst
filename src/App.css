@@ -220,7 +220,7 @@ flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('assets/map.png');
+  background-image: url('assets/home-assets/map.png');
   background-size: cover;
   background-position: center;
   width: 100%;
