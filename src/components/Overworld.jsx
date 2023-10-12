@@ -13,7 +13,6 @@ const Overworld = ({ currentMap }) => {
 
   const [isMoving, setIsMoving] = useState(false);
   const [isSpacePressed, setIsSpacePressed] = useState(false);
-  const [isShiftPressed, setIsShiftPressed] = useState(false);
 
   const [direction, setDirection] = useState('Down');
   const [frame, setFrame] = useState(1);
@@ -25,7 +24,7 @@ const Overworld = ({ currentMap }) => {
   const [mapColumns, setMapColumns] = useState(11);
   const [mapRows, setMapRows] = useState(11);
 
-  const [charPosition, setCharPosition] = useState({ x: null, y: null });
+  const [charPosition, setCharPosition] = useState({ x: 5, y: 5 });
   const [allowedMovements, setAllowedMovements] = useState({
     up: true,
     down: true,
@@ -35,7 +34,7 @@ const Overworld = ({ currentMap }) => {
 
   const [npcs, setNpcs] = useState([
     { id: 1, x: 1, y: 1 },
-    { id: 2, x: 8, y: 6 },
+    { id: 2, x: 6, y: 8 },
     { id: 3, x: 8, y: 8 },
   ]);
 
@@ -44,16 +43,22 @@ const Overworld = ({ currentMap }) => {
   };
 
   useEffect(() => {
-    npcs.forEach(npc => {
-        const npcX = npc.x;
-        const npcY = npc.y;
+    npcs.forEach((npc) => {
+      const npcX = npc.x;
+      const npcY = npc.y;
 
-        if (isNearNPC(Math.floor(charPosition.x), Math.floor(charPosition.y), npcX, npcY)) {
-            console.log(`Character is near NPC with ID: ${npc.id}`);
-        }
+      if (
+        isNearNPC(
+          Math.floor(charPosition.x),
+          Math.floor(charPosition.y),
+          npcX,
+          npcY
+        )
+      ) {
+        console.log(`Character is near NPC with ID: ${npc.id}`);
+      }
     });
   }, [charPosition]);
-
 
   return (
     <>
@@ -67,15 +72,11 @@ const Overworld = ({ currentMap }) => {
         setIsMoving={setIsMoving}
         isSpacePressed={isSpacePressed}
         setIsSpacePressed={setIsSpacePressed}
-        isShiftPressed={isShiftPressed}
-        setIsShiftPressed={setIsShiftPressed}
       />
       <Char_Animate
         isMoving={isMoving}
-        frame={frame}
         setFrame={setFrame}
         isSpacePressed={isSpacePressed}
-        isShiftPressed={isShiftPressed}
       />
       <Map_Manager
         currentMap={currentMap}
@@ -84,6 +85,7 @@ const Overworld = ({ currentMap }) => {
         mapPosition={mapPosition}
         setMapPosition={setMapPosition}
         charPosition={charPosition}
+        setCharPosition={setCharPosition}
         allowedMovements={allowedMovements}
         setAllowedMovements={setAllowedMovements}
         tileSize={tileSize}

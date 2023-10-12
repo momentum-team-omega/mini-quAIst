@@ -2,13 +2,18 @@ import React, { useState, useEffect, useMemo } from 'react';
 import {
   smallCollisions,
   exampleCollisions,
+  bridgeLeftCollisions,
+  bridgeRightCollisions,
 } from 'utilities/collisionsData.js';
 import {
   smallInteractions,
   exampleInteractions,
+  bridgeLeftInteractions,
+  bridgeRightInteractions,
 } from 'utilities/interactionsData.js';
-import exampleMap from 'assets/map-assets/example-map-zoom.png';
 import smallMap from 'assets/map-assets/small-map-zoom.png';
+import bridgeLeft from 'assets/map-assets/bridge-map-left.png';
+import bridgeRight from 'assets/map-assets/bridge-map-right.png';
 
 const Map_Manager = ({
   currentMap,
@@ -17,6 +22,7 @@ const Map_Manager = ({
   mapPosition,
   setMapPosition,
   charPosition,
+  setCharPosition,
   allowedMovements,
   setAllowedMovements,
   tileSize,
@@ -38,42 +44,40 @@ const Map_Manager = ({
 
   useEffect(() => {
     if (!mapImage) {
-      setMapImage(exampleMap);
+      setMapImage(bridgeLeft);
     }
-    if (currentMap === 'small') {
-      setMapImage(smallMap);
+    if (currentMap === 'bridgeLeft') {
+      setMapImage(bridgeLeft);
       setMapPosition({
         x: -377,
         y: -102,
       });
+      setCharPosition({ x: 5, y: 5 });
       setMapColumns(11);
       setMapRows(11);
-      setCollisions(smallCollisions);
+      setCollisions(bridgeLeftCollisions);
+      setInteractions(bridgeLeftInteractions);
       setNpcs([
         { id: 1, x: 1, y: 1 },
-        { id: 2, x: 8, y: 6 },
+        { id: 2, x: 6, y: 8 },
         { id: 3, x: 8, y: 8 },
       ]);
-      setInteractions(smallInteractions);
-    } else if (currentMap === 'example') {
-      setMapImage(exampleMap);
+    } else if (currentMap === 'bridgeRight') {
+      setMapImage(bridgeRight);
       setMapPosition({
-        x: 1040,
-        y: 600,
+        x: -377,
+        y: -102,
       });
-      setMapColumns(70);
-      setMapRows(40);
-      setCollisions(exampleCollisions);
+      setCharPosition({ x: 5, y: 5 });
+      setMapColumns(11);
+      setMapRows(11);
+      setCollisions(bridgeRightCollisions);
+      setInteractions(bridgeRightInteractions);
       setNpcs([
-        { id: 1, x: 2, y: 3 },
-        { id: 2, x: 10, y: 5 },
-        { id: 3, x: 23, y: 34 },
-        { id: 4, x: 33, y: 4 },
-        { id: 5, x: 52, y: 9 },
-        { id: 6, x: 66, y: 34 },
-        { id: 7, x: 67, y: 2 },
+        { id: 1, x: 1, y: 8 },
+        { id: 2, x: 3, y: 1 },
+        { id: 3, x: 7, y: 7 },
       ]);
-      setInteractions(exampleInteractions);
     }
   }, [currentMap]);
 

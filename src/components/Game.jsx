@@ -3,16 +3,12 @@ import Nav from 'components/Nav';
 import Overworld from './Overworld';
 
 const Game = () => {
-  const [currentMap, setCurrentMap] = useState('small');
+  const [currentMap, setCurrentMap] = useState('bridgeRight');
 
   const [gameWindow, setGameWindow] = useState({
     height: '720px',
     width: '1280px',
   });
-
-  const handleClick = (e) => {
-    setCurrentMap(e.target.value);
-  };
 
   return (
     <>
