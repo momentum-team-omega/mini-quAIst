@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Char from 'components/Char';
 import NPC from 'components/NPC';
 import Char_Move from 'components/Char_Move';
@@ -38,6 +38,22 @@ const Overworld = ({ currentMap }) => {
     { id: 2, x: 6, y: 8 },
     { id: 3, x: 8, y: 8 },
   ]);
+
+  const isNearNPC = (charX, charY, npcX, npcY) => {
+    return Math.abs(charX - npcX) <= 1 && Math.abs(charY - npcY) <= 1;
+  };
+
+  useEffect(() => {
+    npcs.forEach(npc => {
+        const npcX = npc.x;
+        const npcY = npc.y;
+
+        if (isNearNPC(Math.floor(charPosition.x), Math.floor(charPosition.y), npcX, npcY)) {
+            console.log(`Character is near NPC with ID: ${npc.id}`);
+        }
+    });
+  }, [charPosition]);
+
 
   return (
     <>

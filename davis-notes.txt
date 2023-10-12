@@ -1,7 +1,9 @@
 Davis Notes: 📝
 
 
+
 Completed: ✅
+
 
 styled main page ✅
 added routing ✅
@@ -35,6 +37,7 @@ conditional rendering on 'login' (nav & footer) and 'home' (footer) buttons when
 
 To-Do Now: 🚨
 
+
 Need to be able to remove 'dead' npcs after battle for example. Or change a chest NPC from 'closed' to 'open' etc. 
 
 collision detection version 2.0 
@@ -59,7 +62,9 @@ switch NPC map to using 'NPC' data from Tiled--similar to how the collisions etc
 
 
 
+
 To-Do Later: 🤷‍♂️
+
 
 intro cutscene with stable diffusion images
 background music ?
@@ -78,10 +83,11 @@ add tool tips for early game 'to move, do this'
 
 Considerations 🧠
 
+
 maybe add stamina meter for sprint etc ?
 
 add 'Luck' skill to players that determines the roll needed on item rareness when opening a chest 
-  
+
 
 ability check should render on top of other components, after dice roll should automatically return user to game. 
 
@@ -89,6 +95,7 @@ have character stats show up during ability check
 
 sleeping at inn saves the game?
 
+'FAQ' man in the villaige could bring up the wiki or somehow route to the
 
 
 
@@ -99,5 +106,4 @@ wiki
 what is abililty check?
 
 How does battle work?
-
 

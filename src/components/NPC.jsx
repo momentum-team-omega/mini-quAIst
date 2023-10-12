@@ -65,7 +65,9 @@ const NPC = ({
       {npcMap.map((row, rowIndex) =>
         row.map((npcId, colIndex) => (
           <React.Fragment key={`${rowIndex}-${colIndex}`}>
+            
             {npcId && (
+              <div>
               <img
                 src={NPC_IMAGES[npcId] || oldMan1}
                 alt="NPC"
@@ -77,6 +79,7 @@ const NPC = ({
                   height: `${tileSize}px`,
                 }}
               />
+              </div>
             )}
           </React.Fragment>
         ))
