@@ -20,8 +20,11 @@ const Map_Manager = ({
   allowedMovements,
   setAllowedMovements,
   tileSize,
+  setNpcs,
+  mapColumns,
+  setMapColumns,
+  setMapRows,
 }) => {
-  const [mapColumns, setMapColumns] = useState(11);
   const [collisions, setCollisions] = useState(exampleCollisions);
   const [interactions, setInteractions] = useState(exampleInteractions);
 
@@ -44,7 +47,13 @@ const Map_Manager = ({
         y: -102,
       });
       setMapColumns(11);
+      setMapRows(11);
       setCollisions(smallCollisions);
+      setNpcs([
+        { id: 1, x: 1, y: 1 },
+        { id: 2, x: 8, y: 6 },
+        { id: 3, x: 8, y: 8 },
+      ]);
       setInteractions(smallInteractions);
     } else if (currentMap === 'example') {
       setMapImage(exampleMap);
@@ -53,7 +62,17 @@ const Map_Manager = ({
         y: 600,
       });
       setMapColumns(70);
+      setMapRows(40);
       setCollisions(exampleCollisions);
+      setNpcs([
+        { id: 1, x: 2, y: 3 },
+        { id: 2, x: 10, y: 5 },
+        { id: 3, x: 23, y: 34 },
+        { id: 4, x: 33, y: 4 },
+        { id: 5, x: 52, y: 9 },
+        { id: 6, x: 66, y: 34 },
+        { id: 7, x: 67, y: 2 },
+      ]);
       setInteractions(exampleInteractions);
     }
   }, [currentMap]);
@@ -142,7 +161,9 @@ const Map_Manager = ({
                 style={{
                   top: `${rowIndex * tileSize}px`,
                   left: `${colIndex * tileSize}px`,
-                  // backgroundColor: 'green',
+                  width: `${tileSize}px`,
+                  height: `${tileSize}px`,
+                  backgroundColor: 'green',
                 }}
               />
             )}
@@ -154,6 +175,8 @@ const Map_Manager = ({
                   style={{
                     top: `${rowIndex * tileSize}px`,
                     left: `${colIndex * tileSize}px`,
+                    width: `${tileSize}px`,
+                    height: `${tileSize}px`,
                     backgroundColor: 'blue',
                   }}
                 />

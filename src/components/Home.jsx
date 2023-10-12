@@ -36,6 +36,9 @@ const Home = () => {
           <Link to="/check" className="battle=link">
             CHECK (temp)
           </Link>
+          <Link to="/inventory" className="battle=link">
+            INVENTORY (temp)
+          </Link>
         </div>
       </div>
       <Footer />

@@ -449,10 +449,15 @@ flex-grow: 1;
   z-index: 1;
 }
 
+.npc-container {
+  display: grid;
+  position: absolute;
+  z-index: 2;
+}
+
 .collision-container {
   display: grid;
   position: absolute;
-  border: 1px solid black;
   z-index: 2;
 }
 
@@ -466,18 +471,19 @@ flex-grow: 1;
 
 .player-zone {
   position: absolute; 
-  width: 48px; 
-  height: 48px;
   opacity: 60%;
   z-index: 11; 
 }
 
 .interaction-zone {
   position: absolute; 
-  width: 48px; 
-  height: 48px;
   opacity: 60%;
   z-index: 10; 
+}
+
+.NPC {
+  position: absolute; 
+  z-index: 9; 
 }
 
 .footer {
@@ -875,7 +881,6 @@ flex-grow: 1;
 .twenty-sided-die {
   width: 100px;
   height: 100px;
-  background-color: #ffffff;
   border: 2px solid #000000;
   border-radius: 10px;
   cursor: pointer;

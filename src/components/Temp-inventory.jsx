@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
 import Nav from 'components/Nav';
-import Overworld from './Overworld';
+import Inventory from 'components/Inventory';
 
-const Game = () => {
-  const [currentMap, setCurrentMap] = useState('small');
-
+const TempInventory = () => {
   const [gameWindow, setGameWindow] = useState({
     height: '720px',
     width: '1280px',
   });
-
-  const handleClick = (e) => {
-    setCurrentMap(e.target.value);
-  };
 
   return (
     <>
@@ -25,10 +19,10 @@ const Game = () => {
             width: gameWindow.width,
           }}
         >
-          <Overworld currentMap={currentMap} />
+          <Inventory />
         </div>
       </div>
     </>
   );
 };
-export default Game;
+export default TempInventory;

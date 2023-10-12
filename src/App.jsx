@@ -9,6 +9,7 @@ import TempBattle from 'components/Temp-battle';
 import TempDialogue from './components/Temp-dialogue';
 import TempCreate from './components/Temp-create';
 import TempCheck from './components/Temp-check';
+import TempInventory from './components/Temp-inventory';
 
 function App() {
   const [token, setToken] = useState(false);
@@ -36,6 +37,7 @@ function App() {
         <Route path="/dialogue" element={<TempDialogue />} />;
         <Route path="/create" element={<TempCreate />} />;
         <Route path="/check" element={<TempCheck />} />;
+        <Route path="/inventory" element={<TempInventory />} />;
       </Routes>
     </>
   );

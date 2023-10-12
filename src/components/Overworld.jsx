@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Char from 'components/Char';
+import NPC from 'components/NPC';
 import Char_Move from 'components/Char_Move';
 import Map from 'components/Map';
 import Map_Manager from 'components/Map_Manager';
@@ -12,6 +13,8 @@ const Overworld = ({ currentMap }) => {
 
   const [isMoving, setIsMoving] = useState(false);
   const [isSpacePressed, setIsSpacePressed] = useState(false);
+  const [isShiftPressed, setIsShiftPressed] = useState(false);
+
   const [direction, setDirection] = useState('Down');
   const [frame, setFrame] = useState(1);
 
@@ -19,14 +22,22 @@ const Overworld = ({ currentMap }) => {
     x: 1040,
     y: 600,
   });
+  const [mapColumns, setMapColumns] = useState(11);
+  const [mapRows, setMapRows] = useState(11);
 
-  const [charPosition, setCharPosition] = useState({ x: 5, y: 5 });
+  const [charPosition, setCharPosition] = useState({ x: null, y: null });
   const [allowedMovements, setAllowedMovements] = useState({
     up: true,
     down: true,
     left: true,
     right: true,
   });
+
+  const [npcs, setNpcs] = useState([
+    { id: 1, x: 1, y: 1 },
+    { id: 2, x: 8, y: 6 },
+    { id: 3, x: 8, y: 8 },
+  ]);
 
   return (
     <>
@@ -40,12 +51,15 @@ const Overworld = ({ currentMap }) => {
         setIsMoving={setIsMoving}
         isSpacePressed={isSpacePressed}
         setIsSpacePressed={setIsSpacePressed}
+        isShiftPressed={isShiftPressed}
+        setIsShiftPressed={setIsShiftPressed}
       />
       <Char_Animate
         isMoving={isMoving}
         frame={frame}
         setFrame={setFrame}
         isSpacePressed={isSpacePressed}
+        isShiftPressed={isShiftPressed}
       />
       <Map_Manager
         currentMap={currentMap}
@@ -57,8 +71,20 @@ const Overworld = ({ currentMap }) => {
         allowedMovements={allowedMovements}
         setAllowedMovements={setAllowedMovements}
         tileSize={tileSize}
+        setNpcs={setNpcs}
+        mapColumns={mapColumns}
+        setMapColumns={setMapColumns}
+        setMapRows={setMapRows}
       />
       <Map mapPosition={mapPosition} mapImage={mapImage} />
+      <NPC
+        currentMap={currentMap}
+        mapPosition={mapPosition}
+        npcs={npcs}
+        tileSize={tileSize}
+        mapColumns={mapColumns}
+        mapRows={mapRows}
+      />
       <Char tileSize={tileSize} direction={direction} frame={frame} />
     </>
   );
