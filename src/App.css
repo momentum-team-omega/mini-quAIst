@@ -647,9 +647,10 @@ flex-grow: 1;
   margin-top: 40px;
   width: 90%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  /* flex-direction: column; */
   border: 1px solid var(--clr-dark);
   background-color: var(--clr-nav);
   border-radius: 25px;
