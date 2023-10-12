@@ -376,7 +376,99 @@ export const npcDialogues = {
             text: "The troll watches as you sheepishly back away.",
             options: []
         }
+    }, 
+    blacksmith: {
+        initialResponse: 'Hello, young adventurer. What brings you to my forge?',
+        systemContent: 'You are at the village blacksmith’s forge. The blacksmith, a burly man with a thick beard, hammers away at a piece of glowing metal. The clangs of his hammer echo in your ears. The village leader mentioned he might have some extra gear for you and some knowledge about the local vermin. You decide to strike up a conversation.',
+        
+        '1': {
+            text: "Excuse me, blacksmith. The village leader sent me. Do you have any spare armor or weapons?",
+            options: ['2', '3', '4', 'leave']
+        },
+        '2': {
+            text: "I'm going to need some equipment to face the local vermin. Can you help?",
+            options: ['5', '6', '7', 'start']
+        },
+        '3': {
+            text: "What kind of weapons would be best to handle vermin?",
+            options: ['8', '9', '10', 'start']
+        },
+        '4': {
+            text: "I heard you've been around for a while. Any advice about the creatures around here?",
+            options: ['11', '12', '13', 'start']
+        },
+        '5': {
+            text: "I don't have much money. Can I work for you in exchange for some gear?",
+            options: ['start', 'leave']
+        },
+        '6': {
+            text: "Do you think the basic equipment will suffice for my training?",
+            options: ['start', 'leave']
+        },
+        '7': {
+            text: "Have other adventurers come to you for similar reasons?",
+            options: ['start', 'leave']
+        },
+        '8': {
+            text: "Are there any special techniques I should know about using the weapons?",
+            options: ['start', 'leave']
+        },
+        '9': {
+            text: "How often do you craft weapons for people in my situation?",
+            options: ['start', 'leave']
+        },
+        '10': {
+            text: "What materials make the best weapons?",
+            options: ['start', 'leave']
+        },
+        '11': {
+            text: "What can you tell me about the vermin in this area?",
+            options: ['start', 'leave']
+        },
+        '12': {
+            text: "Have you ever had to fend off these creatures yourself?",
+            options: ['start', 'leave']
+        },
+        '13': {
+            text: "I'm quite new to this. Any general advice before I head out?",
+            options: ['start', 'leave']
+        },
+        'start': {
+            text: "I had another question.",
+            options: ['1']
+        },
+        'leave': {
+            text: "Thank you for your time, blacksmith.",
+            options: []
+        }
+    }, 
+    giantRat: {
+        initialResponse: 'You see a giant rat in a dark alley.',
+        systemContent: 'Narrate a menacing giant rat in a dark alley illuminated by the pale moonlight. A 10-year-old adventurer approaches it, looking for trouble. The rat bears sharp teeth makes scary noises. Narrate a short description in 3rd person. ',
+    
+        '1': {
+            text: "What are you doing here, kid?",
+            options: ['2', '3']
+        },
+        '2': {
+            text: "Draw your weapon. Prepare to strike",
+            options: ['fight']
+        },
+        '3': {
+            text: "That's a biggest rat I've ever seen. Consider your options.",
+            options: ['fight', 'leave']
+        },
+        'fight': {
+            text: "Fight the rat.",
+            options: []
+        },
+        'leave': {
+            text: "Deciding it's better to be safe, you slowly back away, keeping an eye on the rat.",
+            options: []
+        }
     }
+    
+    
     
     
 };
