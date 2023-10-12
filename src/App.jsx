@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
-import './App.css';
-import Home from 'components/Home';
-import Login from 'components/Login';
-import Register from 'components/Register';
-import Game from 'components/Game';
-import TempBattle from 'components/Temp-battle';
-import TempDialogue from './components/Temp-dialogue';
-import TempCreate from './components/Temp-create';
-import TempCheck from './components/Temp-check';
-import TempInventory from './components/Temp-inventory';
+import React, { useState } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+import "./App.css";
+import Home from "components/Home";
+import Login from "components/Login";
+import Register from "components/Register";
+import Game from "components/Game";
+import TempBattle from "components/Temp-battle";
+import TempDialogue from "./components/Temp-dialogue";
+import TempCreate from "./components/Temp-create";
+import TempCheck from "./components/Temp-check";
+import TempInventory from "./components/Temp-inventory";
+import TempStart from "./components/Temp-start";
 
 function App() {
   const [token, setToken] = useState(false);
@@ -18,26 +19,27 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Navigate to="/home" replace />} />;
-        <Route path="/home" element={<Home />} />;
+        <Route path='/' element={<Navigate to='/home' replace />} />;
+        <Route path='/home' element={<Home />} />;
         <Route
-          path="/login"
+          path='/login'
           element={<Login setToken={setToken} setIsLoggedIn={setIsLoggedIn} />}
         />
         ;
         <Route
-          path="/register"
+          path='/register'
           element={
             <Register setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
           }
         />
         ;
-        <Route path="/play" element={<Game />} />;
-        <Route path="/battle" element={<TempBattle />} />;
-        <Route path="/dialogue" element={<TempDialogue />} />;
-        <Route path="/create" element={<TempCreate />} />;
-        <Route path="/check" element={<TempCheck />} />;
-        <Route path="/inventory" element={<TempInventory />} />;
+        <Route path='/play' element={<Game />} />;
+        <Route path='/battle' element={<TempBattle />} />;
+        <Route path='/dialogue' element={<TempDialogue />} />;
+        <Route path='/create' element={<TempCreate />} />;
+        <Route path='/check' element={<TempCheck />} />;
+        <Route path='/inventory' element={<TempInventory />} />;
+        <Route path='/start' element={<TempStart />} />;
       </Routes>
     </>
   );
