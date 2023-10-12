@@ -29,7 +29,7 @@ const Dialogue = () => {
     }
 
     fetchInitialResponses();
-  }, [currentDialogueId]);
+  }, []);
 
   const handleOptionClick = async (optionId) => {
     console.log(`Option ${optionId} clicked`);
