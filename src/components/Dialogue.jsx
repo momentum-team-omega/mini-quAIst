@@ -8,9 +8,9 @@ const Dialogue = () => {
     backgroundImage: `url(${lotrImage})`,
   };
 
-  const [currentNPC, setCurrentNPC] = useState("wiseman"); // ["wiseman", "villageLeader"]
+  const [currentNPC, setCurrentNPC] = useState("blacksmith"); // ["wiseman", "villageLeader"]
   const [currentDialogueId, setCurrentDialogueId] = useState("1");
-  const [response, setResponse] = useState("Initital response.");
+  const [response, setResponse] = useState(npcDialogues[currentNPC].initialResponse);
   const [preFetchedResponses, setPreFetchedResponses] = useState([]);
 
   useEffect(() => {
