@@ -11,7 +11,6 @@ import {
   bridgeLeftInteractions,
   bridgeRightInteractions,
 } from 'utilities/interactionsData.js';
-import exampleMap from 'assets/map-assets/example-map-zoom.png';
 import smallMap from 'assets/map-assets/small-map-zoom.png';
 import bridgeLeft from 'assets/map-assets/bridge-map-left.png';
 import bridgeRight from 'assets/map-assets/bridge-map-right.png';
