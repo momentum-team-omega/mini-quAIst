@@ -35,15 +35,7 @@ const NPC = ({
   let xOffset;
   let yOffset;
 
-  if (currentMap === 'small') {
-    NPC_IMAGES = {
-      1: chestClosed,
-      2: oldMan1,
-      3: chestClosed,
-    };
-    xOffset = 7.81 * tileSize;
-    yOffset = 1.97 * tileSize;
-  } else if (currentMap === 'bridgeLeft') {
+  if (currentMap === 'bridgeLeft') {
     NPC_IMAGES = {
       1: chestClosed,
       2: oldMan1,

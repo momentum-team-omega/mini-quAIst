@@ -25,7 +25,7 @@ const Overworld = ({ currentMap }) => {
   const [mapColumns, setMapColumns] = useState(11);
   const [mapRows, setMapRows] = useState(11);
 
-  const [charPosition, setCharPosition] = useState({ x: null, y: null });
+  const [charPosition, setCharPosition] = useState({ x: 5, y: 5 });
   const [allowedMovements, setAllowedMovements] = useState({
     up: true,
     down: true,
@@ -68,6 +68,7 @@ const Overworld = ({ currentMap }) => {
         mapPosition={mapPosition}
         setMapPosition={setMapPosition}
         charPosition={charPosition}
+        setCharPosition={setCharPosition}
         allowedMovements={allowedMovements}
         setAllowedMovements={setAllowedMovements}
         tileSize={tileSize}

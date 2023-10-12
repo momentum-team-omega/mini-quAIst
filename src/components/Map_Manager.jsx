@@ -22,6 +22,7 @@ const Map_Manager = ({
   mapPosition,
   setMapPosition,
   charPosition,
+  setCharPosition,
   allowedMovements,
   setAllowedMovements,
   tileSize,
@@ -43,29 +44,15 @@ const Map_Manager = ({
 
   useEffect(() => {
     if (!mapImage) {
-      setMapImage(exampleMap);
+      setMapImage(bridgeLeft);
     }
-    if (currentMap === 'small') {
-      setMapImage(smallMap);
-      setMapPosition({
-        x: -377,
-        y: -102,
-      });
-      setMapColumns(11);
-      setMapRows(11);
-      setCollisions(smallCollisions);
-      setInteractions(smallInteractions);
-      setNpcs([
-        { id: 1, x: 1, y: 1 },
-        { id: 2, x: 8, y: 6 },
-        { id: 3, x: 8, y: 8 },
-      ]);
-    } else if (currentMap === 'bridgeLeft') {
+    if (currentMap === 'bridgeLeft') {
       setMapImage(bridgeLeft);
       setMapPosition({
         x: -377,
         y: -102,
       });
+      setCharPosition({ x: 5, y: 5 });
       setMapColumns(11);
       setMapRows(11);
       setCollisions(bridgeLeftCollisions);
@@ -81,14 +68,15 @@ const Map_Manager = ({
         x: -377,
         y: -102,
       });
+      setCharPosition({ x: 5, y: 5 });
       setMapColumns(11);
       setMapRows(11);
       setCollisions(bridgeRightCollisions);
       setInteractions(bridgeRightInteractions);
       setNpcs([
-        { id: 1, x: 1, y: 9 },
+        { id: 1, x: 1, y: 8 },
         { id: 2, x: 3, y: 1 },
-        { id: 3, x: 8, y: 8 },
+        { id: 3, x: 7, y: 7 },
       ]);
     }
   }, [currentMap]);

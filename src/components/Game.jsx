@@ -3,7 +3,7 @@ import Nav from 'components/Nav';
 import Overworld from './Overworld';
 
 const Game = () => {
-  const [currentMap, setCurrentMap] = useState('bridgeLeft');
+  const [currentMap, setCurrentMap] = useState('bridgeRight');
 
   const [gameWindow, setGameWindow] = useState({
     height: '720px',
