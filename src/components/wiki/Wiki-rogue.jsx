@@ -48,7 +48,7 @@ const WikiRogue = () => {
                     Shortswords
                   </p>
                   <p className="list-item">
-                    <strong>Saving Throws: </strong>Dexterity, Intelligencde
+                    <strong>Saving Throws: </strong>Dexterity, Intelligence
                   </p>
                 </div>
                 <p className="wiki-info">

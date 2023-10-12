@@ -72,4 +72,9 @@ chris still has 2 notes lol
 can overlay NPC stuff onto the map in specific tiles. Add collision zone to that tile and change the JSON to something other than '1025' (ex. '500'). Adjust collision logic so that if it's '500' there's an interaction that can be had and it's not just a wall 🤔💭
 
 add 'Luck' skill to players that determines the roll needed on item rareness when opening a chest 
+
+'FAQ' man in the villaige could bring up the wiki or somehow route to the wiki
+
+
+
   
