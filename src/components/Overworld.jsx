@@ -37,6 +37,11 @@ const Overworld = ({ currentMap }) => {
     { id: 2, x: 6, y: 8 },
     { id: 3, x: 8, y: 8 },
   ]);
+  const [gates, setGates] = useState([
+    { id: 1, x: 4, y: 0 },
+    { id: 2, x: 5, y: 0 },
+    { id: 3, x: 6, y: 0 },
+  ]);
 
   const isNearNPC = (charX, charY, npcX, npcY) => {
     return Math.abs(charX - npcX) <= 1 && Math.abs(charY - npcY) <= 1;
@@ -56,6 +61,22 @@ const Overworld = ({ currentMap }) => {
         )
       ) {
         console.log(`Character is near NPC with ID: ${npc.id}`);
+      }
+    });
+
+    gates.forEach((gate) => {
+      const gateX = gate.x;
+      const gateY = gate.y;
+
+      if (
+        isNearNPC(
+          Math.floor(charPosition.x),
+          Math.floor(charPosition.y),
+          gateX,
+          gateY
+        )
+      ) {
+        console.log(`Character is near Gate with ID: ${gate.id}`);
       }
     });
   }, [charPosition]);
@@ -90,6 +111,7 @@ const Overworld = ({ currentMap }) => {
         setAllowedMovements={setAllowedMovements}
         tileSize={tileSize}
         setNpcs={setNpcs}
+        setGates={setGates}
         mapColumns={mapColumns}
         setMapColumns={setMapColumns}
         setMapRows={setMapRows}
