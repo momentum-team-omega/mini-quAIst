@@ -10,20 +10,24 @@ const Game_Start = () => {
 
   useEffect(() => {
     const changeImage = () => {
-      setImageIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
+      if (imageIndex < imageUrls.length - 1) {
+        setImageIndex(imageIndex + 1);
+      } else {
+        // All images have been displayed, so clear the interval
+        clearInterval(intervalId);
+      }
     };
 
-    const intervalId = setInterval(changeImage, 10000);
+    const intervalId = setInterval(changeImage, 7000);
 
-    // Clean up the interval when the component unmounts
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [imageIndex, imageUrls]);
 
   return (
     <>
-      <h1>Game Start</h1>
+      <h2>Our story begins......</h2>
       <div className='image-container'>
         <img src={imageUrls[imageIndex]} alt={`Image ${imageIndex + 1}`} />
       </div>
