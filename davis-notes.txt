@@ -25,18 +25,19 @@ took char_animate out of char_move and separated those responsibilites ✅
 added basic npcs onto the map (chest, old man) ✅
 added interactionsData.js and incorporated it into collision logic ✅
 add <NPC /> component to overlay npcs onto the map. ✅
+Wiki ? ✅
+conditional rendering on 'login' (nav & footer) and 'home' (footer) buttons when pathname === '/login' or '/home' not working currently ✅
+<NPC /> component not mapping correctly. ✅
+
+
 
 
 To-Do Now: 🚨
 
-<NPC /> component not mapping correctly. 
 Need to be able to remove 'dead' npcs after battle for example. Or change a chest NPC from 'closed' to 'open' etc. 
 
 collision detection version 2.0 
   -add player-zone, figure out running bug
-
-figure out map switching
-  -buttons not functional but hard coding currentMap state does work 
   
 figure out how to trigger an inteaction 
 
@@ -53,9 +54,7 @@ intro cutscene with stable diffusion images
 background music ?
   -mute icon in nav
 set up back end
-Wiki ?
 
-conditional rendering on 'login' (nav & footer) and 'home' (footer) buttons when pathname === '/login' or '/home' not working currently 
 
 walking animation sometimes freezes on a walking frame, should implement a 'default' state for when not walking
 
@@ -71,4 +70,6 @@ chris still has 2 notes lol
 'smack' animation blinks too long, 'chill' animation might see the character grow briefly then return to it's original size. 
 
 can overlay NPC stuff onto the map in specific tiles. Add collision zone to that tile and change the JSON to something other than '1025' (ex. '500'). Adjust collision logic so that if it's '500' there's an interaction that can be had and it's not just a wall 🤔💭
+
+add 'Luck' skill to players that determines the roll needed on item rareness when opening a chest 
   

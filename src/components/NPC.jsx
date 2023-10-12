@@ -28,7 +28,8 @@ const NPC = ({
   mapRows,
 }) => {
   const npcMap = useMemo(() => getNPCMap(npcs, mapColumns), [npcs, mapColumns]);
-  console.log(npcMap);
+
+  // console.log(npcMap);
 
   let NPC_IMAGES;
   let xOffset;
@@ -40,7 +41,7 @@ const NPC = ({
       2: oldMan1,
       3: chestClosed,
     };
-    xOffset = 7.8 * tileSize;
+    xOffset = 7.81 * tileSize;
     yOffset = 1.97 * tileSize;
   } else if (currentMap === 'example') {
     NPC_IMAGES = {
