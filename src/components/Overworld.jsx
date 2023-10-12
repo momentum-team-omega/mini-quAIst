@@ -35,7 +35,7 @@ const Overworld = ({ currentMap }) => {
 
   const [npcs, setNpcs] = useState([
     { id: 1, x: 1, y: 1 },
-    { id: 2, x: 8, y: 6 },
+    { id: 2, x: 6, y: 8 },
     { id: 3, x: 8, y: 8 },
   ]);
 

@@ -43,18 +43,22 @@ const NPC = ({
     };
     xOffset = 7.81 * tileSize;
     yOffset = 1.97 * tileSize;
-  } else if (currentMap === 'example') {
+  } else if (currentMap === 'bridgeLeft') {
+    NPC_IMAGES = {
+      1: chestClosed,
+      2: oldMan1,
+      3: chestClosed,
+    };
+    xOffset = 7.81 * tileSize;
+    yOffset = 1.97 * tileSize;
+  } else if (currentMap === 'bridgeRight') {
     NPC_IMAGES = {
       1: chestClosed,
       2: chestClosed,
-      3: chestClosed,
-      4: chestClosed,
-      5: oldMan1,
-      6: chestClosed,
-      7: chestClosed,
+      3: oldMan1,
     };
-    xOffset = -21.68 * tileSize;
-    yOffset = 0 * tileSize;
+    xOffset = 7.81 * tileSize;
+    yOffset = 1.97 * tileSize;
   }
 
   return (
