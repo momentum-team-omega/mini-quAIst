@@ -108,7 +108,10 @@ const Battle = () => {
         setIsPaused(false);
 
         // Trigger the health change and flicker
-        handleHealthChange(newPlayerHealth, 'smack');
+
+        if (someoneDied === false) {
+          handleHealthChange(newPlayerHealth, "smack");
+        }
       }, 1700);
 
       handleEnemyHealthChange(opponentHealth - playerDamage, 'smack');
