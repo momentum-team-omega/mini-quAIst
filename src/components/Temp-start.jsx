@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Nav from "components/Nav";
 import Game_Start from "components/Game_Start";
 
-const TempBattle = () => {
+const TempStart = () => {
   const [gameWindow, setGameWindow] = useState({
     height: "720px",
     width: "1280px",
