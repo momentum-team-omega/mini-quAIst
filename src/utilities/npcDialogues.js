@@ -384,7 +384,7 @@ export const npcDialogues = {
     }, 
     blacksmith: {
         initialResponse: 'Hello, young adventurer. What brings you to my forge?',
-        systemContent: 'You are at the village blacksmith’s forge. The blacksmith, a burly man with a thick beard, hammers away at a piece of glowing metal. The clangs of his hammer echo in your ears. The village leader mentioned he might have some extra gear for you and some knowledge about the local vermin. You decide to strike up a conversation.',
+        systemContent: "The warmth from the forge heats my burly frame, the familiar weight of the hammer comfortable in my calloused hands. With each strike, sparks fly and dance around my thick beard. The village relies on me for their weaponry, and I take pride in my craftsmanship. As I work, a young 10-year-old adventurer approaches, looking with wonder at the glowing metal and fiery furnace.",
         
         '1': {
             text: "Excuse me, blacksmith. The village leader sent me. Do you have any spare armor or weapons?",
@@ -471,7 +471,247 @@ export const npcDialogues = {
             text: "Deciding it's better to be safe, you slowly back away, keeping an eye on the rat.",
             options: []
         }
+    }, 
+    giantSnake: {
+        initialResponse: 'You stumble upon a giant snake coiled in the shadows of a thick forest.',
+        systemContent: 'Narrate a menacing giant snake, its scales glistening in patches of sunlight that pierce through the thick forest canopy. A 10-year-old adventurer stands still, sensing the potential danger. The snake hisses, its tongue flicking out, tasting the air. Narrate a short description in 3rd person.',
+        
+        '1': {
+            text: "First Dialogue",
+            options: ['2', '3']
+        },
+        '2': {
+            text: "Draw your weapon. The snake is not to be trusted.",
+            options: ['fight']
+        },
+        '3': {
+            text: "That's the largest snake I've ever seen. Weigh your options carefully.",
+            options: ['fight', 'leave']
+        },
+        'fight': {
+            text: "Engage the snake, ready for a challenge.",
+            options: []
+        },
+        'leave': {
+            text: "Choosing caution over valor, you tread lightly, ensuring you don't provoke the snake as you back away.",
+            options: []
+        }
+    }, 
+    villageLeader2: {
+        initialResponse: "Ah, young adventurer! You're back. After speaking to Steve, I believe you might have an inkling about the goblins. But before you set off, you'll need some gear. Speak to the blacksmith and learn how to handle the local vermin first. Goblins can be quite a handful.",
+        
+        '1': {
+            text: "Thank you for the advice. I've already spoken to the blacksmith about gear. What should I know about the local vermin?",
+            options: ['2', '3', '4', 'leave']
+        },
+        '2': {
+            text: "Why do you think I should train on vermin first? Are the goblins that dangerous?",
+            options: ['5', '6', '7', 'start']
+        },
+        '3': {
+            text: "Do you have any insights about where these goblins might be?",
+            options: ['8', '9', '10', 'start']
+        },
+        '4': {
+            text: "What kind of creatures are considered vermin here?",
+            options: ['11', '12', '13', 'start']
+        },
+        '5': {
+            text: "How long do you think it'll take for me to be ready to face the goblins?",
+            options: ['start', 'leave']
+        },
+        '6': {
+            text: "Are there others in the village who might assist me on this quest?",
+            options: ['start', 'leave']
+        },
+        '7': {
+            text: "Have there been any other incidents like mine in the village?",
+            options: ['start', 'leave']
+        },
+        '8': {
+            text: "Is there a particular strategy to approach or negotiate with goblins?",
+            options: ['start', 'leave']
+        },
+        '9': {
+            text: "I'm determined to get my pet back. Any last words of advice?",
+            options: ['start', 'leave']
+        },
+        '10': {
+            text: "Do goblins have any known weaknesses?",
+            options: ['start', 'leave']
+        },
+        '11': {
+            text: "Do you have any training tips or places I can practice?",
+            options: ['start', 'leave']
+        },
+        '12': {
+            text: "How have the villagers been handling these vermin?",
+            options: ['start', 'leave']
+        },
+        '13': {
+            text: "Have the vermin caused any major issues in the village recently?",
+            options: ['start', 'leave']
+        },
+        'start': {
+            text: "I had another question.",
+            options: ['1']
+        },
+        'leave': {
+            text: "I'll get to it then. Thank you for your guidance.",
+            options: []
+        }
+    }, 
+    villageLeader3: {
+        initialResponse: "You've done a commendable job handling those vermin, young adventurer. I truly believe you're ready to face the goblins now. Look to the mountain pass in the west; there should be a path available for you now.",
+    
+        '1': {
+            text: "Thank you for your faith in me. What should I expect in the mountain pass?",
+            options: ['2', '3', '4', 'leave']
+        },
+        '2': {
+            text: "Are the goblins in the mountains different from the usual ones?",
+            options: ['5', '6', '7', 'start']
+        },
+        '3': {
+            text: "Do you think the goblins will have my pet? What if they've harmed it?",
+            options: ['8', '9', '10', 'start']
+        },
+        '4': {
+            text: "How can I prepare for the challenges in the mountain pass?",
+            options: ['11', '12', '13', 'start']
+        },
+        '5': {
+            text: "Is there a leader among the goblins I should be wary of?",
+            options: ['start', 'leave']
+        },
+        '6': {
+            text: "Do villagers often venture into the mountain pass?",
+            options: ['start', 'leave']
+        },
+        '7': {
+            text: "I've heard there might be more than just goblins in those mountains. Is that true?",
+            options: ['start', 'leave']
+        },
+        '8': {
+            text: "If the goblins are hostile, should I try to negotiate or go straight into combat?",
+            options: ['start', 'leave']
+        },
+        '9': {
+            text: "I'm nervous but determined. Any last pieces of advice?",
+            options: ['start', 'leave']
+        },
+        '10': {
+            text: "How do I ensure my safety and the safety of my pet in goblin territory?",
+            options: ['start', 'leave']
+        },
+        '11': {
+            text: "Should I stock up on any specific supplies before heading to the mountains?",
+            options: ['start', 'leave']
+        },
+        '12': {
+            text: "Have other adventurers returned successfully from the mountain pass?",
+            options: ['start', 'leave']
+        },
+        '13': {
+            text: "Is there a best time of day to approach the mountain pass?",
+            options: ['start', 'leave']
+        },
+        'start': {
+            text: "I had another question.",
+            options: ['1']
+        },
+        'leave': {
+            text: "Thank you for everything. I'll head to the mountain pass and bring my pet back.",
+            options: []
+        }
+    }, 
+    devil: {
+        initialResponse: "Ah, young adventurer. I've been watching your journey with great interest. How about we make a little deal to aid you in your quest? I assure you, it's an offer you won't want to refuse.",
+        systemContent: "I stand at a shadowy crossroad, my crimson skin and spiraling horns shimmering in the dim light. The forest around us is still, as if even nature itself is holding its breath. A 10-year-old adventurer stumbles upon me, and I can't resist the opportunity to make a tempting offer. My sly grin is in place, and dark energy crackles around me, awaiting the child's decision.",
+
+        '1': {
+            text: "What kind of deal are you offering?",
+            options: ['2', '3', '4', 'leave', 'fight']
+        },
+        '2': {
+            text: "A powerful weapon? That sounds tempting. But what do you want in return?",
+            options: ['acceptDeal1', 'rejectDeal', 'fight']
+        },
+        '3': {
+            text: "Information could be invaluable. What's the catch?",
+            options: ['acceptDeal2', 'rejectDeal', 'fight']
+        },
+        '4': {
+            text: "Guaranteed safety? Why would you offer me that, and what's the price?",
+            options: ['acceptDeal3', 'rejectDeal', 'fight']
+        },
+        '5': {
+            text: "Manipulating time? That's a unique ability. What would it cost me?",
+            options: ['acceptDeal4', 'rejectDeal', 'fight']
+        },
+        'acceptDeal1': {
+            text: "Alright, I accept your offer for the weapon. I'll perform the dark ritual.",
+            options: []
+        },
+        'acceptDeal2': {
+            text: "I'll take the information. Here's my memory.",
+            options: []
+        },
+        'acceptDeal3': {
+            text: "If you guarantee my safety, I'll do what you ask.",
+            options: []
+        },
+        'acceptDeal4': {
+            text: "Manipulate time for me. I'm ready to pay the price.",
+            options: []
+        },
+        'rejectDeal': {
+            text: "I don't trust you. I won't accept any of your deals.",
+            options: ['fight', 'leave']
+        },
+        'fight': {
+            text: "I've faced many challenges on this journey. I won't be intimidated by you. Prepare to fight!",
+            options: []
+        },
+        'leave': {
+            text: "I'll find another way. I don't need to make deals with the likes of you.",
+            options: []
+        }
+    }, 
+    shelob: {
+        initialResponse: 'Before you lies the entrance to the goblin camp, but guarding it is the fearsome Shelob, the giant spider. Its many eyes glint menacingly, and its fangs drip with venom.',
+        systemContent: "I am Shelob, the terror of the tunnels, a behemoth among spiders. My thick, hairy legs stretch out, sensing for prey, and my massive frame blocks the path ahead. A 10-year-old adventurer stands before me, and I can sense their fear. But there's also determination. Will they challenge me or flee from my deadly embrace?",
+        
+        '1': {
+            text: "Prepare for battle! I won't let you stand in my way.",
+            options: ['fight', '2', '3']
+        },
+        '2': {
+            text: "Is there any way we can avoid this fight?",
+            options: ['bargain', 'fight', 'run']
+        },
+        '3': {
+            text: "I've heard tales of your might. Perhaps we can come to an understanding?",
+            options: ['bargain', 'fight', 'run']
+        },
+        'fight': {
+            text: "Summoning all your courage, you ready your weapon and charge at the monstrous spider.",
+            options: []
+        },
+        'run': {
+            text: "Deciding that discretion is the better part of valor, you swiftly retreat, looking for another way into the goblin camp.",
+            options: []
+        },
+        'bargain': {
+            text: "You take a deep breath, hoping to find some common ground with the creature. Perhaps there's something it desires?",
+            options: []
+        }
     }
+    
+    
+    
+    
+    
     
     
     
