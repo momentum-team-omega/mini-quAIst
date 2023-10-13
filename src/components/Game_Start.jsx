@@ -24,11 +24,11 @@ const Game_Start = () => {
         if (prevIndex < imageUrls.length - 1) {
           return prevIndex + 1;
         } else {
-          return 0; // Reset to the first image
+          return 0;
         }
       });
 
-      isTypingRef.current = false; // Clear text
+      isTypingRef.current = false;
       setTimeout(() => {
         isTypingRef.current = true;
         setTextIndex((prevIndex) => {
