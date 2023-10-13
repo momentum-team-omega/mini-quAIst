@@ -3,8 +3,7 @@ import Nav from "components/Nav";
 import Overworld from "./Overworld";
 
 const Game = () => {
-  const [currentMap, setCurrentMap] = useState("bridgeLeft");
-
+  const [currentMap, setCurrentMap] = useState("golemMap");
 
   const [gameWindow, setGameWindow] = useState({
     height: "720px",
@@ -14,9 +13,9 @@ const Game = () => {
   return (
     <>
       <Nav />
-      <div className='content'>
+      <div className="content">
         <div
-          className='game-container'
+          className="game-container"
           style={{
             height: gameWindow.height,
             width: gameWindow.width,

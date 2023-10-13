@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Char from 'components/Char';
-import NPC from 'components/NPC';
-import Char_Move from 'components/Char_Move';
-import Map from 'components/Map';
-import Map_Manager from 'components/Map_Manager';
-import Char_Animate from './Char_Animate';
+import React, { useState, useEffect } from "react";
+import Char from "components/Char";
+import NPC from "components/NPC";
+import Char_Move from "components/Char_Move";
+import Map from "components/Map";
+import Map_Manager from "components/Map_Manager";
+import Char_Animate from "./Char_Animate";
 
 const Overworld = ({ currentMap, setCurrentMap }) => {
   const [mapImage, setMapImage] = useState(null);
@@ -16,7 +16,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
     y: 600,
   });
 
-  const [direction, setDirection] = useState('Down');
+  const [direction, setDirection] = useState("Down");
   const [frame, setFrame] = useState(1);
 
   const [intendedMovement, setIntendedMovement] = useState(null);
@@ -78,6 +78,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         setMapRows={setMapRows}
         gates={gates}
         setGates={setGates}
+        setTileSize={setTileSize}
       />
       <Map mapPosition={mapPosition} mapImage={mapImage} />
       <NPC
