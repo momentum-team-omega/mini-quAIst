@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { TypeAnimation } from "react-type-animation";
 
 const Game_Start = () => {
@@ -13,41 +13,59 @@ const Game_Start = () => {
   const textArray = [
     "The beach is beautiful and the sounds of the waves are soothing.",
     "The forest swirls around you, causing you to lose your way",
-    "The golden leaves hid magical creatures",
+    "The golden leaves hide magical creatures, you can feel eyes upon you",
   ];
 
+  const isTypingRef = useRef(true);
+
   useEffect(() => {
-    const changeImage = () => {
-      if (imageIndex < imageUrls.length - 1) {
-        setImageIndex(imageIndex + 1);
-        setTextIndex(0); // Start with the first text on a new image
-      } else {
-        // All images have been displayed, so clear the interval
-        clearInterval(intervalId);
-      }
+    const changeImageAndText = () => {
+      setImageIndex((prevIndex) => {
+        if (prevIndex < imageUrls.length - 1) {
+          return prevIndex + 1;
+        } else {
+          return 0; // Reset to the first image
+        }
+      });
+
+      isTypingRef.current = false; // Clear text
+      setTimeout(() => {
+        isTypingRef.current = true;
+        setTextIndex((prevIndex) => {
+          if (prevIndex < textArray.length - 1) {
+            return prevIndex + 1;
+          }
+        });
+      }, 1000);
     };
 
-    const intervalId = setInterval(changeImage, 7000);
+    const intervalId = setInterval(changeImageAndText, 7000);
 
     return () => {
       clearInterval(intervalId);
     };
-  }, [imageIndex, imageUrls]);
+  }, [imageUrls.length, textArray.length]);
 
   return (
     <>
       <h2>Our story begins......</h2>
       <div className='gamestart-images'>
-        <div className='image-container'>
-          <img src={imageUrls[imageIndex]} alt={`Image ${imageIndex + 1}`} />
-          <div className='image-text'>
-            <TypeAnimation
-              sequence={[textArray[textIndex]]}
-              speed={50} // Adjust typing speed as needed
-              repeat={1} // Type once
-              style={{ fontSize: "2em" }}
-            />
-          </div>
+        <div className='image-container' style={{ height: "300px" }}>
+          <img
+            src={imageUrls[imageIndex]}
+            alt={`Image ${imageIndex + 1}`}
+            style={{ height: "100%", width: "auto" }}
+          />
+          {isTypingRef.current && (
+            <div className='image-text-container'>
+              <TypeAnimation
+                sequence={[textArray[textIndex]]}
+                speed={50}
+                repeat={1}
+                style={{ fontSize: "2em" }}
+              />
+            </div>
+          )}
         </div>
       </div>
     </>
