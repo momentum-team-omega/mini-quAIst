@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { npcDialogues } from "../utilities/npcDialogues";
-import lotrImage from "/src/assets/dialogue-assets/lotr.png";
+
 import axios from "axios";
 
 const Dialogue = () => {
-  const containerStyle = {
-    backgroundImage: `url(${lotrImage})`,
-  };
-
+  
   const [currentNPC, setCurrentNPC] = useState("blacksmith"); // ["wiseman", "villageLeader"]
   const [currentDialogueId, setCurrentDialogueId] = useState("1");
-  const [response, setResponse] = useState(npcDialogues[currentNPC].initialResponse);
-  const [preFetchedResponses, setPreFetchedResponses] = useState([]);
+  const [response, setResponse] = useState(
+    npcDialogues[currentNPC].initialResponse
+    );
+    const [preFetchedResponses, setPreFetchedResponses] = useState([]);
+    const containerStyle = {
+      backgroundImage: `url(${`/src/assets/dialogue-assets/${currentNPC}.png`})`,
+    };
+
+  const npcList = Object.keys(npcDialogues);
 
   useEffect(() => {
     async function fetchInitialResponses() {
@@ -37,79 +41,77 @@ const Dialogue = () => {
     const selectedDialogue = npcDialogues[currentNPC][optionId];
     console.log("SELECTED DIALOGUE", selectedDialogue);
 
-    if (optionId == 'leave') {
-        console.log("End of conversation detected.");
-        setResponse("End of conversation.");
-    } else if (optionId == 'start') {
-        console.log("Start of conversation detected.");
-        setCurrentDialogueId("1");
-        setResponse("What else would you like to know young one?");
+    if (optionId == "leave") {
+      console.log("End of conversation detected.");
+      setResponse("End of conversation.");
+    } else if (optionId == "start") {
+      console.log("Start of conversation detected.");
+      setCurrentDialogueId("1");
+      setResponse("What else would you like to know young one?");
     } else {
-        const optionIndex = currentDialogue.options.indexOf(optionId);
+      const optionIndex = currentDialogue.options.indexOf(optionId);
 
-        if (preFetchedResponses[optionIndex]) {
-            setResponse(preFetchedResponses[optionIndex]);
-        } else {
-            const userChoice = selectedDialogue.text;
-            const response = await handleChatGPT(userChoice);
-            setResponse(response);
-        }
+      if (preFetchedResponses[optionIndex]) {
+        setResponse(preFetchedResponses[optionIndex]);
+      } else {
+        const userChoice = selectedDialogue.text;
+        const response = await handleChatGPT(userChoice);
+        setResponse(response);
+      }
 
-        setCurrentDialogueId(optionId); 
+      setCurrentDialogueId(optionId);
 
-        // Here, make API calls for the next set of dialogue options and cache them
-        const nextDialogueOptions = npcDialogues[currentNPC][optionId].options;
-        const nextResponses = [];
+      // Here, make API calls for the next set of dialogue options and cache them
+      const nextDialogueOptions = npcDialogues[currentNPC][optionId].options;
+      const nextResponses = [];
 
-        for (let nextOptionId of nextDialogueOptions) {
-            const nextUserChoice = npcDialogues[currentNPC][nextOptionId].text;
-            const response = await handleChatGPT(nextUserChoice);
-            nextResponses.push(response);
-        }
+      for (let nextOptionId of nextDialogueOptions) {
+        const nextUserChoice = npcDialogues[currentNPC][nextOptionId].text;
+        const response = await handleChatGPT(nextUserChoice);
+        nextResponses.push(response);
+      }
 
-        setPreFetchedResponses(nextResponses);
+      setPreFetchedResponses(nextResponses);
     }
-};
+  };
 
-
-const handleChatGPT = async (userContent) => {
-  const systemContent = npcDialogues[currentNPC].systemContent;
-  try {
+  const handleChatGPT = async (userContent) => {
+    const systemContent = npcDialogues[currentNPC].systemContent;
+    try {
       const messages = [
-          {
-              role: "system",
-              content: systemContent,
-          },
-          {
-              role: "user",
-              content: userContent,
-          },
+        {
+          role: "system",
+          content: systemContent,
+        },
+        {
+          role: "user",
+          content: userContent,
+        },
       ];
       const payload = {
-          model: "gpt-3.5-turbo",
-          messages,
-          max_tokens: 50,
+        model: "gpt-3.5-turbo",
+        messages,
+        max_tokens: 50,
       };
 
       const apiResponse = await axios.post(
-          "https://api.openai.com/v1/chat/completions",
-          payload,
-          {
-              headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Bearer ${import.meta.env.VITE_CHATGPT_SECRET_KEY}`,
-              },
-          }
+        "https://api.openai.com/v1/chat/completions",
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_CHATGPT_SECRET_KEY}`,
+          },
+        }
       );
 
       const data = apiResponse.data;
       return data.choices[0].message.content;
-  } catch (error) {
+    } catch (error) {
       console.error("Error:", error);
       return "Error fetching response.";
-  }
-};
-
+    }
+  };
 
   const currentDialogue = npcDialogues[currentNPC][currentDialogueId];
 
@@ -117,6 +119,27 @@ const handleChatGPT = async (userContent) => {
 
   return (
     <div className="dialogue-container" style={containerStyle}>
+      <div
+        className="npc-selector-container"
+        style={{ textAlign: "center", marginBottom: "20px" }}
+      >
+        <select
+          value={currentNPC}
+          onChange={(e) => {
+            setCurrentNPC(e.target.value);
+            setCurrentDialogueId("1"); // Resetting to start dialogue each time
+            setResponse(npcDialogues[e.target.value].initialResponse);
+          }}
+        >
+          {npcList.map((npc) => (
+            <option key={npc} value={npc}>
+              {npc.charAt(0).toUpperCase() + npc.slice(1)}{" "}
+              {/* Capitalizing NPC names */}
+            </option>
+          ))}
+        </select>
+      </div>
+
       {response && (
         <div>
           <p className="npc-text">{response}</p>
