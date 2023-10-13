@@ -48,13 +48,13 @@ const Game_Start = () => {
 
   return (
     <>
-      <h2>Our story begins......</h2>
+      <h2 className='page-title'>Our story begins......</h2>
       <div className='gamestart-images'>
         <div className='image-container' style={{ height: "300px" }}>
           <img
             src={imageUrls[imageIndex]}
             alt={`Image ${imageIndex + 1}`}
-            style={{ height: "100%", width: "auto" }}
+            className='page-image'
           />
           {isTypingRef.current && (
             <div className='image-text-container'>

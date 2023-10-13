@@ -1176,3 +1176,11 @@ flex-grow: 1;
   padding: 10px;
   border-radius: 5px;
 }
+
+.page-title {
+  margin-bottom: 20px;
+}
+
+.page-image {
+  margin-bottom: 20px; 
+}
