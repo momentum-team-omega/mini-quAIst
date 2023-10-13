@@ -21,7 +21,7 @@ const Game = () => {
             width: gameWindow.width,
           }}
         >
-          <Overworld currentMap={currentMap} />
+          <Overworld currentMap={currentMap} setCurrentMap={setCurrentMap} />
         </div>
       </div>
     </>

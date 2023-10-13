@@ -8,6 +8,8 @@ import classesImg from 'assets/wiki-assets/classes-icon.png';
 import mageImg from 'assets/wiki-assets/mage-icon.png';
 import barbarianImg from 'assets/wiki-assets/barbarian-icon.png';
 import rogueImg from 'assets/wiki-assets/rogue-icon.png';
+import battleImg from 'assets/wiki-assets/battle-icon.png';
+import abilityImg from 'assets/wiki-assets/ability-check-icon.png';
 
 const Wiki = () => {
   return (
@@ -91,6 +93,34 @@ const Wiki = () => {
                 </div>
                 <div className="wiki-label-container">
                   <p className="wiki-label">What is a Rogue?</p>
+                </div>
+              </div>
+            </Link>
+            <Link to="/wiki/battle">
+              <div className="wiki-page-link">
+                <div className="wiki-link-img-container">
+                  <img
+                    className="wiki-link-img"
+                    src={battleImg}
+                    alt="wiki-link"
+                  />
+                </div>
+                <div className="wiki-label-container">
+                  <p className="wiki-label">What is a Battle?</p>
+                </div>
+              </div>
+            </Link>
+            <Link to="/wiki/ability_check">
+              <div className="wiki-page-link">
+                <div className="wiki-link-img-container">
+                  <img
+                    className="wiki-link-img"
+                    src={abilityImg}
+                    alt="wiki-link"
+                  />
+                </div>
+                <div className="wiki-label-container">
+                  <p className="wiki-label">What is an Ability Check?</p>
                 </div>
               </div>
             </Link>
