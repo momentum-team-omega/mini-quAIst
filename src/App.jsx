@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
@@ -12,12 +11,14 @@ import WikiClasses from 'components/wiki/Wiki-classes';
 import WikiMage from 'components/wiki/Wiki-mage';
 import WikiBarb from 'components/wiki/Wiki-barb';
 import WikiRogue from 'components/wiki/Wiki-rogue';
+import WikiBattle from 'components/wiki/Wiki-battle';
+import WikiAbilityCheck from './components/wiki/Wiki-ability-check';
 import TempBattle from 'components/Temp-battle';
 import TempDialogue from './components/Temp-dialogue';
 import TempCreate from './components/Temp-create';
 import TempCheck from './components/Temp-check';
 import TempInventory from './components/Temp-inventory';
-import TempStart from "./components/Temp-start";
+import TempStart from './components/Temp-start';
 
 function App() {
   const [token, setToken] = useState(false);
@@ -26,15 +27,15 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Navigate to='/home' replace />} />;
-        <Route path='/home' element={<Home />} />;
+        <Route path="/" element={<Navigate to="/home" replace />} />;
+        <Route path="/home" element={<Home />} />;
         <Route
-          path='/login'
+          path="/login"
           element={<Login setToken={setToken} setIsLoggedIn={setIsLoggedIn} />}
         />
         ;
         <Route
-          path='/register'
+          path="/register"
           element={
             <Register setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
           }
@@ -47,12 +48,14 @@ function App() {
         <Route path="/wiki/mage" element={<WikiMage />} />;
         <Route path="/wiki/barbarian" element={<WikiBarb />} />;
         <Route path="/wiki/rogue" element={<WikiRogue />} />;
+        <Route path="/wiki/battle" element={<WikiBattle />} />;
+        <Route path="/wiki/ability_check" element={<WikiAbilityCheck />} />;
         <Route path="/battle" element={<TempBattle />} />;
         <Route path="/dialogue" element={<TempDialogue />} />;
         <Route path="/create" element={<TempCreate />} />;
         <Route path="/check" element={<TempCheck />} />;
         <Route path="/inventory" element={<TempInventory />} />;
-        <Route path='/start' element={<TempStart />} />;
+        <Route path="/start" element={<TempStart />} />;
       </Routes>
     </>
   );

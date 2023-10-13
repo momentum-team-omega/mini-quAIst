@@ -30,8 +30,10 @@ add <NPC /> component to overlay npcs onto the map. ✅
 Wiki ? ✅
 conditional rendering on 'login' (nav & footer) and 'home' (footer) buttons when pathname === '/login' or '/home' not working currently ✅
 <NPC /> component not mapping correctly. ✅
-
-
+offset character by half tileSize to get it centered ✅
+update the map with the gate data ✅
+add 2 small maps and test character switching between maps through map gates ✅
+  -spawn points & character direction corrospond to gate ✅
 
 
 
@@ -46,17 +48,6 @@ collision detection version 2.0
 figure out how to trigger an inteaction 
 
 buttons for main menu and inventory in top right of game screen
-
-offset character by half tileSize to get it centered
-
-add 2 small maps and test character switching between maps 
-  -spawn points & character direction will have to corrospond to 'entrance' point
-
-
-switch NPC map to using 'NPC' data from Tiled--similar to how the collisions etc is. 
-
-
-
 
 
 
@@ -101,9 +92,8 @@ sleeping at inn saves the game?
 
 
 
-wiki 
+wiki 👇
 
-what is abililty check?
-
-How does battle work?
+what is abililty check? ✅
+How does battle work? ✅
 

@@ -6,24 +6,22 @@ import Map from 'components/Map';
 import Map_Manager from 'components/Map_Manager';
 import Char_Animate from './Char_Animate';
 
-const Overworld = ({ currentMap }) => {
+const Overworld = ({ currentMap, setCurrentMap }) => {
   const [mapImage, setMapImage] = useState(null);
-
   const [tileSize, setTileSize] = useState(48);
-
-  const [isMoving, setIsMoving] = useState(false);
-  const [isSpacePressed, setIsSpacePressed] = useState(false);
-
-  const [direction, setDirection] = useState('Down');
-  const [frame, setFrame] = useState(1);
-
+  const [mapColumns, setMapColumns] = useState(11);
+  const [mapRows, setMapRows] = useState(11);
   const [mapPosition, setMapPosition] = useState({
     x: 1040,
     y: 600,
   });
-  const [mapColumns, setMapColumns] = useState(11);
-  const [mapRows, setMapRows] = useState(11);
 
+  const [direction, setDirection] = useState('Down');
+  const [frame, setFrame] = useState(1);
+
+  const [intendedMovement, setIntendedMovement] = useState(null);
+  const [isMoving, setIsMoving] = useState(false);
+  const [isSpacePressed, setIsSpacePressed] = useState(false);
   const [charPosition, setCharPosition] = useState({ x: 5, y: 5 });
   const [allowedMovements, setAllowedMovements] = useState({
     up: true,
@@ -38,48 +36,10 @@ const Overworld = ({ currentMap }) => {
     { id: 3, x: 8, y: 8 },
   ]);
   const [gates, setGates] = useState([
-    { id: 1, x: 4, y: 0 },
-    { id: 2, x: 5, y: 0 },
-    { id: 3, x: 6, y: 0 },
+    { id: 1, x: 10, y: 4 },
+    { id: 2, x: 10, y: 5 },
+    { id: 3, x: 10, y: 6 },
   ]);
-
-  const isNearNPC = (charX, charY, npcX, npcY) => {
-    return Math.abs(charX - npcX) <= 1 && Math.abs(charY - npcY) <= 1;
-  };
-
-  useEffect(() => {
-    npcs.forEach((npc) => {
-      const npcX = npc.x;
-      const npcY = npc.y;
-
-      if (
-        isNearNPC(
-          Math.floor(charPosition.x),
-          Math.floor(charPosition.y),
-          npcX,
-          npcY
-        )
-      ) {
-        console.log(`Character is near NPC with ID: ${npc.id}`);
-      }
-    });
-
-    gates.forEach((gate) => {
-      const gateX = gate.x;
-      const gateY = gate.y;
-
-      if (
-        isNearNPC(
-          Math.floor(charPosition.x),
-          Math.floor(charPosition.y),
-          gateX,
-          gateY
-        )
-      ) {
-        console.log(`Character is near Gate with ID: ${gate.id}`);
-      }
-    });
-  }, [charPosition]);
 
   return (
     <>
@@ -101,6 +61,7 @@ const Overworld = ({ currentMap }) => {
       />
       <Map_Manager
         currentMap={currentMap}
+        setCurrentMap={setCurrentMap}
         mapImage={mapImage}
         setMapImage={setMapImage}
         mapPosition={mapPosition}
@@ -110,11 +71,13 @@ const Overworld = ({ currentMap }) => {
         allowedMovements={allowedMovements}
         setAllowedMovements={setAllowedMovements}
         tileSize={tileSize}
+        npcs={npcs}
         setNpcs={setNpcs}
-        setGates={setGates}
         mapColumns={mapColumns}
         setMapColumns={setMapColumns}
         setMapRows={setMapRows}
+        gates={gates}
+        setGates={setGates}
       />
       <Map mapPosition={mapPosition} mapImage={mapImage} />
       <NPC

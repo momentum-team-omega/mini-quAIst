@@ -51,6 +51,14 @@ const NPC = ({
     };
     xOffset = 7.81 * tileSize;
     yOffset = 1.97 * tileSize;
+  } else if (currentMap === 'houseInside') {
+    NPC_IMAGES = {
+      1: chestClosed,
+      2: oldMan1,
+      3: chestClosed,
+    };
+    xOffset = 7.81 * tileSize;
+    yOffset = 1.97 * tileSize;
   }
 
   return (
@@ -65,20 +73,19 @@ const NPC = ({
       {npcMap.map((row, rowIndex) =>
         row.map((npcId, colIndex) => (
           <React.Fragment key={`${rowIndex}-${colIndex}`}>
-            
             {npcId && (
               <div>
-              <img
-                src={NPC_IMAGES[npcId] || oldMan1}
-                alt="NPC"
-                className="NPC"
-                style={{
-                  top: `${rowIndex * tileSize - mapPosition.y - yOffset}px`,
-                  left: `${colIndex * tileSize - mapPosition.x - xOffset}px`,
-                  width: `${tileSize}px`,
-                  height: `${tileSize}px`,
-                }}
-              />
+                <img
+                  src={NPC_IMAGES[npcId] || oldMan1}
+                  alt="NPC"
+                  className="NPC"
+                  style={{
+                    top: `${rowIndex * tileSize - mapPosition.y - yOffset}px`,
+                    left: `${colIndex * tileSize - mapPosition.x - xOffset}px`,
+                    width: `${tileSize}px`,
+                    height: `${tileSize}px`,
+                  }}
+                />
               </div>
             )}
           </React.Fragment>

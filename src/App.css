@@ -630,6 +630,12 @@ flex-grow: 1;
   z-index: 10; 
 }
 
+.gate-zone {
+  position: absolute; 
+  opacity: 60%;
+  z-index: 10; 
+}
+
 .NPC {
   position: absolute; 
   z-index: 9; 
