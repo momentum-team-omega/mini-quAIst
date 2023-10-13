@@ -8,22 +8,20 @@ import Char_Animate from './Char_Animate';
 
 const Overworld = ({ currentMap }) => {
   const [mapImage, setMapImage] = useState(null);
-
   const [tileSize, setTileSize] = useState(48);
-
-  const [isMoving, setIsMoving] = useState(false);
-  const [isSpacePressed, setIsSpacePressed] = useState(false);
-
-  const [direction, setDirection] = useState('Down');
-  const [frame, setFrame] = useState(1);
-
+  const [mapColumns, setMapColumns] = useState(11);
+  const [mapRows, setMapRows] = useState(11);
   const [mapPosition, setMapPosition] = useState({
     x: 1040,
     y: 600,
   });
-  const [mapColumns, setMapColumns] = useState(11);
-  const [mapRows, setMapRows] = useState(11);
 
+  const [direction, setDirection] = useState('Down');
+  const [frame, setFrame] = useState(1);
+
+  const [intendedMovement, setIntendedMovement] = useState(null);
+  const [isMoving, setIsMoving] = useState(false);
+  const [isSpacePressed, setIsSpacePressed] = useState(false);
   const [charPosition, setCharPosition] = useState({ x: 5, y: 5 });
   const [allowedMovements, setAllowedMovements] = useState({
     up: true,

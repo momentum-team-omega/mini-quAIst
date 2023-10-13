@@ -56,7 +56,7 @@ add 2 small maps and test character switching between maps
 switch NPC map to using 'NPC' data from Tiled--similar to how the collisions etc is. 
 
 
-
+update the map with the gate data 
 
 
 
