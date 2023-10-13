@@ -5,6 +5,7 @@ import Overworld from "./Overworld";
 const Game = () => {
   const [currentMap, setCurrentMap] = useState("bridgeLeft");
 
+
   const [gameWindow, setGameWindow] = useState({
     height: "720px",
     width: "1280px",
