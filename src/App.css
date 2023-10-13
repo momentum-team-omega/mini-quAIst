@@ -1113,28 +1113,3 @@ flex-grow: 1;
   justify-content: space-evenly;
 }
 
-
-.dice-container {
-  text-align: center;
-  margin-top: 50px;
-}
-
-.twenty-sided-die {
-  width: 100px;
-  height: 100px;
-  border: 2px solid #000000;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.5s ease-in-out;
-}
-
-.twenty-sided-die:hover {
-  transform: scale(1.1);
-}
-
-.rolled-number {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}/* DIALOGUE CSS - END */
