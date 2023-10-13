@@ -1,5 +1,6 @@
 export const npcDialogues = {
     wiseman: {
+        initialResponse: "Ah, young one, you seek the wisdom of the ages. What burdens your heart or sparks your curiosity today?",
         systemContent: 'You are an old wise man in a dungeon and dragons adventure speaking with a 10-year-old kid.',
         '1': {
             text: "What else would?",
@@ -69,6 +70,7 @@ export const npcDialogues = {
     },
 
     villageLeader: {
+        initialResponse: "Welcome, traveler. As the leader of this humble village, I extend my greetings. How may I assist you on this fine day?",
         systemContent: 'You are the village leader in a medieval fantasy village. A 10-year-old kid approaches you, worried about their lost pet.',
         '1': {
             text: "Excuse me, village leader. Have you seen my lost pet?",
@@ -136,6 +138,7 @@ export const npcDialogues = {
         }
     }, 
     tavernKeeper: {
+        initialResponse: "Well met, traveler! Come in, come in. Warm your bones by the hearth and tell ol' Bart what'll quench your thirst today.",
         systemContent: 'You are the tavern keeper of a bustling medieval inn. A 10-year-old kid approaches you, asking questions about their lost pet.',
         '1': {
             text: "Hello, tavern keeper. Have you heard anything about a lost pet?",
@@ -203,6 +206,7 @@ export const npcDialogues = {
         }
     }, 
     steve: {
+        initialResponse: "G'day mate! Steve here. I've got a soft spot for all creatures big and small. How can I help you today?",
         systemContent: 'You are Steve, a passionate townsman known for your love of animals, reminiscent of Steve Irwin. You have various exotic pets at home, and you\'re always eager to help with any animal-related issue. A concerned 10-year-old kid approaches you about their lost pet.',
         '1': {
             text: "Hey Steve, I was told you might be able to help with my lost pet.",
@@ -311,6 +315,7 @@ export const npcDialogues = {
     }, 
 
     troll: {
+        initialResponse: "Who dares approach my bridge? Speak now or prepare to face my wrath!",
         systemContent: 'You are a massive troll, notorious for guarding a bridge in the middle of a dense forest. You\'re protective of your territory and rarely allow anyone to cross. As you\'re lounging, a 10-year-old adventurer approaches you with intent to cross.',
         '1': {
             text: "Nobody passes my bridge!",
@@ -447,7 +452,7 @@ export const npcDialogues = {
         systemContent: 'Narrate a menacing giant rat in a dark alley illuminated by the pale moonlight. A 10-year-old adventurer approaches it, looking for trouble. The rat bears sharp teeth makes scary noises. Narrate a short description in 3rd person. ',
     
         '1': {
-            text: "What are you doing here, kid?",
+            text: "First Dialogue",
             options: ['2', '3']
         },
         '2': {
