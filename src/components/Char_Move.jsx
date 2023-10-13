@@ -20,8 +20,8 @@ const Char_Move = ({
 
   const pixelToGridPosition = (pixelPosition) => {
     return {
-      x: Math.floor(pixelPosition.x / tileSize) + 13,
-      y: Math.floor(pixelPosition.y / tileSize) + 8,
+      x: Math.floor((pixelPosition.x + tileSize / 2) / tileSize) + 13,
+      y: Math.floor((pixelPosition.y - tileSize / 2) / tileSize) + 8,
     };
   };
 

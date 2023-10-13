@@ -27,6 +27,7 @@ const Map_Manager = ({
   setAllowedMovements,
   tileSize,
   setNpcs,
+  setGates,
   mapColumns,
   setMapColumns,
   setMapRows,
@@ -62,6 +63,11 @@ const Map_Manager = ({
         { id: 2, x: 6, y: 8 },
         { id: 3, x: 8, y: 8 },
       ]);
+      setGates([
+        { id: 1, x: 4, y: 10 },
+        { id: 2, x: 5, y: 10 },
+        { id: 3, x: 6, y: 10 },
+      ]);
     } else if (currentMap === 'bridgeRight') {
       setMapImage(bridgeRight);
       setMapPosition({
@@ -77,6 +83,11 @@ const Map_Manager = ({
         { id: 1, x: 1, y: 8 },
         { id: 2, x: 3, y: 1 },
         { id: 3, x: 7, y: 7 },
+      ]);
+      setGates([
+        { id: 1, x: 4, y: 0 },
+        { id: 2, x: 5, y: 0 },
+        { id: 3, x: 6, y: 0 },
       ]);
     }
   }, [currentMap]);
