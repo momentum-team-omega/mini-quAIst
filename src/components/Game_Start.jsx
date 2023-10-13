@@ -23,9 +23,8 @@ const Game_Start = () => {
       setImageIndex((prevIndex) => {
         if (prevIndex < imageUrls.length - 1) {
           return prevIndex + 1;
-        } else {
-          return 0;
         }
+        return prevIndex; // stay on the last image when it reaches the end
       });
 
       isTypingRef.current = false;
