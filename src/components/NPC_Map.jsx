@@ -3,6 +3,23 @@ import oldMan1 from 'assets/npc-assets/old-man-tileset.png';
 import chestClosed from 'assets/npc-assets/chest-1-closed.png';
 import NPC from 'components/NPC';
 
+const getNPCMap = (npcs, mapColumns) => {
+  const npcMap = [];
+  for (let i = 0; i < mapColumns; i++) {
+    const row = [];
+    for (let j = 0; j < mapColumns; j++) {
+      row.push(null);
+    }
+    npcMap.push(row);
+  }
+  npcs.forEach((npc) => {
+    if (npcMap[npc.y] && npcMap[npc.y][npc.x] === null) {
+      npcMap[npc.y][npc.x] = npc.id;
+    }
+  });
+  return npcMap;
+};
+
 const NPC_Map = ({
   currentMap,
   mapPosition,
@@ -11,6 +28,10 @@ const NPC_Map = ({
   mapColumns,
   mapRows,
 }) => {
+  const npcMap = useMemo(() => getNPCMap(npcs, mapColumns), [npcs, mapColumns]);
+
+  // console.log(npcMap);
+
   let NPC_IMAGES;
   let xOffset;
   let yOffset;
@@ -39,19 +60,41 @@ const NPC_Map = ({
     };
     xOffset = 7.81 * tileSize;
     yOffset = 1.97 * tileSize;
-  } else if (currentMap === 'golemMap') {
+  } else if (currentMap === 'trollBridge200') {
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
-  } else if (currentMap === 'deathIsland') {
+  } else if (currentMap === 'grassLand50') {
+    NPC_IMAGES = {};
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
+  } else if (currentMap === 'grassLand50x40') {
+    NPC_IMAGES = {};
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
+  } else if (currentMap === 'grassLand40') {
+    NPC_IMAGES = {};
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
+  } else if (currentMap === 'grassLand40x30') {
+    NPC_IMAGES = {};
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
+  } else if (currentMap === 'grassLand30') {
+    NPC_IMAGES = {};
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
+  } else if (currentMap === 'grassLand20') {
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
   }
 
-  // console.log(npcs);
+  console.log(npcs);
 
-  console.log('NPC_Map Component Rendered, currentMap:', currentMap);
+  const getNPCById = (npcs, npcId) => {
+    return npcs.find((npc) => npc.id === npcId);
+  };
 
   return (
     <div
@@ -62,22 +105,29 @@ const NPC_Map = ({
         height: `${mapRows * tileSize}px`,
       }}
     >
-      {npcs.map((npc) => (
-        <NPC
-          currentMap={currentMap}
-          key={`${npc.id}-${currentMap}`}
-          rowIndex={npc.y}
-          colIndex={npc.x}
-          tileSize={tileSize}
-          mapPosition={mapPosition}
-          image={NPC_IMAGES[npc.id] || oldMan1}
-          xOffset={xOffset}
-          yOffset={yOffset}
-          id={npc.id}
-          steps={npc.steps}
-          animationSpeed={npc.animationSpeed}
-        />
-      ))}
+      {npcMap.map((row, rowIndex) =>
+        row.map((npcId, colIndex) => {
+          const currentNPC = getNPCById(npcs, npcId);
+
+          return (
+            <React.Fragment key={`${rowIndex}-${colIndex}`}>
+              {npcId && currentNPC && (
+                <NPC
+                  rowIndex={rowIndex}
+                  colIndex={colIndex}
+                  tileSize={tileSize}
+                  mapPosition={mapPosition}
+                  image={NPC_IMAGES[npcId] || oldMan1}
+                  xOffset={xOffset}
+                  yOffset={yOffset}
+                  steps={currentNPC.steps}
+                  animationSpeed={currentNPC.animationSpeed}
+                />
+              )}
+            </React.Fragment>
+          );
+        })
+      )}
     </div>
   );
 };
