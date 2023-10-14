@@ -78,7 +78,13 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         setTileSize={setTileSize}
         setMapOffset={setMapOffset}
       />
-      <Map mapPosition={mapPosition} mapImage={mapImage} />
+      <Map
+        mapPosition={mapPosition}
+        mapImage={mapImage}
+        tileSize={tileSize}
+        mapColumns={mapColumns}
+        mapRows={mapRows}
+      />
       <Foreground mapPosition={mapPosition} foreImage={foreImage} />
       <NPC_Map
         currentMap={currentMap}
