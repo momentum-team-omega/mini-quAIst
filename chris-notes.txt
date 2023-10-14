@@ -5,5 +5,8 @@ Battle Notes
 -added test player and enemy assets
 -added shells of PlayerSummery and Bar components
 -added player and enemy summary divs
+-added bar
+-added smack and chill buttons
+-added functionality to buttons
 -
  
