@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import oldMan1 from 'assets/npc-assets/old-man-tileset.png';
 import chestClosed from 'assets/npc-assets/chest-1-closed.png';
 import NPC from 'components/NPC';

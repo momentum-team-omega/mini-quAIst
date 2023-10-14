@@ -41,6 +41,8 @@ created <NPC /> component for each npc on a map, lives inside <NPC_Map />
 
 To-Do Now: 🚨
 
+NPCs not continuing to animate between map changes, after switching from the 2d grid map to mapping the npcs list directly. not sure what could be causing this. 
+
 
 combine 'collisions' 'interactions' and 'gates' into one 'collisions' list 
 

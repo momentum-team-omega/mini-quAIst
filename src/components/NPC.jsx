@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const NPC = ({
+  currentMap,
   rowIndex,
   colIndex,
   tileSize,
@@ -8,12 +9,15 @@ const NPC = ({
   image,
   xOffset,
   yOffset,
+  id,
   steps,
   animationSpeed,
 }) => {
   const [frame, setFrame] = useState(1);
 
   const DEFAULT_ANIMATION_SPEED = 80;
+
+  // console.log('NPC Component Rendered, ID:', id);
 
   const updateAnimationFrame = () => {
     if (steps > 1) {
@@ -25,6 +29,8 @@ const NPC = ({
 
   useEffect(() => {
     let mainInterval;
+    if (mainInterval) clearInterval(mainInterval);
+
     let speed = animationSpeed || DEFAULT_ANIMATION_SPEED;
 
     if (steps > 1 && speed !== 0) {
@@ -36,7 +42,7 @@ const NPC = ({
     return () => {
       if (mainInterval) clearInterval(mainInterval);
     };
-  }, [frame]);
+  }, [frame, id, currentMap]);
 
   let bgPositionMap = {};
 
@@ -65,6 +71,10 @@ const NPC = ({
   } else if (steps === 2) {
     backgroundSizeValue = '200% 100%';
   }
+
+  useEffect(() => {
+    setFrame(1);
+  }, [currentMap]);
 
   return (
     <div

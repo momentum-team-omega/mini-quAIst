@@ -3,10 +3,12 @@ import Char from 'components/Char';
 import NPC_Map from 'components/NPC_Map';
 import Char_Move from 'components/Char_Move';
 import Map from 'components/Map';
+import Foreground from 'components/Foreground';
 import Map_Manager from 'components/Map_Manager';
 
 const Overworld = ({ currentMap, setCurrentMap }) => {
   const [mapImage, setMapImage] = useState(null);
+  const [foreImage, setForeImage] = useState(null);
   const [tileSize, setTileSize] = useState(48);
   const [mapColumns, setMapColumns] = useState(11);
   const [mapRows, setMapRows] = useState(11);
@@ -29,9 +31,9 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
   });
 
   const [npcs, setNpcs] = useState([
-    { id: 1, x: 1, y: 1, steps: 1, animationSpeed: 0 },
-    { id: 2, x: 6, y: 8, steps: 2, animationSpeed: 120 },
-    { id: 3, x: 8, y: 8, steps: 1, animationSpeed: 0 },
+    { id: 1, x: 1, y: 1, steps: 1, animationSpeed: 0, alive: true },
+    { id: 2, x: 6, y: 8, steps: 1, animationSpeed: 800, alive: true },
+    { id: 3, x: 8, y: 8, steps: 2, animationSpeed: 800, alive: true },
   ]);
   const [gates, setGates] = useState([
     { id: 1, x: 10, y: 4 },
@@ -58,6 +60,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         setCurrentMap={setCurrentMap}
         mapImage={mapImage}
         setMapImage={setMapImage}
+        setForeImage={setForeImage}
         mapPosition={mapPosition}
         setMapPosition={setMapPosition}
         charPosition={charPosition}
@@ -76,6 +79,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         setMapOffset={setMapOffset}
       />
       <Map mapPosition={mapPosition} mapImage={mapImage} />
+      <Foreground mapPosition={mapPosition} foreImage={foreImage} />
       <NPC_Map
         currentMap={currentMap}
         mapPosition={mapPosition}
