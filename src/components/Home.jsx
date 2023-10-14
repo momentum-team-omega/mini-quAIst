@@ -6,41 +6,41 @@ import buttonImg from "assets/home-assets/button-img.png";
 
 const Home = () => {
   return (
-    <div className='homeContainer'>
+    <div className="homeContainer">
       <Nav />
-      <div className='content'>
-        <div className='welcome-box'>
-          <p className='mini-subtext'>WELCOME TO</p>
-          <p className='mini-quaist'>MINI QUAIST</p>
-          <div className='underline-container'>
+      <div className="content">
+        <div className="welcome-box">
+          <p className="mini-subtext">WELCOME TO</p>
+          <p className="mini-quaist">MINI QUAIST</p>
+          <div className="underline-container">
             <Under />
           </div>
         </div>
-        <div className='link-container'>
-          <p className='link-subtext'>YOUR ADVENTURE AWAITS</p>
-          <Link to='/play' className='button-img'>
+        <div className="link-container">
+          <p className="link-subtext">YOUR ADVENTURE AWAITS</p>
+          <Link to="/play" className="button-img">
             <img src={buttonImg}></img>
           </Link>
-          <p className='link-subtext'>(click on the box)</p>
+          <p className="link-subtext">(click on the box)</p>
         </div>
-        <div className='battle-container'>
-          <Link to='/battle' className='battle=link'>
+        <div className="battle-container">
+          <Link to="/battle" className="battle=link">
             BATTLE (temp)
           </Link>
-          <Link to='/dialogue' className='battle=link'>
+          <Link to="/dialogue" className="battle=link">
             DIALOGUE (temp)
           </Link>
-          <Link to='/create' className='battle=link'>
+          <Link to="/create" className="battle=link">
             CREATE (temp)
           </Link>
-          <Link to='/check' className='battle=link'>
+          <Link to="/check" className="battle=link">
             CHECK (temp)
           </Link>
-          <Link to='/inventory' className='battle=link'>
+          <Link to="/inventory" className="battle=link">
             INVENTORY (temp)
           </Link>
-          <Link to='/start' className='battle=link'>
-            GAME START (temp)
+          <Link to="/scene" className="battle=link">
+            CUT SCENE (temp)
           </Link>
         </div>
       </div>

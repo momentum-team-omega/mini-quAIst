@@ -29,7 +29,7 @@ const scenes = [
   // Define more scenes here
 ];
 
-const Game_Start = ({ initialSceneIndex }) => {
+const Cut_Scene = ({ initialSceneIndex }) => {
   const [sceneIndex, setSceneIndex] = useState(initialSceneIndex || 0);
   const selectedScene = scenes[sceneIndex];
   const imageUrls = selectedScene.imageUrls;
@@ -88,4 +88,4 @@ const Game_Start = ({ initialSceneIndex }) => {
   );
 };
 
-export default Game_Start;
+export default Cut_Scene;
