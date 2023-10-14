@@ -32,7 +32,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
 
   const [npcs, setNpcs] = useState([
     { id: 1, x: 1, y: 1, steps: 1, animationSpeed: 0, alive: true },
-    { id: 2, x: 6, y: 8, steps: 1, animationSpeed: 800, alive: true },
+    { id: 2, x: 6, y: 8, steps: 1, animationSpeed: 0, alive: true },
     { id: 3, x: 8, y: 8, steps: 2, animationSpeed: 800, alive: true },
   ]);
   const [gates, setGates] = useState([
