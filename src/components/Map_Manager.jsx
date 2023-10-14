@@ -1,26 +1,30 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   bridgeLeftCollisions,
   bridgeRightCollisions,
   houseInsideCollisions,
   golemMapCollisions,
-} from "utilities/collisionsData.js";
+  deathIslandCollisions,
+} from 'utilities/collisionsData.js';
 import {
   bridgeLeftInteractions,
   bridgeRightInteractions,
   houseInsideInteractions,
   golemMapInteractions,
-} from "utilities/interactionsData.js";
+  deathIslandInteractions,
+} from 'utilities/interactionsData.js';
 import {
   bridgeLeftGates,
   bridgeRightGates,
   houseInsideGates,
   golemMapGates,
-} from "utilities/gatesData.js";
-import bridgeLeft from "assets/map-assets/bridge-map-left.png";
-import bridgeRight from "assets/map-assets/bridge-map-right.png";
-import houseInside from "assets/map-assets/house-map-inside.png";
-import golemMap from "assets/map-assets/golem-map.png";
+  deathIslandGates,
+} from 'utilities/gatesData.js';
+import bridgeLeft from 'assets/map-assets/bridge-map-left.png';
+import bridgeRight from 'assets/map-assets/bridge-map-right.png';
+import houseInside from 'assets/map-assets/house-map-inside.png';
+import golemMap from 'assets/map-assets/golem-map.png';
+import deathIsland from 'assets/map-assets/deathIsland.png';
 
 const Map_Manager = ({
   currentMap,
@@ -42,6 +46,7 @@ const Map_Manager = ({
   gates,
   setGates,
   setTileSize,
+  setMapOffset,
 }) => {
   const [collisions, setCollisions] = useState(bridgeLeftCollisions);
   const [interactions, setInteractions] = useState(bridgeLeftInteractions);
@@ -52,7 +57,7 @@ const Map_Manager = ({
   const INT = 777;
   const GATE = 500;
 
-  const [color, setColor] = useState("transparent");
+  const [color, setColor] = useState('transparent');
 
   const styles = {
     top: `${-mapPosition.y}px`,
@@ -63,9 +68,10 @@ const Map_Manager = ({
     if (!mapImage) {
       setMapImage(bridgeLeft);
     }
-    if (currentMap === "bridgeLeft") {
+    if (currentMap === 'bridgeLeft') {
       setMapImage(bridgeLeft);
       setTileSize(48);
+      setMapOffset({ x: 13, y: 8 });
       if (!hasMapSwitched) {
         setMapPosition({
           x: -377,
@@ -88,7 +94,7 @@ const Map_Manager = ({
           id: 1,
           x: 10,
           y: 4,
-          map: "bridgeRight",
+          map: 'bridgeRight',
           destPX: -576,
           destPY: -102,
           destX: 1,
@@ -98,7 +104,7 @@ const Map_Manager = ({
           id: 2,
           x: 10,
           y: 5,
-          map: "bridgeRight",
+          map: 'bridgeRight',
           destPX: -576,
           destPY: -102,
           destX: 1,
@@ -108,16 +114,17 @@ const Map_Manager = ({
           id: 3,
           x: 10,
           y: 6,
-          map: "bridgeRight",
+          map: 'bridgeRight',
           destPX: -576,
           destPY: -102,
           destX: 1,
           destY: 5,
         },
       ]);
-    } else if (currentMap === "bridgeRight") {
+    } else if (currentMap === 'bridgeRight') {
       setMapImage(bridgeRight);
       setTileSize(48);
+      setMapOffset({ x: 13, y: 8 });
       if (!hasMapSwitched) {
         setMapPosition({
           x: -377,
@@ -140,7 +147,7 @@ const Map_Manager = ({
           id: 1,
           x: 0,
           y: 4,
-          map: "bridgeLeft",
+          map: 'bridgeLeft',
           destPX: -179.5,
           destPY: -102,
           destX: 9,
@@ -150,7 +157,7 @@ const Map_Manager = ({
           id: 2,
           x: 0,
           y: 5,
-          map: "bridgeLeft",
+          map: 'bridgeLeft',
           destPX: -179.5,
           destPY: -102,
           destX: 9,
@@ -160,7 +167,7 @@ const Map_Manager = ({
           id: 3,
           x: 0,
           y: 6,
-          map: "bridgeLeft",
+          map: 'bridgeLeft',
           destPX: -179.5,
           destPY: -102,
           destX: 9,
@@ -170,7 +177,7 @@ const Map_Manager = ({
           id: 4,
           x: 7,
           y: 4,
-          map: "houseInside",
+          map: 'houseInside',
           destPX: -347.5,
           destPY: 93,
           destX: 5,
@@ -180,16 +187,17 @@ const Map_Manager = ({
           id: 5,
           x: 8,
           y: 4,
-          map: "houseInside",
+          map: 'houseInside',
           destPX: -347.5,
           destPY: 93,
           destX: 5,
           destY: 9,
         },
       ]);
-    } else if (currentMap === "houseInside") {
+    } else if (currentMap === 'houseInside') {
       setMapImage(houseInside);
       setTileSize(48);
+      setMapOffset({ x: 13, y: 8 });
       if (!hasMapSwitched) {
         setMapPosition({
           x: -377,
@@ -212,7 +220,7 @@ const Map_Manager = ({
           id: 1,
           x: 5,
           y: 10,
-          map: "bridgeRight",
+          map: 'bridgeRight',
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -222,16 +230,17 @@ const Map_Manager = ({
           id: 2,
           x: 6,
           y: 10,
-          map: "bridgeRight",
+          map: 'bridgeRight',
           destPX: -252,
           destPY: -112,
           destX: 8,
           destY: 5,
         },
       ]);
-    } else if (currentMap === "golemMap") {
+    } else if (currentMap === 'golemMap') {
       setMapImage(golemMap);
       setTileSize(64);
+      setMapOffset({ x: 13, y: 8 });
       if (!hasMapSwitched) {
         setMapPosition({
           x: -377,
@@ -254,7 +263,56 @@ const Map_Manager = ({
           id: 1,
           x: 5,
           y: 10,
-          map: "bridgeRight",
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+      ]);
+    } else if (currentMap === 'deathIsland') {
+      setMapImage(deathIsland);
+      setTileSize(64);
+      setMapOffset({ x: 9, y: 6 });
+      if (!hasMapSwitched) {
+        setMapPosition({
+          x: -287,
+          y: -6,
+        });
+        setCharPosition({ x: 5, y: 5 });
+      }
+      setMapColumns(11);
+      setMapRows(11);
+      setCollisions(deathIslandCollisions);
+      setInteractions(deathIslandInteractions);
+      setGatesData(deathIslandGates);
+      setNpcs([{}]);
+      setGates([
+        {
+          id: 1,
+          x: 4,
+          y: 10,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 1,
+          x: 5,
+          y: 10,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 1,
+          x: 6,
+          y: 10,
+          map: 'bridgeRight',
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -323,9 +381,9 @@ const Map_Manager = ({
     });
 
     if (isNearAnyGate) {
-      setColor("orange");
+      setColor('orange');
     } else {
-      setColor("transparent");
+      setColor('transparent');
     }
 
     npcs.forEach((npc) => {
@@ -423,7 +481,9 @@ const Map_Manager = ({
                 style={{
                   top: `${rowIndex * tileSize}px`,
                   left: `${colIndex * tileSize}px`,
-                  backgroundColor: "red",
+                  width: `${tileSize}px`,
+                  height: `${tileSize}px`,
+                  backgroundColor: 'red',
                 }}
               />
             )}
@@ -435,7 +495,7 @@ const Map_Manager = ({
                   left: `${colIndex * tileSize}px`,
                   width: `${tileSize}px`,
                   height: `${tileSize}px`,
-                  backgroundColor: "green",
+                  backgroundColor: 'green',
                 }}
               />
             )}
@@ -461,7 +521,7 @@ const Map_Manager = ({
                     left: `${colIndex * tileSize}px`,
                     width: `${tileSize}px`,
                     height: `${tileSize}px`,
-                    backgroundColor: "blue",
+                    backgroundColor: 'blue',
                   }}
                 />
               )}

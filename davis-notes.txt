@@ -39,6 +39,10 @@ add 2 small maps and test character switching between maps through map gates ✅
 
 To-Do Now: 🚨
 
+make only the gate the character is next to highlighted (currently they all get highlighted)
+
+make npc that the character is next to also highlighted
+
 
 Need to be able to remove 'dead' npcs after battle for example. Or change a chest NPC from 'closed' to 'open' etc. 
 

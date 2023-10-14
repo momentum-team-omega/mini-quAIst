@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from "react";
-import oldMan1 from "assets/npc-assets/old-man-1.png";
-import chestClosed from "assets/npc-assets/chest-1-closed.png";
+import React, { useState, useMemo } from 'react';
+import oldMan1 from 'assets/npc-assets/old-man-1.png';
+import chestClosed from 'assets/npc-assets/chest-1-closed.png';
 
 const getNPCMap = (npcs, mapColumns) => {
   const npcMap = [];
@@ -35,7 +35,7 @@ const NPC = ({
   let xOffset;
   let yOffset;
 
-  if (currentMap === "bridgeLeft") {
+  if (currentMap === 'bridgeLeft') {
     NPC_IMAGES = {
       1: chestClosed,
       2: oldMan1,
@@ -43,7 +43,7 @@ const NPC = ({
     };
     xOffset = 7.81 * tileSize;
     yOffset = 1.97 * tileSize;
-  } else if (currentMap === "bridgeRight") {
+  } else if (currentMap === 'bridgeRight') {
     NPC_IMAGES = {
       1: chestClosed,
       2: chestClosed,
@@ -51,7 +51,7 @@ const NPC = ({
     };
     xOffset = 7.81 * tileSize;
     yOffset = 1.97 * tileSize;
-  } else if (currentMap === "houseInside") {
+  } else if (currentMap === 'houseInside') {
     NPC_IMAGES = {
       1: chestClosed,
       2: oldMan1,
@@ -59,7 +59,11 @@ const NPC = ({
     };
     xOffset = 7.81 * tileSize;
     yOffset = 1.97 * tileSize;
-  } else if (currentMap === "golemMap") {
+  } else if (currentMap === 'golemMap') {
+    NPC_IMAGES = {};
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
+  } else if (currentMap === 'deathIsland') {
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
@@ -69,7 +73,7 @@ const NPC = ({
     <div
       className="npc-container"
       style={{
-        position: "relative",
+        position: 'relative',
         width: `${mapColumns * tileSize}px`,
         height: `${mapRows * tileSize}px`,
       }}

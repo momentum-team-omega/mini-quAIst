@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Char from "components/Char";
-import NPC from "components/NPC";
-import Char_Move from "components/Char_Move";
-import Map from "components/Map";
-import Map_Manager from "components/Map_Manager";
-import Char_Animate from "./Char_Animate";
+import React, { useState, useEffect } from 'react';
+import Char from 'components/Char';
+import NPC from 'components/NPC';
+import Char_Move from 'components/Char_Move';
+import Map from 'components/Map';
+import Map_Manager from 'components/Map_Manager';
+import Char_Animate from './Char_Animate';
 
 const Overworld = ({ currentMap, setCurrentMap }) => {
   const [mapImage, setMapImage] = useState(null);
@@ -12,11 +12,12 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
   const [mapColumns, setMapColumns] = useState(11);
   const [mapRows, setMapRows] = useState(11);
   const [mapPosition, setMapPosition] = useState({
-    x: 1040,
-    y: 600,
+    x: 0,
+    y: 0,
   });
+  const [mapOffset, setMapOffset] = useState({ x: 9, y: 6 });
 
-  const [direction, setDirection] = useState("Down");
+  const [direction, setDirection] = useState('Down');
   const [frame, setFrame] = useState(1);
 
   const [intendedMovement, setIntendedMovement] = useState(null);
@@ -53,6 +54,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         setIsMoving={setIsMoving}
         isSpacePressed={isSpacePressed}
         setIsSpacePressed={setIsSpacePressed}
+        mapOffset={mapOffset}
       />
       <Char_Animate
         isMoving={isMoving}
@@ -79,6 +81,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         gates={gates}
         setGates={setGates}
         setTileSize={setTileSize}
+        setMapOffset={setMapOffset}
       />
       <Map mapPosition={mapPosition} mapImage={mapImage} />
       <NPC
