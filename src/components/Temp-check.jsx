@@ -1,12 +1,26 @@
 import React, { useState } from 'react';
 import Nav from 'components/Nav';
-import Ability_Check from 'components/Ability_Check';
+import TwentySidedDie from './TwentySidedDie';
 
 const TempCheck = () => {
   const [gameWindow, setGameWindow] = useState({
     height: '720px',
     width: '1280px',
   });
+
+  const modifiers = 
+{
+  "dexterity": 2,
+  "strength": 1,
+  "intelligence": 4,
+  "constitution": -2,
+  "wisdom": -1,
+  "charisma": 0
+}
+
+const difficultyScore = 11
+
+const typeOfCheck = 'wisdom'
 
   return (
     <>
@@ -19,7 +33,7 @@ const TempCheck = () => {
             width: gameWindow.width,
           }}
         >
-          <Ability_Check />
+          <TwentySidedDie modifiers={modifiers} difficultyScore={difficultyScore} typeOfCheck={typeOfCheck}/>
         </div>
       </div>
     </>
