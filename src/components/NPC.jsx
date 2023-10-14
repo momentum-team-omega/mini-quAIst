@@ -17,7 +17,7 @@ const NPC = ({
 
   const DEFAULT_ANIMATION_SPEED = 80;
 
-  // console.log('NPC Component Rendered, ID:', id);
+  console.log('NPC Component Rendered, ID:', id);
 
   const updateAnimationFrame = () => {
     if (steps > 1) {
@@ -42,7 +42,7 @@ const NPC = ({
     return () => {
       if (mainInterval) clearInterval(mainInterval);
     };
-  }, [frame, id, currentMap]);
+  }, [frame, currentMap]);
 
   let bgPositionMap = {};
 
