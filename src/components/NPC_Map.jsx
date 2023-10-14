@@ -19,7 +19,7 @@ const getNPCMap = (npcs, mapColumns) => {
   return npcMap;
 };
 
-const NPC = ({
+const NPC_Map = ({
   currentMap,
   mapPosition,
   npcs,
@@ -103,4 +103,4 @@ const NPC = ({
   );
 };
 
-export default NPC;
+export default NPC_Map;

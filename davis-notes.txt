@@ -43,6 +43,7 @@ make only the gate the character is next to highlighted (currently they all get 
 
 make npc that the character is next to also highlighted
 
+make NPC a component inside of NPC_Map so we can control animations etc 
 
 Need to be able to remove 'dead' npcs after battle for example. Or change a chest NPC from 'closed' to 'open' etc. 
 

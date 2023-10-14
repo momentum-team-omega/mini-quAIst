@@ -273,7 +273,7 @@ const Map_Manager = ({
     } else if (currentMap === 'deathIsland') {
       setMapImage(deathIsland);
       setTileSize(64);
-      setMapOffset({ x: 9, y: 6 });
+      setMapOffset({ x: 9.5, y: 6 });
       if (!hasMapSwitched) {
         setMapPosition({
           x: -287,

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Char from 'components/Char';
-import NPC from 'components/NPC';
+import NPC_Map from 'components/NPC_Map';
 import Char_Move from 'components/Char_Move';
 import Map from 'components/Map';
 import Map_Manager from 'components/Map_Manager';
-import Char_Animate from './Char_Animate';
 
 const Overworld = ({ currentMap, setCurrentMap }) => {
   const [mapImage, setMapImage] = useState(null);
@@ -18,9 +17,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
   const [mapOffset, setMapOffset] = useState({ x: 9, y: 6 });
 
   const [direction, setDirection] = useState('Down');
-  const [frame, setFrame] = useState(1);
 
-  const [intendedMovement, setIntendedMovement] = useState(null);
   const [isMoving, setIsMoving] = useState(false);
   const [isSpacePressed, setIsSpacePressed] = useState(false);
   const [charPosition, setCharPosition] = useState({ x: 5, y: 5 });
@@ -56,11 +53,6 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         setIsSpacePressed={setIsSpacePressed}
         mapOffset={mapOffset}
       />
-      <Char_Animate
-        isMoving={isMoving}
-        setFrame={setFrame}
-        isSpacePressed={isSpacePressed}
-      />
       <Map_Manager
         currentMap={currentMap}
         setCurrentMap={setCurrentMap}
@@ -84,7 +76,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         setMapOffset={setMapOffset}
       />
       <Map mapPosition={mapPosition} mapImage={mapImage} />
-      <NPC
+      <NPC_Map
         currentMap={currentMap}
         mapPosition={mapPosition}
         npcs={npcs}
@@ -92,7 +84,12 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         mapColumns={mapColumns}
         mapRows={mapRows}
       />
-      <Char tileSize={tileSize} direction={direction} frame={frame} />
+      <Char
+        tileSize={tileSize}
+        direction={direction}
+        isMoving={isMoving}
+        isSpacePressed={isSpacePressed}
+      />
     </>
   );
 };
