@@ -34,11 +34,23 @@ offset character by half tileSize to get it centered ✅
 update the map with the gate data ✅
 add 2 small maps and test character switching between maps through map gates ✅
   -spawn points & character direction corrospond to gate ✅
+got rid of char_animate and put it all into <Char /> ✅
+created <NPC /> component for each npc on a map, lives inside <NPC_Map />
 
 
 
 To-Do Now: 🚨
 
+NPCs not continuing to animate between map changes, after switching from the 2d grid map to mapping the npcs list directly. not sure what could be causing this. 
+
+
+combine 'collisions' 'interactions' and 'gates' into one 'collisions' list 
+
+make only the gate the character is next to highlighted (currently they all get highlighted)
+
+make npc that the character is next to also highlighted
+
+make NPC a component inside of NPC_Map so we can control animations etc 
 
 Need to be able to remove 'dead' npcs after battle for example. Or change a chest NPC from 'closed' to 'open' etc. 
 
@@ -74,6 +86,7 @@ add tool tips for early game 'to move, do this'
 
 Considerations 🧠
 
+similar to how we animate the character, we could have 4 different maps with static animations that get switched between 
 
 maybe add stamina meter for sprint etc ?
 

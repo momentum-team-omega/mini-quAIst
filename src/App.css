@@ -598,6 +598,12 @@ flex-grow: 1;
   z-index: 1;
 }
 
+.fore-container {
+  display: grid;
+  position: absolute;
+  z-index: 99;
+}
+
 .npc-container {
   display: grid;
   position: absolute;

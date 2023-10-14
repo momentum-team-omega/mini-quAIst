@@ -10,6 +10,7 @@ const Char_Move = ({
   setIsMoving,
   isSpacePressed,
   setIsSpacePressed,
+  mapOffset,
 }) => {
   const [keys, setKeys] = useState({
     w: { pressed: false },
@@ -19,9 +20,10 @@ const Char_Move = ({
   });
 
   const pixelToGridPosition = (pixelPosition) => {
+    console.log('tileSize: ', tileSize);
     return {
-      x: Math.floor((pixelPosition.x + tileSize / 2) / tileSize) + 13,
-      y: Math.floor((pixelPosition.y - tileSize / 2) / tileSize) + 8,
+      x: Math.floor((pixelPosition.x + tileSize / 2) / tileSize) + mapOffset.x,
+      y: Math.floor((pixelPosition.y - tileSize / 2) / tileSize) + mapOffset.y,
     };
   };
 
