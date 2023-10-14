@@ -5,5 +5,21 @@ Battle Notes
 -added test player and enemy assets
 -added shells of PlayerSummery and Bar components
 -added player and enemy summary divs
--
+-added bar
+-added smack and chill buttons
+-added functionality to buttons
+-added damage animation
+-added health gain animation
+-added change indicator
+-moved things/simple styling
+Cut Scene Notes
+-added three image rotation
+-stopped rotataion when images are done
+-added text below
+-added type
+-added type animation
+-changed way of rendering because of memo
+-refactored to have scenes and can accept a prop to pick a scene
+Map Notes
+-made two text maps at 32px size
  

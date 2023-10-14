@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
-import './App.css';
-import Home from 'components/Home';
-import Login from 'components/Login';
-import Register from 'components/Register';
-import Game from 'components/Game';
-import Wiki from 'components/wiki/Wiki';
-import WikiQuaist from 'components/wiki/Wiki-quaist';
-import WikiClasses from 'components/wiki/Wiki-classes';
-import WikiMage from 'components/wiki/Wiki-mage';
-import WikiBarb from 'components/wiki/Wiki-barb';
-import WikiRogue from 'components/wiki/Wiki-rogue';
-import WikiBattle from 'components/wiki/Wiki-battle';
-import WikiAbilityCheck from './components/wiki/Wiki-ability-check';
-import TempBattle from 'components/Temp-battle';
-import TempDialogue from './components/Temp-dialogue';
-import TempCreate from './components/Temp-create';
-import TempCheck from './components/Temp-check';
-import TempInventory from './components/Temp-inventory';
-import TempStart from './components/Temp-start';
+import React, { useState } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+import "./App.css";
+import Home from "components/Home";
+import Login from "components/Login";
+import Register from "components/Register";
+import Game from "components/Game";
+import Wiki from "components/wiki/Wiki";
+import WikiQuaist from "components/wiki/Wiki-quaist";
+import WikiClasses from "components/wiki/Wiki-classes";
+import WikiMage from "components/wiki/Wiki-mage";
+import WikiBarb from "components/wiki/Wiki-barb";
+import WikiRogue from "components/wiki/Wiki-rogue";
+import WikiBattle from "components/wiki/Wiki-battle";
+import WikiAbilityCheck from "./components/wiki/Wiki-ability-check";
+import TempBattle from "components/Temp-battle";
+import TempDialogue from "./components/Temp-dialogue";
+import TempCreate from "./components/Temp-create";
+import TempCheck from "./components/Temp-check";
+import TempInventory from "./components/Temp-inventory";
+import TempScene from "./components/Temp-scene";
 
 function App() {
   const [token, setToken] = useState(false);
@@ -55,7 +55,7 @@ function App() {
         <Route path="/create" element={<TempCreate />} />;
         <Route path="/check" element={<TempCheck />} />;
         <Route path="/inventory" element={<TempInventory />} />;
-        <Route path="/start" element={<TempStart />} />;
+        <Route path="/scene" element={<TempScene />} />;
       </Routes>
     </>
   );

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
+import exampleImage1 from "/src/assets/gamestart-assets/LoraEx1.jpeg";
+import exampleImage2 from "/src/assets/gamestart-assets/LoraEx2.jpeg";
+import exampleImage3 from "/src/assets/gamestart-assets/LoraEx3.jpeg";
 
 const scenes = [
   {
-    imageUrls: [
-      "/src/assets/gamestart-assets/LoraEx1.jpeg",
-      "/src/assets/gamestart-assets/LoraEx2.jpeg",
-      "/src/assets/gamestart-assets/LoraEx3.jpeg",
-    ],
+    imageUrls: [exampleImage1, exampleImage2, exampleImage3],
     textArray: [
       "The beach is beautiful and the sounds of the waves are soothing.",
       "The forest swirls around you, causing you to lose your way.",
@@ -15,11 +14,7 @@ const scenes = [
     ],
   },
   {
-    imageUrls: [
-      "/src/assets/gamestart-assets/LoraEx1.jpeg",
-      "/src/assets/gamestart-assets/LoraEx2.jpeg",
-      "/src/assets/gamestart-assets/LoraEx3.jpeg",
-    ],
+    imageUrls: [exampleImage1, exampleImage2, exampleImage3],
     textArray: [
       "You find yourself in a bustling city square, surrounded by people and noise.",
       "Rain starts pouring, and you seek shelter under a nearby awning.",
@@ -29,7 +24,7 @@ const scenes = [
   // Define more scenes here
 ];
 
-const Game_Start = ({ initialSceneIndex }) => {
+const Cut_Scene = ({ initialSceneIndex }) => {
   const [sceneIndex, setSceneIndex] = useState(initialSceneIndex || 0);
   const selectedScene = scenes[sceneIndex];
   const imageUrls = selectedScene.imageUrls;
@@ -88,4 +83,4 @@ const Game_Start = ({ initialSceneIndex }) => {
   );
 };
 
-export default Game_Start;
+export default Cut_Scene;
