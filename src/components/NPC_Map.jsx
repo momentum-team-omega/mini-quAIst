@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import oldMan1 from 'assets/npc-assets/old-man-1.png';
+import oldMan1 from 'assets/npc-assets/old-man-tileset.png';
 import chestClosed from 'assets/npc-assets/chest-1-closed.png';
+import NPC from 'components/NPC';
 
 const getNPCMap = (npcs, mapColumns) => {
   const npcMap = [];
@@ -69,6 +70,12 @@ const NPC_Map = ({
     yOffset = 0 * tileSize;
   }
 
+  console.log(npcs);
+
+  const getNPCById = (npcs, npcId) => {
+    return npcs.find((npc) => npc.id === npcId);
+  };
+
   return (
     <div
       className="npc-container"
@@ -79,25 +86,27 @@ const NPC_Map = ({
       }}
     >
       {npcMap.map((row, rowIndex) =>
-        row.map((npcId, colIndex) => (
-          <React.Fragment key={`${rowIndex}-${colIndex}`}>
-            {npcId && (
-              <div>
-                <img
-                  src={NPC_IMAGES[npcId] || oldMan1}
-                  alt="NPC"
-                  className="NPC"
-                  style={{
-                    top: `${rowIndex * tileSize - mapPosition.y - yOffset}px`,
-                    left: `${colIndex * tileSize - mapPosition.x - xOffset}px`,
-                    width: `${tileSize}px`,
-                    height: `${tileSize}px`,
-                  }}
+        row.map((npcId, colIndex) => {
+          const currentNPC = getNPCById(npcs, npcId);
+
+          return (
+            <React.Fragment key={`${rowIndex}-${colIndex}`}>
+              {npcId && currentNPC && (
+                <NPC
+                  rowIndex={rowIndex}
+                  colIndex={colIndex}
+                  tileSize={tileSize}
+                  mapPosition={mapPosition}
+                  image={NPC_IMAGES[npcId] || oldMan1}
+                  xOffset={xOffset}
+                  yOffset={yOffset}
+                  steps={currentNPC.steps}
+                  animationSpeed={currentNPC.animationSpeed}
                 />
-              </div>
-            )}
-          </React.Fragment>
-        ))
+              )}
+            </React.Fragment>
+          );
+        })
       )}
     </div>
   );

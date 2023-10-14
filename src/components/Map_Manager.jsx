@@ -85,9 +85,9 @@ const Map_Manager = ({
       setInteractions(bridgeLeftInteractions);
       setGatesData(bridgeLeftGates);
       setNpcs([
-        { id: 1, x: 1, y: 1 },
-        { id: 2, x: 6, y: 8 },
-        { id: 3, x: 8, y: 8 },
+        { id: 1, x: 1, y: 1, steps: 1, animationSpeed: 0, alive: true },
+        { id: 2, x: 6, y: 8, steps: 2, animationSpeed: 800, alive: true },
+        { id: 3, x: 8, y: 8, steps: 1, animationSpeed: 0, alive: true },
       ]);
       setGates([
         {
@@ -138,9 +138,9 @@ const Map_Manager = ({
       setInteractions(bridgeRightInteractions);
       setGatesData(bridgeRightGates);
       setNpcs([
-        { id: 1, x: 1, y: 8 },
-        { id: 2, x: 3, y: 1 },
-        { id: 3, x: 7, y: 7 },
+        { id: 1, x: 1, y: 8, steps: 1, animationSpeed: 0, alive: true },
+        { id: 2, x: 3, y: 1, steps: 1, animationSpeed: 0, alive: true },
+        { id: 3, x: 7, y: 7, steps: 2, animationSpeed: 800, alive: true },
       ]);
       setGates([
         {
@@ -211,9 +211,9 @@ const Map_Manager = ({
       setInteractions(houseInsideInteractions);
       setGatesData(houseInsideGates);
       setNpcs([
-        { id: 1, x: 2, y: 8 },
-        { id: 2, x: 3, y: 2 },
-        { id: 3, x: 8, y: 2 },
+        { id: 1, x: 2, y: 8, steps: 1, animationSpeed: 0, alive: true },
+        { id: 2, x: 3, y: 2, steps: 2, animationSpeed: 800, alive: true },
+        { id: 3, x: 8, y: 2, steps: 1, animationSpeed: 0, alive: true },
       ]);
       setGates([
         {
@@ -254,9 +254,9 @@ const Map_Manager = ({
       setInteractions(golemMapInteractions);
       setGatesData(golemMapGates);
       setNpcs([
-        { id: 1, x: 2, y: 8 },
-        { id: 2, x: 3, y: 2 },
-        { id: 3, x: 8, y: 2 },
+        { id: 1, x: 2, y: 8, steps: 1, animationSpeed: 0, alive: true },
+        { id: 2, x: 3, y: 2, steps: 1, animationSpeed: 0, alive: true },
+        { id: 3, x: 8, y: 2, steps: 1, animationSpeed: 0, alive: true },
       ]);
       setGates([
         {
