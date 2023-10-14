@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import Nav from "components/Nav";
-import Overworld from "./Overworld";
+import React, { useState } from 'react';
+import Nav from 'components/Nav';
+import Overworld from './Overworld';
 
 const Game = () => {
-  const [currentMap, setCurrentMap] = useState("golemMap");
+  const [currentMap, setCurrentMap] = useState('bridgeLeft');
 
   const [gameWindow, setGameWindow] = useState({
-    height: "720px",
-    width: "1280px",
+    height: '720px',
+    width: '1280px',
   });
 
   return (

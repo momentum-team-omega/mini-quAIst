@@ -1,32 +1,25 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   bridgeLeftCollisions,
   bridgeRightCollisions,
   houseInsideCollisions,
   golemMapCollisions,
-} from "utilities/collisionsData.js";
-import {
-  bridgeLeftInteractions,
-  bridgeRightInteractions,
-  houseInsideInteractions,
-  golemMapInteractions,
-} from "utilities/interactionsData.js";
-import {
-  bridgeLeftGates,
-  bridgeRightGates,
-  houseInsideGates,
-  golemMapGates,
-} from "utilities/gatesData.js";
-import bridgeLeft from "assets/map-assets/bridge-map-left.png";
-import bridgeRight from "assets/map-assets/bridge-map-right.png";
-import houseInside from "assets/map-assets/house-map-inside.png";
-import golemMap from "assets/map-assets/golem-map.png";
+  deathIslandCollisions,
+} from 'utilities/collisionsData.js';
+import bridgeLeft from 'assets/map-assets/bridge-map-left.png';
+import bridgeLeftFore from 'assets/map-assets/bridge-map-left-fore.png';
+import bridgeRight from 'assets/map-assets/bridge-map-right.png';
+import bridgeRightFore from 'assets/map-assets/bridge-map-right-fore.png';
+import houseInside from 'assets/map-assets/house-map-inside.png';
+import golemMap from 'assets/map-assets/golem-map.png';
+import deathIsland from 'assets/map-assets/deathIsland.png';
 
 const Map_Manager = ({
   currentMap,
   setCurrentMap,
   mapImage,
   setMapImage,
+  setForeImage,
   mapPosition,
   setMapPosition,
   charPosition,
@@ -42,17 +35,16 @@ const Map_Manager = ({
   gates,
   setGates,
   setTileSize,
+  setMapOffset,
 }) => {
   const [collisions, setCollisions] = useState(bridgeLeftCollisions);
-  const [interactions, setInteractions] = useState(bridgeLeftInteractions);
-  const [gatesData, setGatesData] = useState(bridgeLeftGates);
   const [hasMapSwitched, setHasMapSwitched] = useState(false);
 
   const BLOCKED = 1025;
   const INT = 777;
   const GATE = 500;
 
-  const [color, setColor] = useState("transparent");
+  const [color, setColor] = useState('transparent');
 
   const styles = {
     top: `${-mapPosition.y}px`,
@@ -63,9 +55,11 @@ const Map_Manager = ({
     if (!mapImage) {
       setMapImage(bridgeLeft);
     }
-    if (currentMap === "bridgeLeft") {
+    if (currentMap === 'bridgeLeft') {
       setMapImage(bridgeLeft);
+      setForeImage(bridgeLeftFore);
       setTileSize(48);
+      setMapOffset({ x: 13, y: 8 });
       if (!hasMapSwitched) {
         setMapPosition({
           x: -377,
@@ -76,19 +70,17 @@ const Map_Manager = ({
       setMapColumns(11);
       setMapRows(11);
       setCollisions(bridgeLeftCollisions);
-      setInteractions(bridgeLeftInteractions);
-      setGatesData(bridgeLeftGates);
       setNpcs([
-        { id: 1, x: 1, y: 1 },
-        { id: 2, x: 6, y: 8 },
-        { id: 3, x: 8, y: 8 },
+        { id: 1, x: 1, y: 1, steps: 1, animationSpeed: 0, alive: true },
+        { id: 2, x: 6, y: 8, steps: 2, animationSpeed: 800, alive: true },
+        { id: 3, x: 8, y: 8, steps: 1, animationSpeed: 0, alive: true },
       ]);
       setGates([
         {
           id: 1,
           x: 10,
           y: 4,
-          map: "bridgeRight",
+          map: 'bridgeRight',
           destPX: -576,
           destPY: -102,
           destX: 1,
@@ -98,7 +90,7 @@ const Map_Manager = ({
           id: 2,
           x: 10,
           y: 5,
-          map: "bridgeRight",
+          map: 'bridgeRight',
           destPX: -576,
           destPY: -102,
           destX: 1,
@@ -108,16 +100,18 @@ const Map_Manager = ({
           id: 3,
           x: 10,
           y: 6,
-          map: "bridgeRight",
+          map: 'bridgeRight',
           destPX: -576,
           destPY: -102,
           destX: 1,
           destY: 5,
         },
       ]);
-    } else if (currentMap === "bridgeRight") {
+    } else if (currentMap === 'bridgeRight') {
       setMapImage(bridgeRight);
+      setForeImage(bridgeRightFore);
       setTileSize(48);
+      setMapOffset({ x: 13, y: 8 });
       if (!hasMapSwitched) {
         setMapPosition({
           x: -377,
@@ -128,19 +122,17 @@ const Map_Manager = ({
       setMapColumns(11);
       setMapRows(11);
       setCollisions(bridgeRightCollisions);
-      setInteractions(bridgeRightInteractions);
-      setGatesData(bridgeRightGates);
       setNpcs([
-        { id: 1, x: 1, y: 8 },
-        { id: 2, x: 3, y: 1 },
-        { id: 3, x: 7, y: 7 },
+        { id: 1, x: 1, y: 8, steps: 1, animationSpeed: 0, alive: true },
+        { id: 2, x: 2, y: 1, steps: 1, animationSpeed: 0, alive: true },
+        { id: 3, x: 7, y: 7, steps: 2, animationSpeed: 800, alive: true },
       ]);
       setGates([
         {
           id: 1,
           x: 0,
           y: 4,
-          map: "bridgeLeft",
+          map: 'bridgeLeft',
           destPX: -179.5,
           destPY: -102,
           destX: 9,
@@ -150,7 +142,7 @@ const Map_Manager = ({
           id: 2,
           x: 0,
           y: 5,
-          map: "bridgeLeft",
+          map: 'bridgeLeft',
           destPX: -179.5,
           destPY: -102,
           destX: 9,
@@ -160,7 +152,7 @@ const Map_Manager = ({
           id: 3,
           x: 0,
           y: 6,
-          map: "bridgeLeft",
+          map: 'bridgeLeft',
           destPX: -179.5,
           destPY: -102,
           destX: 9,
@@ -170,7 +162,7 @@ const Map_Manager = ({
           id: 4,
           x: 7,
           y: 4,
-          map: "houseInside",
+          map: 'houseInside',
           destPX: -347.5,
           destPY: 93,
           destX: 5,
@@ -180,16 +172,18 @@ const Map_Manager = ({
           id: 5,
           x: 8,
           y: 4,
-          map: "houseInside",
+          map: 'houseInside',
           destPX: -347.5,
           destPY: 93,
           destX: 5,
           destY: 9,
         },
       ]);
-    } else if (currentMap === "houseInside") {
+    } else if (currentMap === 'houseInside') {
       setMapImage(houseInside);
+      setForeImage(null);
       setTileSize(48);
+      setMapOffset({ x: 13, y: 8 });
       if (!hasMapSwitched) {
         setMapPosition({
           x: -377,
@@ -200,19 +194,17 @@ const Map_Manager = ({
       setMapColumns(11);
       setMapRows(11);
       setCollisions(houseInsideCollisions);
-      setInteractions(houseInsideInteractions);
-      setGatesData(houseInsideGates);
       setNpcs([
-        { id: 1, x: 2, y: 8 },
-        { id: 2, x: 3, y: 2 },
-        { id: 3, x: 8, y: 2 },
+        { id: 1, x: 2, y: 8, steps: 1, animationSpeed: 0, alive: true },
+        { id: 2, x: 3, y: 2, steps: 2, animationSpeed: 800, alive: true },
+        { id: 3, x: 8, y: 2, steps: 1, animationSpeed: 0, alive: true },
       ]);
       setGates([
         {
           id: 1,
           x: 5,
           y: 10,
-          map: "bridgeRight",
+          map: 'bridgeRight',
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -222,16 +214,18 @@ const Map_Manager = ({
           id: 2,
           x: 6,
           y: 10,
-          map: "bridgeRight",
+          map: 'bridgeRight',
           destPX: -252,
           destPY: -112,
           destX: 8,
           destY: 5,
         },
       ]);
-    } else if (currentMap === "golemMap") {
+    } else if (currentMap === 'golemMap') {
       setMapImage(golemMap);
+      setForeImage(null);
       setTileSize(64);
+      setMapOffset({ x: 13, y: 8 });
       if (!hasMapSwitched) {
         setMapPosition({
           x: -377,
@@ -242,19 +236,65 @@ const Map_Manager = ({
       setMapColumns(11);
       setMapRows(11);
       setCollisions(golemMapCollisions);
-      setInteractions(golemMapInteractions);
-      setGatesData(golemMapGates);
       setNpcs([
-        { id: 1, x: 2, y: 8 },
-        { id: 2, x: 3, y: 2 },
-        { id: 3, x: 8, y: 2 },
+        { id: 1, x: 2, y: 8, steps: 1, animationSpeed: 0, alive: true },
+        { id: 2, x: 3, y: 2, steps: 1, animationSpeed: 0, alive: true },
+        { id: 3, x: 8, y: 2, steps: 1, animationSpeed: 0, alive: true },
       ]);
       setGates([
         {
           id: 1,
           x: 5,
           y: 10,
-          map: "bridgeRight",
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+      ]);
+    } else if (currentMap === 'deathIsland') {
+      setMapImage(deathIsland);
+      setForeImage(null);
+      setTileSize(64);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        setMapPosition({
+          x: -287,
+          y: -6,
+        });
+        setCharPosition({ x: 5, y: 5 });
+      }
+      setMapColumns(11);
+      setMapRows(11);
+      setCollisions(deathIslandCollisions);
+      setNpcs([{}]);
+      setGates([
+        {
+          id: 1,
+          x: 4,
+          y: 10,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 1,
+          x: 5,
+          y: 10,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 1,
+          x: 6,
+          y: 10,
+          map: 'bridgeRight',
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -272,22 +312,6 @@ const Map_Manager = ({
     return tempCollisionMap;
   }, [collisions, mapColumns]);
 
-  const interactionMap = useMemo(() => {
-    let tempInteractionMap = [];
-    for (let i = 0; i < interactions.length; i += mapColumns) {
-      tempInteractionMap.push(interactions.slice(i, mapColumns + i));
-    }
-    return tempInteractionMap;
-  }, [interactions, mapColumns]);
-
-  const gatesMap = useMemo(() => {
-    let tempGatesMap = [];
-    for (let i = 0; i < gatesData.length; i += mapColumns) {
-      tempGatesMap.push(gatesData.slice(i, mapColumns + i));
-    }
-    return tempGatesMap;
-  }, [gatesData, mapColumns]);
-
   const isNearNPC = (charX, charY, npcX, npcY) => {
     return Math.abs(charX - npcX) <= 1 && Math.abs(charY - npcY) <= 1;
   };
@@ -295,12 +319,6 @@ const Map_Manager = ({
   const isNearGate = (charX, charY, gateX, gateY) => {
     return Math.abs(charX - gateX) <= 1 && Math.abs(charY - gateY) <= 1;
   };
-
-  // if (
-  //   isNearGate(Math.floor(charPosition.x), Math.floor(charPosition.y), 4, 10)
-  // ) {
-  //   console.log(`Character is near a gate.`);
-  // }
 
   useEffect(() => {
     let isNearAnyGate = false;
@@ -323,9 +341,9 @@ const Map_Manager = ({
     });
 
     if (isNearAnyGate) {
-      setColor("orange");
+      setColor('orange');
     } else {
-      setColor("transparent");
+      setColor('transparent');
     }
 
     npcs.forEach((npc) => {
@@ -359,7 +377,7 @@ const Map_Manager = ({
     };
 
     const isBlocked = (y, x) =>
-      collisionMap[y][x] === BLOCKED || interactionMap[y][x] === INT;
+      collisionMap[y][x] === BLOCKED || collisionMap[y][x] === INT;
 
     if (y - 1 >= 0 && isBlocked(y - 1, x)) {
       allowed.up = false;
@@ -391,7 +409,6 @@ const Map_Manager = ({
     checkCollisions(charPosition, collisionMap);
   }, [charPosition, collisionMap]);
 
-  // console.log(collisionMap);
   useEffect(() => {
     gates.forEach((gate) => {
       const gateX = gate.x;
@@ -414,20 +431,21 @@ const Map_Manager = ({
   return (
     <div className="collision-container" style={styles}>
       {collisionMap.map((row, rowIndex) =>
-        row.map((collisionPoint, colIndex) => (
-          // Attach the key to the fragment
+        row.map((value, colIndex) => (
           <React.Fragment key={`${rowIndex}-${colIndex}`}>
-            {collisionPoint === BLOCKED && (
+            {value === BLOCKED && (
               <div
                 className="collision-zone"
                 style={{
                   top: `${rowIndex * tileSize}px`,
                   left: `${colIndex * tileSize}px`,
-                  backgroundColor: "red",
+                  width: `${tileSize}px`,
+                  height: `${tileSize}px`,
+                  // backgroundColor: 'red',
                 }}
               />
             )}
-            {interactionMap[rowIndex][colIndex] === INT && (
+            {value === INT && (
               <div
                 className="interaction-zone"
                 style={{
@@ -435,11 +453,11 @@ const Map_Manager = ({
                   left: `${colIndex * tileSize}px`,
                   width: `${tileSize}px`,
                   height: `${tileSize}px`,
-                  backgroundColor: "green",
+                  // backgroundColor: 'green',
                 }}
               />
             )}
-            {gatesMap[rowIndex][colIndex] === GATE && (
+            {value === GATE && (
               <div
                 className="gate-zone"
                 style={{
@@ -461,11 +479,10 @@ const Map_Manager = ({
                     left: `${colIndex * tileSize}px`,
                     width: `${tileSize}px`,
                     height: `${tileSize}px`,
-                    backgroundColor: "blue",
+                    backgroundColor: 'blue',
                   }}
                 />
               )}
-            {/* {console.log(`charPosition: ${charPosition.x}, ${charPosition.y}`)} */}
           </React.Fragment>
         ))
       )}

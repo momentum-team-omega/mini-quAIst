@@ -1,101 +1,94 @@
-import React, { useState, useMemo } from "react";
-import oldMan1 from "assets/npc-assets/old-man-1.png";
-import chestClosed from "assets/npc-assets/chest-1-closed.png";
-
-const getNPCMap = (npcs, mapColumns) => {
-  const npcMap = [];
-  for (let i = 0; i < mapColumns; i++) {
-    const row = [];
-    for (let j = 0; j < mapColumns; j++) {
-      row.push(null);
-    }
-    npcMap.push(row);
-  }
-  npcs.forEach((npc) => {
-    if (npcMap[npc.y] && npcMap[npc.y][npc.x] === null) {
-      npcMap[npc.y][npc.x] = npc.id;
-    }
-  });
-  return npcMap;
-};
+import { useState, useEffect } from 'react';
 
 const NPC = ({
   currentMap,
-  mapPosition,
-  npcs,
+  rowIndex,
+  colIndex,
   tileSize,
-  mapColumns,
-  mapRows,
+  mapPosition,
+  image,
+  xOffset,
+  yOffset,
+  id,
+  steps,
+  animationSpeed,
 }) => {
-  const npcMap = useMemo(() => getNPCMap(npcs, mapColumns), [npcs, mapColumns]);
+  const [frame, setFrame] = useState(1);
 
-  // console.log(npcMap);
+  const DEFAULT_ANIMATION_SPEED = 80;
 
-  let NPC_IMAGES;
-  let xOffset;
-  let yOffset;
+  // console.log('NPC Component Rendered, ID:', id);
 
-  if (currentMap === "bridgeLeft") {
-    NPC_IMAGES = {
-      1: chestClosed,
-      2: oldMan1,
-      3: chestClosed,
+  const updateAnimationFrame = () => {
+    if (steps > 1) {
+      setFrame((prevFrame) => (prevFrame % steps) + 1);
+    } else {
+      setFrame(1);
+    }
+  };
+
+  useEffect(() => {
+    let mainInterval;
+    if (mainInterval) clearInterval(mainInterval);
+
+    let speed = animationSpeed || DEFAULT_ANIMATION_SPEED;
+
+    if (steps > 1 && speed !== 0) {
+      mainInterval = setInterval(() => {
+        updateAnimationFrame();
+      }, speed);
+    }
+
+    return () => {
+      if (mainInterval) clearInterval(mainInterval);
     };
-    xOffset = 7.81 * tileSize;
-    yOffset = 1.97 * tileSize;
-  } else if (currentMap === "bridgeRight") {
-    NPC_IMAGES = {
-      1: chestClosed,
-      2: chestClosed,
-      3: oldMan1,
+  }, [frame, id, currentMap]);
+
+  let bgPositionMap = {};
+
+  if (steps === 4) {
+    bgPositionMap = {
+      1: '0%',
+      2: '33.33%',
+      3: '66.66%',
+      4: '100%',
     };
-    xOffset = 7.81 * tileSize;
-    yOffset = 1.97 * tileSize;
-  } else if (currentMap === "houseInside") {
-    NPC_IMAGES = {
-      1: chestClosed,
-      2: oldMan1,
-      3: chestClosed,
+  } else if (steps === 2) {
+    bgPositionMap = {
+      1: '0%',
+      2: '100%',
     };
-    xOffset = 7.81 * tileSize;
-    yOffset = 1.97 * tileSize;
-  } else if (currentMap === "golemMap") {
-    NPC_IMAGES = {};
-    xOffset = 0 * tileSize;
-    yOffset = 0 * tileSize;
+  } else if (steps === 1) {
+    bgPositionMap = {
+      1: '0%',
+    };
   }
+
+  let backgroundSizeValue = '100% 100%';
+
+  if (steps === 4) {
+    backgroundSizeValue = '400% 100%';
+  } else if (steps === 2) {
+    backgroundSizeValue = '200% 100%';
+  }
+
+  useEffect(() => {
+    setFrame(1);
+  }, [currentMap]);
 
   return (
     <div
-      className="npc-container"
+      className="NPC"
       style={{
-        position: "relative",
-        width: `${mapColumns * tileSize}px`,
-        height: `${mapRows * tileSize}px`,
+        top: `${rowIndex * tileSize - mapPosition.y - yOffset}px`,
+        left: `${colIndex * tileSize - mapPosition.x - xOffset}px`,
+        width: `${tileSize}px`,
+        height: `${tileSize}px`,
+        backgroundImage: `url(${image})`,
+        backgroundPosition: steps > 1 ? `${bgPositionMap[frame]} 0%` : '0% 0%',
+        backgroundSize: backgroundSizeValue,
       }}
-    >
-      {npcMap.map((row, rowIndex) =>
-        row.map((npcId, colIndex) => (
-          <React.Fragment key={`${rowIndex}-${colIndex}`}>
-            {npcId && (
-              <div>
-                <img
-                  src={NPC_IMAGES[npcId] || oldMan1}
-                  alt="NPC"
-                  className="NPC"
-                  style={{
-                    top: `${rowIndex * tileSize - mapPosition.y - yOffset}px`,
-                    left: `${colIndex * tileSize - mapPosition.x - xOffset}px`,
-                    width: `${tileSize}px`,
-                    height: `${tileSize}px`,
-                  }}
-                />
-              </div>
-            )}
-          </React.Fragment>
-        ))
-      )}
-    </div>
+    ></div>
   );
 };
 
