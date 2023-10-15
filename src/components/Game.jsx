@@ -4,7 +4,7 @@ import Overworld from './Overworld';
 import Dialogue from './Dialogue';
 
 const Game = () => {
-  const [currentMap, setCurrentMap] = useState('village1');
+  const [currentMap, setCurrentMap] = useState('bridgeLeft');
 
   const [gameWindow, setGameWindow] = useState({
     height: '720px',

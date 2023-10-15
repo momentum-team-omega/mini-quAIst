@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Map = ({ mapPosition, mapImage }) => {
+const Map = ({ mapPosition, mapImage, tileSize, mapColumns, mapRows }) => {
   const [frame, setFrame] = useState(1);
 
   const updateMapFrame = () => {
@@ -8,7 +8,7 @@ const Map = ({ mapPosition, mapImage }) => {
   };
 
   useEffect(() => {
-    const frameInterval = 100;
+    const frameInterval = 600;
 
     const mainInterval = setInterval(() => {
       updateMapFrame();
@@ -19,20 +19,19 @@ const Map = ({ mapPosition, mapImage }) => {
     };
   }, []);
 
-  const bgPositionMap = {
-    1: '0%',
-    2: '33.33%',
-    3: '66.66%',
-    4: '100%',
-  };
+  const leftPosition = `${(frame - 1) * 33.333333}%`;
 
   const styles = {
     top: `${-mapPosition.y}px`,
     left: `${-mapPosition.x}px`,
-    objectPosition: bgPositionMap[frame],
+    width: `${tileSize * mapColumns}px`,
+    height: `${tileSize * mapRows}px`,
+    backgroundImage: `url(${mapImage})`,
+    backgroundPosition: `${leftPosition} 0`,
+    backgroundSize: '400% 100%',
   };
 
-  return <img src={mapImage} className="map-container" style={styles}></img>;
+  return <div className="map-container" style={styles}></div>;
 };
 
 export default Map;

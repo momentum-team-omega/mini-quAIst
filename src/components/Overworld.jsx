@@ -5,6 +5,7 @@ import Char_Move from 'components/Char_Move';
 import Map from 'components/Map';
 import Foreground from 'components/Foreground';
 import Map_Manager from 'components/Map_Manager';
+import Map_Switch from 'components/Map_Switch';
 
 const Overworld = ({ currentMap, setCurrentMap }) => {
   const [mapImage, setMapImage] = useState(null);
@@ -17,6 +18,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
     y: 0,
   });
   const [mapOffset, setMapOffset] = useState({ x: 9, y: 6 });
+  const [hasMapSwitched, setHasMapSwitched] = useState(false);
 
   const [direction, setDirection] = useState('Down');
 
@@ -85,12 +87,25 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         isFPressed={isFPressed}
         setIsFPressed={setIsFPressed}
       />
+      <Map_Switch
+        currentMap={currentMap}
+        mapImage={mapImage}
+        setForeImage={setForeImage}
+        setMapImage={setMapImage}
+        setMapPosition={setMapPosition}
+        setCharPosition={setCharPosition}
+        setNpcs={setNpcs}
+        setMapColumns={setMapColumns}
+        setMapRows={setMapRows}
+        setGates={setGates}
+        setTileSize={setTileSize}
+        setMapOffset={setMapOffset}
+        setIsFPressed={setIsFPressed}
+        hasMapSwitched={hasMapSwitched}
+      />
       <Map_Manager
         currentMap={currentMap}
         setCurrentMap={setCurrentMap}
-        mapImage={mapImage}
-        setMapImage={setMapImage}
-        setForeImage={setForeImage}
         mapPosition={mapPosition}
         setMapPosition={setMapPosition}
         charPosition={charPosition}
@@ -101,14 +116,10 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         npcs={npcs}
         setNpcs={setNpcs}
         mapColumns={mapColumns}
-        setMapColumns={setMapColumns}
-        setMapRows={setMapRows}
+        mapRows={mapRows}
         gates={gates}
-        setGates={setGates}
-        setTileSize={setTileSize}
-        setMapOffset={setMapOffset}
         isFPressed={isFPressed}
-        setIsFPressed={setIsFPressed}
+        setHasMapSwitched={setHasMapSwitched}
       />
       <Map
         mapPosition={mapPosition}
@@ -118,6 +129,12 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         mapRows={mapRows}
       />
       <Foreground mapPosition={mapPosition} foreImage={foreImage} />
+      <Char
+        tileSize={tileSize}
+        direction={direction}
+        isMoving={isMoving}
+        isSpacePressed={isSpacePressed}
+      />
       <NPC_Map
         currentMap={currentMap}
         mapPosition={mapPosition}
@@ -125,12 +142,6 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         tileSize={tileSize}
         mapColumns={mapColumns}
         mapRows={mapRows}
-      />
-      <Char
-        tileSize={tileSize}
-        direction={direction}
-        isMoving={isMoving}
-        isSpacePressed={isSpacePressed}
       />
     </>
   );
