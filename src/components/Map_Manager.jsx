@@ -129,6 +129,7 @@ const Map_Manager = ({
         console.log(`Character is near NPC with ID: ${npc.id}`);
         isNearAnyNpc = true;
 
+        // 
         if (isFPressed) {
           setNpcs((prevNpcs) =>
             prevNpcs.map((prevNpc) =>

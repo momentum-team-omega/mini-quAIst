@@ -12,8 +12,7 @@ const Game = () => {
   });
 
   
-  <Dialogue />
-
+  
   return (
     <>
       <Nav />
@@ -26,6 +25,7 @@ const Game = () => {
           }}
         >
           <Overworld currentMap={currentMap} setCurrentMap={setCurrentMap} />
+          <Dialogue />
           
         </div>
       </div>
