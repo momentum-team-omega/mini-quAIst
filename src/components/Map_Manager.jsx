@@ -4,8 +4,6 @@ import {
   bridgeRightCollisions,
   houseInsideCollisions,
   trollBridgeCollisions,
-  grassLand50Collisions,
-  grassLand50x40Collisions,
   grassLand40Collisions,
   grassLand40x30Collisions,
   grassLand30Collisions,
@@ -17,10 +15,6 @@ import bridgeRight from 'assets/map-assets/bridge-map-right.png';
 import bridgeRightFore from 'assets/map-assets/bridge-map-right-fore.png';
 import houseInside from 'assets/map-assets/house-map-inside.png';
 import trollBridge200 from 'assets/map-assets/troll-bridge-map-200.png';
-import grassLand50 from 'assets/map-assets/grassLand50.png';
-import grassLand50Fore from 'assets/map-assets/grassLand50-fore.png';
-import grassLand50x40 from 'assets/map-assets/grassLand50x40.png';
-import grassLand50x40Fore from 'assets/map-assets/grassLand50x40-fore.png';
 import grassLand40 from 'assets/map-assets/grassLand40.png';
 import grassLand40Fore from 'assets/map-assets/grassLand40-fore.png';
 import grassLand40x30 from 'assets/map-assets/grassLand40x30.png';
@@ -328,82 +322,6 @@ const Map_Manager = ({
           id: 8,
           x: 8,
           y: 24,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-      ]);
-    } else if (currentMap === 'grassLand50') {
-      setMapImage(grassLand50);
-      setForeImage(grassLand50Fore);
-      setTileSize(64);
-      setMapColumns(50);
-      setMapRows(50);
-      setMapOffset({ x: 9.5, y: 6 });
-      if (!hasMapSwitched) {
-        setMapPosition({
-          x: 963,
-          y: 896.5,
-        });
-        setCharPosition({ x: 24, y: 19 });
-      }
-      setCollisions(grassLand50Collisions);
-      setNpcs([{}]);
-      setGates([
-        {
-          id: 1,
-          x: 24,
-          y: 49,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 2,
-          x: 25,
-          y: 49,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-      ]);
-    } else if (currentMap === 'grassLand50x40') {
-      setMapImage(grassLand50x40);
-      setForeImage(grassLand50x40Fore);
-      setTileSize(64);
-      setMapColumns(50);
-      setMapRows(40);
-      setMapOffset({ x: 9.5, y: 6 });
-      if (!hasMapSwitched) {
-        setMapPosition({
-          x: 960.5,
-          y: 759,
-        });
-        setCharPosition({ x: 24, y: 17 });
-      }
-      setCollisions(grassLand50x40Collisions);
-      setNpcs([{}]);
-      setGates([
-        {
-          id: 1,
-          x: 24,
-          y: 15,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 2,
-          x: 25,
-          y: 15,
           map: 'bridgeRight',
           destPX: -252,
           destPY: -112,
