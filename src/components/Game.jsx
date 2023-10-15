@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import Nav from 'components/Nav';
-import Overworld from './Overworld';
-import Dialogue from './Dialogue';
+import React, { useState } from "react";
+import Nav from "components/Nav";
+import Overworld from "./Overworld";
+import Dialogue from "./Dialogue";
 
 const Game = () => {
-  const [currentMap, setCurrentMap] = useState('village1');
+  const [currentMap, setCurrentMap] = useState("village1");
+  const [showDialogue, setShowDialogue] = useState(false);
+  const [currentNPC, setCurrentNPC] = useState(null);
 
   const [gameWindow, setGameWindow] = useState({
-    height: '720px',
-    width: '1280px',
+    height: "720px",
+    width: "1280px",
   });
 
-  
-  
   return (
     <>
       <Nav />
@@ -24,9 +24,13 @@ const Game = () => {
             width: gameWindow.width,
           }}
         >
-          <Overworld currentMap={currentMap} setCurrentMap={setCurrentMap} />
+          <Overworld
+            currentMap={currentMap}
+            setCurrentMap={setCurrentMap}
+            setShowDialogue={setShowDialogue}
+            setCurrentNPC={setCurrentNPC}
+          />
           <Dialogue />
-          
         </div>
       </div>
     </>

@@ -129,7 +129,7 @@ const Map_Manager = ({
         console.log(`Character is near NPC with ID: ${npc.id}`);
         isNearAnyNpc = true;
 
-        // 
+        
         if (isFPressed) {
           setNpcs((prevNpcs) =>
             prevNpcs.map((prevNpc) =>
@@ -138,6 +138,9 @@ const Map_Manager = ({
                 : prevNpc
             )
           );
+          setCurrentNPC(npc); // This sets which NPC the player is currently interacting with
+          setShowDialogue(true); // This will show the dialogue box or component
+          
         }
       }
     });

@@ -7,7 +7,7 @@ import Foreground from 'components/Foreground';
 import Map_Manager from 'components/Map_Manager';
 import Map_Switch from 'components/Map_Switch';
 
-const Overworld = ({ currentMap, setCurrentMap }) => {
+const Overworld = ({ currentMap, setCurrentMap, setCurrentNPC, setShowDialogue }) => {
   const [mapImage, setMapImage] = useState(null);
   const [foreImage, setForeImage] = useState(null);
   const [tileSize, setTileSize] = useState(48);
@@ -120,6 +120,8 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         gates={gates}
         isFPressed={isFPressed}
         setHasMapSwitched={setHasMapSwitched}
+        setShowDialogue={setShowDialogue}
+        setCurrentNPC={setCurrentNPC}
       />
       <Map
         mapPosition={mapPosition}
