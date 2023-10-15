@@ -12,6 +12,8 @@ const NPC = ({
   id,
   steps,
   animationSpeed,
+  triggered,
+  message,
 }) => {
   const [frame, setFrame] = useState(1);
 
@@ -77,18 +79,34 @@ const NPC = ({
   }, [currentMap]);
 
   return (
-    <div
-      className="NPC"
-      style={{
-        top: `${rowIndex * tileSize - mapPosition.y - yOffset}px`,
-        left: `${colIndex * tileSize - mapPosition.x - xOffset}px`,
-        width: `${tileSize}px`,
-        height: `${tileSize}px`,
-        backgroundImage: `url(${image})`,
-        backgroundPosition: steps > 1 ? `${bgPositionMap[frame]} 0%` : '0% 0%',
-        backgroundSize: backgroundSizeValue,
-      }}
-    ></div>
+    <>
+      {triggered && (
+        <div
+          className="message-box"
+          style={{
+            top: `${rowIndex * tileSize - mapPosition.y - yOffset - 40}px`,
+            left: `${colIndex * tileSize - mapPosition.x - xOffset - 10}px`,
+            width: `${tileSize + 20}px`,
+            height: `${tileSize - 15}px`,
+          }}
+        >
+          <p className="message-text">{message}</p>
+        </div>
+      )}
+      <div
+        className="NPC"
+        style={{
+          top: `${rowIndex * tileSize - mapPosition.y - yOffset}px`,
+          left: `${colIndex * tileSize - mapPosition.x - xOffset}px`,
+          width: `${tileSize}px`,
+          height: `${tileSize}px`,
+          backgroundImage: `url(${image})`,
+          backgroundPosition:
+            steps > 1 ? `${bgPositionMap[frame]} 0%` : '0% 0%',
+          backgroundSize: backgroundSizeValue,
+        }}
+      ></div>
+    </>
   );
 };
 

@@ -46,15 +46,20 @@ const Map_Manager = ({
   setGates,
   setTileSize,
   setMapOffset,
+  isFPressed,
+  setIsFPressed,
 }) => {
   const [collisions, setCollisions] = useState(bridgeLeftCollisions);
   const [hasMapSwitched, setHasMapSwitched] = useState(false);
+
+  const [interactedNPCId, setInteractedNPCId] = useState(null);
 
   const BLOCKED = 1025;
   const INT = 777;
   const GATE = 500;
 
-  const [color, setColor] = useState('transparent');
+  const [gateColor, setGateColor] = useState('transparent');
+  const [npcColor, setNpcColor] = useState('transparent');
 
   const styles = {
     top: `${-mapPosition.y}px`,
@@ -80,10 +85,38 @@ const Map_Manager = ({
         setCharPosition({ x: 5, y: 5 });
       }
       setCollisions(bridgeLeftCollisions);
+      setIsFPressed(false);
       setNpcs([
-        { id: 1, x: 1, y: 1, steps: 1, animationSpeed: 0, alive: true },
-        { id: 2, x: 6, y: 8, steps: 2, animationSpeed: 800, alive: true },
-        { id: 3, x: 8, y: 8, steps: 1, animationSpeed: 0, alive: true },
+        {
+          id: 1,
+          x: 1,
+          y: 1,
+          steps: 1,
+          animationSpeed: 0,
+          alive: true,
+          triggered: false,
+          message: "Press 'F'",
+        },
+        {
+          id: 2,
+          x: 6,
+          y: 8,
+          steps: 2,
+          animationSpeed: 800,
+          alive: true,
+          triggered: false,
+          message: 'Greetings',
+        },
+        {
+          id: 3,
+          x: 8,
+          y: 8,
+          steps: 1,
+          animationSpeed: 0,
+          alive: true,
+          triggered: false,
+          message: "Press 'F'",
+        },
       ]);
       setGates([
         {
@@ -132,10 +165,38 @@ const Map_Manager = ({
         setCharPosition({ x: 5, y: 5 });
       }
       setCollisions(bridgeRightCollisions);
+      setIsFPressed(false);
       setNpcs([
-        { id: 1, x: 1, y: 8, steps: 1, animationSpeed: 0, alive: true },
-        { id: 2, x: 2, y: 1, steps: 1, animationSpeed: 0, alive: true },
-        { id: 3, x: 7, y: 7, steps: 2, animationSpeed: 800, alive: true },
+        {
+          id: 1,
+          x: 2,
+          y: 1,
+          steps: 1,
+          animationSpeed: 0,
+          alive: true,
+          triggered: false,
+          message: "Press 'F'",
+        },
+        {
+          id: 2,
+          x: 1,
+          y: 8,
+          steps: 1,
+          animationSpeed: 0,
+          alive: true,
+          triggered: false,
+          message: "Press 'F'",
+        },
+        {
+          id: 3,
+          x: 7,
+          y: 7,
+          steps: 2,
+          animationSpeed: 800,
+          alive: true,
+          triggered: false,
+          message: 'Greetings',
+        },
       ]);
       setGates([
         {
@@ -204,10 +265,38 @@ const Map_Manager = ({
         setCharPosition({ x: 5, y: 9 });
       }
       setCollisions(houseInsideCollisions);
+      setIsFPressed(false);
       setNpcs([
-        { id: 1, x: 2, y: 8, steps: 1, animationSpeed: 0, alive: true },
-        { id: 2, x: 3, y: 2, steps: 2, animationSpeed: 800, alive: true },
-        { id: 3, x: 8, y: 2, steps: 1, animationSpeed: 0, alive: true },
+        {
+          id: 1,
+          x: 2,
+          y: 8,
+          steps: 1,
+          animationSpeed: 0,
+          alive: true,
+          triggered: false,
+          message: "Press 'F'",
+        },
+        {
+          id: 2,
+          x: 3,
+          y: 2,
+          steps: 2,
+          animationSpeed: 800,
+          alive: true,
+          triggered: false,
+          message: 'Greetings',
+        },
+        {
+          id: 3,
+          x: 8,
+          y: 2,
+          steps: 1,
+          animationSpeed: 0,
+          alive: true,
+          triggered: false,
+          message: "Press 'F'",
+        },
       ]);
       setGates([
         {
@@ -247,6 +336,7 @@ const Map_Manager = ({
       }
       setCollisions(trollBridgeCollisions);
       setNpcs([{}]);
+      setIsFPressed(false);
       setGates([
         {
           id: 1,
@@ -344,6 +434,7 @@ const Map_Manager = ({
         setCharPosition({ x: 19, y: 17 });
       }
       setCollisions(grassLand40Collisions);
+      setIsFPressed(false);
       setNpcs([{}]);
       setGates([
         {
@@ -382,6 +473,7 @@ const Map_Manager = ({
         setCharPosition({ x: 19, y: 14 });
       }
       setCollisions(grassLand40x30Collisions);
+      setIsFPressed(false);
       setNpcs([{}]);
       setGates([
         {
@@ -420,6 +512,7 @@ const Map_Manager = ({
         setCharPosition({ x: 14, y: 13 });
       }
       setCollisions(grassLand30Collisions);
+      setIsFPressed(false);
       setNpcs([{}]);
       setGates([
         {
@@ -458,6 +551,7 @@ const Map_Manager = ({
         setCharPosition({ x: 9, y: 12 });
       }
       setCollisions(grassLand20Collisions);
+      setIsFPressed(false);
       setNpcs([{}]);
       setGates([
         {
@@ -525,10 +619,12 @@ const Map_Manager = ({
     });
 
     if (isNearAnyGate) {
-      setColor('orange');
+      setGateColor('orange');
     } else {
-      setColor('transparent');
+      setGateColor('transparent');
     }
+
+    let isNearAnyNpc = false;
 
     npcs.forEach((npc) => {
       const npcX = npc.x;
@@ -543,8 +639,26 @@ const Map_Manager = ({
         )
       ) {
         console.log(`Character is near NPC with ID: ${npc.id}`);
+        isNearAnyNpc = true;
+
+        if (isFPressed) {
+          setNpcs((prevNpcs) =>
+            prevNpcs.map((prevNpc) =>
+              prevNpc.id === npc.id
+                ? { ...prevNpc, triggered: !prevNpc.triggered }
+                : prevNpc
+            )
+          );
+        }
       }
     });
+
+    if (isNearAnyNpc) {
+      setNpcColor('cyan');
+    } else {
+      setNpcColor('transparent');
+    }
+
     console.log(mapPosition);
     console.log(charPosition);
   }, [charPosition]);
@@ -637,7 +751,7 @@ const Map_Manager = ({
                   left: `${colIndex * tileSize}px`,
                   width: `${tileSize}px`,
                   height: `${tileSize}px`,
-                  // backgroundColor: 'lightblue',
+                  backgroundColor: npcColor,
                 }}
               />
             )}
@@ -649,7 +763,7 @@ const Map_Manager = ({
                   left: `${colIndex * tileSize}px`,
                   width: `${tileSize}px`,
                   height: `${tileSize}px`,
-                  backgroundColor: color,
+                  backgroundColor: gateColor,
                 }}
               />
             )}

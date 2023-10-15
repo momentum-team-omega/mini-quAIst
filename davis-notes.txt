@@ -46,6 +46,9 @@ make NPC a component inside of NPC_Map so we can control animations etc ✅
 
 To-Do Now: 🚨
 
+
+add dialogue box above NPC head and test triggering dialogue
+
 NPCs not continuing to animate between map changes, after switching from the 2d grid map to mapping the npcs list directly. not sure what could be causing this. (reverted back to 2d grid mapping because maps without NPCs were broken as well) 
 
 make only the gate the character is next to highlighted (currently they all get highlighted)

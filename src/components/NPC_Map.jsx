@@ -112,8 +112,11 @@ const NPC_Map = ({
                   image={NPC_IMAGES[npcId] || oldMan1}
                   xOffset={xOffset}
                   yOffset={yOffset}
+                  id={currentNPC.id}
                   steps={currentNPC.steps}
                   animationSpeed={currentNPC.animationSpeed}
+                  triggered={currentNPC.triggered}
+                  message={currentNPC.message}
                 />
               )}
             </React.Fragment>
