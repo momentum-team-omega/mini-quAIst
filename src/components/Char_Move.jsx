@@ -11,6 +11,8 @@ const Char_Move = ({
   isSpacePressed,
   setIsSpacePressed,
   mapOffset,
+  isFPressed,
+  setIsFPressed,
 }) => {
   const [keys, setKeys] = useState({
     w: { pressed: false },
@@ -106,6 +108,10 @@ const Char_Move = ({
       if (e.key === ' ') {
         setIsSpacePressed(true);
         e.preventDefault();
+      }
+      if (e.key === 'f') {
+        e.preventDefault();
+        setIsFPressed((prevIsFPressed) => !prevIsFPressed);
       }
     };
 

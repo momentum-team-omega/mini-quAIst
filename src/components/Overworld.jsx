@@ -22,6 +22,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
 
   const [isMoving, setIsMoving] = useState(false);
   const [isSpacePressed, setIsSpacePressed] = useState(false);
+  const [isFPressed, setIsFPressed] = useState(false);
   const [charPosition, setCharPosition] = useState({ x: 5, y: 5 });
   const [allowedMovements, setAllowedMovements] = useState({
     up: true,
@@ -31,9 +32,36 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
   });
 
   const [npcs, setNpcs] = useState([
-    { id: 1, x: 1, y: 1, steps: 1, animationSpeed: 0, alive: true },
-    { id: 2, x: 6, y: 8, steps: 1, animationSpeed: 800, alive: true },
-    { id: 3, x: 8, y: 8, steps: 2, animationSpeed: 800, alive: true },
+    {
+      id: 1,
+      x: 2,
+      y: 1,
+      steps: 1,
+      animationSpeed: 0,
+      alive: true,
+      triggered: false,
+      message: "'F'to open",
+    },
+    {
+      id: 2,
+      x: 1,
+      y: 8,
+      steps: 1,
+      animationSpeed: 0,
+      alive: true,
+      triggered: false,
+      message: "'F'to open",
+    },
+    {
+      id: 3,
+      x: 7,
+      y: 7,
+      steps: 2,
+      animationSpeed: 800,
+      alive: true,
+      triggered: false,
+      message: 'Greetings',
+    },
   ]);
   const [gates, setGates] = useState([
     { id: 1, x: 10, y: 4 },
@@ -54,6 +82,8 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         isSpacePressed={isSpacePressed}
         setIsSpacePressed={setIsSpacePressed}
         mapOffset={mapOffset}
+        isFPressed={isFPressed}
+        setIsFPressed={setIsFPressed}
       />
       <Map_Manager
         currentMap={currentMap}
@@ -77,6 +107,8 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         setGates={setGates}
         setTileSize={setTileSize}
         setMapOffset={setMapOffset}
+        isFPressed={isFPressed}
+        setIsFPressed={setIsFPressed}
       />
       <Map
         mapPosition={mapPosition}

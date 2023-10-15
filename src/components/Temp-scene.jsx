@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Nav from "components/Nav";
-import Cut_Scene from "components/Cut_Scene";
+import React, { useState } from 'react';
+import Nav from 'components/Nav';
+import Cut_Scene from 'components/Cut_Scene';
 
 const TempScene = () => {
   const [gameWindow, setGameWindow] = useState({
-    height: "720px",
-    width: "1280px",
+    height: '720px',
+    width: '1280px',
   });
 
   return (

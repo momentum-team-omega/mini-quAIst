@@ -3,16 +3,29 @@ import {
   bridgeLeftCollisions,
   bridgeRightCollisions,
   houseInsideCollisions,
-  golemMapCollisions,
-  deathIslandCollisions,
+  trollBridgeCollisions,
+  grassLand40Collisions,
+  grassLand40x30Collisions,
+  grassLand30Collisions,
+  grassLand20Collisions,
+  village1Collisions,
 } from 'utilities/collisionsData.js';
 import bridgeLeft from 'assets/map-assets/bridge-map-left.png';
 import bridgeLeftFore from 'assets/map-assets/bridge-map-left-fore.png';
 import bridgeRight from 'assets/map-assets/bridge-map-right.png';
 import bridgeRightFore from 'assets/map-assets/bridge-map-right-fore.png';
 import houseInside from 'assets/map-assets/house-map-inside.png';
-import golemMap from 'assets/map-assets/golem-map.png';
-import deathIsland from 'assets/map-assets/deathIsland.png';
+import trollBridge200 from 'assets/map-assets/troll-bridge-map-200.png';
+import grassLand40 from 'assets/map-assets/grassLand40.png';
+import grassLand40Fore from 'assets/map-assets/grassLand40-fore.png';
+import grassLand40x30 from 'assets/map-assets/grassLand40x30.png';
+import grassLand40x30Fore from 'assets/map-assets/grassLand40x30-fore.png';
+import grassLand30 from 'assets/map-assets/grassLand30.png';
+import grassLand30Fore from 'assets/map-assets/grassLand30-fore.png';
+import grassLand20 from 'assets/map-assets/grassLand20.png';
+import grassLand20Fore from 'assets/map-assets/grassLand20-fore.png';
+import village1 from 'assets/map-assets/village1.png';
+import village1Fore from 'assets/map-assets/village1-fore.png';
 
 const Map_Manager = ({
   currentMap,
@@ -36,15 +49,20 @@ const Map_Manager = ({
   setGates,
   setTileSize,
   setMapOffset,
+  isFPressed,
+  setIsFPressed,
 }) => {
   const [collisions, setCollisions] = useState(bridgeLeftCollisions);
   const [hasMapSwitched, setHasMapSwitched] = useState(false);
+
+  const [interactedNPCId, setInteractedNPCId] = useState(null);
 
   const BLOCKED = 1025;
   const INT = 777;
   const GATE = 500;
 
-  const [color, setColor] = useState('transparent');
+  const [gateColor, setGateColor] = useState('transparent');
+  const [npcColor, setNpcColor] = useState('transparent');
 
   const styles = {
     top: `${-mapPosition.y}px`,
@@ -59,6 +77,8 @@ const Map_Manager = ({
       setMapImage(bridgeLeft);
       setForeImage(bridgeLeftFore);
       setTileSize(48);
+      setMapColumns(11);
+      setMapRows(11);
       setMapOffset({ x: 13, y: 8 });
       if (!hasMapSwitched) {
         setMapPosition({
@@ -67,13 +87,39 @@ const Map_Manager = ({
         });
         setCharPosition({ x: 5, y: 5 });
       }
-      setMapColumns(11);
-      setMapRows(11);
       setCollisions(bridgeLeftCollisions);
+      setIsFPressed(false);
       setNpcs([
-        { id: 1, x: 1, y: 1, steps: 1, animationSpeed: 0, alive: true },
-        { id: 2, x: 6, y: 8, steps: 2, animationSpeed: 800, alive: true },
-        { id: 3, x: 8, y: 8, steps: 1, animationSpeed: 0, alive: true },
+        {
+          id: 1,
+          x: 1,
+          y: 1,
+          steps: 1,
+          animationSpeed: 0,
+          alive: true,
+          triggered: false,
+          message: "Press 'F'",
+        },
+        {
+          id: 2,
+          x: 6,
+          y: 8,
+          steps: 2,
+          animationSpeed: 800,
+          alive: true,
+          triggered: false,
+          message: 'Greetings',
+        },
+        {
+          id: 3,
+          x: 8,
+          y: 8,
+          steps: 1,
+          animationSpeed: 0,
+          alive: true,
+          triggered: false,
+          message: "Press 'F'",
+        },
       ]);
       setGates([
         {
@@ -111,6 +157,8 @@ const Map_Manager = ({
       setMapImage(bridgeRight);
       setForeImage(bridgeRightFore);
       setTileSize(48);
+      setMapColumns(11);
+      setMapRows(11);
       setMapOffset({ x: 13, y: 8 });
       if (!hasMapSwitched) {
         setMapPosition({
@@ -119,13 +167,39 @@ const Map_Manager = ({
         });
         setCharPosition({ x: 5, y: 5 });
       }
-      setMapColumns(11);
-      setMapRows(11);
       setCollisions(bridgeRightCollisions);
+      setIsFPressed(false);
       setNpcs([
-        { id: 1, x: 1, y: 8, steps: 1, animationSpeed: 0, alive: true },
-        { id: 2, x: 2, y: 1, steps: 1, animationSpeed: 0, alive: true },
-        { id: 3, x: 7, y: 7, steps: 2, animationSpeed: 800, alive: true },
+        {
+          id: 1,
+          x: 2,
+          y: 1,
+          steps: 1,
+          animationSpeed: 0,
+          alive: true,
+          triggered: false,
+          message: "Press 'F'",
+        },
+        {
+          id: 2,
+          x: 1,
+          y: 8,
+          steps: 1,
+          animationSpeed: 0,
+          alive: true,
+          triggered: false,
+          message: "Press 'F'",
+        },
+        {
+          id: 3,
+          x: 7,
+          y: 7,
+          steps: 2,
+          animationSpeed: 800,
+          alive: true,
+          triggered: false,
+          message: 'Greetings',
+        },
       ]);
       setGates([
         {
@@ -183,6 +257,8 @@ const Map_Manager = ({
       setMapImage(houseInside);
       setForeImage(null);
       setTileSize(48);
+      setMapColumns(11);
+      setMapRows(11);
       setMapOffset({ x: 13, y: 8 });
       if (!hasMapSwitched) {
         setMapPosition({
@@ -191,13 +267,39 @@ const Map_Manager = ({
         });
         setCharPosition({ x: 5, y: 9 });
       }
-      setMapColumns(11);
-      setMapRows(11);
       setCollisions(houseInsideCollisions);
+      setIsFPressed(false);
       setNpcs([
-        { id: 1, x: 2, y: 8, steps: 1, animationSpeed: 0, alive: true },
-        { id: 2, x: 3, y: 2, steps: 2, animationSpeed: 800, alive: true },
-        { id: 3, x: 8, y: 2, steps: 1, animationSpeed: 0, alive: true },
+        {
+          id: 1,
+          x: 2,
+          y: 8,
+          steps: 1,
+          animationSpeed: 0,
+          alive: true,
+          triggered: false,
+          message: "Press 'F'",
+        },
+        {
+          id: 2,
+          x: 3,
+          y: 2,
+          steps: 2,
+          animationSpeed: 800,
+          alive: true,
+          triggered: false,
+          message: 'Greetings',
+        },
+        {
+          id: 3,
+          x: 8,
+          y: 2,
+          steps: 1,
+          animationSpeed: 0,
+          alive: true,
+          triggered: false,
+          message: "Press 'F'",
+        },
       ]);
       setGates([
         {
@@ -221,42 +323,12 @@ const Map_Manager = ({
           destY: 5,
         },
       ]);
-    } else if (currentMap === 'golemMap') {
-      setMapImage(golemMap);
+    } else if (currentMap === 'trollBridge200') {
+      setMapImage(trollBridge200);
       setForeImage(null);
       setTileSize(64);
-      setMapOffset({ x: 13, y: 8 });
-      if (!hasMapSwitched) {
-        setMapPosition({
-          x: -377,
-          y: 95.5,
-        });
-        setCharPosition({ x: 5, y: 9 });
-      }
-      setMapColumns(11);
-      setMapRows(11);
-      setCollisions(golemMapCollisions);
-      setNpcs([
-        { id: 1, x: 2, y: 8, steps: 1, animationSpeed: 0, alive: true },
-        { id: 2, x: 3, y: 2, steps: 1, animationSpeed: 0, alive: true },
-        { id: 3, x: 8, y: 2, steps: 1, animationSpeed: 0, alive: true },
-      ]);
-      setGates([
-        {
-          id: 1,
-          x: 5,
-          y: 10,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-      ]);
-    } else if (currentMap === 'deathIsland') {
-      setMapImage(deathIsland);
-      setForeImage(null);
-      setTileSize(64);
+      setMapColumns(25);
+      setMapRows(25);
       setMapOffset({ x: 9.5, y: 6 });
       if (!hasMapSwitched) {
         setMapPosition({
@@ -265,14 +337,229 @@ const Map_Manager = ({
         });
         setCharPosition({ x: 5, y: 5 });
       }
-      setMapColumns(11);
-      setMapRows(11);
-      setCollisions(deathIslandCollisions);
+      setCollisions(trollBridgeCollisions);
+      setNpcs([{}]);
+      setIsFPressed(false);
+      setGates([
+        {
+          id: 1,
+          x: 5,
+          y: 0,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 2,
+          x: 6,
+          y: 0,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 3,
+          x: 7,
+          y: 0,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 4,
+          x: 8,
+          y: 0,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 5,
+          x: 5,
+          y: 24,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 6,
+          x: 6,
+          y: 24,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 7,
+          x: 7,
+          y: 24,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 8,
+          x: 8,
+          y: 24,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+      ]);
+    } else if (currentMap === 'grassLand40') {
+      setMapImage(grassLand40);
+      setForeImage(grassLand40Fore);
+      setTileSize(64);
+      setMapColumns(40);
+      setMapRows(40);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        setMapPosition({
+          x: 638,
+          y: 764,
+        });
+        setCharPosition({ x: 19, y: 17 });
+      }
+      setCollisions(grassLand40Collisions);
+      setIsFPressed(false);
       setNpcs([{}]);
       setGates([
         {
           id: 1,
-          x: 4,
+          x: 19,
+          y: 15,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 2,
+          x: 20,
+          y: 15,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+      ]);
+    } else if (currentMap === 'grassLand40x30') {
+      setMapImage(grassLand40x30);
+      setForeImage(grassLand40x30Fore);
+      setTileSize(64);
+      setMapColumns(40);
+      setMapRows(30);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        setMapPosition({
+          x: 640.5,
+          y: 566.5,
+        });
+        setCharPosition({ x: 19, y: 14 });
+      }
+      setCollisions(grassLand40x30Collisions);
+      setIsFPressed(false);
+      setNpcs([{}]);
+      setGates([
+        {
+          id: 1,
+          x: 19,
+          y: 12,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 2,
+          x: 20,
+          y: 12,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+      ]);
+    } else if (currentMap === 'grassLand30') {
+      setMapImage(grassLand30);
+      setForeImage(grassLand30Fore);
+      setTileSize(64);
+      setMapColumns(30);
+      setMapRows(30);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        setMapPosition({
+          x: 318,
+          y: 504,
+        });
+        setCharPosition({ x: 14, y: 13 });
+      }
+      setCollisions(grassLand30Collisions);
+      setIsFPressed(false);
+      setNpcs([{}]);
+      setGates([
+        {
+          id: 1,
+          x: 14,
+          y: 11,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 2,
+          x: 15,
+          y: 11,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+      ]);
+    } else if (currentMap === 'grassLand20') {
+      setMapImage(grassLand20);
+      setForeImage(grassLand20Fore);
+      setTileSize(64);
+      setMapColumns(20);
+      setMapRows(20);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        setMapPosition({
+          x: 0.5,
+          y: 439,
+        });
+        setCharPosition({ x: 9, y: 12 });
+      }
+      setCollisions(grassLand20Collisions);
+      setIsFPressed(false);
+      setNpcs([{}]);
+      setGates([
+        {
+          id: 1,
+          x: 9,
           y: 10,
           map: 'bridgeRight',
           destPX: -252,
@@ -281,8 +568,37 @@ const Map_Manager = ({
           destY: 5,
         },
         {
+          id: 2,
+          x: 10,
+          y: 10,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+      ]);
+    } else if (currentMap === 'village1') {
+      setMapImage(village1);
+      setForeImage(village1Fore);
+      setTileSize(64);
+      setMapColumns(40);
+      setMapRows(30);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        setMapPosition({
+          x: 953,
+          y: 376.5,
+        });
+        setCharPosition({ x: 24, y: 11 });
+      }
+      setCollisions(village1Collisions);
+      setIsFPressed(false);
+      setNpcs([{}]);
+      setGates([
+        {
           id: 1,
-          x: 5,
+          x: 0,
           y: 10,
           map: 'bridgeRight',
           destPX: -252,
@@ -291,9 +607,129 @@ const Map_Manager = ({
           destY: 5,
         },
         {
-          id: 1,
-          x: 6,
-          y: 10,
+          id: 2,
+          x: 0,
+          y: 11,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 3,
+          x: 0,
+          y: 12,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 4,
+          x: 9,
+          y: 1,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 5,
+          x: 10,
+          y: 1,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 6,
+          x: 11,
+          y: 1,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 7,
+          x: 31,
+          y: 29,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 8,
+          x: 32,
+          y: 29,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 9,
+          x: 33,
+          y: 29,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 10,
+          x: 39,
+          y: 14,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 11,
+          x: 39,
+          y: 15,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 12,
+          x: 39,
+          y: 16,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 12,
+          x: 24,
+          y: 9,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 13,
+          x: 25,
+          y: 9,
           map: 'bridgeRight',
           destPX: -252,
           destPY: -112,
@@ -309,8 +745,12 @@ const Map_Manager = ({
     for (let i = 0; i < collisions.length; i += mapColumns) {
       tempCollisionMap.push(collisions.slice(i, mapColumns + i));
     }
+
     return tempCollisionMap;
   }, [collisions, mapColumns]);
+
+  // console.log('collisions: ', collisions);
+  // console.log('collisionMap: ', collisionMap);
 
   const isNearNPC = (charX, charY, npcX, npcY) => {
     return Math.abs(charX - npcX) <= 1 && Math.abs(charY - npcY) <= 1;
@@ -341,10 +781,12 @@ const Map_Manager = ({
     });
 
     if (isNearAnyGate) {
-      setColor('orange');
+      setGateColor('orange');
     } else {
-      setColor('transparent');
+      setGateColor('transparent');
     }
+
+    let isNearAnyNpc = false;
 
     npcs.forEach((npc) => {
       const npcX = npc.x;
@@ -359,8 +801,26 @@ const Map_Manager = ({
         )
       ) {
         console.log(`Character is near NPC with ID: ${npc.id}`);
+        isNearAnyNpc = true;
+
+        if (isFPressed) {
+          setNpcs((prevNpcs) =>
+            prevNpcs.map((prevNpc) =>
+              prevNpc.id === npc.id
+                ? { ...prevNpc, triggered: !prevNpc.triggered }
+                : prevNpc
+            )
+          );
+        }
       }
     });
+
+    if (isNearAnyNpc) {
+      setNpcColor('cyan');
+    } else {
+      setNpcColor('transparent');
+    }
+
     console.log(mapPosition);
     console.log(charPosition);
   }, [charPosition]);
@@ -453,7 +913,7 @@ const Map_Manager = ({
                   left: `${colIndex * tileSize}px`,
                   width: `${tileSize}px`,
                   height: `${tileSize}px`,
-                  // backgroundColor: 'green',
+                  backgroundColor: npcColor,
                 }}
               />
             )}
@@ -465,7 +925,7 @@ const Map_Manager = ({
                   left: `${colIndex * tileSize}px`,
                   width: `${tileSize}px`,
                   height: `${tileSize}px`,
-                  backgroundColor: color,
+                  backgroundColor: gateColor,
                 }}
               />
             )}
