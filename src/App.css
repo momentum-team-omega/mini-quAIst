@@ -2,6 +2,7 @@
 @import url('https://fonts.google.com/specimen/Sofia+Sans+Condensed?stroke=Sans+Serif');
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -646,6 +647,31 @@ flex-grow: 1;
 .NPC {
   position: absolute; 
   z-index: 9; 
+}
+
+.message-box {
+  background-color: var(--clr-light);
+  width: 20px;
+  border: 2px solid var(--clr-dark);
+  border-radius: 5px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px; 
+  z-index: 20;
+}
+
+.message-text {
+  color: var(--clr-dark);
+  font-family: 'VT323', monospace;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: .8;
+  transform: scaleY(85%);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 21;
 }
 
 .wikiSection {
