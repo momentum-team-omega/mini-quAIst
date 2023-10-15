@@ -8,6 +8,7 @@ import {
   grassLand40x30Collisions,
   grassLand30Collisions,
   grassLand20Collisions,
+  village1Collisions,
 } from 'utilities/collisionsData.js';
 import bridgeLeft from 'assets/map-assets/bridge-map-left.png';
 import bridgeLeftFore from 'assets/map-assets/bridge-map-left-fore.png';
@@ -23,6 +24,8 @@ import grassLand30 from 'assets/map-assets/grassLand30.png';
 import grassLand30Fore from 'assets/map-assets/grassLand30-fore.png';
 import grassLand20 from 'assets/map-assets/grassLand20.png';
 import grassLand20Fore from 'assets/map-assets/grassLand20-fore.png';
+import village1 from 'assets/map-assets/village1.png';
+import village1Fore from 'assets/map-assets/village1-fore.png';
 
 const Map_Manager = ({
   currentMap,
@@ -568,6 +571,165 @@ const Map_Manager = ({
           id: 2,
           x: 10,
           y: 10,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+      ]);
+    } else if (currentMap === 'village1') {
+      setMapImage(village1);
+      setForeImage(village1Fore);
+      setTileSize(64);
+      setMapColumns(40);
+      setMapRows(30);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        setMapPosition({
+          x: 953,
+          y: 376.5,
+        });
+        setCharPosition({ x: 24, y: 11 });
+      }
+      setCollisions(village1Collisions);
+      setIsFPressed(false);
+      setNpcs([{}]);
+      setGates([
+        {
+          id: 1,
+          x: 0,
+          y: 10,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 2,
+          x: 0,
+          y: 11,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 3,
+          x: 0,
+          y: 12,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 4,
+          x: 9,
+          y: 1,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 5,
+          x: 10,
+          y: 1,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 6,
+          x: 11,
+          y: 1,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 7,
+          x: 31,
+          y: 29,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 8,
+          x: 32,
+          y: 29,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 9,
+          x: 33,
+          y: 29,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 10,
+          x: 39,
+          y: 14,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 11,
+          x: 39,
+          y: 15,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 12,
+          x: 39,
+          y: 16,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 12,
+          x: 24,
+          y: 9,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 13,
+          x: 25,
+          y: 9,
           map: 'bridgeRight',
           destPX: -252,
           destPY: -112,

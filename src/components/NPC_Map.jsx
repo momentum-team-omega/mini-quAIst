@@ -80,6 +80,10 @@ const NPC_Map = ({
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
+  } else if (currentMap === 'village1') {
+    NPC_IMAGES = {};
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
   }
 
   console.log(npcs);
