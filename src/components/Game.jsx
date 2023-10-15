@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Nav from 'components/Nav';
 import Overworld from './Overworld';
+import Dialogue from './Dialogue';
 
 const Game = () => {
   const [currentMap, setCurrentMap] = useState('village1');
@@ -9,6 +10,9 @@ const Game = () => {
     height: '720px',
     width: '1280px',
   });
+
+  
+  <Dialogue />
 
   return (
     <>
@@ -22,6 +26,7 @@ const Game = () => {
           }}
         >
           <Overworld currentMap={currentMap} setCurrentMap={setCurrentMap} />
+          
         </div>
       </div>
     </>
