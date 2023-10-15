@@ -659,7 +659,7 @@ flex-grow: 1;
   justify-content: center;
   align-items: center;
   padding: 2px; 
-  z-index: 20;
+  z-index: 998;
 }
 
 .message-text {
@@ -671,7 +671,7 @@ flex-grow: 1;
   transform: scaleY(85%);
   overflow: hidden;
   text-overflow: ellipsis;
-  z-index: 21;
+  z-index: 999;
 }
 
 .wikiSection {

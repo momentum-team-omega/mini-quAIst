@@ -38,6 +38,8 @@ got rid of char_animate and put it all into <Char /> ✅
 created <NPC /> component for each npc on a map, lives inside <NPC_Map />
 combine 'collisions' 'interactions' and 'gates' into one 'collisions' list ✅
 make NPC a component inside of NPC_Map so we can control animations etc ✅
+add dialogue box above NPC head and test triggering dialogue ✅
+make npc that the character is next to also highlighted (no border so doesn't work on NPCs that fill their entire tile such as the chest) ✅
 
 
 
@@ -47,13 +49,18 @@ make NPC a component inside of NPC_Map so we can control animations etc ✅
 To-Do Now: 🚨
 
 
-add dialogue box above NPC head and test triggering dialogue
+conditionally render NPCs based on their 'alive' value
+
+dialogue box is a little glitchy, flickers on and off when user in proximity
+
+should only have box show up if 'isFPressed' and if user is in proximity. Walking away from NPC should cause message to disappear 
+  -could maybe have a state for 'adjacentNpc' ?
+
 
 NPCs not continuing to animate between map changes, after switching from the 2d grid map to mapping the npcs list directly. not sure what could be causing this. (reverted back to 2d grid mapping because maps without NPCs were broken as well) 
 
 make only the gate the character is next to highlighted (currently they all get highlighted)
-
-make npc that the character is next to also highlighted
+  -make 'color' variable in 'gates' state, update specific gate color when in proximity instead of all gates
 
 Need to be able to remove 'dead' npcs after battle for example. Or change a chest NPC from 'closed' to 'open' etc. 
 
