@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import bridgeLeft from 'assets/map-assets/bridge-map-left.png';
+import bridgeLeft from 'assets/map-assets/bridge-left-sheet.png';
 import bridgeLeftFore from 'assets/map-assets/bridge-map-left-fore.png';
-import bridgeRight from 'assets/map-assets/bridge-map-right.png';
+import bridgeRight from 'assets/map-assets/bridge-right-sheet.png';
 import bridgeRightFore from 'assets/map-assets/bridge-map-right-fore.png';
-import houseInside from 'assets/map-assets/house-map-inside.png';
+import houseInside from 'assets/map-assets/house-inside-sheet.png';
 import trollBridge200 from 'assets/map-assets/troll-bridge-map-200.png';
 import grassLand40 from 'assets/map-assets/grassLand40.png';
 import grassLand40Fore from 'assets/map-assets/grassLand40-fore.png';
@@ -13,7 +13,7 @@ import grassLand30 from 'assets/map-assets/grassLand30.png';
 import grassLand30Fore from 'assets/map-assets/grassLand30-fore.png';
 import grassLand20 from 'assets/map-assets/grassLand20.png';
 import grassLand20Fore from 'assets/map-assets/grassLand20-fore.png';
-import village1 from 'assets/map-assets/village1.png';
+import village1 from 'assets/map-assets/village1-map-sheet.png';
 import village1Fore from 'assets/map-assets/village1-fore.png';
 
 const Map_Switch = ({
