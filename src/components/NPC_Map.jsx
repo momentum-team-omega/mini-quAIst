@@ -68,10 +68,6 @@ const NPC_Map = ({
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
-  } else if (currentMap === 'grassLand50x40') {
-    NPC_IMAGES = {};
-    xOffset = 0 * tileSize;
-    yOffset = 0 * tileSize;
   } else if (currentMap === 'grassLand40') {
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
