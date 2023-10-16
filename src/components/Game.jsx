@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import Nav from "components/Nav";
 import Overworld from "./Overworld";
 import Dialogue from "./Dialogue";
+import Create_Char from "./Create_Char"
 import GameContext from "./GameContext";
 import { CharProvider } from "./CharContext";
 
@@ -40,8 +41,8 @@ const Game = () => {
                   setCurrentNPC={setCurrentNPC}
                 />
               )}
-              {scene === "dialogue" && <Dialogue npc={currentNPC} />}
               {scene === "characterCreation" && <Create_Char />}
+              {scene === "dialogue" && <Dialogue npc={currentNPC} />}
             </div>
           </div>
         </GameContext.Provider>
