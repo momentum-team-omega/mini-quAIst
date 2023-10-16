@@ -328,19 +328,22 @@ export const npcDialogues = {
       "You are a massive troll, notorious for guarding a bridge in the middle of a dense forest. You're protective of your territory and rarely allow anyone to cross. As you're lounging, a 10-year-old adventurer approaches you with intent to cross.",
     1: {
       text: "Nobody passes my bridge!",
-      options: ["2", "3", "4", "5", "6"],
+      options: ["str", "dex", "wis", "5", "6"],
     },
-    2: {
+    str: {
       text: "[Strength Check] I'm not scared of you! Let me pass, or you'll regret it.",
       options: ["7", "8"],
+      check: "strength",
     },
-    3: {
+    dex: {
       text: "[Dexterity Check] Without warning, you make a dash to slip between the troll's legs.",
       options: ["9", "10"],
+      check: "dexterity",
     },
-    4: {
+    wis: {
       text: "[Wisdom Check] If I bring a sheep as a toll in the future, will you let me cross now?",
       options: ["11", "12"],
+      check: "wisdom"
     },
     5: {
       text: "Prepare to fight!",
