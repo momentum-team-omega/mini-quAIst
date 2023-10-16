@@ -130,12 +130,6 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         mapRows={mapRows}
       />
       <Foreground mapPosition={mapPosition} foreImage={foreImage} />
-      <Char
-        tileSize={tileSize}
-        direction={direction}
-        isMoving={isMoving}
-        isSpacePressed={isSpacePressed}
-      />
       <NPC_Map
         currentMap={currentMap}
         mapPosition={mapPosition}
@@ -143,6 +137,12 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         tileSize={tileSize}
         mapColumns={mapColumns}
         mapRows={mapRows}
+      />
+      <Char
+        tileSize={tileSize}
+        direction={direction}
+        isMoving={isMoving}
+        isSpacePressed={isSpacePressed}
       />
     </>
   );
