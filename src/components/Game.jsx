@@ -9,6 +9,16 @@ import { CharProvider } from "./CharContext";
 const Game = () => {
   const [scene, setScene] = useState("overworld"); // Initial scene
   const [currentNPC, setCurrentNPC] = useState(null); // No NPC initially
+  const [charStats, setCharStats] = useState({
+    name: '',
+    health: null,
+    strength: null,
+    str_mod: null,
+    wisdom: null,
+    wis_mod: null,
+    dexterity: null,
+    dex_mod: null,
+  })
 
   const [currentMap, setCurrentMap] = useState("village1");
   const [showDialogue, setShowDialogue] = useState(false);
@@ -46,8 +56,6 @@ const Game = () => {
             </div>
           </div>
         </GameContext.Provider>
-
-        <Nav />
       </CharProvider>
     </>
   );
