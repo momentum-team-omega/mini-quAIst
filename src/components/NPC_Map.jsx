@@ -86,7 +86,7 @@ const NPC_Map = ({
     yOffset = 0 * tileSize;
   }
 
-  console.log(npcs);
+  // console.log(npcs);
 
   const getNPCById = (npcs, npcId) => {
     return npcs.find((npc) => npc.id === npcId);

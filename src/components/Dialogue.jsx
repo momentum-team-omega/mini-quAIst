@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { npcDialogues } from "../utilities/npcDialogues";
+import GameContext from './GameContext';
+
 
 import axios from "axios";
 
 const Dialogue = () => {
+  const { setScene, currentNPC } = useContext(GameContext);
   
-  const [currentNPC, setCurrentNPC] = useState("blacksmith"); // ["wiseman", "villageLeader"]
+  console.log('current NPC in dialogue:', currentNPC)
   const [currentDialogueId, setCurrentDialogueId] = useState("1");
   const [response, setResponse] = useState(
     npcDialogues[currentNPC].initialResponse
@@ -29,23 +32,24 @@ const Dialogue = () => {
       }
 
       setPreFetchedResponses(fetchedResponses);
-      console.log("Fetched responses", fetchedResponses);
+      // console.log("Fetched responses", fetchedResponses);
     }
 
     fetchInitialResponses();
   }, []);
 
   const handleOptionClick = async (optionId) => {
-    console.log(`Option ${optionId} clicked`);
+    // console.log(`Option ${optionId} clicked`);
 
     const selectedDialogue = npcDialogues[currentNPC][optionId];
-    console.log("SELECTED DIALOGUE", selectedDialogue);
+    // console.log("SELECTED DIALOGUE", selectedDialogue);
 
     if (optionId == "leave") {
-      console.log("End of conversation detected.");
+      // console.log("End of conversation detected.");
       setResponse("End of conversation.");
+      setScene('overworld');
     } else if (optionId == "start") {
-      console.log("Start of conversation detected.");
+      // console.log("Start of conversation detected.");
       setCurrentDialogueId("1");
       setResponse("What else would you like to know young one?");
     } else {

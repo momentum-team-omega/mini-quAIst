@@ -63,6 +63,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
       alive: true,
       triggered: false,
       message: 'Greetings',
+      name: 'wiseman'
     },
   ]);
   const [gates, setGates] = useState([

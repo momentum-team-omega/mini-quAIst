@@ -249,6 +249,7 @@ const Map_Switch = ({
           alive: true,
           triggered: false,
           message: 'Greetings',
+          name: 'wiseman'
         },
         {
           id: 3,
