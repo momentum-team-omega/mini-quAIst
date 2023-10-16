@@ -6,19 +6,22 @@ export const npcDialogues = {
       "You are an old wise man in a dungeon and dragons adventure speaking with a 10-year-old kid.",
     1: {
       text: "What else would?",
-      options: ["2", "3", "4", "leave"],
+      options: ["str", "dex", "wis", "leave"],
     },
-    2: {
-      text: "I'm an adventurer exploring these mountains.",
+    str: {
+      text: "[Strength Check] I'm an adventurer exploring these mountains.",
       options: ["5", "6", "7", "start"],
+      difficultyScore: 12,
     },
-    3: {
-      text: "I'm here seeking answers to the mysteries of this place.",
+    dex: {
+      text: "[Dexterity Check] I'm here seeking answers to the mysteries of this place.",
       options: ["8", "9", "10", "start"],
+      difficultyScore: 12,
     },
-    4: {
-      text: "Who are you to ask?",
+    wis: {
+      text: "[Wisdom Check] Who are you to ask?",
       options: ["11", "12", "13", "start"],
+      difficultyScore: 12,
     },
     5: {
       text: "What can you tell me about them?",
