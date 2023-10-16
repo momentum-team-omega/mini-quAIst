@@ -41,6 +41,7 @@ const Game = () => {
                 />
               )}
               {scene === "dialogue" && <Dialogue npc={currentNPC} />}
+              {scene === "characterCreation" && <Create_Char />}
             </div>
           </div>
         </GameContext.Provider>
