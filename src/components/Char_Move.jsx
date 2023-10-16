@@ -22,7 +22,7 @@ const Char_Move = ({
   });
 
   const pixelToGridPosition = (pixelPosition) => {
-    console.log('tileSize: ', tileSize);
+    // console.log('tileSize: ', tileSize);
     return {
       x: Math.floor((pixelPosition.x + tileSize / 2) / tileSize) + mapOffset.x,
       y: Math.floor((pixelPosition.y - tileSize / 2) / tileSize) + mapOffset.y,
