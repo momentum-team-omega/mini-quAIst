@@ -182,6 +182,7 @@ const Dialogue = () => {
             {npcDialogues[currentNPC][optionId].text}
           </div>
         ))}
+        <TwentySidedDie modifiers={modifiers} difficultyScore={difficultyScore} typeOfCheck={typeOfCheck}/>
       </div>
     </div>
   );
