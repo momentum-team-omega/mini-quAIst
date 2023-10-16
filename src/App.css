@@ -94,9 +94,6 @@ button:focus-visible {
   align-items: center;
 }
 
-
-
-
 .loginContainer {
   width: 50%;
   display: flex;
@@ -959,57 +956,7 @@ button:focus-visible {
 /* BATTLE CSS - END */
 
 
-/* DIALOGUE CSS - START */
 
-.dialogue-container {
-  background-size: cover;
-  background-position: center center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100vh;
-  width: 100vw; 
-  color: white;
-  text-align: center;
-}
-
-.npc-text {
-  font-family: "Luckiest Guy", cursive;
-  font-size: 24px;
-  text-shadow: 
-    2px 2px 2px black,   /* North-East */
-    -2px -2px 2px black, /* South-West */
-    2px -2px 2px black,  /* South-East */
-    -2px 2px 2px black;  /* North-West */
-  margin-bottom: 20px;
-}
-
-
-.options-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.option {
-  font-family: "Luckiest Guy", cursive;
-  font-size: 18px;
-  text-shadow: 
-    2px 2px 2px black,   /* North-East */
-    -2px -2px 2px black, /* South-West */
-    2px -2px 2px black,  /* South-East */
-    -2px 2px 2px black;  /* North-West */
-  margin: 10px 0;
-  cursor: pointer;
-}
-
-.option:hover {
-  text-decoration: underline;
-  color: rgb(220, 187, 0);
-}
-
-/* DIALOGUE CSS - END */
 
 
 .select-character {

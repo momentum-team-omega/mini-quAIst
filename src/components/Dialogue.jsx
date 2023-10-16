@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { npcDialogues } from "../utilities/npcDialogues";
+import "/src/styles/Dialogue.css";
 
 import axios from "axios";
 
 const Dialogue = () => {
-  
   const [currentNPC, setCurrentNPC] = useState("blacksmith"); // ["wiseman", "villageLeader"]
   const [currentDialogueId, setCurrentDialogueId] = useState("1");
   const [response, setResponse] = useState(
     npcDialogues[currentNPC].initialResponse
-    );
-    const [preFetchedResponses, setPreFetchedResponses] = useState([]);
-    const containerStyle = {
-      backgroundImage: `url(${`/src/assets/dialogue-assets/${currentNPC}.png`})`,
-    };
+  );
+  const [preFetchedResponses, setPreFetchedResponses] = useState([]);
+  const containerStyle = {
+    backgroundImage: `url(${`/src/assets/dialogue-assets/${currentNPC}.png`})`,
+  };
 
   const npcList = Object.keys(npcDialogues);
 
