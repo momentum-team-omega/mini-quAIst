@@ -8,6 +8,19 @@ const TempCreate = () => {
     width: '1280px',
   });
 
+  const [charStats, setCharStats] = useState({
+    name: '',
+    health: null,
+    strength: null,
+    str_mod: null,
+    wisdom: null,
+    wis_mod: null,
+    dexterity: null,
+    dex_mod: null,
+  })
+
+  // console.log(charStats)
+
   return (
     <>
       <Nav />
@@ -19,7 +32,7 @@ const TempCreate = () => {
             width: gameWindow.width,
           }}
         >
-          <Create_Char />
+          <Create_Char charStats={charStats} setCharStats={setCharStats} />
         </div>
       </div>
     </>
