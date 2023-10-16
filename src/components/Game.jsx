@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Nav from "components/Nav";
 import Overworld from "./Overworld";
@@ -10,6 +11,9 @@ const Game = () => {
     height: "720px",
     width: "1280px",
   });
+
+  
+  <Dialogue />
 
   return (
     <>
@@ -25,6 +29,7 @@ const Game = () => {
           >
             <Overworld currentMap={currentMap} setCurrentMap={setCurrentMap} />
           </div>
+
         </div>
       </CharProvider>
     </>
