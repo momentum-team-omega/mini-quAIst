@@ -52,6 +52,19 @@ const Dialogue = () => {
       // console.log("Start of conversation detected.");
       setCurrentDialogueId("1");
       setResponse("What else would you like to know young one?");
+      
+    } else if (optionId == "str") {
+      // roll 20 sided die for strength check
+      // console log pass or fail
+
+    } else if (optionId == "dex") {
+      // roll for dex check
+      // console log pass or fail
+
+    } else if (optionId == "wis") {
+      // roll for wis check
+      // console log pass or fail
+    
     } else {
       const optionIndex = currentDialogue.options.indexOf(optionId);
 
