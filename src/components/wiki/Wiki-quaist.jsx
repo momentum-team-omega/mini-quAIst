@@ -1,9 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom';
-import React from 'react';
-import Nav from 'components/Nav';
-import Under from 'components/Under';
-import Footer from 'components/Footer';
-import d20tree from 'assets/wiki-assets/d20tree.png';
+import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import Nav from "components/Nav";
+import Under from "components/Under";
+import Footer from "components/Footer";
+import d20tree from "assets/wiki-assets/d20tree.png";
+import "/src/styles/Wiki.css";
 
 const WikiQuaist = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const WikiQuaist = () => {
                   learn the rules of the game without feeling overwhelmed.
                 </p>
                 <p className="wiki-info">
-                  On behalf of the devlolpers, we would like to say{' '}
+                  On behalf of the devlolpers, we would like to say{" "}
                   <strong>THANK YOU</strong> for playing our game and we hope
                   you have fun getting lost in the world of
                 </p>
