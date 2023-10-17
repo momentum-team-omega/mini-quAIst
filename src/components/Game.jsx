@@ -11,7 +11,7 @@ const Game = () => {
   const [currentNPC, setCurrentNPC] = useState("troll"); // No NPC initially
   const [charStats, setCharStats] = useState({
     name: "",
-    class: "",
+    charClass: "barb",
     health: null,
     strength: null,
     str_mod: null,

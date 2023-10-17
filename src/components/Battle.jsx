@@ -334,11 +334,11 @@ const Battle = () => {
                 onClick={() => handlePlayerMove("smack")}
                 disabled={!isPlayerTurn}
               >
-                {selectedClass === "barb"
+                {charStats.charClass === "barb"
                   ? "Swing Axe!"
-                  : selectedClass === "mage"
+                  : charStats.charClass === "mage"
                   ? "Swing Staff!"
-                  : selectedClass === "rogue"
+                  : charStats.charClass === "rogue"
                   ? "Loose an Arrow!"
                   : "Attack"}
               </button>
