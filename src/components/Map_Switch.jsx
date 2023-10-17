@@ -15,7 +15,7 @@ import grassLand20Fore from 'assets/map-assets/grassLand20-fore.png';
 import village1 from 'assets/map-assets/village1-map-sheet.png';
 import village1Fore from 'assets/map-assets/village1-fore.png';
 import trollMap from 'assets/map-assets/troll-map-sheet.png';
-import trollMapFore from 'assets/map-assets/Troll-Map-fore.png';
+import trollMapFore from 'assets/map-assets/Troll-Map-Fore.png';
 
 const Map_Switch = ({
   currentMap,
