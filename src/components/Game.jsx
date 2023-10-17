@@ -19,7 +19,7 @@ const Game = () => {
     dexterity: null,
     dex_mod: null,
   });
-
+const [typeOfCheck, setTypeOfCheck] = useState('')
 
   const [currentMap, setCurrentMap] = useState('trollMap');
 
