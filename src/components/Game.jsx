@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
-import Nav from 'components/Nav';
-import Overworld from './Overworld';
-import Dialogue from './Dialogue';
-import Create_Char from './Create_Char';
-import GameContext from './GameContext';
-import { CharProvider } from './CharContext';
+import React, { useContext, useState } from "react";
+import Nav from "components/Nav";
+import Overworld from "./Overworld";
+import Dialogue from "./Dialogue";
+import Create_Char from "./Create_Char";
+import GameContext from "./GameContext";
+
 
 const Game = () => {
   const [scene, setScene] = useState('overworld'); // Initial scene
@@ -20,8 +20,8 @@ const Game = () => {
     dex_mod: null,
   });
 
-  const [currentMap, setCurrentMap] = useState('testMap');
-  const [showDialogue, setShowDialogue] = useState(false);
+
+  const [currentMap, setCurrentMap] = useState('trollMap');
 
   const [gameWindow, setGameWindow] = useState({
     height: '720px',
@@ -53,13 +53,12 @@ const Game = () => {
               <Overworld
                 currentMap={currentMap}
                 setCurrentMap={setCurrentMap}
-                setShowDialogue={setShowDialogue}
               />
             )}
             {scene === 'characterCreation' && (
               <Create_Char charStats={charStats} setCharStats={setCharStats} />
             )}
-            {scene === 'dialogue' && <Dialogue npc={currentNPC} />}
+            {scene === "dialogue" && <Dialogue />}
           </div>
         </div>
       </GameContext.Provider>

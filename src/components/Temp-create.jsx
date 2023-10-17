@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Nav from 'components/Nav';
 import Create_Char from 'components/Create_Char';
+import GameContext from "./GameContext";
 
 const TempCreate = () => {
+  
   const [gameWindow, setGameWindow] = useState({
     height: '720px',
     width: '1280px',

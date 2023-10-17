@@ -144,7 +144,7 @@ const Dialogue = () => {
 
   return (
     <div className="dialogue-container" style={containerStyle}>
-      <div
+      {/* <div
         className="npc-selector-container"
         style={{ textAlign: "center", marginBottom: "20px" }}
       >
@@ -159,11 +159,11 @@ const Dialogue = () => {
           {npcList.map((npc) => (
             <option key={npc} value={npc}>
               {npc.charAt(0).toUpperCase() + npc.slice(1)}{" "}
-              {/* Capitalizing NPC names */}
+              
             </option>
           ))}
         </select>
-      </div>
+      </div> */}
 
       {response && (
         <div>

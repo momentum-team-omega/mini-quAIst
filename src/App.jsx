@@ -19,27 +19,52 @@ import TempCreate from "./components/Temp-create";
 import TempCheck from "./components/Temp-check";
 import TempInventory from "./components/Temp-inventory";
 import TempScene from "./components/Temp-scene";
+import GameContext from "./components/GameContext";
 
 function App() {
   const [token, setToken] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const [scene, setScene] = useState('overworld'); // Initial scene
+  const [currentNPC, setCurrentNPC] = useState('tavernKeeper'); // set to test
+  const [charStats, setCharStats] = useState({
+    name: "",
+    health: null,
+    strength: null,
+    str_mod: null,
+    wisdom: null,
+    wis_mod: null,
+    dexterity: null,
+    dex_mod: null,
+  });
+
   return (
     <>
+      <GameContext.Provider
+        value={{
+          scene,
+          setScene,
+          currentNPC,
+          setCurrentNPC,
+          charStats,
+          setCharStats,
+        }}
+      >
+
       <Routes>
         <Route path="/" element={<Navigate to="/home" replace />} />;
         <Route path="/home" element={<Home />} />;
         <Route
           path="/login"
           element={<Login setToken={setToken} setIsLoggedIn={setIsLoggedIn} />}
-        />
+          />
         ;
         <Route
           path="/register"
           element={
             <Register setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
           }
-        />
+          />
         ;
         <Route path="/play" element={<Game />} />;
         <Route path="/wiki" element={<Wiki />} />;
@@ -57,6 +82,8 @@ function App() {
         <Route path="/inventory" element={<TempInventory />} />;
         <Route path="/scene" element={<TempScene />} />;
       </Routes>
+      </GameContext.Provider>
+
     </>
   );
 }
