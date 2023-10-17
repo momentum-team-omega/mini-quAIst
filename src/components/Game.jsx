@@ -19,7 +19,8 @@ const Game = () => {
     dexterity: null,
     dex_mod: null,
   });
-const [typeOfCheck, setTypeOfCheck] = useState('')
+
+  const [typeOfCheck, setTypeOfCheck] = useState('')
 
   const [currentMap, setCurrentMap] = useState('testMap');
 
@@ -39,6 +40,8 @@ const [typeOfCheck, setTypeOfCheck] = useState('')
           setCurrentNPC,
           charStats,
           setCharStats,
+          typeOfCheck,
+          setTypeOfCheck,
         }}
       >
         <div className="content">
