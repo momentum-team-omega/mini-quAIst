@@ -1,5 +1,6 @@
-import { Link, useLocation } from 'react-router-dom';
-import homeIcon from 'assets/favicon.png';
+import { Link, useLocation } from "react-router-dom";
+import homeIcon from "assets/favicon.png";
+import "/src/styles/Nav.css";
 
 const Nav = () => {
   const location = useLocation();
@@ -14,7 +15,7 @@ const Nav = () => {
           </Link>
         </div>
         <div className="loginContainer">
-          {pathname !== '/login' && pathname !== '/register' ? (
+          {pathname !== "/login" && pathname !== "/register" ? (
             <Link to="/login">
               <div className="loginText">login</div>
             </Link>

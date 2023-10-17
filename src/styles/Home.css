@@ -1,0 +1,39 @@
+.homeContainer {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-image: url('/src/assets/home-assets/map.png');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  min-height: 100vh; 
+  position: relative;
+}
+
+
+.content {
+  flex-grow: 1;
+  }
+  
+  .homeLinkContainer {
+    width: 50%;
+    display: flex;
+    justify-content: left;
+    padding: 5px;
+  }
+  
+  .nav-home-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .home-icon {
+    width: 40px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  .home-icon:active {
+    transform: scale(90%);
+    transition: transform 0.2s;
+  }

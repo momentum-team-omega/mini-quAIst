@@ -1,9 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom';
-import React from 'react';
-import Nav from 'components/Nav';
-import Under from 'components/Under';
-import Footer from 'components/Footer';
-import abilityCheck from 'assets/wiki-assets/ability-check.png';
+import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import Nav from "components/Nav";
+import Under from "components/Under";
+import Footer from "components/Footer";
+import abilityCheck from "assets/wiki-assets/ability-check.png";
+import "/src/styles/Wiki.css";
 
 const WikiAbilityCheck = () => {
   const navigate = useNavigate();
