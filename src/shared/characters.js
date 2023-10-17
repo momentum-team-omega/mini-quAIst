@@ -1,7 +1,7 @@
 // characters.js
 export const playerStats = {
   level: 1,
-  maxHealth: 20,
+  maxHealth: 30,
   name: "Barbarian",
   img: "/src/assets/barbarian-test-3.png",
 
@@ -10,16 +10,11 @@ export const playerStats = {
   defense: 3,
   magicDefense: 3,
 
-  // Example D&D attributes and stats
-  strength: 16,
-  dexterity: 10,
-  wisdom: 8,
-  charisma: 8,
 };
 export const opponentStats = {
   level: 1,
-  name: "Mage",
-  maxHealth: 12,
+  name: "Troll",
+  maxHealth: 50,
 
   img: "src/assets/mage-placeholder-transp.png",
 
@@ -28,11 +23,6 @@ export const opponentStats = {
   defense: 2,
   magicDefense: 5,
 
-  // Example D&D attributes and stats
-  strength: 8,
-  dexterity: 12,
-  wisdom: 16,
-  charisma: 10,
 };
 
 export const rogue = {
@@ -46,9 +36,4 @@ export const rogue = {
   defense: 2,
   magicDefense: 5,
 
-  // Example D&D attributes and stats
-  strength: 10,
-  dexterity: 16,
-  wisdom: 10,
-  charisma: 12,
 };

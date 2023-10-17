@@ -26,7 +26,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [scene, setScene] = useState('overworld'); // Initial scene
-  const [currentNPC, setCurrentNPC] = useState('tavernKeeper'); // set to test
+  const [currentNPC, setCurrentNPC] = useState('troll'); // set to test
   const [charStats, setCharStats] = useState({
     name: "",
     health: null,

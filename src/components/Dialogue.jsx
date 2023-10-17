@@ -98,8 +98,9 @@ const Dialogue = () => {
       setMakeCheck(true);
       // roll for wis check
       // console log pass or fail
-
-      console.log('wis test');
+      console.log("wis test");
+    } else if (optionId == 'fight') {
+      setScene('battle')
     } else {
       const optionIndex = currentDialogue.options.indexOf(optionId);
 

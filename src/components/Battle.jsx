@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import playerImage from "/src/assets/battle-assets/barbarian-test-3.png";
 import enemyImage from "/src/assets/battle-assets/mage-placeholder-transp.png";
 import battlebackground from "/src/assets/battle-assets/720p-battle-background.png";
 import { opponentStats, playerStats } from "/src/shared";
 import { PlayerSummary } from "./PlayerSummary";
 import "/src/styles/Battle.css";
+import GameContext from "./GameContext";
 
 const Battle = () => {
   const containerStyle = {
@@ -35,6 +36,7 @@ const Battle = () => {
     backgroundSize: "cover",
   };
 
+  const { setScene, currentNPC, charStats } = useContext(GameContext);
   const [opponentHealth, setOpponentHealth] = useState(opponentStats.maxHealth);
   const [playerHealth, setPlayerHealth] = useState(playerStats.maxHealth);
   const [showHealthIndicator, setShowHealthIndicator] = useState(false);
@@ -48,6 +50,68 @@ const Battle = () => {
   const [enemyFlicker, setEnemyFlicker] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isChillSource, setIsChillSource] = useState(false);
+  const [isPlayerTurn, setIsPlayerTurn] = useState(true);
+  const smackButtonRef = useRef(null);
+  const chillButtonRef = useRef(null);
+  const opponentMoveTimeoutRef = useRef(null);
+  const [isLocked, setIsLocked] = useState(false);
+  const [healingPotions, setHealingPotions] = useState(2);
+
+  const handlePlayerMove = (action) => {
+    if (isLocked) return;
+
+    // Clear any existing opponent move timeouts
+    if (opponentMoveTimeoutRef.current) {
+      clearTimeout(opponentMoveTimeoutRef.current);
+    }
+
+    setIsLocked(true); // Lock the actions immediately.
+
+    if (smackButtonRef.current) smackButtonRef.current.disabled = true;
+    if (chillButtonRef.current) chillButtonRef.current.disabled = true;
+
+    console.log("Player Move Started");
+
+    if (isPlayerTurn && !someoneDied) {
+      switch (action) {
+        case "smack":
+          handlePlayerSmackOpponent();
+          break;
+        case "chill":
+          handleChill();
+          break;
+        default:
+          break;
+      }
+      setIsPlayerTurn(false); // switch turn to opponent after player makes a move
+
+      console.log("Player Move Ended, turn should switch to opponent");
+    }
+  };
+
+  const handleOpponentMove = () => {
+    console.log("Opponent Move Started");
+    // This can be the AI logic or another player's action
+    if (!isPlayerTurn && !someoneDied) {
+      // Example: Just smacks every time for simplicity
+      handleOpponentSmackPlayer();
+      setIsPlayerTurn(true);
+      if (smackButtonRef.current) smackButtonRef.current.disabled = false;
+      if (chillButtonRef.current) chillButtonRef.current.disabled = false;
+
+      setIsLocked(false); // Unlock the actions after opponent's move.
+      console.log("Opponent Move Ended, turn should switch to player");
+    }
+  };
+
+  useEffect(() => {
+    if (!isPlayerTurn) {
+      // Delay opponent's turn to make it feel more natural
+      opponentMoveTimeoutRef.current = setTimeout(() => {
+        handleOpponentMove();
+      }, 1700);
+    }
+  }, [isPlayerTurn]);
 
   const handleHealthChange = (newValue, source) => {
     const sign = source === "chill" ? "+" : "-";
@@ -83,7 +147,7 @@ const Battle = () => {
       `Enemy Health: ${sign}${Math.abs(newValue - opponentHealth)}`
     );
     setShowEnemyHealthIndicator(true);
-    console.log("1st source", source);
+    // console.log("1st source", source);
 
     setEnemyFlicker(true);
 
@@ -94,41 +158,62 @@ const Battle = () => {
     setOpponentHealth(newValue);
   };
 
-  const handleEnemySmackClick = () => {
-    if (opponentHealth && playerHealth > 0) {
-      const playerDamage = playerStats.attack - opponentStats.defense;
-      console.log("playerDamage", playerDamage);
-      const opponentDamage = opponentStats.attack - playerStats.defense;
-      console.log("opponentDamage", opponentDamage);
+  const rollD10 = () => {
+    return Math.floor(Math.random() * 10);
+  };
 
-      const newPlayerHealth = playerHealth - opponentDamage;
+  const handlePlayerSmackOpponent = () => {
+    if (opponentHealth > 0) {
+      const damageToOpponent = rollD10() + 3;
+      console.log(damageToOpponent);
+      handleEnemyHealthChange(opponentHealth - damageToOpponent, "smack");
+      if (opponentHealth - damageToOpponent <= 0) {
+        setSomeoneDied(true);
+      }
+    }
+  };
+
+  const handleOpponentSmackPlayer = () => {
+    if (playerHealth > 0) {
+      // Base damage
+      let damageToPlayer = 2;
+
+      // 50% chance to roll d10 and add to base damage
+      if (Math.random() < 0.5) {
+        damageToPlayer += rollD10(); // Assuming rollD10 is in the same scope or imported
+      }
+
+      const newPlayerHealth = playerHealth - damageToPlayer;
 
       setIsPaused(true);
 
       setTimeout(() => {
         setIsPaused(false);
-
-        // Trigger the health change and flicker
-
-        if (someoneDied === false) {
+        if (!someoneDied) {
           handleHealthChange(newPlayerHealth, "smack");
         }
       }, 1700);
 
-      handleEnemyHealthChange(opponentHealth - playerDamage, "smack");
-
-      if (newPlayerHealth <= 0 || opponentHealth - playerDamage <= 0) {
+      if (newPlayerHealth <= 0) {
         setSomeoneDied(true);
       }
     }
   };
 
   const handleChill = () => {
-    if (opponentHealth > 0) {
-      const newPlayerHealth = playerHealth + 1;
+    if (playerHealth > 0 && healingPotions > 0) {
+      const healthLost = playerStats.maxHealth - playerHealth;
+      const healthToRegain = Math.ceil(healthLost / 2);
 
-      // Trigger the health change
+      const newPlayerHealth = Math.min(
+        playerHealth + healthToRegain,
+        playerStats.maxHealth
+      );
+
       handleHealthChange(newPlayerHealth, "chill");
+
+      // Decrease the number of available potions
+      setHealingPotions(healingPotions - 1);
     }
   };
 
@@ -138,11 +223,44 @@ const Battle = () => {
     };
   }, []);
 
+  const handleContinue = () => {
+    setScene("overworld");
+  };
+
+  const handleTryAgain = () => {
+    // Reset health
+    setPlayerHealth(playerStats.maxHealth);
+    setOpponentHealth(opponentStats.maxHealth);
+
+    // Reset game state
+    setSomeoneDied(false); // Reset end game state
+    setIsLocked(false); // Unlock game actions
+    setIsPlayerTurn(true); // Give turn to player
+
+    // Clear any lingering opponent move timeouts
+    if (opponentMoveTimeoutRef.current) {
+      clearTimeout(opponentMoveTimeoutRef.current);
+    }
+
+    // Re-enable the action buttons
+    if (smackButtonRef.current) smackButtonRef.current.disabled = false;
+    if (chillButtonRef.current) chillButtonRef.current.disabled = false;
+
+    // Reset health indicators and related states
+    setHealingPotions(2);
+    setShowHealthIndicator(false);
+    setHealthIndicatorMessage("");
+    setShowEnemyHealthIndicator(false);
+    setEnemyHealthIndicatorMessage("");
+  };
+
   return (
     <div className="battle-container" style={containerStyle}>
       {someoneDied && (
         <div className="someone-died-box">
           {playerHealth <= 0 ? "YOU DIED!" : "YOU WIN!"}
+          <button onClick={handleContinue}>Continue</button>
+          <button onClick={handleTryAgain}>Try Again</button>
         </div>
       )}
       <h1
@@ -189,11 +307,21 @@ const Battle = () => {
               level={opponentStats.level}
             />
             <div className="button-box">
-              <button className="fight-button" onClick={handleEnemySmackClick}>
-                SMACK!
+              <button
+                ref={smackButtonRef}
+                className="fight-button"
+                onClick={() => handlePlayerMove("smack")}
+                disabled={!isPlayerTurn}
+              >
+                Swing Axe!
               </button>
-              <button className="chill-button" onClick={handleChill}>
-                CHILL!
+              <button
+                ref={chillButtonRef}
+                className="chill-button"
+                onClick={() => handlePlayerMove("chill")}
+                disabled={!isPlayerTurn || healingPotions === 0}
+              >
+                HEALING POTION ({healingPotions} left)
               </button>
             </div>
           </div>
@@ -206,7 +334,7 @@ const Battle = () => {
               maxValue={playerStats.maxHealth}
               name={playerStats.name}
               level={playerStats.level}
-              onSmackClick={handleEnemySmackClick}
+              onSmackClick={handleOpponentMove}
             />
           </div>
         </div>
