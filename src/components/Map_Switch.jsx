@@ -4,7 +4,6 @@ import bridgeLeftFore from 'assets/map-assets/bridge-map-left-fore.png';
 import bridgeRight from 'assets/map-assets/bridge-right-sheet.png';
 import bridgeRightFore from 'assets/map-assets/bridge-map-right-fore.png';
 import houseInside from 'assets/map-assets/house-inside-sheet.png';
-import trollBridge200 from 'assets/map-assets/troll-bridge-map-200.png';
 import grassLand40 from 'assets/map-assets/grassLand40.png';
 import grassLand40Fore from 'assets/map-assets/grassLand40-fore.png';
 import grassLand40x30 from 'assets/map-assets/grassLand40x30.png';
@@ -15,6 +14,8 @@ import grassLand20 from 'assets/map-assets/grassLand20.png';
 import grassLand20Fore from 'assets/map-assets/grassLand20-fore.png';
 import village1 from 'assets/map-assets/village1-map-sheet.png';
 import village1Fore from 'assets/map-assets/village1-fore.png';
+import trollMap from 'assets/map-assets/troll-map-sheet.png';
+import trollMapFore from 'assets/map-assets/Troll-Map-Fore.png';
 
 const Map_Switch = ({
   currentMap,
@@ -249,6 +250,7 @@ const Map_Switch = ({
           alive: true,
           triggered: false,
           message: 'Greetings',
+          name: 'wiseman',
         },
         {
           id: 3,
@@ -276,104 +278,6 @@ const Map_Switch = ({
           id: 2,
           x: 6,
           y: 10,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-      ]);
-    } else if (currentMap === 'trollBridge200') {
-      setMapImage(trollBridge200);
-      setForeImage(null);
-      setTileSize(64);
-      setMapColumns(25);
-      setMapRows(25);
-      setMapOffset({ x: 9.5, y: 6 });
-      if (!hasMapSwitched) {
-        setMapPosition({
-          x: -287,
-          y: -6,
-        });
-        setCharPosition({ x: 5, y: 5 });
-      }
-      setNpcs([{}]);
-      setIsFPressed(false);
-      setGates([
-        {
-          id: 1,
-          x: 5,
-          y: 0,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 2,
-          x: 6,
-          y: 0,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 3,
-          x: 7,
-          y: 0,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 4,
-          x: 8,
-          y: 0,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 5,
-          x: 5,
-          y: 24,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 6,
-          x: 6,
-          y: 24,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 7,
-          x: 7,
-          y: 24,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 8,
-          x: 8,
-          y: 24,
           map: 'bridgeRight',
           destPX: -252,
           destPY: -112,
@@ -684,6 +588,84 @@ const Map_Switch = ({
           id: 13,
           x: 25,
           y: 9,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+      ]);
+    } else if (currentMap === 'trollMap') {
+      setMapImage(trollMap);
+      setForeImage(trollMapFore);
+      setTileSize(64);
+      setMapColumns(20);
+      setMapRows(8);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        setMapPosition({
+          x: -538,
+          y: -85,
+        });
+        setCharPosition({ x: 1, y: 4 });
+      }
+      setIsFPressed(false);
+      setNpcs([{}]);
+      setGates([
+        {
+          id: 1,
+          x: 0,
+          y: 3,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 2,
+          x: 0,
+          y: 4,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 3,
+          x: 0,
+          y: 5,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 4,
+          x: 19,
+          y: 3,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 5,
+          x: 19,
+          y: 4,
+          map: 'bridgeRight',
+          destPX: -252,
+          destPY: -112,
+          destX: 8,
+          destY: 5,
+        },
+        {
+          id: 6,
+          x: 19,
+          y: 5,
           map: 'bridgeRight',
           destPX: -252,
           destPY: -112,

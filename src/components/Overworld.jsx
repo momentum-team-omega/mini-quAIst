@@ -63,7 +63,8 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
       animationSpeed: 800,
       alive: true,
       triggered: false,
-      message: "Greetings",
+      message: 'Greetings',
+      name: 'wiseman'
     },
   ]);
   const [gates, setGates] = useState([
@@ -130,12 +131,6 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         mapRows={mapRows}
       />
       <Foreground mapPosition={mapPosition} foreImage={foreImage} />
-      <Char
-        tileSize={tileSize}
-        direction={direction}
-        isMoving={isMoving}
-        isSpacePressed={isSpacePressed}
-      />
       <NPC_Map
         currentMap={currentMap}
         mapPosition={mapPosition}
@@ -143,6 +138,12 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         tileSize={tileSize}
         mapColumns={mapColumns}
         mapRows={mapRows}
+      />
+      <Char
+        tileSize={tileSize}
+        direction={direction}
+        isMoving={isMoving}
+        isSpacePressed={isSpacePressed}
       />
     </>
   );

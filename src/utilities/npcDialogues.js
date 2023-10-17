@@ -6,19 +6,22 @@ export const npcDialogues = {
       "You are an old wise man in a dungeon and dragons adventure speaking with a 10-year-old kid.",
     1: {
       text: "What else would?",
-      options: ["2", "3", "4", "leave"],
+      options: ["str", "dex", "wis", "leave"],
     },
-    2: {
-      text: "I'm an adventurer exploring these mountains.",
+    str: {
+      text: "[Strength Check] I'm an adventurer exploring these mountains.",
       options: ["5", "6", "7", "start"],
+      difficultyScore: 12,
     },
-    3: {
-      text: "I'm here seeking answers to the mysteries of this place.",
+    dex: {
+      text: "[Dexterity Check] I'm here seeking answers to the mysteries of this place.",
       options: ["8", "9", "10", "start"],
+      difficultyScore: 12,
     },
-    4: {
-      text: "Who are you to ask?",
+    wis: {
+      text: "[Wisdom Check] Who are you to ask?",
       options: ["11", "12", "13", "start"],
+      difficultyScore: 12,
     },
     5: {
       text: "What can you tell me about them?",
@@ -328,19 +331,25 @@ export const npcDialogues = {
       "You are a massive troll, notorious for guarding a bridge in the middle of a dense forest. You're protective of your territory and rarely allow anyone to cross. As you're lounging, a 10-year-old adventurer approaches you with intent to cross.",
     1: {
       text: "Nobody passes my bridge!",
-      options: ["2", "3", "4", "5", "6"],
+      options: ["str", "dex", "wis", "5", "6"],
     },
-    2: {
+    str: {
       text: "[Strength Check] I'm not scared of you! Let me pass, or you'll regret it.",
       options: ["7", "8"],
+      check: "strength",
+      difficultyScore: 12,
     },
-    3: {
+    dex: {
       text: "[Dexterity Check] Without warning, you make a dash to slip between the troll's legs.",
       options: ["9", "10"],
+      check: "dexterity",
+      difficultyScore: 12,
     },
-    4: {
+    wis: {
       text: "[Wisdom Check] If I bring a sheep as a toll in the future, will you let me cross now?",
       options: ["11", "12"],
+      check: "wisdom",
+      difficultyScore: 12,
     },
     5: {
       text: "Prepare to fight!",

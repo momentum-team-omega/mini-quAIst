@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useContext, useState, useEffect, useMemo } from 'react';
+import GameContext from './GameContext';
 import {
   bridgeLeftCollisions,
   bridgeRightCollisions,
   houseInsideCollisions,
-  trollBridgeCollisions,
   grassLand40Collisions,
   grassLand40x30Collisions,
   grassLand30Collisions,
   grassLand20Collisions,
   village1Collisions,
+  trollMapCollisions,
 } from 'utilities/collisionsData.js';
 
 const Map_Manager = ({
@@ -29,8 +30,9 @@ const Map_Manager = ({
   setHasMapSwitched,
 }) => {
   const [collisions, setCollisions] = useState(bridgeLeftCollisions);
+  const { setScene, setCurrentNPC } = useContext(GameContext);
 
-  console.log('manager collisions: ', collisions);
+  // console.log('manager collisions: ', collisions);
 
   const BLOCKED = 1025;
   const INT = 777;
@@ -51,8 +53,6 @@ const Map_Manager = ({
       setCollisions(bridgeRightCollisions);
     } else if (currentMap === 'houseInside') {
       setCollisions(houseInsideCollisions);
-    } else if (currentMap === 'trollBridge200') {
-      setCollisions(trollBridgeCollisions);
     } else if (currentMap === 'grassLand40') {
       setCollisions(grassLand40Collisions);
     } else if (currentMap === 'grassLand40x30') {
@@ -63,6 +63,8 @@ const Map_Manager = ({
       setCollisions(grassLand20Collisions);
     } else if (currentMap === 'village1') {
       setCollisions(village1Collisions);
+    } else if (currentMap === 'trollMap') {
+      setCollisions(trollMapCollisions);
     }
   }, [currentMap]);
 
@@ -101,7 +103,7 @@ const Map_Manager = ({
           gateY
         )
       ) {
-        console.log(`Character is near Gate with ID: ${gate.id}`);
+        // console.log(`Character is near Gate with ID: ${gate.id}`);
         isNearAnyGate = true;
       }
     });
@@ -127,6 +129,7 @@ const Map_Manager = ({
         )
       ) {
         console.log(`Character is near NPC with ID: ${npc.id}`);
+        console.log(npc.name);
         isNearAnyNpc = true;
 
         if (isFPressed) {
@@ -137,6 +140,9 @@ const Map_Manager = ({
                 : prevNpc
             )
           );
+          setCurrentNPC(npc.name); // This sets which NPC the player is currently interacting with
+          console.log('NPC in MM:', npc.name);
+          setScene('dialogue'); // This will show the dialogue box or component
         }
       }
     });
@@ -205,7 +211,7 @@ const Map_Manager = ({
         Math.floor(charPosition.x) === gateX &&
         Math.floor(charPosition.y) === gateY
       ) {
-        console.log(`Character entered Gate with ID: ${gate.id}`);
+        // console.log(`Character entered Gate with ID: ${gate.id}`);
         setCurrentMap(destination);
         setMapPosition({ x: gate.destPX, y: gate.destPY });
         setCharPosition({ x: gate.destX, y: gate.destY });
