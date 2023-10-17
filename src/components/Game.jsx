@@ -7,7 +7,7 @@ import GameContext from "./GameContext";
 import { CharProvider } from "./CharContext";
 
 const Game = () => {
-  const [scene, setScene] = useState("overworld"); // Initial scene
+  const [scene, setScene] = useState('overworld'); // Initial scene
   const [currentNPC, setCurrentNPC] = useState(null); // No NPC initially
   const [charStats, setCharStats] = useState({
     name: "",
@@ -20,12 +20,12 @@ const Game = () => {
     dex_mod: null,
   });
 
-  const [currentMap, setCurrentMap] = useState("village1");
+  const [currentMap, setCurrentMap] = useState('trollMap');
   const [showDialogue, setShowDialogue] = useState(false);
 
   const [gameWindow, setGameWindow] = useState({
-    height: "720px",
-    width: "1280px",
+    height: '720px',
+    width: '1280px',
   });
 
   return (
