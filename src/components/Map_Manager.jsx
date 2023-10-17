@@ -4,12 +4,9 @@ import {
   bridgeLeftCollisions,
   bridgeRightCollisions,
   houseInsideCollisions,
-  grassLand40Collisions,
-  grassLand40x30Collisions,
-  grassLand30Collisions,
-  grassLand20Collisions,
   village1Collisions,
   trollMapCollisions,
+  testMapCollisions,
 } from 'utilities/collisionsData.js';
 
 const Map_Manager = ({
@@ -53,18 +50,12 @@ const Map_Manager = ({
       setCollisions(bridgeRightCollisions);
     } else if (currentMap === 'houseInside') {
       setCollisions(houseInsideCollisions);
-    } else if (currentMap === 'grassLand40') {
-      setCollisions(grassLand40Collisions);
-    } else if (currentMap === 'grassLand40x30') {
-      setCollisions(grassLand40x30Collisions);
-    } else if (currentMap === 'grassLand30') {
-      setCollisions(grassLand30Collisions);
-    } else if (currentMap === 'grassLand20') {
-      setCollisions(grassLand20Collisions);
     } else if (currentMap === 'village1') {
       setCollisions(village1Collisions);
     } else if (currentMap === 'trollMap') {
       setCollisions(trollMapCollisions);
+    } else if (currentMap === 'testMap') {
+      setCollisions(testMapCollisions);
     }
   }, [currentMap]);
 

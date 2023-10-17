@@ -5,11 +5,12 @@ import Dialogue from "./Dialogue";
 import Create_Char from "./Create_Char";
 import GameContext from "./GameContext";
 
+
 const Game = () => {
   const [scene, setScene] = useState('overworld'); // Initial scene
   const [currentNPC, setCurrentNPC] = useState(null); // No NPC initially
   const [charStats, setCharStats] = useState({
-    name: "",
+    name: '',
     health: null,
     strength: null,
     str_mod: null,
@@ -18,6 +19,7 @@ const Game = () => {
     dexterity: null,
     dex_mod: null,
   });
+
 
   const [currentMap, setCurrentMap] = useState('trollMap');
 
@@ -47,14 +49,13 @@ const Game = () => {
               width: gameWindow.width,
             }}
           >
-            {scene === "overworld" && (
+            {scene === 'overworld' && (
               <Overworld
                 currentMap={currentMap}
                 setCurrentMap={setCurrentMap}
-                setCurrentNPC={setCurrentNPC}
               />
             )}
-            {scene === "characterCreation" && (
+            {scene === 'characterCreation' && (
               <Create_Char charStats={charStats} setCharStats={setCharStats} />
             )}
             {scene === "dialogue" && <Dialogue />}
