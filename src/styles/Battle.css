@@ -80,7 +80,8 @@
 }
 
 .fight-button,
-.chill-button {
+.chill-button,
+.special-move-button {
   width: 150px;
   height: 40px;
   background-color: rgba(0, 0, 255, 0.5);

@@ -56,6 +56,8 @@ const Battle = () => {
   const opponentMoveTimeoutRef = useRef(null);
   const [isLocked, setIsLocked] = useState(false);
   const [healingPotions, setHealingPotions] = useState(2);
+  const [specialMoves, setSpecialMoves] = useState(1);
+  const [specialMovesUsed, setSpecialMovesUsed] = useState(false);
 
   const handlePlayerMove = (action) => {
     if (isLocked) return;
@@ -217,6 +219,23 @@ const Battle = () => {
     }
   };
 
+  const handleSpecialMoves = () => {
+    if (specialMovesUsed || isLocked) {
+      return;
+    }
+
+    if (playerHealth > 0) {
+      const damageToOpponent = (rollD10() + 3) * 2; // lets go!
+      handleEnemyHealthChange(opponentHealth - damageToOpponent, "smack");
+      if (opponentHealth - damageToOpponent <= 0) {
+        setSomeoneDied(true);
+      }
+
+      setSpecialMovesUsed(true);
+      setIsPlayerTurn(false);
+    }
+  };
+
   useEffect(() => {
     return () => {
       setShowHealthIndicator(false);
@@ -252,6 +271,7 @@ const Battle = () => {
     setHealthIndicatorMessage("");
     setShowEnemyHealthIndicator(false);
     setEnemyHealthIndicatorMessage("");
+    setSpecialMovesUsed(false);
   };
 
   return (
@@ -322,6 +342,13 @@ const Battle = () => {
                 disabled={!isPlayerTurn || healingPotions === 0}
               >
                 HEALING POTION ({healingPotions} left)
+              </button>
+              <button
+                className="special-move-button"
+                onClick={handleSpecialMoves}
+                disabled={specialMovesUsed || isLocked}
+              >
+                Special Move
               </button>
             </div>
           </div>
