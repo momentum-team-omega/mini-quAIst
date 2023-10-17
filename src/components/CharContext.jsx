@@ -11,8 +11,6 @@ const CharProvider = ({ children }) => {
     dexterityMod: 0,
     constitution: 10,
     constitutionMod: 0,
-    intelligence: 10,
-    intelligenceMod: 0,
     wisdom: 10,
     wisdomMod: 0,
     name: "Default Name",
