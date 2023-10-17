@@ -6,7 +6,7 @@ import "/src/styles/Dialogue.css";
 import axios from "axios";
 
 const Dialogue = () => {
-  const [currentNPC, setCurrentNPC] = useState("blacksmith"); // ["wiseman", "villageLeader"]
+  
   const { setScene, currentNPC } = useContext(GameContext);
 
   // dummy data for dice roll
