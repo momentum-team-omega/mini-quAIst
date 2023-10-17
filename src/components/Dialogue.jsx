@@ -1,18 +1,16 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from "react";
 import { npcDialogues } from "../utilities/npcDialogues";
-import TwentySidedDie from './TwentySidedDie';
+import TwentySidedDie from "./TwentySidedDie";
 import GameContext from "./GameContext";
 import "/src/styles/Dialogue.css";
 import axios from "axios";
 
 const Dialogue = () => {
-  
-  const { setScene, currentNPC } = useContext(GameContext);
-
-  // dummy data for dice roll
-
-  // console.log('current NPC in dialogue:', currentNPC)
+  const { setScene, currentNPC, typeOfCheck, setTypeOfCheck, charStats } =
+    useContext(GameContext);
   const [currentDialogueId, setCurrentDialogueId] = useState("1");
+  const currentOption = npcDialogues[currentNPC][currentDialogueId];
+
   const [response, setResponse] = useState(
     npcDialogues[currentNPC].initialResponse
   );
@@ -62,16 +60,22 @@ const Dialogue = () => {
       setCurrentDialogueId("1");
       setResponse("What else would you like to know young one?");
     } else if (optionId == "str") {
-      // roll 20 sided die for strength check
+      setTypeOfCheck("str");
+      // roll for str check
       // console log pass or fail
-      console.log("strength test");
+
+      console.log(typeOfCheck);
     } else if (optionId == "dex") {
+      setTypeOfCheck("dex");
       // roll for dex check
       // console log pass or fail
+
       console.log("dex test");
     } else if (optionId == "wis") {
+      setTypeOfCheck("wis");
       // roll for wis check
       // console log pass or fail
+
       console.log("wis test");
     } else {
       const optionIndex = currentDialogue.options.indexOf(optionId);
@@ -170,6 +174,14 @@ const Dialogue = () => {
           <p className="npc-text">{response}</p>
         </div>
       )}
+      {["str", "dex", "wis"].includes(currentOption?.check) && (
+        <TwentySidedDie
+          typeOfCheck={currentOption?.check}
+          difficultyScore={currentOption?.difficultyScore}
+          charStats={charStats}
+        />
+      )}
+
       <div className="options-container">
         {currentDialogue?.options?.map((optionId) => (
           <div
@@ -180,7 +192,6 @@ const Dialogue = () => {
             {npcDialogues[currentNPC][optionId].text}
           </div>
         ))}
-        
       </div>
     </div>
   );

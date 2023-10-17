@@ -19,9 +19,10 @@ const Game = () => {
     dexterity: null,
     dex_mod: null,
   });
-const [typeOfCheck, setTypeOfCheck] = useState('')
 
-  const [currentMap, setCurrentMap] = useState('trollMap');
+  const [typeOfCheck, setTypeOfCheck] = useState('')
+
+  const [currentMap, setCurrentMap] = useState('testMap');
 
   const [gameWindow, setGameWindow] = useState({
     height: '720px',
@@ -39,6 +40,8 @@ const [typeOfCheck, setTypeOfCheck] = useState('')
           setCurrentNPC,
           charStats,
           setCharStats,
+          typeOfCheck,
+          setTypeOfCheck,
         }}
       >
         <div className="content">
