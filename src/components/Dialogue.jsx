@@ -1,26 +1,25 @@
 import { useContext, useState, useEffect } from 'react';
 import { npcDialogues } from "../utilities/npcDialogues";
-import GameContext from './GameContext';
 import TwentySidedDie from './TwentySidedDie';
-
-
+import GameContext from "./GameContext";
+import "/src/styles/Dialogue.css";
 import axios from "axios";
 
 const Dialogue = () => {
+  
   const { setScene, currentNPC } = useContext(GameContext);
 
   // dummy data for dice roll
-  
-  
+
   // console.log('current NPC in dialogue:', currentNPC)
   const [currentDialogueId, setCurrentDialogueId] = useState("1");
   const [response, setResponse] = useState(
     npcDialogues[currentNPC].initialResponse
-    );
-    const [preFetchedResponses, setPreFetchedResponses] = useState([]);
-    const containerStyle = {
-      backgroundImage: `url(${`/src/assets/dialogue-assets/${currentNPC}.png`})`,
-    };
+  );
+  const [preFetchedResponses, setPreFetchedResponses] = useState([]);
+  const containerStyle = {
+    backgroundImage: `url(${`/src/assets/dialogue-assets/${currentNPC}.png`})`,
+  };
 
   const npcList = Object.keys(npcDialogues);
 
@@ -50,32 +49,30 @@ const Dialogue = () => {
 
     if (optionId == "leave") {
       // console.log("End of conversation detected.");
-      if (currentNPC == 'wiseman') {
-        setResponse('leaving wiseman convo')
-        setScene('characterCreation')
+      if (currentNPC == "wiseman") {
+        console.log("leaving wiseman convo");
+        setResponse("leaving wiseman convo");
+        setScene("characterCreation");
+      } else {
+        setResponse("End of conversation.");
+        setScene("overworld");
       }
-      setResponse("End of conversation.");
-      setScene('overworld');
     } else if (optionId == "start") {
       // console.log("Start of conversation detected.");
       setCurrentDialogueId("1");
       setResponse("What else would you like to know young one?");
-
     } else if (optionId == "str") {
       // roll 20 sided die for strength check
       // console log pass or fail
-      console.log('strength test')
-
+      console.log("strength test");
     } else if (optionId == "dex") {
       // roll for dex check
       // console log pass or fail
-      console.log('dex test')
-
+      console.log("dex test");
     } else if (optionId == "wis") {
       // roll for wis check
       // console log pass or fail
-      console.log('wis test')
-    
+      console.log("wis test");
     } else {
       const optionIndex = currentDialogue.options.indexOf(optionId);
 
@@ -147,7 +144,7 @@ const Dialogue = () => {
 
   return (
     <div className="dialogue-container" style={containerStyle}>
-      <div
+      {/* <div
         className="npc-selector-container"
         style={{ textAlign: "center", marginBottom: "20px" }}
       >
@@ -162,11 +159,11 @@ const Dialogue = () => {
           {npcList.map((npc) => (
             <option key={npc} value={npc}>
               {npc.charAt(0).toUpperCase() + npc.slice(1)}{" "}
-              {/* Capitalizing NPC names */}
+              
             </option>
           ))}
         </select>
-      </div>
+      </div> */}
 
       {response && (
         <div>

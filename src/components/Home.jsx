@@ -3,6 +3,7 @@ import Nav from "components/Nav";
 import Under from "components/Under";
 import Footer from "components/Footer";
 import buttonImg from "assets/home-assets/button-img.png";
+import "/src/styles/Home.css";
 
 const Home = () => {
   return (

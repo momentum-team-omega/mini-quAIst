@@ -1,15 +1,16 @@
-import { Link } from 'react-router-dom';
-import React from 'react';
-import Nav from 'components/Nav';
-import Under from 'components/Under';
-import Footer from 'components/Footer';
-import d20tree from 'assets/wiki-assets/d20tree-icon.png';
-import classesImg from 'assets/wiki-assets/classes-icon.png';
-import mageImg from 'assets/wiki-assets/mage-icon.png';
-import barbarianImg from 'assets/wiki-assets/barbarian-icon.png';
-import rogueImg from 'assets/wiki-assets/rogue-icon.png';
-import battleImg from 'assets/wiki-assets/battle-icon.png';
-import abilityImg from 'assets/wiki-assets/ability-check-icon.png';
+import { Link } from "react-router-dom";
+import React from "react";
+import Nav from "components/Nav";
+import Under from "components/Under";
+import Footer from "components/Footer";
+import d20tree from "assets/wiki-assets/d20tree-icon.png";
+import classesImg from "assets/wiki-assets/classes-icon.png";
+import mageImg from "assets/wiki-assets/mage-icon.png";
+import barbarianImg from "assets/wiki-assets/barbarian-icon.png";
+import rogueImg from "assets/wiki-assets/rogue-icon.png";
+import battleImg from "assets/wiki-assets/battle-icon.png";
+import abilityImg from "assets/wiki-assets/ability-check-icon.png";
+import "/src/styles/Wiki.css";
 
 const Wiki = () => {
   return (

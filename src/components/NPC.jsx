@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import GameContext from './GameContext';
 
 const NPC = ({
   currentMap,
@@ -16,6 +17,8 @@ const NPC = ({
   message,
 }) => {
   const [frame, setFrame] = useState(1);
+
+  const { currentNPC } = useContext(GameContext);
 
   const DEFAULT_ANIMATION_SPEED = 80;
 
@@ -80,7 +83,7 @@ const NPC = ({
 
   return (
     <>
-      {triggered && (
+      {currentNPC === NPC.name && (
         <div
           className="message-box"
           style={{

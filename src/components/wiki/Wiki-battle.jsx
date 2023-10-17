@@ -1,9 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom';
-import React from 'react';
-import Nav from 'components/Nav';
-import Under from 'components/Under';
-import Footer from 'components/Footer';
-import battleImg from 'assets/wiki-assets/battle.png';
+import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import Nav from "components/Nav";
+import Under from "components/Under";
+import Footer from "components/Footer";
+import battleImg from "assets/wiki-assets/battle.png";
+import "/src/styles/Wiki.css";
 
 const WikiBattle = () => {
   const navigate = useNavigate();

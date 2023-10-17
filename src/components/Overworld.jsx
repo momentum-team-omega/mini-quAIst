@@ -6,6 +6,7 @@ import Map from 'components/Map';
 import Foreground from 'components/Foreground';
 import Map_Manager from 'components/Map_Manager';
 import Map_Switch from 'components/Map_Switch';
+import '/src/styles/Overworld.css';
 
 const Overworld = ({ currentMap, setCurrentMap }) => {
   const [mapImage, setMapImage] = useState(null);
@@ -63,7 +64,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
       alive: true,
       triggered: false,
       message: 'Greetings',
-      name: 'wiseman'
+      name: 'wiseman',
     },
   ]);
   const [gates, setGates] = useState([

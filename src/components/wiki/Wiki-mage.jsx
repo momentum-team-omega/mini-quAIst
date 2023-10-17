@@ -1,9 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom';
-import React from 'react';
-import Nav from 'components/Nav';
-import Under from 'components/Under';
-import Footer from 'components/Footer';
-import mageImg from 'assets/wiki-assets/mage.png';
+import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import Nav from "components/Nav";
+import Under from "components/Under";
+import Footer from "components/Footer";
+import mageImg from "assets/wiki-assets/mage.png";
+import "/src/styles/Wiki.css";
 
 const WikiMage = () => {
   const navigate = useNavigate();

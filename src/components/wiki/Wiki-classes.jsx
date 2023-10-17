@@ -1,12 +1,13 @@
-import { Link, useNavigate } from 'react-router-dom';
-import React from 'react';
-import Nav from 'components/Nav';
-import Under from 'components/Under';
-import Footer from 'components/Footer';
-import classesImg from 'assets/wiki-assets/classes.png';
-import mageImg from 'assets/wiki-assets/mage-icon.png';
-import barbarianImg from 'assets/wiki-assets/barbarian-icon.png';
-import rogueImg from 'assets/wiki-assets/rogue-icon.png';
+import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import Nav from "components/Nav";
+import Under from "components/Under";
+import Footer from "components/Footer";
+import classesImg from "assets/wiki-assets/classes.png";
+import mageImg from "assets/wiki-assets/mage-icon.png";
+import barbarianImg from "assets/wiki-assets/barbarian-icon.png";
+import rogueImg from "assets/wiki-assets/rogue-icon.png";
+import "/src/styles/Wiki.css";
 
 const WikiClasses = () => {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ const WikiClasses = () => {
                 </p>
                 <p className="wiki-info">
                   The <strong>Mage,</strong>
-                  the <strong>Barbarian,</strong> and the{' '}
+                  the <strong>Barbarian,</strong> and the{" "}
                   <strong>Rogue.</strong>
                 </p>
                 <Link to="/wiki/mage">
