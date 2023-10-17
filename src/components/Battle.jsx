@@ -58,6 +58,7 @@ const Battle = () => {
   const [healingPotions, setHealingPotions] = useState(2);
   const [specialMoves, setSpecialMoves] = useState(1);
   const [specialMovesUsed, setSpecialMovesUsed] = useState(false);
+  const selectedClass = "rogue";
 
   const handlePlayerMove = (action) => {
     if (isLocked) return;
@@ -333,7 +334,13 @@ const Battle = () => {
                 onClick={() => handlePlayerMove("smack")}
                 disabled={!isPlayerTurn}
               >
-                Swing Axe!
+                {selectedClass === "barb"
+                  ? "Swing Axe!"
+                  : selectedClass === "mage"
+                  ? "Swing Staff!"
+                  : selectedClass === "rogue"
+                  ? "Loose an Arrow!"
+                  : "Attack"}
               </button>
               <button
                 ref={chillButtonRef}
@@ -348,7 +355,13 @@ const Battle = () => {
                 onClick={handleSpecialMoves}
                 disabled={specialMovesUsed || isLocked}
               >
-                Special Move
+                {selectedClass === "barb"
+                  ? "RAGE"
+                  : selectedClass === "mage"
+                  ? "FIREBALL"
+                  : selectedClass === "rogue"
+                  ? "SNEAK ATTACK"
+                  : "Special Move"}
               </button>
             </div>
           </div>
