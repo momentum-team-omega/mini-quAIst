@@ -172,6 +172,8 @@ const Dialogue = () => {
 
   console.log('charStats: ', charStats);
 
+  console.log('outcome', outcome)
+
   return (
     <div className="dialogue-container" style={containerStyle}>
       {/* <div
@@ -197,7 +199,7 @@ const Dialogue = () => {
 
       {makeCheck && (
         <TwentySidedDie
-          typeOfCheck={currentOption?.check}
+          typeOfCheck={typeOfCheck}
           difficultyScore={currentOption?.difficultyScore}
           charStats={charStats}
         />

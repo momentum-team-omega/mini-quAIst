@@ -4,13 +4,11 @@ import '/src/styles/TwentySidedDie.css';
 
 const TwentySidedDie = ({
   typeOfCheck,
-  difficultyScore,
   charStats,
-  // outcome,
-  // setOutcome,
 }) => {
   // variable, declaration and assigment
   const [diceRoll, setDiceRoll] = useState(null);
+  const [hasRolled, setHasRolled] = useState(false)
 
   const {
     // charStats,
@@ -21,6 +19,7 @@ const TwentySidedDie = ({
 
   // useState pulls an array with 2 things from it. State variable & updater function
   // null value being passed thru is a defualt value for dice roll
+  const difficultyScore = 11
 
   useEffect(() => {
     const newOutcome =
@@ -31,12 +30,14 @@ const TwentySidedDie = ({
   }, [diceRoll, typeOfCheck, difficultyScore]);
 
   const rollDie = () => {
-    const newRoll = Math.floor(Math.random() * 20) + 1;
+    if (!hasRolled) {const newRoll = Math.floor(Math.random() * 20) + 1;
     setDiceRoll(newRoll);
+  setHasRolled(true)
+  }
     // calling the state setter function and giving it a new value
   };
-  console.log('charStats: ', charStats[`${typeOfCheck}_mod`]);
-  console.log('outcome: ', outcome);
+
+const handleContinue = () => {setMakeCheck(false)}
 
   return (
     <div
@@ -75,7 +76,11 @@ const TwentySidedDie = ({
       >
         {diceRoll && <div className="rolled-number">{diceRoll}</div>}
       </div>
-      <div>{diceRoll && <div className="rolled-outcome">{outcome}</div>}</div>
+      <div>{diceRoll && <div className="rolled-outcome">{outcome}</div>}
+      </div>
+      <button onClick={handleContinue} disabled={!hasRolled}>
+        Continue
+      </button>
     </div>
   );
 };
