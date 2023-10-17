@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from 'react';
 import { npcDialogues } from "../utilities/npcDialogues";
+import TwentySidedDie from './TwentySidedDie';
 import GameContext from "./GameContext";
 import "/src/styles/Dialogue.css";
-
 import axios from "axios";
 
 const Dialogue = () => {
@@ -180,6 +180,7 @@ const Dialogue = () => {
             {npcDialogues[currentNPC][optionId].text}
           </div>
         ))}
+        
       </div>
     </div>
   );

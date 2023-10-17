@@ -8,19 +8,20 @@ const TempCheck = () => {
     width: '1280px',
   });
 
-  const modifiers = 
-{
-  "dexterity": 2,
-  "strength": 1,
-  "intelligence": 4,
-  "constitution": -2,
-  "wisdom": -1,
-  "charisma": 0
-}
+const [charStats, setCharStats] = useState({
+  name: '',
+  health: 50,
+  strength: 6,
+  str_mod: -2,
+  wisdom: 14,
+  wis_mod: 2,
+  dexterity: 10,
+  dex_mod: 0,
+});
+const [typeOfCheck, setTypeOfCheck] = useState('dex')
 
 const difficultyScore = 11
 
-const typeOfCheck = 'wisdom'
 
   return (
     <>
@@ -33,7 +34,7 @@ const typeOfCheck = 'wisdom'
             width: gameWindow.width,
           }}
         >
-          <TwentySidedDie modifiers={modifiers} difficultyScore={difficultyScore} typeOfCheck={typeOfCheck}/>
+          <TwentySidedDie difficultyScore={difficultyScore} typeOfCheck={typeOfCheck} charStats={charStats}/>
         </div>
       </div>
     </>
