@@ -1,4 +1,11 @@
 /* FIGHT! BATTLE CSS OUCH! OH! NO! BATTLE CSS ENGUARD! */
+.battle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .flicker-animation {
   animation: flicker 0.3s infinite alternate;
 }
