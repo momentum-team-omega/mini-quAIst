@@ -1,14 +1,13 @@
-import React, { useContext, useState } from "react";
-import Nav from "components/Nav";
-import Overworld from "./Overworld";
-import Dialogue from "./Dialogue";
-import Create_Char from "./Create_Char";
-import GameContext from "./GameContext";
-
+import React, { useContext, useState } from 'react';
+import Nav from 'components/Nav';
+import Overworld from './Overworld';
+import Dialogue from './Dialogue';
+import Create_Char from './Create_Char';
+import GameContext from './GameContext';
 
 const Game = () => {
   const [scene, setScene] = useState('overworld'); // Initial scene
-  const [currentNPC, setCurrentNPC] = useState(null); // No NPC initially
+  const [currentNPC, setCurrentNPC] = useState('troll'); // No NPC initially
   const [charStats, setCharStats] = useState({
     name: '',
     health: null,
@@ -20,7 +19,9 @@ const Game = () => {
     dex_mod: null,
   });
 
-  const [typeOfCheck, setTypeOfCheck] = useState('')
+  const [typeOfCheck, setTypeOfCheck] = useState('');
+  const [outcome, setOutcome] = useState('');
+  const [makeCheck, setMakeCheck] = useState(false);
 
   const [currentMap, setCurrentMap] = useState('testMap');
 
@@ -42,6 +43,10 @@ const Game = () => {
           setCharStats,
           typeOfCheck,
           setTypeOfCheck,
+          outcome,
+          setOutcome,
+          makeCheck,
+          setMakeCheck,
         }}
       >
         <div className="content">
@@ -61,7 +66,7 @@ const Game = () => {
             {scene === 'characterCreation' && (
               <Create_Char charStats={charStats} setCharStats={setCharStats} />
             )}
-            {scene === "dialogue" && <Dialogue />}
+            {scene === 'dialogue' && <Dialogue />}
           </div>
         </div>
       </GameContext.Provider>
