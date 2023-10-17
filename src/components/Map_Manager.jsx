@@ -4,12 +4,12 @@ import {
   bridgeLeftCollisions,
   bridgeRightCollisions,
   houseInsideCollisions,
-  trollBridgeCollisions,
   grassLand40Collisions,
   grassLand40x30Collisions,
   grassLand30Collisions,
   grassLand20Collisions,
   village1Collisions,
+  trollMapCollisions,
 } from 'utilities/collisionsData.js';
 
 const Map_Manager = ({
@@ -53,8 +53,6 @@ const Map_Manager = ({
       setCollisions(bridgeRightCollisions);
     } else if (currentMap === 'houseInside') {
       setCollisions(houseInsideCollisions);
-    } else if (currentMap === 'trollBridge200') {
-      setCollisions(trollBridgeCollisions);
     } else if (currentMap === 'grassLand40') {
       setCollisions(grassLand40Collisions);
     } else if (currentMap === 'grassLand40x30') {
@@ -65,6 +63,8 @@ const Map_Manager = ({
       setCollisions(grassLand20Collisions);
     } else if (currentMap === 'village1') {
       setCollisions(village1Collisions);
+    } else if (currentMap === 'trollMap') {
+      setCollisions(trollMapCollisions);
     }
   }, [currentMap]);
 
@@ -129,10 +129,9 @@ const Map_Manager = ({
         )
       ) {
         console.log(`Character is near NPC with ID: ${npc.id}`);
-        console.log(npc.name)
+        console.log(npc.name);
         isNearAnyNpc = true;
 
-        
         if (isFPressed) {
           setNpcs((prevNpcs) =>
             prevNpcs.map((prevNpc) =>
@@ -142,9 +141,8 @@ const Map_Manager = ({
             )
           );
           setCurrentNPC(npc.name); // This sets which NPC the player is currently interacting with
-          console.log('NPC in MM:', npc.name)
+          console.log('NPC in MM:', npc.name);
           setScene('dialogue'); // This will show the dialogue box or component
-          
         }
       }
     });
@@ -155,8 +153,8 @@ const Map_Manager = ({
       setNpcColor('transparent');
     }
 
-    // console.log(mapPosition);
-    // console.log(charPosition);
+    console.log(mapPosition);
+    console.log(charPosition);
   }, [charPosition]);
 
   const checkCollisions = (position, collisionMap) => {

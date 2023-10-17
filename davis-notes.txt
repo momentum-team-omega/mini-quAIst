@@ -40,8 +40,8 @@ combine 'collisions' 'interactions' and 'gates' into one 'collisions' list ✅
 make NPC a component inside of NPC_Map so we can control animations etc ✅
 add dialogue box above NPC head and test triggering dialogue ✅
 make npc that the character is next to also highlighted (no border so doesn't work on NPCs that fill their entire tile such as the chest) ✅
-
-
+figure out how to trigger an inteaction ✅
+NPCs continue to animate between map changes ✅
 
 
 
@@ -56,18 +56,11 @@ dialogue box is a little glitchy, flickers on and off when user in proximity
 should only have box show up if 'isFPressed' and if user is in proximity. Walking away from NPC should cause message to disappear 
   -could maybe have a state for 'adjacentNpc' ?
 
-
-NPCs not continuing to animate between map changes, after switching from the 2d grid map to mapping the npcs list directly. not sure what could be causing this. (reverted back to 2d grid mapping because maps without NPCs were broken as well) 
-
 make only the gate the character is next to highlighted (currently they all get highlighted)
   -make 'color' variable in 'gates' state, update specific gate color when in proximity instead of all gates
 
-Need to be able to remove 'dead' npcs after battle for example. Or change a chest NPC from 'closed' to 'open' etc. 
-
 collision detection version 2.0 
   -add player-zone ✅ figure out running bug
-  
-figure out how to trigger an inteaction 
 
 buttons for main menu and inventory in top right of game screen
 
@@ -77,6 +70,9 @@ buttons for main menu and inventory in top right of game screen
 
 
 To-Do Later: 🤷‍♂️
+
+music for different maps/components, footstep audio 
+  - could maybe trigger footsetp audio in the character animation useEffect, then when the iteration speeds up the sound effect will speed up too 
 
 
 intro cutscene with stable diffusion images
@@ -95,6 +91,8 @@ add tool tips for early game 'to move, do this'
 
 
 Considerations 🧠
+
+alternate collision data for when NPC is not 'alive' 
 
 similar to how we animate the character, we could have 4 different maps with static animations that get switched between 
 
