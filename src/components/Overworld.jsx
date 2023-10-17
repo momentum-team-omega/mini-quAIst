@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import Char from "components/Char";
-import NPC_Map from "components/NPC_Map";
-import Char_Move from "components/Char_Move";
-import Map from "components/Map";
-import Foreground from "components/Foreground";
-import Map_Manager from "components/Map_Manager";
-import Map_Switch from "components/Map_Switch";
-import "/src/styles/Overworld.css";
+import React, { useState, useEffect } from 'react';
+import Char from 'components/Char';
+import NPC_Map from 'components/NPC_Map';
+import Char_Move from 'components/Char_Move';
+import Map from 'components/Map';
+import Foreground from 'components/Foreground';
+import Map_Manager from 'components/Map_Manager';
+import Map_Switch from 'components/Map_Switch';
+import '/src/styles/Overworld.css';
 
 const Overworld = ({ currentMap, setCurrentMap }) => {
   const [mapImage, setMapImage] = useState(null);
@@ -21,7 +21,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
   const [mapOffset, setMapOffset] = useState({ x: 9, y: 6 });
   const [hasMapSwitched, setHasMapSwitched] = useState(false);
 
-  const [direction, setDirection] = useState("Down");
+  const [direction, setDirection] = useState('Down');
 
   const [isMoving, setIsMoving] = useState(false);
   const [isSpacePressed, setIsSpacePressed] = useState(false);
@@ -64,7 +64,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
       alive: true,
       triggered: false,
       message: 'Greetings',
-      name: 'wiseman'
+      name: 'wiseman',
     },
   ]);
   const [gates, setGates] = useState([

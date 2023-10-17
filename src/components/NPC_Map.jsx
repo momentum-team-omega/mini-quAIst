@@ -84,6 +84,16 @@ const NPC_Map = ({
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
+  } else if (currentMap === 'testMap') {
+    NPC_IMAGES = {
+      1: oldMan1,
+      2: oldMan1,
+      3: oldMan1,
+      4: oldMan1,
+      5: oldMan1,
+    };
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
   }
 
   // console.log(npcs);
