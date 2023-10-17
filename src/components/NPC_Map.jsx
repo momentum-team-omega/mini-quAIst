@@ -60,10 +60,6 @@ const NPC_Map = ({
     };
     xOffset = 7.81 * tileSize;
     yOffset = 1.97 * tileSize;
-  } else if (currentMap === 'trollBridge200') {
-    NPC_IMAGES = {};
-    xOffset = 0 * tileSize;
-    yOffset = 0 * tileSize;
   } else if (currentMap === 'grassLand40') {
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
@@ -81,6 +77,10 @@ const NPC_Map = ({
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
   } else if (currentMap === 'village1') {
+    NPC_IMAGES = {};
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
+  } else if (currentMap === 'trollMap') {
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;

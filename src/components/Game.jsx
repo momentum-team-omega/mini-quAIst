@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
-import Nav from "components/Nav";
-import Overworld from "./Overworld";
-import Dialogue from "./Dialogue";
-import GameContext from "./GameContext";
-import { CharProvider } from "./CharContext";
+import React, { useContext, useState } from 'react';
+import Nav from 'components/Nav';
+import Overworld from './Overworld';
+import Dialogue from './Dialogue';
+import GameContext from './GameContext';
+import { CharProvider } from './CharContext';
 
 const Game = () => {
-  const [scene, setScene] = useState("overworld"); // Initial scene
+  const [scene, setScene] = useState('overworld'); // Initial scene
   const [currentNPC, setCurrentNPC] = useState(null); // No NPC initially
   const [charStats, setCharStats] = useState({
     name: '',
@@ -17,14 +17,14 @@ const Game = () => {
     wis_mod: null,
     dexterity: null,
     dex_mod: null,
-  })
+  });
 
-  const [currentMap, setCurrentMap] = useState("village1");
+  const [currentMap, setCurrentMap] = useState('trollMap');
   const [showDialogue, setShowDialogue] = useState(false);
 
   const [gameWindow, setGameWindow] = useState({
-    height: "720px",
-    width: "1280px",
+    height: '720px',
+    width: '1280px',
   });
 
   return (
@@ -42,7 +42,7 @@ const Game = () => {
                 width: gameWindow.width,
               }}
             >
-              {scene === "overworld" && (
+              {scene === 'overworld' && (
                 <Overworld
                   currentMap={currentMap}
                   setCurrentMap={setCurrentMap}
@@ -50,8 +50,8 @@ const Game = () => {
                   setCurrentNPC={setCurrentNPC}
                 />
               )}
-              {scene === "dialogue" && <Dialogue npc={currentNPC} />}
-              {scene === "characterCreation" && <Create_Char />}
+              {scene === 'dialogue' && <Dialogue npc={currentNPC} />}
+              {scene === 'characterCreation' && <Create_Char />}
             </div>
           </div>
         </GameContext.Provider>
