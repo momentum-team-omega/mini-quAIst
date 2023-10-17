@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import GameContext from './GameContext';
 
-const TwentySidedDie = ({modifiers, typeOfCheck, difficultyScore}) => {
+
+const TwentySidedDie = ({ typeOfCheck, difficultyScore, charStats}) => {
   // variable, declaration and assigment
   const [diceRoll, setDiceRoll] = useState(null);
   const [outcome, setOutcome] = useState("");
+  // const { charStats } = useContext(GameContext);
 // useState pulls an array with 2 things from it. State variable & updater function
 // null value being passed thru is a defualt value for dice roll
 
 useEffect(() => {
-  const newOutcome = diceRoll + modifiers[typeOfCheck] - difficultyScore >= 0
+  const newOutcome = diceRoll + charStats[`${typeOfCheck}_mod`] - difficultyScore >= 0
   ? "You passed"
   : "You failed";
 setOutcome(newOutcome);
-}, [diceRoll, modifiers, typeOfCheck, difficultyScore])
+}, [diceRoll, typeOfCheck, difficultyScore])
 
 
 const rollDie = () => {
@@ -20,8 +23,7 @@ const rollDie = () => {
   setDiceRoll(newRoll);
   // calling the state setter function and giving it a new value
 };
-
-console.log(modifiers)
+console.log(charStats[`${typeOfCheck}_mod`])
 
   return (
     <div className="dice-container" 
@@ -33,10 +35,10 @@ console.log(modifiers)
       <div>Difficulty Score {difficultyScore}
       </div>
       <div>
-        Modifiers {modifiers[typeOfCheck]}
+        Modifiers {charStats[`${typeOfCheck}_mod`] || 0} 
       </div>
       <div>
-        Dice Roll {diceRoll} + Modifiers {modifiers[typeOfCheck]} - Difficulty Score {difficultyScore}
+        Dice Roll {diceRoll} + Modifiers {charStats[`${typeOfCheck}_mod`]} - Difficulty Score {difficultyScore}
       </div>
       <div className="twenty-sided-die" 
       style={{
