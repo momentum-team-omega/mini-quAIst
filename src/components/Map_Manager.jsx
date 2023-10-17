@@ -146,7 +146,7 @@ const Map_Manager = ({
 
     console.log(mapPosition);
     console.log(charPosition);
-  }, [charPosition]);
+  }, [charPosition, isFPressed]);
 
   const checkCollisions = (position, collisionMap) => {
     const x = Math.floor(position.x);
