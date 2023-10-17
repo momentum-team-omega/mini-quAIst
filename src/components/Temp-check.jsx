@@ -8,20 +8,23 @@ const TempCheck = () => {
     width: '1280px',
   });
 
-const [charStats, setCharStats] = useState({
-  name: '',
-  health: 50,
-  strength: 6,
-  str_mod: -2,
-  wisdom: 14,
-  wis_mod: 2,
-  dexterity: 10,
-  dex_mod: 0,
-});
-const [typeOfCheck, setTypeOfCheck] = useState('dex')
+  const [charStats, setCharStats] = useState({
+    name: '',
+    health: 50,
+    strength: 6,
+    str_mod: -2,
+    wisdom: 14,
+    wis_mod: 2,
+    dexterity: 10,
+    dex_mod: 0,
+  });
+  const [typeOfCheck, setTypeOfCheck] = useState('dex');
 
-const difficultyScore = 11
+  const [makeCheck, setMakeCheck] = useState(false);
+  const [checkPass, setCheckPass] = useState(null);
+  const [outcome, setOutcome] = useState('');
 
+  const difficultyScore = 11;
 
   return (
     <>
@@ -34,7 +37,13 @@ const difficultyScore = 11
             width: gameWindow.width,
           }}
         >
-          <TwentySidedDie difficultyScore={difficultyScore} typeOfCheck={typeOfCheck} charStats={charStats}/>
+          <TwentySidedDie
+            difficultyScore={difficultyScore}
+            typeOfCheck={typeOfCheck}
+            charStats={charStats}
+            setOutcome={setOutcome}
+            outcome={outcome}
+          />
         </div>
       </div>
     </>

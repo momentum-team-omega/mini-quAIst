@@ -51,6 +51,19 @@
 
 .character-option {
   width: 30%;
+  cursor: pointer;
+  border: 1px solid #e3e3e300; 
+  border-radius: 25px;
+  padding: 10px;
+}
+.character-option:hover {
+  border: 1px solid #e3e3e3c3; 
+  border-radius: 25px;
+  padding: 10px;
+}
+.character-option:active {
+  transform: scale(98%);
+  transition: transform 0.2s;
 }
 
 .char-img {

@@ -1,14 +1,34 @@
-import { useContext, useState, useEffect } from "react";
-import { npcDialogues } from "../utilities/npcDialogues";
-import TwentySidedDie from "./TwentySidedDie";
-import GameContext from "./GameContext";
-import "/src/styles/Dialogue.css";
-import axios from "axios";
+import { useContext, useState, useEffect } from 'react';
+import { npcDialogues } from '../utilities/npcDialogues';
+import TwentySidedDie from './TwentySidedDie';
+import GameContext from './GameContext';
+import '/src/styles/Dialogue.css';
+import axios from 'axios';
 
 const Dialogue = () => {
-  const { setScene, currentNPC, typeOfCheck, setTypeOfCheck, charStats } =
-    useContext(GameContext);
-  const [currentDialogueId, setCurrentDialogueId] = useState("1");
+  const {
+    setScene,
+    currentNPC,
+    typeOfCheck,
+    setTypeOfCheck,
+    // charStats,
+    outcome,
+    setMakeCheck,
+    makeCheck,
+  } = useContext(GameContext);
+
+  const [charStats, setCharStats] = useState({
+    name: '',
+    health: 50,
+    strength: 6,
+    str_mod: -2,
+    wisdom: 14,
+    wis_mod: 2,
+    dexterity: 10,
+    dex_mod: 0,
+  });
+
+  const [currentDialogueId, setCurrentDialogueId] = useState('1');
   const currentOption = npcDialogues[currentNPC][currentDialogueId];
 
   const [response, setResponse] = useState(
@@ -45,41 +65,42 @@ const Dialogue = () => {
     const selectedDialogue = npcDialogues[currentNPC][optionId];
     // console.log("SELECTED DIALOGUE", selectedDialogue);
 
-    if (optionId == "leave") {
+    if (optionId == 'leave') {
       // console.log("End of conversation detected.");
-      if (currentNPC == "wiseman") {
-        console.log("leaving wiseman convo");
-        setResponse("leaving wiseman convo");
-        setScene("characterCreation");
+      if (currentNPC == 'wiseman') {
+        console.log('leaving wiseman convo');
+        setResponse('leaving wiseman convo');
+        setScene('characterCreation');
       } else {
-        setResponse("End of conversation.");
-        setScene("overworld");
+        setResponse('End of conversation.');
+        setScene('overworld');
       }
-    } else if (optionId == "start") {
+    } else if (optionId == 'start') {
       // console.log("Start of conversation detected.");
-      setCurrentDialogueId("1");
-      setResponse("What else would you like to know young one?");
-    } else if (optionId == "str") {
-      setTypeOfCheck("str");
+      setCurrentDialogueId('1');
+      setResponse('What else would you like to know young one?');
+    } else if (optionId == 'str') {
+      setTypeOfCheck('str');
+      setMakeCheck(true);
       // roll for str check
       // console log pass or fail
 
       console.log(typeOfCheck);
-    } else if (optionId == "dex") {
-      setTypeOfCheck("dex");
+    } else if (optionId == 'dex') {
+      setTypeOfCheck('dex');
+      setMakeCheck(true);
       // roll for dex check
       // console log pass or fail
 
-      console.log("dex test");
-    } else if (optionId == "wis") {
-      setTypeOfCheck("wis");
+      console.log('dex test');
+    } else if (optionId == 'wis') {
+      setTypeOfCheck('wis');
+      setMakeCheck(true);
       // roll for wis check
       // console log pass or fail
-
       console.log("wis test");
     } else if (optionId == 'fight') {
       setScene('battle')
-     
     } else {
       const optionIndex = currentDialogue.options.indexOf(optionId);
 
@@ -112,26 +133,26 @@ const Dialogue = () => {
     try {
       const messages = [
         {
-          role: "system",
+          role: 'system',
           content: systemContent,
         },
         {
-          role: "user",
+          role: 'user',
           content: userContent,
         },
       ];
       const payload = {
-        model: "gpt-3.5-turbo",
+        model: 'gpt-3.5-turbo',
         messages,
         max_tokens: 50,
       };
 
       const apiResponse = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
+        'https://api.openai.com/v1/chat/completions',
         payload,
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${import.meta.env.VITE_CHATGPT_SECRET_KEY}`,
           },
         }
@@ -140,14 +161,16 @@ const Dialogue = () => {
       const data = apiResponse.data;
       return data.choices[0].message.content;
     } catch (error) {
-      console.error("Error:", error);
-      return "Error fetching response.";
+      console.error('Error:', error);
+      return 'Error fetching response.';
     }
   };
 
   const currentDialogue = npcDialogues[currentNPC][currentDialogueId];
 
-  console.log("CURRENT DIALOGUE", currentDialogue);
+  console.log('CURRENT DIALOGUE', currentDialogue);
+
+  console.log('charStats: ', charStats);
 
   return (
     <div className="dialogue-container" style={containerStyle}>
@@ -172,17 +195,17 @@ const Dialogue = () => {
         </select>
       </div> */}
 
-      {response && (
-        <div>
-          <p className="npc-text">{response}</p>
-        </div>
-      )}
-      {["str", "dex", "wis"].includes(currentOption?.check) && (
+      {makeCheck && (
         <TwentySidedDie
           typeOfCheck={currentOption?.check}
           difficultyScore={currentOption?.difficultyScore}
           charStats={charStats}
         />
+      )}
+      {response && (
+        <div>
+          <p className="npc-text">{response}</p>
+        </div>
       )}
 
       <div className="options-container">

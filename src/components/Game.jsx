@@ -21,7 +21,9 @@ const Game = () => {
     dex_mod: null,
   });
 
-  const [typeOfCheck, setTypeOfCheck] = useState('')
+  const [typeOfCheck, setTypeOfCheck] = useState('');
+  const [outcome, setOutcome] = useState('');
+  const [makeCheck, setMakeCheck] = useState(false);
 
   const [currentMap, setCurrentMap] = useState('testMap');
 
@@ -43,6 +45,10 @@ const Game = () => {
           setCharStats,
           typeOfCheck,
           setTypeOfCheck,
+          outcome,
+          setOutcome,
+          makeCheck,
+          setMakeCheck,
         }}
       >
         <div className="content">

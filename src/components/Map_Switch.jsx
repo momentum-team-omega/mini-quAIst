@@ -531,10 +531,10 @@ const Map_Switch = ({
       setMapOffset({ x: 9.5, y: 6 });
       if (!hasMapSwitched) {
         setMapPosition({
-          x: -538,
-          y: -85,
+          x: 299.5,
+          y: 390,
         });
-        setCharPosition({ x: 1, y: 4 });
+        setCharPosition({ x: 14, y: 11 });
       }
       setIsFPressed(false);
       setNpcs([
