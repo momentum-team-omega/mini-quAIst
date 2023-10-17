@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Nav from 'components/Nav';
 import Dialogue from 'components/Dialogue';
 
@@ -7,6 +7,8 @@ const TempDialogue = () => {
     height: '720px',
     width: '1280px',
   });
+
+  
 
   return (
     <>
@@ -19,14 +21,7 @@ const TempDialogue = () => {
             width: gameWindow.width,
           }}
         >
-          <Dialogue npcText="Hello, adventurer! How can I help you?"
-              options={[
-                "Ask about quests",
-                "Buy items",
-                "Leave",
-                "Say goodbye",
-              ]}
-          />
+          <Dialogue />
         </div>
       </div>
     </>
