@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Char_Bar from "components/Char_Bar";
 import barbCharacter from 'assets/creation-assets/barbarian-character.png';
 import mageCharacter from 'assets/creation-assets/mage-character.png';
 import rogueCharacter from 'assets/creation-assets/rogue-character.png';
 import charBackground from 'assets/creation-assets/fantasy-world.png';
+import GameContext from "./GameContext";
 
 const SelectCharacter = ({ charStats, setCharStats }) => {
+  const { setScene } = useContext(GameContext);
+
   const characterAttributes = {
     mage: {
       health: 50,
@@ -23,7 +26,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       strength: 14,
       str_mod: 2,
       wisdom: 6,
-      wis_mod: 2,
+      wis_mod: -2,
       dexterity: 10,
       dex_mod: 0,
       description:
@@ -32,9 +35,9 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
     rogue: {
       health: 50,
       strength: 6,
-      str_mod: 0,
+      str_mod: -2,
       wisdom: 10,
-      wis_mod: -1,
+      wis_mod: 0,
       dexterity: 14,
       dex_mod: 2,
       description: "Rogues are skilled thieves, assassins, spies, and scouts. They excel in stealth, dexterity-based skills, and precision attacks. They are often seen as cunning, nimble, and resourceful adventurers.",
@@ -63,9 +66,12 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
     }
   };
 
-  console.log(charStats)
+  // console.log(charStats)
 
   const handleConfirmClick = () => {
+    
+    console.log(charStats)
+    setScene('overworld')
   };
 
   const handleChange = (e) => {
