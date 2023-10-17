@@ -4,11 +4,12 @@ import Overworld from "./Overworld";
 import Dialogue from "./Dialogue";
 import Create_Char from "./Create_Char";
 import GameContext from "./GameContext";
+import Battle from "./Battle";
 
 
 const Game = () => {
   const [scene, setScene] = useState('overworld'); // Initial scene
-  const [currentNPC, setCurrentNPC] = useState(null); // No NPC initially
+  const [currentNPC, setCurrentNPC] = useState('troll'); // No NPC initially
   const [charStats, setCharStats] = useState({
     name: '',
     health: null,
@@ -62,6 +63,7 @@ const Game = () => {
               <Create_Char charStats={charStats} setCharStats={setCharStats} />
             )}
             {scene === "dialogue" && <Dialogue />}
+            {scene === "battle" && <Battle />}
           </div>
         </div>
       </GameContext.Provider>

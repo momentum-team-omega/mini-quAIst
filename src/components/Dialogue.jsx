@@ -77,6 +77,9 @@ const Dialogue = () => {
       // console log pass or fail
 
       console.log("wis test");
+    } else if (optionId == 'fight') {
+      setScene('battle')
+     
     } else {
       const optionIndex = currentDialogue.options.indexOf(optionId);
 
