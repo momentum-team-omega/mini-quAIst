@@ -21,7 +21,7 @@ const Game = () => {
     dex_mod: null,
   });
 
-  const [typeOfCheck, setTypeOfCheck] = useState('');
+  const [typeOfCheck, setTypeOfCheck] = useState('wis');
   const [outcome, setOutcome] = useState('');
   const [makeCheck, setMakeCheck] = useState(false);
 

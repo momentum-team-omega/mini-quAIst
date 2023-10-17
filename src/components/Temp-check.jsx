@@ -18,7 +18,7 @@ const TempCheck = () => {
     dexterity: 10,
     dex_mod: 0,
   });
-  const [typeOfCheck, setTypeOfCheck] = useState('dex');
+  const [typeOfCheck, setTypeOfCheck] = useState('wis');
 
   const [makeCheck, setMakeCheck] = useState(false);
   const [checkPass, setCheckPass] = useState(null);
