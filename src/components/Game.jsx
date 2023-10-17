@@ -21,7 +21,7 @@ const Game = () => {
   });
 
 
-  const [currentMap, setCurrentMap] = useState('trollMap');
+  const [currentMap, setCurrentMap] = useState('testMap');
 
   const [gameWindow, setGameWindow] = useState({
     height: '720px',
