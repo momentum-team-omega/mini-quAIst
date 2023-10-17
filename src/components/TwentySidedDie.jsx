@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import GameContext from './GameContext';
+
 
 const TwentySidedDie = ({modifiers, typeOfCheck, difficultyScore}) => {
   // variable, declaration and assigment
   const [diceRoll, setDiceRoll] = useState(null);
   const [outcome, setOutcome] = useState("");
+  const { charStats } = useContext(GameContext);
 // useState pulls an array with 2 things from it. State variable & updater function
 // null value being passed thru is a defualt value for dice roll
 
@@ -33,7 +36,7 @@ console.log(modifiers)
       <div>Difficulty Score {difficultyScore}
       </div>
       <div>
-        Modifiers {modifiers[typeOfCheck]}
+        Modifiers {modifiers[typeOfCheck] || 0} 
       </div>
       <div>
         Dice Roll {diceRoll} + Modifiers {modifiers[typeOfCheck]} - Difficulty Score {difficultyScore}

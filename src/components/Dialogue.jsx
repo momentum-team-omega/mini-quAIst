@@ -1,6 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from 'react';
 import { npcDialogues } from "../utilities/npcDialogues";
 import GameContext from './GameContext';
+import TwentySidedDie from './TwentySidedDie';
 
 
 import axios from "axios";
@@ -182,7 +183,7 @@ const Dialogue = () => {
             {npcDialogues[currentNPC][optionId].text}
           </div>
         ))}
-        <TwentySidedDie modifiers={modifiers} difficultyScore={difficultyScore} typeOfCheck={typeOfCheck}/>
+        
       </div>
     </div>
   );
