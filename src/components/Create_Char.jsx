@@ -12,6 +12,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
 
   const characterAttributes = {
     mage: {
+      class: "mage",
       health: 50,
       strength: 6,
       str_mod: -2,
@@ -23,6 +24,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
         "Mages are arcane spellcasters who derive their power from intense study and a deep understanding of the arcane arts. Similar to sorcerers, mages spend years deciphering ancient tomes, learning new spells, and mastering the arcane.",
     },
     barbarian: {
+      class: "barb",
       health: 50,
       strength: 14,
       str_mod: 2,
@@ -34,6 +36,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
         "The Barbarian is the embodiment of primal fury, a warrior who draws from raw rage and the power of nature to decimate foes on the battlefield. These untamed fighters are known for their resilience and ferocity.",
     },
     rogue: {
+      class: "rogue",
       health: 50,
       strength: 6,
       str_mod: -2,
@@ -54,6 +57,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       setCharStats({
         ...charStats,
         name: "",
+        class: "",
         health: null,
         strength: null,
         str_mod: null,
@@ -67,6 +71,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       setSelectedCharacter(character);
       setCharStats({
         name: character.charAt(0).toUpperCase() + character.slice(1),
+        class: characterAttributes[character].class,
         health: characterAttributes[character].health,
         strength: characterAttributes[character].strength,
         str_mod: characterAttributes[character].str_mod,
