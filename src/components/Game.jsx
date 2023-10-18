@@ -7,18 +7,18 @@ import GameContext from "./GameContext";
 import Battle from "./Battle";
 
 const Game = () => {
-  const [scene, setScene] = useState("overworld"); // Initial scene
-  const [currentNPC, setCurrentNPC] = useState("troll"); // No NPC initially
+  const [scene, setScene] = useState("overworld"); 
+  const [currentNPC, setCurrentNPC] = useState("troll"); 
   const [charStats, setCharStats] = useState({
-    name: "",
-    class: "",
-    health: null,
-    strength: null,
-    str_mod: null,
-    wisdom: null,
-    wis_mod: null,
-    dexterity: null,
-    dex_mod: null,
+    name: "game test",
+    charClass: "mage",
+    health: 33,
+    strength: 6,
+    str_mod: -2,
+    wisdom: 14,
+    wis_mod: 2,
+    dexterity: 10,
+    dex_mod: 0,
   });
 
   const [typeOfCheck, setTypeOfCheck] = useState("wis");
