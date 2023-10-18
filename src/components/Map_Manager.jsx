@@ -123,8 +123,8 @@ const Map_Manager = ({
           npcY
         )
       ) {
-        console.log(`Character is near NPC with ID: ${npc.id}`);
-        console.log(npc.name);
+        // console.log(`Character is near NPC with ID: ${npc.id}`);
+        // console.log(npc.name);
         isNearAnyNpc = true;
 
         if (isFPressed) {
@@ -136,7 +136,7 @@ const Map_Manager = ({
             )
           );
           setCurrentNPC(npc.name); // This sets which NPC the player is currently interacting with
-          console.log('NPC in MM:', npc.name);
+          // console.log('NPC in MM:', npc.name);
           setScene('dialogue'); // This will show the dialogue box or component
         }
       }
@@ -148,8 +148,8 @@ const Map_Manager = ({
       setNpcColor('transparent');
     }
 
-    console.log(mapPosition);
-    console.log(charPosition);
+    // console.log(mapPosition);
+    // console.log(charPosition);
   }, [charPosition, isFPressed]);
 
   const checkCollisions = (position, collisionMap) => {

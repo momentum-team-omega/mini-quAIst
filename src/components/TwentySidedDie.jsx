@@ -5,6 +5,7 @@ import '/src/styles/TwentySidedDie.css';
 const TwentySidedDie = ({
   typeOfCheck,
   charStats,
+  onRollComplete,
 }) => {
   // variable, declaration and assigment
   const [diceRoll, setDiceRoll] = useState(null);
@@ -24,9 +25,10 @@ const TwentySidedDie = ({
   useEffect(() => {
     const newOutcome =
       diceRoll + charStats[`${typeOfCheck}_mod`] - difficultyScore >= 0
-        ? 'You passed'
-        : 'You failed';
+        ? 'passed'
+        : 'failed';
     setOutcome(newOutcome);
+    
   }, [diceRoll, typeOfCheck, difficultyScore]);
 
   const rollDie = () => {
@@ -37,7 +39,13 @@ const TwentySidedDie = ({
     // calling the state setter function and giving it a new value
   };
 
-const handleContinue = () => {setMakeCheck(false)}
+  const handleContinue = () => {
+    if (onRollComplete) {
+      onRollComplete(outcome);  // passing the outcome ('passed' or 'failed') to the callback
+    }
+    setMakeCheck(false);
+  };
+  
 
   return (
     <div
