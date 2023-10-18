@@ -1,7 +1,7 @@
 /* DIALOGUE CSS - START */
 
 .npc-image-container {
-  z-index: 999;
+  z-index: 1;
   background-size: cover;
 }
 .dialogue-container {
