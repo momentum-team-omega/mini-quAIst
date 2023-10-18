@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { TypeAnimation } from "react-type-animation";
 import exampleImage1 from "/src/assets/gamestart-assets/LoraEx1.jpeg";
 import exampleImage2 from "/src/assets/gamestart-assets/LoraEx2.jpeg";
 import exampleImage3 from "/src/assets/gamestart-assets/LoraEx3.jpeg";
+import GameContext from "./GameContext";
 
 const scenes = [
   {
@@ -24,7 +25,9 @@ const scenes = [
   // Define more scenes here
 ];
 
-const Cut_Scene = ({ initialSceneIndex }) => {
+const Cut_Scene = ({ initialSceneIndex, onSceneEnd }) => {
+  const {setScene} = useContext(GameContext);
+  const [showContinueButton, setShowContinueButton] = useState(false);
   const [sceneIndex, setSceneIndex] = useState(initialSceneIndex || 0);
   const selectedScene = scenes[sceneIndex];
   const imageUrls = selectedScene.imageUrls;
@@ -38,15 +41,14 @@ const Cut_Scene = ({ initialSceneIndex }) => {
         if (prevIndex < imageUrls.length - 1) {
           return prevIndex + 1;
         }
-        return prevIndex; // Stay on the last image
+        return prevIndex;
       });
 
-      // Checking for scene end so scenes can be any length
       if (imageIndex < textArray.length - 1) {
         setIsTyping(false);
         setTimeout(() => {
           setIsTyping(true);
-        }, 1000);
+        }, 300);
       }
     };
 
@@ -56,6 +58,18 @@ const Cut_Scene = ({ initialSceneIndex }) => {
       clearInterval(intervalId);
     };
   }, [imageUrls, textArray, imageIndex]);
+
+  useEffect(() => {
+    if (imageIndex === imageUrls.length - 1 && !isTyping) {
+      setTimeout(() => {
+        setShowContinueButton(true);
+      }, 4000);
+    }
+  }, [imageIndex, isTyping, imageUrls]);
+
+  const handleContinue = () => {
+    setScene("overworld");
+  };
 
   return (
     <>
@@ -78,6 +92,9 @@ const Cut_Scene = ({ initialSceneIndex }) => {
             </div>
           )}
         </div>
+        {showContinueButton && (
+          <button onClick={handleContinue} style={{ marginTop: '60px' }}>Continue</button>
+        )}
       </div>
     </>
   );
