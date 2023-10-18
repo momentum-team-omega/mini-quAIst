@@ -62,7 +62,7 @@ const Char = ({ tileSize, direction, isMoving, isSpacePressed }) => {
     },
   };
 
-  const images = classToImages[charStats.class] || classToImages[''];
+  const images = classToImages[charStats.charClass] || classToImages[''];
 
   const backgroundImage = `url(${images[direction]})`;
 
