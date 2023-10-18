@@ -21,9 +21,9 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       dexterity: 10,
       dex_mod: 0,
       description:
-        "Mages are arcane spellcasters who derive their power from intense study and a deep understanding of the arcane arts. Similar to sorcerers, mages spend years deciphering ancient tomes, learning new spells, and mastering the arcane.",
+        "Mages are spellcasters who derive their power from the study and understanding of the arcane arts.",
       special_attack:
-        "Mages are capable of channeling primal energies to unleash a powerful Fireball. This Special Attack deals double the damage of a normal attack, but can only be used once per battle!",
+        "Mages are capable of channeling primal energies to unleash a powerful Fireball. This Special Attack deals double the damage of a normal attack, but only once per battle!",
     },
     barbarian: {
       class: "barb",
@@ -35,9 +35,9 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       dexterity: 10,
       dex_mod: 0,
       description:
-        "The Barbarian is the embodiment of primal fury, a warrior who draws from raw rage and the power of nature to decimate foes on the battlefield. These untamed fighters are known for their resilience and ferocity.",
+        "The Barbarian is the embodiment of primal fury, a warrior who draws from raw rage to decimate foes.",
       special_attack:
-        "Rage is the hallmark of the barbarian, an explosive burst of primal fury. Harnessing that rage allows a Barbarian to deal double damage, but only once each turn.",
+        "Rage is the hallmark of the barbarian, an explosinon of primal fury. Harnessing that rage allows a Barbarian to deal double damage, but only once per battle.",
     },
     special_attack: "",
     rogue: {
@@ -50,9 +50,9 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       dexterity: 14,
       dex_mod: 2,
       description:
-        "Rogues are skilled thieves, assassins, spies, and scouts. They excel in stealth, dexterity-based skills, and precision attacks. They are often seen as cunning, nimble, and resourceful adventurers.",
+        "Rogues are skilled thieves, assassins, spies, and scouts. They excel in stealth, dexterity-based skills, and precision attacks.",
       special_attack:
-        "Sneak Attack is a precise and stealthy maneuver favored by rogues. Its use allows a Rogue to do double attack damage, but only once per battle.",
+        "Sneak Attack is a precise and stealthy maneuver favored by rogues. Its use allows a Rogue to do double damage, but only once per battle.",
     },
   };
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -116,6 +116,22 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
     >
       <div className="background">
         <p className="who-are-you">Who Are You?</p>
+        <div className="name-entry">
+          <div className="name-input">
+            <label htmlFor="name" className="name-label">
+              Enter Your Name:{" "}
+            </label>
+            <input
+              className="name-input-box"
+              type="text"
+              name="name"
+              id="name"
+              required
+              value={charStats.username}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
         <div className="characters-container">
           <div className="character-options">
             {["mage", "barbarian", "rogue"].map((character) => (
@@ -178,28 +194,16 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
               </div>
             ))}
           </div>
-          <div className="name-input">
-            <label htmlFor="name" className="name-label">
-              Enter Your Name:{" "}
-            </label>
-            <input
-              className="name-input-box"
-              type="text"
-              name="name"
-              id="name"
-              required
-              value={charStats.username}
-              onChange={handleChange}
-            />
-          </div>
         </div>
-        <button
-          className="char-confirm-button"
-          onClick={handleConfirmClick}
-          disabled={!selectedCharacter}
-        >
-          Confirm Selection
-        </button>
+        <div className="button-container">
+          <button
+            className="char-confirm-button"
+            onClick={handleConfirmClick}
+            disabled={!selectedCharacter}
+          >
+            Confirm Selection
+          </button>
+        </div>
       </div>
     </div>
   );
