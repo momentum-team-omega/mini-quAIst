@@ -8,7 +8,7 @@ import Battle from './Battle';
 import Cut_Scene from './Cut_Scene';
 
 const Game = () => {
-  const [scene, setScene] = useState('overworld');
+  const [scene, setScene] = useState('ending');
   const [currentNPC, setCurrentNPC] = useState('troll');
   const [charStats, setCharStats] = useState({
     name: 'game test',
@@ -61,6 +61,7 @@ const Game = () => {
             }}
           >
             {scene === 'intro' && (<Cut_Scene initialSceneIndex={0}/>)}
+            {scene === 'ending' && (<Cut_Scene initialSceneIndex={1}/>)}
             {scene === 'overworld' && (
               <Overworld
                 currentMap={currentMap}

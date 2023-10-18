@@ -25,8 +25,8 @@ const scenes = [
   // Define more scenes here
 ];
 
-const Cut_Scene = ({ initialSceneIndex, onSceneEnd }) => {
-  const {setScene} = useContext(GameContext);
+const Cut_Scene = ({ initialSceneIndex }) => {
+  const { setScene } = useContext(GameContext);
   const [showContinueButton, setShowContinueButton] = useState(false);
   const [sceneIndex, setSceneIndex] = useState(initialSceneIndex || 0);
   const selectedScene = scenes[sceneIndex];
@@ -93,7 +93,9 @@ const Cut_Scene = ({ initialSceneIndex, onSceneEnd }) => {
           )}
         </div>
         {showContinueButton && (
-          <button onClick={handleContinue} style={{ marginTop: '60px' }}>Continue</button>
+          <button onClick={handleContinue} style={{ marginTop: "60px" }}>
+            {sceneIndex === 0 ? "Continue" : "End of Chapter 1"}
+          </button>
         )}
       </div>
     </>
