@@ -74,6 +74,13 @@ const NPC_Map = ({
     };
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
+  } else if (currentMap === 'village2') {
+    NPC_IMAGES = {
+      1: oldMan1,
+      2: oldMan1,
+    };
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
   }
 
   // console.log(npcs);

@@ -28,7 +28,6 @@ const Game = () => {
   const [makeCheck, setMakeCheck] = useState(false);
   const [currentMap, setCurrentMap] = useState("testMap");
 
-
   const [gameWindow, setGameWindow] = useState({
     height: "720px",
     width: "1280px",
