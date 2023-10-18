@@ -8,7 +8,7 @@ import Battle from './Battle';
 import Cut_Scene from './Cut_Scene';
 
 const Game = () => {
-  const [scene, setScene] = useState('intro');
+  const [scene, setScene] = useState('overworld');
   const [currentNPC, setCurrentNPC] = useState('troll');
   const [charStats, setCharStats] = useState({
     name: 'game test',
@@ -25,7 +25,7 @@ const Game = () => {
   const [typeOfCheck, setTypeOfCheck] = useState('wis');
   const [outcome, setOutcome] = useState('');
   const [makeCheck, setMakeCheck] = useState(false);
-  const [currentMap, setCurrentMap] = useState('start');
+  const [currentMap, setCurrentMap] = useState('testMap');
 
 
   const [gameWindow, setGameWindow] = useState({
