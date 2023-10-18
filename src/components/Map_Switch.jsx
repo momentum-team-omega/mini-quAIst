@@ -15,6 +15,8 @@ import startHouse from 'assets/map-assets/startHouse-sheet.png';
 import enchantedForest from 'assets/map-assets/enchantedForest-sheet.png';
 import enchantedForestFore from 'assets/map-assets/enchantedForest-fore.png';
 import enchantedForestLocked from 'assets/map-assets/enchantedForestLocked-sheet.png';
+import village2 from 'assets/map-assets/village2-sheet.png';
+import village2Fore from 'assets/map-assets/village2-fore.png';
 
 const Map_Switch = ({
   currentMap,
@@ -33,7 +35,6 @@ const Map_Switch = ({
   setIsFPressed,
   hasMapSwitched,
 }) => {
-  
   const storedMapPosition = localStorage.getItem('mapPosition');
 
   useEffect(() => {
@@ -49,9 +50,7 @@ const Map_Switch = ({
           x: -158,
           y: 175,
         });
-      setCharPosition({ x: 7, y: 8 });  // default value
-      
-      
+        setCharPosition({ x: 7, y: 8 }); // default value
       }
       setIsFPressed(false);
       setNpcs([]);
@@ -65,24 +64,20 @@ const Map_Switch = ({
           destPY: 260.5,
           destX: 5,
           destY: 9,
-          // destPX: -281,
-          // destPY: 260.5,
-          // destX: 5,
-          // destY: 9,
         },
         {
           id: 2,
           x: 19,
           y: 8,
           map: 'enchantedForestLocked',
-          destPX: -256,
-          destPY: -59.5,
-          destX: 5,
-          destY: 9,
-          // destPX: -553.5,
-          // destPY: 1835.5,
-          // destX: 1,
-          // destY: 34,
+          // destPX: -256,
+          // destPY: -59.5,
+          // destX: 5,
+          // destY: 9,
+          destPX: -553.5,
+          destPY: 1835.5,
+          destX: 0,
+          destY: 0,
         },
         {
           id: 3,
@@ -466,10 +461,7 @@ const Map_Switch = ({
           x: -389.5,
           y: -134.5,
         });
-       
-      setCharPosition({ x: 4, y: 4 });  // default value
-      
-      
+        setCharPosition({ x: 4, y: 4 }); // default value
       }
       setIsFPressed(false);
       setNpcs([]);
@@ -516,17 +508,17 @@ const Map_Switch = ({
         if (storedMapPosition) {
           setMapPosition(JSON.parse(storedMapPosition));
         } else {
-        setMapPosition({
-          x: -389.5,
-          y: -134.5,
-        });
-      }
-      setCharPosition({ x: 5, y: 5 });  // default value
+          setMapPosition({
+            x: -389.5,
+            y: -134.5,
+          });
+        }
+        setCharPosition({ x: 5, y: 5 }); // default value
       }
       setIsFPressed(false);
       setNpcs([
         {
-          id: 2,
+          id: 1,
           x: 15,
           y: 4,
           steps: 2,
@@ -581,15 +573,13 @@ const Map_Switch = ({
           x: -389.5,
           y: -134.5,
         });
-      
-      setCharPosition({ x: 7, y: 8 });  // default value
-      
-      
+
+        setCharPosition({ x: 7, y: 8 }); // default value
       }
       setIsFPressed(false);
       setNpcs([
         {
-          id: 2,
+          id: 1,
           x: 15,
           y: 4,
           steps: 2,
@@ -655,6 +645,127 @@ const Map_Switch = ({
           id: 6,
           x: 19,
           y: 35,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+      ]);
+    } else if (currentMap === 'village2') {
+      setMapImage(village2);
+      setForeImage(village2Fore);
+      setTileSize(64);
+      setMapColumns(40);
+      setMapRows(30);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        setMapPosition({
+          x: 10.5,
+          y: -134.5,
+        });
+        setCharPosition({ x: 10, y: 3 }); // default value
+      }
+      setIsFPressed(false);
+      setNpcs([
+        {
+          id: 1,
+          x: 4,
+          y: 4,
+          steps: 2,
+          animationSpeed: 800,
+          alive: true,
+          triggered: false,
+          message: 'Crikey!',
+          name: 'steve',
+        },
+        {
+          id: 2,
+          x: 37,
+          y: 12,
+          steps: 2,
+          animationSpeed: 800,
+          alive: true,
+          triggered: false,
+          message: 'Greetings',
+          name: 'wiseman',
+        },
+      ]);
+      setGates([
+        {
+          id: 1,
+          x: 0,
+          y: 20,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+        {
+          id: 2,
+          x: 0,
+          y: 21,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+        {
+          id: 3,
+          x: 0,
+          y: 22,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+        {
+          id: 4,
+          x: 19,
+          y: 10,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+        {
+          id: 5,
+          x: 20,
+          y: 10,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+        {
+          id: 6,
+          x: 39,
+          y: 16,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+        {
+          id: 7,
+          x: 39,
+          y: 17,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+        {
+          id: 8,
+          x: 39,
+          y: 18,
           map: 'start',
           destPX: 562,
           destPY: 175,

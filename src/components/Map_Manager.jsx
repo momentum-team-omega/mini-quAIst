@@ -11,6 +11,7 @@ import {
   startHouseCollisions,
   enchantedForestCollisions,
   enchantedForestLockedCollisions,
+  village2Collisions,
 } from 'utilities/collisionsData.js';
 
 const Map_Manager = ({
@@ -60,6 +61,8 @@ const Map_Manager = ({
       setCollisions(startHouseCollisions);
     } else if (currentMap === 'enchantedForestLocked') {
       setCollisions(enchantedForestLockedCollisions);
+    } else if (currentMap === 'village2') {
+      setCollisions(village2Collisions);
     }
   }, [currentMap]);
 
@@ -136,7 +139,6 @@ const Map_Manager = ({
             )
           );
           setCurrentNPC(npc.name); // This sets which NPC the player is currently interacting with
-          // console.log('NPC in MM:', npc.name);
           setScene('dialogue'); // This will show the dialogue box or component
         }
       }
@@ -228,7 +230,7 @@ const Map_Manager = ({
                   left: `${colIndex * tileSize}px`,
                   width: `${tileSize}px`,
                   height: `${tileSize}px`,
-                  // backgroundColor: 'red',
+                  backgroundColor: 'red',
                 }}
               />
             )}
