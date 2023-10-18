@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import bridgeLeft from 'assets/map-assets/bridge-left-sheet.png';
 import bridgeLeftFore from 'assets/map-assets/bridge-map-left-fore.png';
@@ -35,10 +36,10 @@ const Map_Switch = ({
   setIsFPressed,
   hasMapSwitched,
 }) => {
-  const storedMapPosition = localStorage.getItem('mapPosition');
+  const storedMapPosition = localStorage.getItem("mapPosition");
 
   useEffect(() => {
-    if (!mapImage || currentMap === 'start') {
+    if (!mapImage || currentMap === "start") {
       setMapImage(startMap);
       setForeImage(startMapFore);
       setTileSize(64);
@@ -59,7 +60,7 @@ const Map_Switch = ({
           id: 1,
           x: 7,
           y: 7,
-          map: 'startHouse',
+          map: "startHouse",
           destPX: -281,
           destPY: 260.5,
           destX: 5,
@@ -83,7 +84,7 @@ const Map_Switch = ({
           id: 3,
           x: 19,
           y: 9,
-          map: 'enchantedForestLocked',
+          map: "enchantedForestLocked",
           destPX: -281,
           destPY: 260.5,
           destX: 5,
@@ -97,7 +98,7 @@ const Map_Switch = ({
           id: 4,
           x: 19,
           y: 10,
-          map: 'enchantedForestLocked',
+          map: "enchantedForestLocked",
           destPX: -281,
           destPY: 260.5,
           destX: 5,
@@ -109,7 +110,7 @@ const Map_Switch = ({
         },
       ]);
     }
-    if (currentMap === 'village1') {
+    if (currentMap === "village1") {
       setMapImage(village1);
       setForeImage(village1Fore);
       setTileSize(64);
@@ -130,7 +131,7 @@ const Map_Switch = ({
           id: 1,
           x: 0,
           y: 10,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -140,7 +141,7 @@ const Map_Switch = ({
           id: 2,
           x: 0,
           y: 11,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -150,7 +151,7 @@ const Map_Switch = ({
           id: 3,
           x: 0,
           y: 12,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -160,7 +161,7 @@ const Map_Switch = ({
           id: 4,
           x: 9,
           y: 1,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -170,7 +171,7 @@ const Map_Switch = ({
           id: 5,
           x: 10,
           y: 1,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -180,7 +181,7 @@ const Map_Switch = ({
           id: 6,
           x: 11,
           y: 1,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -190,7 +191,7 @@ const Map_Switch = ({
           id: 7,
           x: 31,
           y: 29,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -200,7 +201,7 @@ const Map_Switch = ({
           id: 8,
           x: 32,
           y: 29,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -210,7 +211,7 @@ const Map_Switch = ({
           id: 9,
           x: 33,
           y: 29,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -220,7 +221,7 @@ const Map_Switch = ({
           id: 10,
           x: 39,
           y: 14,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -230,7 +231,7 @@ const Map_Switch = ({
           id: 11,
           x: 39,
           y: 15,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -240,7 +241,7 @@ const Map_Switch = ({
           id: 12,
           x: 39,
           y: 16,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -250,7 +251,7 @@ const Map_Switch = ({
           id: 12,
           x: 24,
           y: 9,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -260,14 +261,14 @@ const Map_Switch = ({
           id: 13,
           x: 25,
           y: 9,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
           destY: 5,
         },
       ]);
-    } else if (currentMap === 'trollMap') {
+    } else if (currentMap === "trollMap") {
       setMapImage(trollMap);
       setForeImage(trollMapFore);
       setTileSize(64);
@@ -288,7 +289,7 @@ const Map_Switch = ({
           id: 1,
           x: 0,
           y: 3,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -298,7 +299,7 @@ const Map_Switch = ({
           id: 2,
           x: 0,
           y: 4,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -308,7 +309,7 @@ const Map_Switch = ({
           id: 3,
           x: 0,
           y: 5,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -318,7 +319,7 @@ const Map_Switch = ({
           id: 4,
           x: 19,
           y: 3,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -328,7 +329,7 @@ const Map_Switch = ({
           id: 5,
           x: 19,
           y: 4,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -338,14 +339,14 @@ const Map_Switch = ({
           id: 6,
           x: 19,
           y: 5,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
           destY: 5,
         },
       ]);
-    } else if (currentMap === 'testMap') {
+    } else if (currentMap === "testMap") {
       setMapImage(testMap);
       setForeImage(null);
       setTileSize(64);
@@ -353,10 +354,14 @@ const Map_Switch = ({
       setMapRows(20);
       setMapOffset({ x: 9.5, y: 6 });
       if (!hasMapSwitched) {
-        setMapPosition({
-          x: 299.5,
-          y: 390,
-        });
+        if (storedMapPosition) {
+          setMapPosition(JSON.parse(storedMapPosition));
+        } else {
+          setMapPosition({
+            x: 299.5,
+            y: 390,
+          });
+        }
         setCharPosition({ x: 14, y: 11 });
       }
       setIsFPressed(false);
@@ -369,8 +374,8 @@ const Map_Switch = ({
           animationSpeed: 800,
           alive: true,
           triggered: false,
-          message: 'Hello There',
-          name: 'wiseman',
+          message: "Hello There",
+          name: "wiseman",
         },
         {
           id: 2,
@@ -380,8 +385,8 @@ const Map_Switch = ({
           animationSpeed: 800,
           alive: true,
           triggered: false,
-          message: 'Greetings',
-          name: 'villageLeader',
+          message: "Greetings",
+          name: "villageLeader",
         },
         {
           id: 3,
@@ -391,8 +396,8 @@ const Map_Switch = ({
           animationSpeed: 800,
           alive: true,
           triggered: false,
-          message: 'Good Evening',
-          name: 'tavernKeeper',
+          message: "Good Evening",
+          name: "tavernKeeper",
         },
         {
           id: 4,
@@ -402,8 +407,8 @@ const Map_Switch = ({
           animationSpeed: 800,
           alive: true,
           triggered: false,
-          message: 'Crikey!',
-          name: 'steve',
+          message: "Crikey!",
+          name: "steve",
         },
         {
           id: 5,
@@ -413,8 +418,8 @@ const Map_Switch = ({
           animationSpeed: 800,
           alive: true,
           triggered: false,
-          message: 'RAWR',
-          name: 'troll',
+          message: "RAWR",
+          name: "troll",
         },
       ]);
       setGates([
@@ -422,7 +427,7 @@ const Map_Switch = ({
           id: 1,
           x: 9,
           y: 19,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -432,7 +437,7 @@ const Map_Switch = ({
           id: 2,
           x: 10,
           y: 19,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
@@ -442,14 +447,14 @@ const Map_Switch = ({
           id: 3,
           x: 11,
           y: 19,
-          map: 'bridgeRight',
+          map: "bridgeRight",
           destPX: -252,
           destPY: -112,
           destX: 8,
           destY: 5,
         },
       ]);
-    } else if (currentMap === 'startHouse') {
+    } else if (currentMap === "startHouse") {
       setMapImage(startHouse);
       setForeImage();
       setTileSize(64);
@@ -470,7 +475,7 @@ const Map_Switch = ({
           id: 1,
           x: 4,
           y: 10,
-          map: 'start',
+          map: "start",
           destPX: -158,
           destPY: 175,
           destX: 7,
@@ -480,7 +485,7 @@ const Map_Switch = ({
           id: 2,
           x: 5,
           y: 10,
-          map: 'start',
+          map: "start",
           destPX: -158,
           destPY: 175,
           destX: 7,
@@ -490,14 +495,14 @@ const Map_Switch = ({
           id: 3,
           x: 6,
           y: 10,
-          map: 'start',
+          map: "start",
           destPX: -158,
           destPY: 175,
           destX: 7,
           destY: 8,
         },
       ]);
-    } else if (currentMap === 'enchantedForestLocked') {
+    } else if (currentMap === "enchantedForestLocked") {
       setMapImage(enchantedForestLocked);
       setForeImage(enchantedForestFore);
       setTileSize(64);
@@ -525,8 +530,8 @@ const Map_Switch = ({
           animationSpeed: 800,
           alive: true,
           triggered: false,
-          message: 'Greetings',
-          name: 'wiseman',
+          message: "Greetings",
+          name: "wiseman",
         },
       ]);
       setGates([
@@ -534,7 +539,7 @@ const Map_Switch = ({
           id: 1,
           x: 0,
           y: 33,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
@@ -544,7 +549,7 @@ const Map_Switch = ({
           id: 2,
           x: 0,
           y: 34,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
@@ -554,14 +559,14 @@ const Map_Switch = ({
           id: 3,
           x: 0,
           y: 35,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
           destY: 8,
         },
       ]);
-    } else if (currentMap === 'enchantedForest') {
+    } else if (currentMap === "enchantedForest") {
       setMapImage(enchantedForestLocked);
       setForeImage(enchantedForestFore);
       setTileSize(64);
@@ -586,8 +591,8 @@ const Map_Switch = ({
           animationSpeed: 800,
           alive: true,
           triggered: false,
-          message: 'Greetings',
-          name: 'wiseman',
+          message: "Greetings",
+          name: "wiseman",
         },
       ]);
       setGates([
@@ -595,7 +600,7 @@ const Map_Switch = ({
           id: 1,
           x: 0,
           y: 33,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
@@ -605,7 +610,7 @@ const Map_Switch = ({
           id: 2,
           x: 0,
           y: 34,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
@@ -615,7 +620,7 @@ const Map_Switch = ({
           id: 3,
           x: 0,
           y: 35,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
@@ -625,7 +630,7 @@ const Map_Switch = ({
           id: 4,
           x: 19,
           y: 33,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
@@ -635,7 +640,7 @@ const Map_Switch = ({
           id: 5,
           x: 19,
           y: 34,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
@@ -645,7 +650,7 @@ const Map_Switch = ({
           id: 6,
           x: 19,
           y: 35,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
