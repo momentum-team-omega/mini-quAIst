@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import Char from 'components/Char';
 import NPC_Map from 'components/NPC_Map';
 import Char_Move from 'components/Char_Move';
@@ -7,8 +7,10 @@ import Foreground from 'components/Foreground';
 import Map_Manager from 'components/Map_Manager';
 import Map_Switch from 'components/Map_Switch';
 import '/src/styles/Overworld.css';
+import GameContext from './GameContext';
 
-const Overworld = ({ currentMap, setCurrentMap }) => {
+const Overworld = ({}) => {
+  const { currentMap, setCurrentMap } = useContext(GameContext);
   const [mapImage, setMapImage] = useState(null);
   const [foreImage, setForeImage] = useState(null);
   const [tileSize, setTileSize] = useState(48);
@@ -91,7 +93,6 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         setIsFPressed={setIsFPressed}
       />
       <Map_Switch
-        currentMap={currentMap}
         mapImage={mapImage}
         setForeImage={setForeImage}
         setMapImage={setMapImage}
@@ -108,8 +109,6 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         hasMapSwitched={hasMapSwitched}
       />
       <Map_Manager
-        currentMap={currentMap}
-        setCurrentMap={setCurrentMap}
         mapPosition={mapPosition}
         setMapPosition={setMapPosition}
         charPosition={charPosition}
@@ -134,7 +133,6 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
       />
       <Foreground mapPosition={mapPosition} foreImage={foreImage} />
       <NPC_Map
-        currentMap={currentMap}
         mapPosition={mapPosition}
         npcs={npcs}
         tileSize={tileSize}

@@ -1,18 +1,18 @@
-import React, { useContext, useState } from "react";
-import Char_Bar from "components/Char_Bar";
-import barbCharacter from "assets/creation-assets/barbarian-character.png";
-import mageCharacter from "assets/creation-assets/mage-character.png";
-import rogueCharacter from "assets/creation-assets/rogue-character.png";
-import charBackground from "assets/creation-assets/fantasy-world.png";
-import GameContext from "./GameContext";
-import "/src/styles/Create_Char.css";
+import React, { useContext, useState } from 'react';
+import Char_Bar from 'components/Char_Bar';
+import barbCharacter from 'assets/creation-assets/barbarian-character.png';
+import mageCharacter from 'assets/creation-assets/mage-character.png';
+import rogueCharacter from 'assets/creation-assets/rogue-character.png';
+import charBackground from 'assets/creation-assets/fantasy-world.png';
+import GameContext from './GameContext';
+import '/src/styles/Create_Char.css';
 
 const SelectCharacter = ({ charStats, setCharStats }) => {
-  const { setScene } = useContext(GameContext);
+  const { setScene, setCurrentMap, setCheckpoint1 } = useContext(GameContext);
 
   const characterAttributes = {
     mage: {
-      charClass: "mage",
+      charClass: 'mage',
       health: 33,
       strength: 6,
       str_mod: -2,
@@ -21,12 +21,12 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       dexterity: 10,
       dex_mod: 0,
       description:
-        "Mages are spellcasters who derive their power from the study and understanding of the arcane arts.",
+        'Mages are spellcasters who derive their power from the study and understanding of the arcane arts.',
       special_attack:
-        "Mages are capable of channeling primal energies to unleash a powerful Fireball. This Special Attack deals double the damage of a normal attack, but only once per battle!",
+        'Mages are capable of channeling primal energies to unleash a powerful Fireball. This Special Attack deals double the damage of a normal attack, but only once per battle!',
     },
     barbarian: {
-      charClass: "barb",
+      charClass: 'barb',
       health: 31,
       strength: 14,
       str_mod: 2,
@@ -35,13 +35,13 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       dexterity: 10,
       dex_mod: 0,
       description:
-        "The Barbarian is the embodiment of primal fury, a warrior who draws from raw rage to decimate foes.",
+        'The Barbarian is the embodiment of primal fury, a warrior who draws from raw rage to decimate foes.',
       special_attack:
-        "Rage is the hallmark of the barbarian, an explosinon of primal fury. Harnessing that rage allows a Barbarian to deal double damage, but only once per battle.",
+        'Rage is the hallmark of the barbarian, an explosinon of primal fury. Harnessing that rage allows a Barbarian to deal double damage, but only once per battle.',
     },
-    special_attack: "",
+    special_attack: '',
     rogue: {
-      charClass: "rogue",
+      charClass: 'rogue',
       health: 32,
       strength: 6,
       str_mod: -2,
@@ -50,9 +50,9 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       dexterity: 14,
       dex_mod: 2,
       description:
-        "Rogues are skilled thieves, assassins, spies, and scouts. They excel in stealth, dexterity-based skills, and precision attacks.",
+        'Rogues are skilled thieves, assassins, spies, and scouts. They excel in stealth, dexterity-based skills, and precision attacks.',
       special_attack:
-        "Sneak Attack is a precise and stealthy maneuver favored by rogues. Its use allows a Rogue to do double damage, but only once per battle.",
+        'Sneak Attack is a precise and stealthy maneuver favored by rogues. Its use allows a Rogue to do double damage, but only once per battle.',
     },
   };
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -63,8 +63,8 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       setSelectedCharacter(null);
       setCharStats({
         ...charStats,
-        name: "",
-        charClass: "",
+        name: '',
+        charClass: '',
         health: null,
         strength: null,
         str_mod: null,
@@ -73,6 +73,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
         dexterity: null,
         dex_mod: null,
       });
+      setCheckpoint1(false);
     } else {
       // Set the selected character and update charStats
       setSelectedCharacter(character);
@@ -87,6 +88,8 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
         dexterity: characterAttributes[character].dexterity,
         dex_mod: characterAttributes[character].dex_mod,
       });
+      setCheckpoint1(true);
+      setCurrentMap('enchantedForest');
     }
   };
 
@@ -94,7 +97,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
 
   const handleConfirmClick = () => {
     console.log(charStats);
-    setScene("overworld");
+    setScene('overworld');
   };
 
   const handleChange = (e) => {
@@ -108,9 +111,9 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
     <div
       style={{
         backgroundImage: `url(${charBackground})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
       className="select-character"
     >
@@ -119,7 +122,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
         <div className="name-entry">
           <div className="name-input">
             <label htmlFor="name" className="name-label">
-              Enter Your Name:{" "}
+              Enter Your Name:{' '}
             </label>
             <input
               className="name-input-box"
@@ -134,20 +137,20 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
         </div>
         <div className="characters-container">
           <div className="character-options">
-            {["mage", "barbarian", "rogue"].map((character) => (
+            {['mage', 'barbarian', 'rogue'].map((character) => (
               <div
                 key={character}
                 className={`character-option ${
-                  selectedCharacter === character ? "selected" : ""
+                  selectedCharacter === character ? 'selected' : ''
                 }`}
                 onClick={() => handleCharacterSelect(character)}
               >
                 <img
                   className="char-img"
                   src={
-                    character === "mage"
+                    character === 'mage'
                       ? mageCharacter
-                      : character === "barbarian"
+                      : character === 'barbarian'
                       ? barbCharacter
                       : rogueCharacter
                   }
@@ -187,7 +190,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
                   >
                     {characterAttributes[character].description} <br />
                     <br />
-                    Special Attack:{" "}
+                    Special Attack:{' '}
                     {characterAttributes[character].special_attack}
                   </p>
                 )}

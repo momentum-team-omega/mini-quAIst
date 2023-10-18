@@ -1,7 +1,8 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useContext } from 'react';
 import oldMan1 from 'assets/npc-assets/old-man-tileset.png';
 import chestClosed from 'assets/npc-assets/chest-1-closed.png';
 import NPC from 'components/NPC';
+import GameContext from './GameContext';
 
 const getNPCMap = (npcs, mapColumns) => {
   const npcMap = [];
@@ -20,14 +21,8 @@ const getNPCMap = (npcs, mapColumns) => {
   return npcMap;
 };
 
-const NPC_Map = ({
-  currentMap,
-  mapPosition,
-  npcs,
-  tileSize,
-  mapColumns,
-  mapRows,
-}) => {
+const NPC_Map = ({ mapPosition, npcs, tileSize, mapColumns, mapRows }) => {
+  const { currentMap } = useContext(GameContext);
   const npcMap = useMemo(() => getNPCMap(npcs, mapColumns), [npcs, mapColumns]);
 
   // console.log(npcMap);
@@ -79,6 +74,10 @@ const NPC_Map = ({
       1: oldMan1,
       2: oldMan1,
     };
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
+  } else if (currentMap === 'village2inside') {
+    NPC_IMAGES = {};
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
   }

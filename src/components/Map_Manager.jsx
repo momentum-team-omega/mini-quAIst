@@ -1,9 +1,6 @@
 import React, { useContext, useState, useEffect, useMemo } from 'react';
 import GameContext from './GameContext';
 import {
-  bridgeLeftCollisions,
-  bridgeRightCollisions,
-  houseInsideCollisions,
   village1Collisions,
   trollMapCollisions,
   testMapCollisions,
@@ -12,11 +9,10 @@ import {
   enchantedForestCollisions,
   enchantedForestLockedCollisions,
   village2Collisions,
+  village2insideCollisions,
 } from 'utilities/collisionsData.js';
 
 const Map_Manager = ({
-  currentMap,
-  setCurrentMap,
   mapPosition,
   setMapPosition,
   charPosition,
@@ -31,8 +27,9 @@ const Map_Manager = ({
   isFPressed,
   setHasMapSwitched,
 }) => {
-  const [collisions, setCollisions] = useState(bridgeLeftCollisions);
-  const { setScene, setCurrentNPC } = useContext(GameContext);
+  const [collisions, setCollisions] = useState(startCollisions);
+  const { setScene, setCurrentNPC, currentMap, setCurrentMap } =
+    useContext(GameContext);
 
   // console.log('manager collisions: ', collisions);
 
@@ -61,8 +58,12 @@ const Map_Manager = ({
       setCollisions(startHouseCollisions);
     } else if (currentMap === 'enchantedForestLocked') {
       setCollisions(enchantedForestLockedCollisions);
+    } else if (currentMap === 'enchantedForest') {
+      setCollisions(enchantedForestCollisions);
     } else if (currentMap === 'village2') {
       setCollisions(village2Collisions);
+    } else if (currentMap === 'village2inside') {
+      setCollisions(village2insideCollisions);
     }
   }, [currentMap]);
 
