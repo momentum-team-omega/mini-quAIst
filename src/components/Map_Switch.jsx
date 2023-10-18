@@ -1,23 +1,22 @@
-
-import { useEffect } from 'react';
-import bridgeLeft from 'assets/map-assets/bridge-left-sheet.png';
-import bridgeLeftFore from 'assets/map-assets/bridge-map-left-fore.png';
-import bridgeRight from 'assets/map-assets/bridge-right-sheet.png';
-import bridgeRightFore from 'assets/map-assets/bridge-map-right-fore.png';
-import houseInside from 'assets/map-assets/house-inside-sheet.png';
-import village1 from 'assets/map-assets/village1-map-sheet.png';
-import village1Fore from 'assets/map-assets/village1-fore.png';
-import trollMap from 'assets/map-assets/troll-map-sheet.png';
-import trollMapFore from 'assets/map-assets/Troll-Map-Fore.png';
-import testMap from 'assets/map-assets/TestMap-sheet.png';
-import startMap from 'assets/map-assets/startMap-sheet.png';
-import startMapFore from 'assets/map-assets/startMap-fore.png';
-import startHouse from 'assets/map-assets/startHouse-sheet.png';
-import enchantedForest from 'assets/map-assets/enchantedForest-sheet.png';
-import enchantedForestFore from 'assets/map-assets/enchantedForest-fore.png';
-import enchantedForestLocked from 'assets/map-assets/enchantedForestLocked-sheet.png';
-import village2 from 'assets/map-assets/village2-sheet.png';
-import village2Fore from 'assets/map-assets/village2-fore.png';
+import { useEffect } from "react";
+import bridgeLeft from "assets/map-assets/bridge-left-sheet.png";
+import bridgeLeftFore from "assets/map-assets/bridge-map-left-fore.png";
+import bridgeRight from "assets/map-assets/bridge-right-sheet.png";
+import bridgeRightFore from "assets/map-assets/bridge-map-right-fore.png";
+import houseInside from "assets/map-assets/house-inside-sheet.png";
+import village1 from "assets/map-assets/village1-map-sheet.png";
+import village1Fore from "assets/map-assets/village1-fore.png";
+import trollMap from "assets/map-assets/troll-map-sheet.png";
+import trollMapFore from "assets/map-assets/Troll-Map-Fore.png";
+import testMap from "assets/map-assets/TestMap-sheet.png";
+import startMap from "assets/map-assets/startMap-sheet.png";
+import startMapFore from "assets/map-assets/startMap-fore.png";
+import startHouse from "assets/map-assets/startHouse-sheet.png";
+import enchantedForest from "assets/map-assets/enchantedForest-sheet.png";
+import enchantedForestFore from "assets/map-assets/enchantedForest-fore.png";
+import enchantedForestLocked from "assets/map-assets/enchantedForestLocked-sheet.png";
+import village2 from "assets/map-assets/village2-sheet.png";
+import village2Fore from "assets/map-assets/Village2-fore.png";
 
 const Map_Switch = ({
   currentMap,
@@ -70,7 +69,7 @@ const Map_Switch = ({
           id: 2,
           x: 19,
           y: 8,
-          map: 'enchantedForestLocked',
+          map: "enchantedForestLocked",
           // destPX: -256,
           // destPY: -59.5,
           // destX: 5,
@@ -657,7 +656,7 @@ const Map_Switch = ({
           destY: 8,
         },
       ]);
-    } else if (currentMap === 'village2') {
+    } else if (currentMap === "village2") {
       setMapImage(village2);
       setForeImage(village2Fore);
       setTileSize(64);
@@ -681,8 +680,8 @@ const Map_Switch = ({
           animationSpeed: 800,
           alive: true,
           triggered: false,
-          message: 'Crikey!',
-          name: 'steve',
+          message: "Crikey!",
+          name: "steve",
         },
         {
           id: 2,
@@ -692,8 +691,8 @@ const Map_Switch = ({
           animationSpeed: 800,
           alive: true,
           triggered: false,
-          message: 'Greetings',
-          name: 'wiseman',
+          message: "Greetings",
+          name: "wiseman",
         },
       ]);
       setGates([
@@ -701,7 +700,7 @@ const Map_Switch = ({
           id: 1,
           x: 0,
           y: 20,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
@@ -711,7 +710,7 @@ const Map_Switch = ({
           id: 2,
           x: 0,
           y: 21,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
@@ -721,7 +720,7 @@ const Map_Switch = ({
           id: 3,
           x: 0,
           y: 22,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
@@ -731,7 +730,7 @@ const Map_Switch = ({
           id: 4,
           x: 19,
           y: 10,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
@@ -741,7 +740,7 @@ const Map_Switch = ({
           id: 5,
           x: 20,
           y: 10,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
@@ -751,7 +750,7 @@ const Map_Switch = ({
           id: 6,
           x: 39,
           y: 16,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
@@ -761,7 +760,7 @@ const Map_Switch = ({
           id: 7,
           x: 39,
           y: 17,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
@@ -771,7 +770,7 @@ const Map_Switch = ({
           id: 8,
           x: 39,
           y: 18,
-          map: 'start',
+          map: "start",
           destPX: 562,
           destPY: 175,
           destX: 18,
