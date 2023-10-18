@@ -60,7 +60,7 @@ const Battle = () => {
   const [specialMovesUsed, setSpecialMovesUsed] = useState(false);
   const selectedClass = "rogue";
 
-  console.log(charStats)
+  // console.log(charStats)
 
   const handlePlayerMove = (action) => {
     if (isLocked) return;
