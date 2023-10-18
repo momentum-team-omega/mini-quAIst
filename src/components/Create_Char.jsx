@@ -1,18 +1,18 @@
-import React, { useContext, useState } from "react";
-import Char_Bar from "components/Char_Bar";
-import barbCharacter from "assets/creation-assets/barbarian-character.png";
-import mageCharacter from "assets/creation-assets/mage-character.png";
-import rogueCharacter from "assets/creation-assets/rogue-character.png";
-import charBackground from "assets/creation-assets/fantasy-world.png";
-import GameContext from "./GameContext";
-import "/src/styles/Create_Char.css";
+import React, { useContext, useState } from 'react';
+import Char_Bar from 'components/Char_Bar';
+import barbCharacter from 'assets/creation-assets/barbarian-character.png';
+import mageCharacter from 'assets/creation-assets/mage-character.png';
+import rogueCharacter from 'assets/creation-assets/rogue-character.png';
+import charBackground from 'assets/creation-assets/fantasy-world.png';
+import GameContext from './GameContext';
+import '/src/styles/Create_Char.css';
 
 const SelectCharacter = ({ charStats, setCharStats }) => {
   const { setScene } = useContext(GameContext);
 
   const characterAttributes = {
     mage: {
-      class: "mage",
+      class: 'mage',
       health: 50,
       strength: 6,
       str_mod: -2,
@@ -21,10 +21,10 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       dexterity: 10,
       dex_mod: 0,
       description:
-        "Mages are arcane spellcasters who derive their power from intense study and a deep understanding of the arcane arts. Similar to sorcerers, mages spend years deciphering ancient tomes, learning new spells, and mastering the arcane.",
+        'Mages are arcane spellcasters who derive their power from intense study and a deep understanding of the arcane arts. Similar to sorcerers, mages spend years deciphering ancient tomes, learning new spells, and mastering the arcane.',
     },
     barbarian: {
-      class: "barb",
+      class: 'barb',
       health: 50,
       strength: 14,
       str_mod: 2,
@@ -33,10 +33,10 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       dexterity: 10,
       dex_mod: 0,
       description:
-        "The Barbarian is the embodiment of primal fury, a warrior who draws from raw rage and the power of nature to decimate foes on the battlefield. These untamed fighters are known for their resilience and ferocity.",
+        'The Barbarian is the embodiment of primal fury, a warrior who draws from raw rage and the power of nature to decimate foes on the battlefield. These untamed fighters are known for their resilience and ferocity.',
     },
     rogue: {
-      class: "rogue",
+      class: 'rogue',
       health: 50,
       strength: 6,
       str_mod: -2,
@@ -45,7 +45,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       dexterity: 14,
       dex_mod: 2,
       description:
-        "Rogues are skilled thieves, assassins, spies, and scouts. They excel in stealth, dexterity-based skills, and precision attacks. They are often seen as cunning, nimble, and resourceful adventurers.",
+        'Rogues are skilled thieves, assassins, spies, and scouts. They excel in stealth, dexterity-based skills, and precision attacks. They are often seen as cunning, nimble, and resourceful adventurers.',
     },
   };
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -56,8 +56,8 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       setSelectedCharacter(null);
       setCharStats({
         ...charStats,
-        name: "",
-        class: "",
+        name: '',
+        class: '',
         health: null,
         strength: null,
         str_mod: null,
@@ -83,11 +83,11 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
     }
   };
 
-  // console.log(charStats)
+  console.log(charStats);
 
   const handleConfirmClick = () => {
     console.log(charStats);
-    setScene("overworld");
+    setScene('overworld');
   };
 
   const handleChange = (e) => {
@@ -101,9 +101,9 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
     <div
       style={{
         backgroundImage: `url(${charBackground})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
       className="select-character"
     >
@@ -111,20 +111,20 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
         <p className="who-are-you">Who Are You?</p>
         <div className="characters-container">
           <div className="character-options">
-            {["mage", "barbarian", "rogue"].map((character) => (
+            {['mage', 'barbarian', 'rogue'].map((character) => (
               <div
                 key={character}
                 className={`character-option ${
-                  selectedCharacter === character ? "selected" : ""
+                  selectedCharacter === character ? 'selected' : ''
                 }`}
                 onClick={() => handleCharacterSelect(character)}
               >
                 <img
                   className="char-img"
                   src={
-                    character === "mage"
+                    character === 'mage'
                       ? mageCharacter
-                      : character === "barbarian"
+                      : character === 'barbarian'
                       ? barbCharacter
                       : rogueCharacter
                   }
@@ -170,7 +170,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
           </div>
           <div className="name-input">
             <label htmlFor="name" className="name-label">
-              Enter Your Name:{" "}
+              Enter Your Name:{' '}
             </label>
             <input
               className="name-input-box"
