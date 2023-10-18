@@ -166,6 +166,15 @@ const Dialogue = () => {
     }
   };
 
+  const handleRollOutcome = (rollOutcome) => {
+    if (rollOutcome === 'passed') {
+      setScene('overworld');
+    } else if (rollOutcome === 'failed') {
+      setScene('battle');
+    }
+  };
+  
+
   const currentDialogue = npcDialogues[currentNPC][currentDialogueId];
 
   // console.log('CURRENT DIALOGUE', currentDialogue);
@@ -176,32 +185,13 @@ const Dialogue = () => {
 
   return (
     <div className="dialogue-container" style={containerStyle}>
-      {/* <div
-        className="npc-selector-container"
-        style={{ textAlign: "center", marginBottom: "20px" }}
-      >
-        <select
-          value={currentNPC}
-          onChange={(e) => {
-            setCurrentNPC(e.target.value);
-            setCurrentDialogueId("1"); // Resetting to start dialogue each time
-            setResponse(npcDialogues[e.target.value].initialResponse);
-          }}
-        >
-          {npcList.map((npc) => (
-            <option key={npc} value={npc}>
-              {npc.charAt(0).toUpperCase() + npc.slice(1)}{" "}
-              
-            </option>
-          ))}
-        </select>
-      </div> */}
 
       {makeCheck && (
         <TwentySidedDie
           typeOfCheck={typeOfCheck}
           difficultyScore={currentOption?.difficultyScore}
           charStats={charStats}
+          onRollComplete={handleRollOutcome}
         />
       )}
       {response && (
