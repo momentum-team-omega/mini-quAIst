@@ -1,3 +1,4 @@
+
 import React, { useContext, useState } from "react";
 import Nav from "components/Nav";
 import Overworld from "./Overworld";
@@ -5,6 +6,7 @@ import Dialogue from "./Dialogue";
 import Create_Char from "./Create_Char";
 import GameContext from "./GameContext";
 import Battle from "./Battle";
+import Cut_Scene from './Cut_Scene';
 
 const Game = () => {
   const [scene, setScene] = useState("overworld");
@@ -25,6 +27,7 @@ const Game = () => {
   const [outcome, setOutcome] = useState("");
   const [makeCheck, setMakeCheck] = useState(false);
   const [currentMap, setCurrentMap] = useState("testMap");
+
 
   const [gameWindow, setGameWindow] = useState({
     height: "720px",
@@ -58,7 +61,9 @@ const Game = () => {
               width: gameWindow.width,
             }}
           >
-            {scene === "overworld" && (
+            {scene === 'intro' && (<Cut_Scene initialSceneIndex={0}/>)}
+            {scene === 'ending' && (<Cut_Scene initialSceneIndex={1}/>)}
+            {scene === 'overworld' && (
               <Overworld
                 currentMap={currentMap}
                 setCurrentMap={setCurrentMap}

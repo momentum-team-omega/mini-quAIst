@@ -19,7 +19,7 @@ const TempScene = () => {
             width: gameWindow.width,
           }}
         >
-          <Cut_Scene />
+          {/* <Cut_Scene /> */}
         </div>
       </div>
     </>

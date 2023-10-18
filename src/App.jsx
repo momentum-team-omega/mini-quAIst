@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
 import Home from "components/Home";
@@ -37,6 +37,17 @@ function App() {
     dexterity: null,
     dex_mod: null,
   });
+
+  const initializeLocalStorage = () => {
+    if (!localStorage.getItem('mapPosition')) {
+      const defaultMapPosition = { x: 252, y: -100 };
+      localStorage.setItem('mapPosition', JSON.stringify(defaultMapPosition));
+    }
+  };
+
+  useEffect(() => {
+    initializeLocalStorage();
+  }, []);
 
   return (
     <>

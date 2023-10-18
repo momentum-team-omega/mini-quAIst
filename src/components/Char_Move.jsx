@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const Char_Move = ({
   setPosition,
   setDirection,
   tileSize,
+  charPosition,
   setCharPosition,
   allowedMovements,
   isMoving,
@@ -20,6 +21,14 @@ const Char_Move = ({
     s: { pressed: false },
     d: { pressed: false },
   });
+
+  const gridToPixelPosition = (gridPosition) => {
+    return {
+      x: (gridPosition.x - mapOffset.x) * tileSize - tileSize - 8 / 2,
+      y: (gridPosition.y - mapOffset.y) * tileSize + tileSize / 2
+    };
+  };
+  
 
   const pixelToGridPosition = (pixelPosition) => {
     // console.log('tileSize: ', tileSize);
@@ -48,25 +57,29 @@ const Char_Move = ({
         // console.log(`currentPos: ${currentPos.x}, ${currentPos.y}`);
         const lastKey = keyOrder[keyOrder.length - 1];
         switch (lastKey) {
-          case 'ArrowUp':
-          case 'w':
+          case "ArrowUp":
+          case "w":
             if (allowedMovements.up) newY -= actualMoveSpeed;
             break;
-          case 'ArrowLeft':
-          case 'a':
+          case "ArrowLeft":
+          case "a":
             if (allowedMovements.left) newX -= actualMoveSpeed;
             break;
-          case 'ArrowDown':
-          case 's':
+          case "ArrowDown":
+          case "s":
             if (allowedMovements.down) newY += actualMoveSpeed;
             break;
-          case 'ArrowRight':
-          case 'd':
+          case "ArrowRight":
+          case "d":
             if (allowedMovements.right) newX += actualMoveSpeed;
             break;
         }
         const gridPos = pixelToGridPosition({ x: newX, y: newY });
         setCharPosition(gridPos);
+
+        localStorage.setItem('charPosition', JSON.stringify(gridPos));
+        localStorage.setItem('mapPosition', JSON.stringify(gridToPixelPosition(gridPos)));
+
         // console.log(`gridPos: ${JSON.stringify(gridPos)}`);
 
         return { x: newX, y: newY };
@@ -78,26 +91,26 @@ const Char_Move = ({
     const handleDownKey = (e) => {
       let keyPressed = null;
       switch (e.key) {
-        case 'ArrowUp':
-        case 'w':
-          keyPressed = 'w';
+        case "ArrowUp":
+        case "w":
+          keyPressed = "w";
           break;
-        case 'ArrowLeft':
-        case 'a':
-          keyPressed = 'a';
+        case "ArrowLeft":
+        case "a":
+          keyPressed = "a";
           break;
-        case 'ArrowDown':
-        case 's':
-          keyPressed = 's';
+        case "ArrowDown":
+        case "s":
+          keyPressed = "s";
           break;
-        case 'ArrowRight':
-        case 'd':
-          keyPressed = 'd';
+        case "ArrowRight":
+        case "d":
+          keyPressed = "d";
           break;
       }
       if (keyPressed) {
         e.preventDefault();
-        setDirection({ w: 'Up', a: 'Left', s: 'Down', d: 'Right' }[keyPressed]);
+        setDirection({ w: "Up", a: "Left", s: "Down", d: "Right" }[keyPressed]);
         setKeyOrder((prevOrder) => [
           ...prevOrder.filter((key) => key !== keyPressed),
           keyPressed,
@@ -107,11 +120,11 @@ const Char_Move = ({
           [keyPressed]: { pressed: true },
         }));
       }
-      if (e.key === ' ') {
+      if (e.key === " ") {
         setIsSpacePressed(true);
         e.preventDefault();
       }
-      if (e.key === 'f') {
+      if (e.key === "f") {
         e.preventDefault();
         setIsFPressed((prevIsFPressed) => !prevIsFPressed);
       }
@@ -120,21 +133,21 @@ const Char_Move = ({
     const handleUpKey = (e) => {
       let keyReleased = null;
       switch (e.key) {
-        case 'ArrowUp':
-        case 'w':
-          keyReleased = 'w';
+        case "ArrowUp":
+        case "w":
+          keyReleased = "w";
           break;
-        case 'ArrowLeft':
-        case 'a':
-          keyReleased = 'a';
+        case "ArrowLeft":
+        case "a":
+          keyReleased = "a";
           break;
-        case 'ArrowDown':
-        case 's':
-          keyReleased = 's';
+        case "ArrowDown":
+        case "s":
+          keyReleased = "s";
           break;
-        case 'ArrowRight':
-        case 'd':
-          keyReleased = 'd';
+        case "ArrowRight":
+        case "d":
+          keyReleased = "d";
           break;
       }
       if (keyReleased) {
@@ -146,17 +159,17 @@ const Char_Move = ({
           [keyReleased]: { pressed: false },
         }));
       }
-      if (e.key === ' ') {
+      if (e.key === " ") {
         setIsSpacePressed(false);
       }
     };
 
-    window.addEventListener('keydown', handleDownKey);
-    window.addEventListener('keyup', handleUpKey);
+    window.addEventListener("keydown", handleDownKey);
+    window.addEventListener("keyup", handleUpKey);
 
     return () => {
-      window.removeEventListener('keydown', handleDownKey);
-      window.removeEventListener('keyup', handleUpKey);
+      window.removeEventListener("keydown", handleDownKey);
+      window.removeEventListener("keyup", handleUpKey);
     };
   }, []);
 
@@ -169,7 +182,7 @@ const Char_Move = ({
   useEffect(() => {
     if (keyOrder.length > 0) {
       const lastKey = keyOrder[keyOrder.length - 1];
-      setDirection({ w: 'Up', a: 'Left', s: 'Down', d: 'Right' }[lastKey]);
+      setDirection({ w: "Up", a: "Left", s: "Down", d: "Right" }[lastKey]);
     }
   }, [keyOrder]);
 
