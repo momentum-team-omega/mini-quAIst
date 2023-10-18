@@ -7,6 +7,10 @@ import {
   village1Collisions,
   trollMapCollisions,
   testMapCollisions,
+  startCollisions,
+  startHouseCollisions,
+  enchantedForestCollisions,
+  enchantedForestLockedCollisions,
 } from 'utilities/collisionsData.js';
 
 const Map_Manager = ({
@@ -44,18 +48,18 @@ const Map_Manager = ({
   };
 
   useEffect(() => {
-    if (currentMap === 'bridgeLeft') {
-      setCollisions(bridgeLeftCollisions);
-    } else if (currentMap === 'bridgeRight') {
-      setCollisions(bridgeRightCollisions);
-    } else if (currentMap === 'houseInside') {
-      setCollisions(houseInsideCollisions);
-    } else if (currentMap === 'village1') {
+    if (currentMap === 'village1') {
       setCollisions(village1Collisions);
     } else if (currentMap === 'trollMap') {
       setCollisions(trollMapCollisions);
     } else if (currentMap === 'testMap') {
       setCollisions(testMapCollisions);
+    } else if (currentMap === 'start') {
+      setCollisions(startCollisions);
+    } else if (currentMap === 'startHouse') {
+      setCollisions(startHouseCollisions);
+    } else if (currentMap === 'enchantedForestLocked') {
+      setCollisions(enchantedForestLockedCollisions);
     }
   }, [currentMap]);
 

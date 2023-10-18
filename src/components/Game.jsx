@@ -7,11 +7,11 @@ import GameContext from './GameContext';
 import Battle from './Battle';
 
 const Game = () => {
-  const [scene, setScene] = useState("overworld"); 
-  const [currentNPC, setCurrentNPC] = useState("troll"); 
+  const [scene, setScene] = useState('overworld');
+  const [currentNPC, setCurrentNPC] = useState('troll');
   const [charStats, setCharStats] = useState({
-    name: "game test",
-    charClass: "mage",
+    name: 'game test',
+    charClass: 'mage',
     health: 33,
     strength: 6,
     str_mod: -2,
@@ -25,7 +25,7 @@ const Game = () => {
   const [outcome, setOutcome] = useState('');
   const [makeCheck, setMakeCheck] = useState(false);
 
-  const [currentMap, setCurrentMap] = useState('testMap');
+  const [currentMap, setCurrentMap] = useState('start');
 
   const [gameWindow, setGameWindow] = useState({
     height: '720px',
