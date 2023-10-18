@@ -1,10 +1,10 @@
-import { useContext, useState, useEffect } from "react";
-import { npcDialogues } from "../utilities/npcDialogues";
-import TwentySidedDie from "./TwentySidedDie";
-import GameContext from "./GameContext";
-import "/src/styles/Dialogue.css";
-import axios from "axios";
-import { TypeAnimation } from "react-type-animation";
+import { useContext, useState, useEffect } from 'react';
+import { npcDialogues } from '../utilities/npcDialogues';
+import TwentySidedDie from './TwentySidedDie';
+import GameContext from './GameContext';
+import '/src/styles/Dialogue.css';
+import axios from 'axios';
+import { TypeAnimation } from 'react-type-animation';
 
 const Dialogue = () => {
   const {
@@ -16,10 +16,11 @@ const Dialogue = () => {
     outcome,
     setMakeCheck,
     makeCheck,
+    checkpoint1,
   } = useContext(GameContext);
 
   const [charStats, setCharStats] = useState({
-    name: "",
+    name: '',
     health: 50,
     strength: 6,
     str_mod: -2,
@@ -29,7 +30,7 @@ const Dialogue = () => {
     dex_mod: 0,
   });
 
-  const [currentDialogueId, setCurrentDialogueId] = useState("1");
+  const [currentDialogueId, setCurrentDialogueId] = useState('1');
   const currentOption = npcDialogues[currentNPC][currentDialogueId];
 
   const [response, setResponse] = useState(
@@ -66,37 +67,37 @@ const Dialogue = () => {
     const selectedDialogue = npcDialogues[currentNPC][optionId];
     // console.log("SELECTED DIALOGUE", selectedDialogue);
 
-    if (optionId == "leave") {
-      if (currentNPC == "wiseman") {
-        setResponse("leaving wiseman convo");
-        setScene("characterCreation");
+    if (optionId == 'leave') {
+      if (currentNPC == 'wiseman' && !checkpoint1) {
+        setResponse('leaving wiseman convo');
+        setScene('characterCreation');
       } else {
-        setResponse("End of conversation.");
-        setScene("overworld");
+        setResponse('End of conversation.');
+        setScene('overworld');
       }
-    } else if (optionId == "start") {
+    } else if (optionId == 'start') {
       // console.log("Start of conversation detected.");
-      setCurrentDialogueId("1");
-      setResponse("What else would you like to know young one?");
-    } else if (optionId == "str") {
-      setTypeOfCheck("str");
+      setCurrentDialogueId('1');
+      setResponse('What else would you like to know young one?');
+    } else if (optionId == 'str') {
+      setTypeOfCheck('str');
       setMakeCheck(true);
       // roll for str check
       // console log pass or fail
 
       // console.log(typeOfCheck);
-    } else if (optionId == "dex") {
-      setTypeOfCheck("dex");
+    } else if (optionId == 'dex') {
+      setTypeOfCheck('dex');
       setMakeCheck(true);
       // roll for dex check
       // console log pass or fail
-    } else if (optionId == "wis") {
-      setTypeOfCheck("wis");
+    } else if (optionId == 'wis') {
+      setTypeOfCheck('wis');
       setMakeCheck(true);
       // roll for wis check
       // console log pass or fail
-    } else if (optionId == "fight") {
-      setScene("battle");
+    } else if (optionId == 'fight') {
+      setScene('battle');
     } else {
       const optionIndex = currentDialogue.options.indexOf(optionId);
 
@@ -129,26 +130,26 @@ const Dialogue = () => {
     try {
       const messages = [
         {
-          role: "system",
+          role: 'system',
           content: systemContent,
         },
         {
-          role: "user",
+          role: 'user',
           content: userContent,
         },
       ];
       const payload = {
-        model: "gpt-3.5-turbo",
+        model: 'gpt-3.5-turbo',
         messages,
         max_tokens: 50,
       };
 
       const apiResponse = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
+        'https://api.openai.com/v1/chat/completions',
         payload,
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${import.meta.env.VITE_CHATGPT_SECRET_KEY}`,
           },
         }
@@ -157,16 +158,16 @@ const Dialogue = () => {
       const data = apiResponse.data;
       return data.choices[0].message.content;
     } catch (error) {
-      console.error("Error:", error);
-      return "Error fetching response.";
+      console.error('Error:', error);
+      return 'Error fetching response.';
     }
   };
 
   const handleRollOutcome = (rollOutcome) => {
-    if (rollOutcome === "passed") {
-      setScene("overworld");
-    } else if (rollOutcome === "failed") {
-      setScene("battle");
+    if (rollOutcome === 'passed') {
+      setScene('overworld');
+    } else if (rollOutcome === 'failed') {
+      setScene('battle');
     }
   };
 
@@ -199,8 +200,8 @@ const Dialogue = () => {
           width: 600,
           height: 338,
           backgroundImage: containerStyle.backgroundImage,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       ></div>
       <div className="options-container">
