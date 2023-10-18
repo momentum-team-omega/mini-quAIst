@@ -32,6 +32,8 @@ const Map_Switch = ({
   setIsFPressed,
   hasMapSwitched,
 }) => {
+  const storedCharPosition = JSON.parse(localStorage.getItem('charPosition'));
+
   useEffect(() => {
     if (!mapImage || currentMap === 'start') {
       setMapImage(startMap);
@@ -45,7 +47,12 @@ const Map_Switch = ({
           x: -158,
           y: 175,
         });
-        setCharPosition({ x: 7, y: 8 });
+        if (storedCharPosition) {
+          setCharPosition(storedCharPosition);
+      } else {
+          setCharPosition({ x: 7, y: 8 });  // default value
+      }
+      
       }
       setIsFPressed(false);
       setNpcs([]);
@@ -460,7 +467,12 @@ const Map_Switch = ({
           x: -389.5,
           y: -134.5,
         });
-        setCharPosition({ x: 3, y: 3 });
+        if (storedCharPosition) {
+          setCharPosition(storedCharPosition);
+      } else {
+          setCharPosition({ x: 4, y: 4 });  // default value
+      }
+      
       }
       setIsFPressed(false);
       setNpcs([]);
@@ -508,7 +520,14 @@ const Map_Switch = ({
           x: -389.5,
           y: -134.5,
         });
-        setCharPosition({ x: 3, y: 3 });
+        if (storedCharPosition) {
+          console.log('storedCharPosition: ', storedCharPosition);
+          setCharPosition(storedCharPosition);
+      } else {
+        console.log('not in local storage ', storedCharPosition);
+          setCharPosition({ x: 5, y: 5 });  // default value
+      }
+      
       }
       setIsFPressed(false);
       setNpcs([
@@ -568,7 +587,12 @@ const Map_Switch = ({
           x: -389.5,
           y: -134.5,
         });
-        setCharPosition({ x: 3, y: 3 });
+        if (storedCharPosition) {
+          setCharPosition(storedCharPosition);
+      } else {
+          setCharPosition({ x: 7, y: 8 });  // default value
+      }
+      
       }
       setIsFPressed(false);
       setNpcs([
