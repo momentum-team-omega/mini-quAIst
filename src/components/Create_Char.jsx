@@ -13,7 +13,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
   const characterAttributes = {
     mage: {
       class: "mage",
-      health: 50,
+      health: 33,
       strength: 6,
       str_mod: -2,
       wisdom: 14,
@@ -25,7 +25,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
     },
     barbarian: {
       class: "barb",
-      health: 50,
+      health: 31,
       strength: 14,
       str_mod: 2,
       wisdom: 6,
@@ -37,7 +37,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
     },
     rogue: {
       class: "rogue",
-      health: 50,
+      health: 32,
       strength: 6,
       str_mod: -2,
       wisdom: 10,

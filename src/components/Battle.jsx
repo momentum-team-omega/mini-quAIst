@@ -38,7 +38,7 @@ const Battle = () => {
 
   const { setScene, currentNPC, charStats } = useContext(GameContext);
   const [opponentHealth, setOpponentHealth] = useState(opponentStats.maxHealth);
-  const [playerHealth, setPlayerHealth] = useState(playerStats.maxHealth);
+  const [playerHealth, setPlayerHealth] = useState(charStats.health);
   const [showHealthIndicator, setShowHealthIndicator] = useState(false);
   const [healthIndicatorMessage, setHealthIndicatorMessage] = useState("");
   const [showEnemyHealthIndicator, setShowEnemyHealthIndicator] =
@@ -60,6 +60,8 @@ const Battle = () => {
   const [specialMovesUsed, setSpecialMovesUsed] = useState(false);
   const selectedClass = "rogue";
 
+  console.log(charStats)
+
   const handlePlayerMove = (action) => {
     if (isLocked) return;
 
@@ -67,13 +69,10 @@ const Battle = () => {
     if (opponentMoveTimeoutRef.current) {
       clearTimeout(opponentMoveTimeoutRef.current);
     }
-
     setIsLocked(true); // Lock the actions immediately.
 
     if (smackButtonRef.current) smackButtonRef.current.disabled = true;
     if (chillButtonRef.current) chillButtonRef.current.disabled = true;
-
-    console.log("Player Move Started");
 
     if (isPlayerTurn && !someoneDied) {
       switch (action) {
@@ -87,13 +86,11 @@ const Battle = () => {
           break;
       }
       setIsPlayerTurn(false); // switch turn to opponent after player makes a move
-
-      console.log("Player Move Ended, turn should switch to opponent");
     }
   };
 
   const handleOpponentMove = () => {
-    console.log("Opponent Move Started");
+    
     // This can be the AI logic or another player's action
     if (!isPlayerTurn && !someoneDied) {
       // Example: Just smacks every time for simplicity
@@ -103,7 +100,7 @@ const Battle = () => {
       if (chillButtonRef.current) chillButtonRef.current.disabled = false;
 
       setIsLocked(false); // Unlock the actions after opponent's move.
-      console.log("Opponent Move Ended, turn should switch to player");
+      
     }
   };
 
@@ -150,7 +147,7 @@ const Battle = () => {
       `Enemy Health: ${sign}${Math.abs(newValue - opponentHealth)}`
     );
     setShowEnemyHealthIndicator(true);
-    // console.log("1st source", source);
+    
 
     setEnemyFlicker(true);
 
@@ -168,7 +165,7 @@ const Battle = () => {
   const handlePlayerSmackOpponent = () => {
     if (opponentHealth > 0) {
       const damageToOpponent = rollD10() + 3;
-      console.log(damageToOpponent);
+      
       handleEnemyHealthChange(opponentHealth - damageToOpponent, "smack");
       if (opponentHealth - damageToOpponent <= 0) {
         setSomeoneDied(true);
@@ -205,12 +202,12 @@ const Battle = () => {
 
   const handleChill = () => {
     if (playerHealth > 0 && healingPotions > 0) {
-      const healthLost = playerStats.maxHealth - playerHealth;
+      const healthLost = charStats.health - playerHealth;
       const healthToRegain = Math.ceil(healthLost / 2);
 
       const newPlayerHealth = Math.min(
         playerHealth + healthToRegain,
-        playerStats.maxHealth
+        charStats.health
       );
 
       handleHealthChange(newPlayerHealth, "chill");
@@ -249,7 +246,7 @@ const Battle = () => {
 
   const handleTryAgain = () => {
     // Reset health
-    setPlayerHealth(playerStats.maxHealth);
+    setPlayerHealth(charStats.health);
     setOpponentHealth(opponentStats.maxHealth);
 
     // Reset game state
@@ -290,7 +287,7 @@ const Battle = () => {
           marginBottom: "300px",
         }}
       >
-        {opponentStats.name} VS {playerStats.name}
+        {opponentStats.name} VS {charStats.name}
       </h1>
       <div
         className={`overlay ${
@@ -355,13 +352,13 @@ const Battle = () => {
                 onClick={handleSpecialMoves}
                 disabled={specialMovesUsed || isLocked}
               >
-                {selectedClass === "barb"
+                {charStats.charClass === "barb"
                   ? "RAGE"
-                  : selectedClass === "mage"
+                  : charStats.charClass === "mage"
                   ? "FIREBALL"
-                  : selectedClass === "rogue"
+                  : charStats.charClass === "rogue"
                   ? "SNEAK ATTACK"
-                  : "Special Move"}
+                  : "Special Move"} {specialMovesUsed ? "(0)" : "(1)"}
               </button>
             </div>
           </div>
@@ -371,9 +368,9 @@ const Battle = () => {
             <PlayerSummary
               main
               value={playerHealth}
-              maxValue={playerStats.maxHealth}
-              name={playerStats.name}
-              level={playerStats.level}
+              maxValue={charStats.health}
+              name={charStats.name}
+              level={charStats.level}
               onSmackClick={handleOpponentMove}
             />
           </div>

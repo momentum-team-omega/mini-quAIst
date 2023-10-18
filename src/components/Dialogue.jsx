@@ -66,9 +66,9 @@ const Dialogue = () => {
     // console.log("SELECTED DIALOGUE", selectedDialogue);
 
     if (optionId == 'leave') {
-      // console.log("End of conversation detected.");
+      
       if (currentNPC == 'wiseman') {
-        console.log('leaving wiseman convo');
+        
         setResponse('leaving wiseman convo');
         setScene('characterCreation');
       } else {
@@ -85,20 +85,20 @@ const Dialogue = () => {
       // roll for str check
       // console log pass or fail
 
-      console.log(typeOfCheck);
+      // console.log(typeOfCheck);
     } else if (optionId == 'dex') {
       setTypeOfCheck('dex');
       setMakeCheck(true);
       // roll for dex check
       // console log pass or fail
 
-      console.log('dex test');
+      
     } else if (optionId == 'wis') {
       setTypeOfCheck('wis');
       setMakeCheck(true);
       // roll for wis check
       // console log pass or fail
-      console.log("wis test");
+      
     } else if (optionId == 'fight') {
       setScene('battle')
     } else {
@@ -168,11 +168,11 @@ const Dialogue = () => {
 
   const currentDialogue = npcDialogues[currentNPC][currentDialogueId];
 
-  console.log('CURRENT DIALOGUE', currentDialogue);
+  // console.log('CURRENT DIALOGUE', currentDialogue);
 
-  console.log('charStats: ', charStats);
+  // console.log('charStats: ', charStats);
 
-  console.log('outcome', outcome)
+  // console.log('outcome', outcome)
 
   return (
     <div className="dialogue-container" style={containerStyle}>
