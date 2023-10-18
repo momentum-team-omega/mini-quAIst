@@ -22,17 +22,18 @@ const Game = () => {
     dex_mod: 0,
   });
 
+  const [currentMap, setCurrentMap] = useState('village2');
+
   const [typeOfCheck, setTypeOfCheck] = useState('wis');
   const [outcome, setOutcome] = useState('');
   const [makeCheck, setMakeCheck] = useState(false);
-  const [currentMap, setCurrentMap] = useState('start');
 
   const [gameWindow, setGameWindow] = useState({
     height: '720px',
     width: '1280px',
   });
 
-  const [checkpoint1, setCheckpoint1] = useState(false);
+  const [checkpoint1, setCheckpoint1] = useState(true);
 
   return (
     <>
