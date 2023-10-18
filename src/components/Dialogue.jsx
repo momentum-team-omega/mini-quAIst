@@ -141,7 +141,7 @@ const Dialogue = () => {
       const payload = {
         model: 'gpt-3.5-turbo',
         messages,
-        max_tokens: 50,
+        max_tokens: 80,
       };
 
       const apiResponse = await axios.post(
