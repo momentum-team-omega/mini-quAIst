@@ -10,7 +10,7 @@ import trollMap from 'assets/map-assets/troll-map-sheet.png';
 import trollMapFore from 'assets/map-assets/Troll-Map-Fore.png';
 import testMap from 'assets/map-assets/TestMap-sheet.png';
 import startMap from 'assets/map-assets/startMap-sheet.png';
-import startMapFore from 'assets/map-assets/startMap-Fore.png';
+import startMapFore from 'assets/map-assets/startMap-fore.png';
 import startHouse from 'assets/map-assets/startHouse-sheet.png';
 import enchantedForest from 'assets/map-assets/enchantedForest-sheet.png';
 import enchantedForestFore from 'assets/map-assets/enchantedForest-fore.png';
