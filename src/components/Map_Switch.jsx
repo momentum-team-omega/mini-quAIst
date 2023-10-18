@@ -21,6 +21,7 @@ const Map_Switch = ({
   mapImage,
   setMapImage,
   setForeImage,
+  mapPosition,
   setMapPosition,
   setCharPosition,
   setNpcs,
@@ -32,7 +33,8 @@ const Map_Switch = ({
   setIsFPressed,
   hasMapSwitched,
 }) => {
-  const storedCharPosition = JSON.parse(localStorage.getItem('charPosition'));
+  
+  const storedMapPosition = localStorage.getItem('mapPosition');
 
   useEffect(() => {
     if (!mapImage || currentMap === 'start') {
@@ -47,11 +49,8 @@ const Map_Switch = ({
           x: -158,
           y: 175,
         });
-        if (storedCharPosition) {
-          setCharPosition(storedCharPosition);
-      } else {
-          setCharPosition({ x: 7, y: 8 });  // default value
-      }
+      setCharPosition({ x: 7, y: 8 });  // default value
+      
       
       }
       setIsFPressed(false);
@@ -467,11 +466,9 @@ const Map_Switch = ({
           x: -389.5,
           y: -134.5,
         });
-        if (storedCharPosition) {
-          setCharPosition(storedCharPosition);
-      } else {
-          setCharPosition({ x: 4, y: 4 });  // default value
-      }
+       
+      setCharPosition({ x: 4, y: 4 });  // default value
+      
       
       }
       setIsFPressed(false);
@@ -516,18 +513,15 @@ const Map_Switch = ({
       setMapRows(40);
       setMapOffset({ x: 9.5, y: 6 });
       if (!hasMapSwitched) {
+        if (storedMapPosition) {
+          setMapPosition(JSON.parse(storedMapPosition));
+        } else {
         setMapPosition({
           x: -389.5,
           y: -134.5,
         });
-        if (storedCharPosition) {
-          console.log('storedCharPosition: ', storedCharPosition);
-          setCharPosition(storedCharPosition);
-      } else {
-        console.log('not in local storage ', storedCharPosition);
-          setCharPosition({ x: 5, y: 5 });  // default value
       }
-      
+      setCharPosition({ x: 5, y: 5 });  // default value
       }
       setIsFPressed(false);
       setNpcs([
@@ -587,11 +581,9 @@ const Map_Switch = ({
           x: -389.5,
           y: -134.5,
         });
-        if (storedCharPosition) {
-          setCharPosition(storedCharPosition);
-      } else {
-          setCharPosition({ x: 7, y: 8 });  // default value
-      }
+      
+      setCharPosition({ x: 7, y: 8 });  // default value
+      
       
       }
       setIsFPressed(false);

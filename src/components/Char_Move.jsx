@@ -22,6 +22,14 @@ const Char_Move = ({
     d: { pressed: false },
   });
 
+  const gridToPixelPosition = (gridPosition) => {
+    return {
+      x: (gridPosition.x - mapOffset.x) * tileSize - tileSize - 8 / 2,
+      y: (gridPosition.y - mapOffset.y) * tileSize + tileSize / 2
+    };
+  };
+  
+
   const pixelToGridPosition = (pixelPosition) => {
     // console.log('tileSize: ', tileSize);
     return {
@@ -69,16 +77,15 @@ const Char_Move = ({
         const gridPos = pixelToGridPosition({ x: newX, y: newY });
         setCharPosition(gridPos);
 
-        console.log(`gridPos: ${JSON.stringify(gridPos)}`);
+        localStorage.setItem('charPosition', JSON.stringify(gridPos));
+        localStorage.setItem('mapPosition', JSON.stringify(gridToPixelPosition(gridPos)));
+
+        // console.log(`gridPos: ${JSON.stringify(gridPos)}`);
 
         return { x: newX, y: newY };
       });
     }
   };
-
-  useEffect(() => {
-    localStorage.setItem("charPosition", JSON.stringify(charPosition));
-  }, [charPosition]);
 
   useEffect(() => {
     const handleDownKey = (e) => {

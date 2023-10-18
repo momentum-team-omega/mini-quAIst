@@ -95,6 +95,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         mapImage={mapImage}
         setForeImage={setForeImage}
         setMapImage={setMapImage}
+        mapPosition={mapPosition}
         setMapPosition={setMapPosition}
         setCharPosition={setCharPosition}
         setNpcs={setNpcs}
