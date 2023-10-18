@@ -5,9 +5,10 @@ import Dialogue from './Dialogue';
 import Create_Char from './Create_Char';
 import GameContext from './GameContext';
 import Battle from './Battle';
+import Cut_Scene from './Cut_Scene';
 
 const Game = () => {
-  const [scene, setScene] = useState('overworld');
+  const [scene, setScene] = useState('ending');
   const [currentNPC, setCurrentNPC] = useState('troll');
   const [charStats, setCharStats] = useState({
     name: 'game test',
@@ -24,7 +25,7 @@ const Game = () => {
   const [typeOfCheck, setTypeOfCheck] = useState('wis');
   const [outcome, setOutcome] = useState('');
   const [makeCheck, setMakeCheck] = useState(false);
-  const [currentMap, setCurrentMap] = useState('start');
+  const [currentMap, setCurrentMap] = useState('testMap');
 
 
   const [gameWindow, setGameWindow] = useState({
@@ -59,6 +60,8 @@ const Game = () => {
               width: gameWindow.width,
             }}
           >
+            {scene === 'intro' && (<Cut_Scene initialSceneIndex={0}/>)}
+            {scene === 'ending' && (<Cut_Scene initialSceneIndex={1}/>)}
             {scene === 'overworld' && (
               <Overworld
                 currentMap={currentMap}
