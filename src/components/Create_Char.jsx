@@ -22,6 +22,8 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       dex_mod: 0,
       description:
         "Mages are arcane spellcasters who derive their power from intense study and a deep understanding of the arcane arts. Similar to sorcerers, mages spend years deciphering ancient tomes, learning new spells, and mastering the arcane.",
+      special_attack:
+        "Mages are capable of channeling primal energies to unleash a powerful Fireball. This Special Attack deals double the damage of a normal attack, but can only be used once per battle!",
     },
     barbarian: {
       class: "barb",
@@ -34,7 +36,10 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       dex_mod: 0,
       description:
         "The Barbarian is the embodiment of primal fury, a warrior who draws from raw rage and the power of nature to decimate foes on the battlefield. These untamed fighters are known for their resilience and ferocity.",
+      special_attack:
+        "Rage is the hallmark of the barbarian, an explosive burst of primal fury. Harnessing that rage allows a Barbarian to deal double damage, but only once each turn.",
     },
+    special_attack: "",
     rogue: {
       class: "rogue",
       health: 50,
@@ -46,6 +51,8 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       dex_mod: 2,
       description:
         "Rogues are skilled thieves, assassins, spies, and scouts. They excel in stealth, dexterity-based skills, and precision attacks. They are often seen as cunning, nimble, and resourceful adventurers.",
+      special_attack:
+        "Sneak Attack is a precise and stealthy maneuver favored by rogues. Its use allows a Rogue to do double attack damage, but only once per battle.",
     },
   };
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -162,7 +169,10 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
                     className="char-desc"
                     onClick={() => handleCharacterSelect(character)}
                   >
-                    {characterAttributes[character].description}
+                    {characterAttributes[character].description} <br />
+                    <br />
+                    Special Attack:{" "}
+                    {characterAttributes[character].special_attack}
                   </p>
                 )}
               </div>
