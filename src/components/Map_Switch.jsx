@@ -9,6 +9,12 @@ import village1Fore from 'assets/map-assets/village1-fore.png';
 import trollMap from 'assets/map-assets/troll-map-sheet.png';
 import trollMapFore from 'assets/map-assets/Troll-Map-Fore.png';
 import testMap from 'assets/map-assets/TestMap-sheet.png';
+import startMap from 'assets/map-assets/startMap-sheet.png';
+import startMapFore from 'assets/map-assets/startMap-fore.png';
+import startHouse from 'assets/map-assets/startHouse-sheet.png';
+import enchantedForest from 'assets/map-assets/enchantedForest-sheet.png';
+import enchantedForestFore from 'assets/map-assets/enchantedForest-fore.png';
+import enchantedForestLocked from 'assets/map-assets/enchantedForestLocked-sheet.png';
 
 const Map_Switch = ({
   currentMap,
@@ -27,266 +33,82 @@ const Map_Switch = ({
   hasMapSwitched,
 }) => {
   useEffect(() => {
-    if (!mapImage) {
-      setMapImage(bridgeLeft);
-    }
-    if (currentMap === 'bridgeLeft') {
-      setMapImage(bridgeLeft);
-      setForeImage(bridgeLeftFore);
-      setTileSize(48);
-      setMapColumns(11);
-      setMapRows(11);
-      setMapOffset({ x: 13, y: 8 });
+    if (!mapImage || currentMap === 'start') {
+      setMapImage(startMap);
+      setForeImage(startMapFore);
+      setTileSize(64);
+      setMapColumns(20);
+      setMapRows(20);
+      setMapOffset({ x: 9.5, y: 6 });
       if (!hasMapSwitched) {
         setMapPosition({
-          x: -377,
-          y: -102,
+          x: -158,
+          y: 175,
         });
-        setCharPosition({ x: 5, y: 5 });
+        setCharPosition({ x: 7, y: 8 });
       }
       setIsFPressed(false);
-      setNpcs([
-        {
-          id: 1,
-          x: 1,
-          y: 1,
-          steps: 1,
-          animationSpeed: 0,
-          alive: true,
-          triggered: false,
-          message: "Press 'F'",
-          name: 'chest',
-        },
-        {
-          id: 2,
-          x: 6,
-          y: 8,
-          steps: 2,
-          animationSpeed: 800,
-          alive: true,
-          triggered: false,
-          message: 'Greetings',
-          name: 'wiseman',
-        },
-        {
-          id: 3,
-          x: 8,
-          y: 8,
-          steps: 1,
-          animationSpeed: 0,
-          alive: true,
-          triggered: false,
-          message: "Press 'F'",
-          name: 'chest',
-        },
-      ]);
+      setNpcs([]);
       setGates([
         {
           id: 1,
-          x: 10,
-          y: 4,
-          map: 'bridgeRight',
-          destPX: -576,
-          destPY: -102,
-          destX: 1,
-          destY: 5,
-        },
-        {
-          id: 2,
-          x: 10,
-          y: 5,
-          map: 'bridgeRight',
-          destPX: -576,
-          destPY: -102,
-          destX: 1,
-          destY: 5,
-        },
-        {
-          id: 3,
-          x: 10,
-          y: 6,
-          map: 'bridgeRight',
-          destPX: -576,
-          destPY: -102,
-          destX: 1,
-          destY: 5,
-        },
-      ]);
-    } else if (currentMap === 'bridgeRight') {
-      setMapImage(bridgeRight);
-      setForeImage(bridgeRightFore);
-      setTileSize(48);
-      setMapColumns(11);
-      setMapRows(11);
-      setMapOffset({ x: 13, y: 8 });
-      if (!hasMapSwitched) {
-        setMapPosition({
-          x: -377,
-          y: -102,
-        });
-        setCharPosition({ x: 5, y: 5 });
-      }
-      setIsFPressed(false);
-      setNpcs([
-        {
-          id: 1,
-          x: 2,
-          y: 1,
-          steps: 1,
-          animationSpeed: 0,
-          alive: true,
-          triggered: false,
-          message: "Press 'F'",
-          name: 'chest',
-        },
-        {
-          id: 2,
-          x: 1,
-          y: 8,
-          steps: 1,
-          animationSpeed: 0,
-          alive: true,
-          triggered: false,
-          message: "Press 'F'",
-          name: 'chest',
-        },
-        {
-          id: 3,
           x: 7,
           y: 7,
-          steps: 2,
-          animationSpeed: 800,
-          alive: true,
-          triggered: false,
-          message: 'Greetings',
-          name: 'wiseman',
-        },
-      ]);
-      setGates([
-        {
-          id: 1,
-          x: 0,
-          y: 4,
-          map: 'bridgeLeft',
-          destPX: -179.5,
-          destPY: -102,
-          destX: 9,
-          destY: 5,
+          map: 'startHouse',
+          destPX: -281,
+          destPY: 260.5,
+          destX: 5,
+          destY: 9,
+          // destPX: -281,
+          // destPY: 260.5,
+          // destX: 5,
+          // destY: 9,
         },
         {
           id: 2,
-          x: 0,
-          y: 5,
-          map: 'bridgeLeft',
-          destPX: -179.5,
-          destPY: -102,
-          destX: 9,
-          destY: 5,
+          x: 19,
+          y: 8,
+          map: 'enchantedForestLocked',
+          destPX: -256,
+          destPY: -59.5,
+          destX: 5,
+          destY: 9,
+          // destPX: -553.5,
+          // destPY: 1835.5,
+          // destX: 1,
+          // destY: 34,
         },
         {
           id: 3,
-          x: 0,
-          y: 6,
-          map: 'bridgeLeft',
-          destPX: -179.5,
-          destPY: -102,
-          destX: 9,
-          destY: 5,
+          x: 19,
+          y: 9,
+          map: 'enchantedForestLocked',
+          destPX: -281,
+          destPY: 260.5,
+          destX: 5,
+          destY: 9,
+          // destPX: -553.5,
+          // destPY: 1835.5,
+          // destX: 1,
+          // destY: 34,
         },
         {
           id: 4,
-          x: 7,
-          y: 4,
-          map: 'houseInside',
-          destPX: -347.5,
-          destPY: 93,
+          x: 19,
+          y: 10,
+          map: 'enchantedForestLocked',
+          destPX: -281,
+          destPY: 260.5,
           destX: 5,
           destY: 9,
-        },
-        {
-          id: 5,
-          x: 8,
-          y: 4,
-          map: 'houseInside',
-          destPX: -347.5,
-          destPY: 93,
-          destX: 5,
-          destY: 9,
+          // destPX: -553.5,
+          // destPY: 1835.5,
+          // destX: 1,
+          // destY: 34,
         },
       ]);
-    } else if (currentMap === 'houseInside') {
-      setMapImage(houseInside);
-      setForeImage(null);
-      setTileSize(48);
-      setMapColumns(11);
-      setMapRows(11);
-      setMapOffset({ x: 13, y: 8 });
-      if (!hasMapSwitched) {
-        setMapPosition({
-          x: -377,
-          y: 95.5,
-        });
-        setCharPosition({ x: 5, y: 9 });
-      }
-      setIsFPressed(false);
-      setNpcs([
-        {
-          id: 1,
-          x: 2,
-          y: 8,
-          steps: 1,
-          animationSpeed: 0,
-          alive: true,
-          triggered: false,
-          message: "Press 'F'",
-          name: 'chest',
-        },
-        {
-          id: 2,
-          x: 3,
-          y: 2,
-          steps: 2,
-          animationSpeed: 800,
-          alive: true,
-          triggered: false,
-          message: 'Greetings',
-          name: 'wiseman',
-        },
-        {
-          id: 3,
-          x: 8,
-          y: 2,
-          steps: 1,
-          animationSpeed: 0,
-          alive: true,
-          triggered: false,
-          message: "Press 'F'",
-          name: 'chest',
-        },
-      ]);
-      setGates([
-        {
-          id: 1,
-          x: 5,
-          y: 10,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 2,
-          x: 6,
-          y: 10,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-      ]);
-    } else if (currentMap === 'village1') {
+    }
+    if (currentMap === 'village1') {
       setMapImage(village1);
       setForeImage(village1Fore);
       setTileSize(64);
@@ -624,6 +446,204 @@ const Map_Switch = ({
           destPY: -112,
           destX: 8,
           destY: 5,
+        },
+      ]);
+    } else if (currentMap === 'startHouse') {
+      setMapImage(startHouse);
+      setForeImage();
+      setTileSize(64);
+      setMapColumns(11);
+      setMapRows(11);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        setMapPosition({
+          x: -389.5,
+          y: -134.5,
+        });
+        setCharPosition({ x: 3, y: 3 });
+      }
+      setIsFPressed(false);
+      setNpcs([]);
+      setGates([
+        {
+          id: 1,
+          x: 4,
+          y: 10,
+          map: 'start',
+          destPX: -158,
+          destPY: 175,
+          destX: 7,
+          destY: 8,
+        },
+        {
+          id: 2,
+          x: 5,
+          y: 10,
+          map: 'start',
+          destPX: -158,
+          destPY: 175,
+          destX: 7,
+          destY: 8,
+        },
+        {
+          id: 3,
+          x: 6,
+          y: 10,
+          map: 'start',
+          destPX: -158,
+          destPY: 175,
+          destX: 7,
+          destY: 8,
+        },
+      ]);
+    } else if (currentMap === 'enchantedForestLocked') {
+      setMapImage(enchantedForestLocked);
+      setForeImage(enchantedForestFore);
+      setTileSize(64);
+      setMapColumns(20);
+      setMapRows(40);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        setMapPosition({
+          x: -389.5,
+          y: -134.5,
+        });
+        setCharPosition({ x: 3, y: 3 });
+      }
+      setIsFPressed(false);
+      setNpcs([
+        {
+          id: 2,
+          x: 15,
+          y: 4,
+          steps: 2,
+          animationSpeed: 800,
+          alive: true,
+          triggered: false,
+          message: 'Greetings',
+          name: 'wiseman',
+        },
+      ]);
+      setGates([
+        {
+          id: 1,
+          x: 0,
+          y: 33,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+        {
+          id: 2,
+          x: 0,
+          y: 34,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+        {
+          id: 3,
+          x: 0,
+          y: 35,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+      ]);
+    } else if (currentMap === 'enchantedForest') {
+      setMapImage(enchantedForestLocked);
+      setForeImage(enchantedForestFore);
+      setTileSize(64);
+      setMapColumns(20);
+      setMapRows(40);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        setMapPosition({
+          x: -389.5,
+          y: -134.5,
+        });
+        setCharPosition({ x: 3, y: 3 });
+      }
+      setIsFPressed(false);
+      setNpcs([
+        {
+          id: 2,
+          x: 15,
+          y: 4,
+          steps: 2,
+          animationSpeed: 800,
+          alive: true,
+          triggered: false,
+          message: 'Greetings',
+          name: 'wiseman',
+        },
+      ]);
+      setGates([
+        {
+          id: 1,
+          x: 0,
+          y: 33,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+        {
+          id: 2,
+          x: 0,
+          y: 34,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+        {
+          id: 3,
+          x: 0,
+          y: 35,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+        {
+          id: 4,
+          x: 19,
+          y: 33,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+        {
+          id: 5,
+          x: 19,
+          y: 34,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
+        },
+        {
+          id: 6,
+          x: 19,
+          y: 35,
+          map: 'start',
+          destPX: 562,
+          destPY: 175,
+          destX: 18,
+          destY: 8,
         },
       ]);
     }

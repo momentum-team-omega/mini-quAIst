@@ -66,9 +66,9 @@ const Dialogue = () => {
     // console.log("SELECTED DIALOGUE", selectedDialogue);
 
     if (optionId == 'leave') {
-      // console.log("End of conversation detected.");
+      
       if (currentNPC == 'wiseman') {
-        console.log('leaving wiseman convo');
+        
         setResponse('leaving wiseman convo');
         setScene('characterCreation');
       } else {
@@ -85,20 +85,20 @@ const Dialogue = () => {
       // roll for str check
       // console log pass or fail
 
-      console.log(typeOfCheck);
+      // console.log(typeOfCheck);
     } else if (optionId == 'dex') {
       setTypeOfCheck('dex');
       setMakeCheck(true);
       // roll for dex check
       // console log pass or fail
 
-      console.log('dex test');
+      
     } else if (optionId == 'wis') {
       setTypeOfCheck('wis');
       setMakeCheck(true);
       // roll for wis check
       // console log pass or fail
-      console.log("wis test");
+      
     } else if (optionId == 'fight') {
       setScene('battle')
     } else {
@@ -166,42 +166,32 @@ const Dialogue = () => {
     }
   };
 
+  const handleRollOutcome = (rollOutcome) => {
+    if (rollOutcome === 'passed') {
+      setScene('overworld');
+    } else if (rollOutcome === 'failed') {
+      setScene('battle');
+    }
+  };
+  
+
   const currentDialogue = npcDialogues[currentNPC][currentDialogueId];
 
-  console.log('CURRENT DIALOGUE', currentDialogue);
+  // console.log('CURRENT DIALOGUE', currentDialogue);
 
-  console.log('charStats: ', charStats);
+  // console.log('charStats: ', charStats);
 
-  console.log('outcome', outcome)
+  // console.log('outcome', outcome)
 
   return (
     <div className="dialogue-container" style={containerStyle}>
-      {/* <div
-        className="npc-selector-container"
-        style={{ textAlign: "center", marginBottom: "20px" }}
-      >
-        <select
-          value={currentNPC}
-          onChange={(e) => {
-            setCurrentNPC(e.target.value);
-            setCurrentDialogueId("1"); // Resetting to start dialogue each time
-            setResponse(npcDialogues[e.target.value].initialResponse);
-          }}
-        >
-          {npcList.map((npc) => (
-            <option key={npc} value={npc}>
-              {npc.charAt(0).toUpperCase() + npc.slice(1)}{" "}
-              
-            </option>
-          ))}
-        </select>
-      </div> */}
 
       {makeCheck && (
         <TwentySidedDie
           typeOfCheck={typeOfCheck}
           difficultyScore={currentOption?.difficultyScore}
           charStats={charStats}
+          onRollComplete={handleRollOutcome}
         />
       )}
       {response && (

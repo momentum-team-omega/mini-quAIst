@@ -1,19 +1,19 @@
-import React, { useContext, useState } from "react";
-import Char_Bar from "components/Char_Bar";
-import barbCharacter from "assets/creation-assets/barbarian-character.png";
-import mageCharacter from "assets/creation-assets/mage-character.png";
-import rogueCharacter from "assets/creation-assets/rogue-character.png";
-import charBackground from "assets/creation-assets/fantasy-world.png";
-import GameContext from "./GameContext";
-import "/src/styles/Create_Char.css";
+import React, { useContext, useState } from 'react';
+import Char_Bar from 'components/Char_Bar';
+import barbCharacter from 'assets/creation-assets/barbarian-character.png';
+import mageCharacter from 'assets/creation-assets/mage-character.png';
+import rogueCharacter from 'assets/creation-assets/rogue-character.png';
+import charBackground from 'assets/creation-assets/fantasy-world.png';
+import GameContext from './GameContext';
+import '/src/styles/Create_Char.css';
 
 const SelectCharacter = ({ charStats, setCharStats }) => {
   const { setScene } = useContext(GameContext);
 
   const characterAttributes = {
     mage: {
-      class: "mage",
-      health: 50,
+      charClass: "mage",
+      health: 33,
       strength: 6,
       str_mod: -2,
       wisdom: 14,
@@ -26,8 +26,8 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
         "Mages are capable of channeling primal energies to unleash a powerful Fireball. This Special Attack deals double the damage of a normal attack, but only once per battle!",
     },
     barbarian: {
-      class: "barb",
-      health: 50,
+      charClass: "barb",
+      health: 31,
       strength: 14,
       str_mod: 2,
       wisdom: 6,
@@ -41,8 +41,8 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
     },
     special_attack: "",
     rogue: {
-      class: "rogue",
-      health: 50,
+      charClass: "rogue",
+      health: 32,
       strength: 6,
       str_mod: -2,
       wisdom: 10,
@@ -53,6 +53,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
         "Rogues are skilled thieves, assassins, spies, and scouts. They excel in stealth, dexterity-based skills, and precision attacks.",
       special_attack:
         "Sneak Attack is a precise and stealthy maneuver favored by rogues. Its use allows a Rogue to do double damage, but only once per battle.",
+
     },
   };
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -63,8 +64,8 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       setSelectedCharacter(null);
       setCharStats({
         ...charStats,
-        name: "",
-        class: "",
+        name: '',
+        charClass: '',
         health: null,
         strength: null,
         str_mod: null,
@@ -78,7 +79,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       setSelectedCharacter(character);
       setCharStats({
         name: character.charAt(0).toUpperCase() + character.slice(1),
-        class: characterAttributes[character].class,
+        charClass: characterAttributes[character].charClass,
         health: characterAttributes[character].health,
         strength: characterAttributes[character].strength,
         str_mod: characterAttributes[character].str_mod,
@@ -90,11 +91,11 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
     }
   };
 
-  // console.log(charStats)
+  console.log(charStats);
 
   const handleConfirmClick = () => {
     console.log(charStats);
-    setScene("overworld");
+    setScene('overworld');
   };
 
   const handleChange = (e) => {
@@ -108,9 +109,9 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
     <div
       style={{
         backgroundImage: `url(${charBackground})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
       className="select-character"
     >
@@ -134,20 +135,20 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
         </div>
         <div className="characters-container">
           <div className="character-options">
-            {["mage", "barbarian", "rogue"].map((character) => (
+            {['mage', 'barbarian', 'rogue'].map((character) => (
               <div
                 key={character}
                 className={`character-option ${
-                  selectedCharacter === character ? "selected" : ""
+                  selectedCharacter === character ? 'selected' : ''
                 }`}
                 onClick={() => handleCharacterSelect(character)}
               >
                 <img
                   className="char-img"
                   src={
-                    character === "mage"
+                    character === 'mage'
                       ? mageCharacter
-                      : character === "barbarian"
+                      : character === 'barbarian'
                       ? barbCharacter
                       : rogueCharacter
                   }

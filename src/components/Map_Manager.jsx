@@ -7,6 +7,10 @@ import {
   village1Collisions,
   trollMapCollisions,
   testMapCollisions,
+  startCollisions,
+  startHouseCollisions,
+  enchantedForestCollisions,
+  enchantedForestLockedCollisions,
 } from 'utilities/collisionsData.js';
 
 const Map_Manager = ({
@@ -44,18 +48,18 @@ const Map_Manager = ({
   };
 
   useEffect(() => {
-    if (currentMap === 'bridgeLeft') {
-      setCollisions(bridgeLeftCollisions);
-    } else if (currentMap === 'bridgeRight') {
-      setCollisions(bridgeRightCollisions);
-    } else if (currentMap === 'houseInside') {
-      setCollisions(houseInsideCollisions);
-    } else if (currentMap === 'village1') {
+    if (currentMap === 'village1') {
       setCollisions(village1Collisions);
     } else if (currentMap === 'trollMap') {
       setCollisions(trollMapCollisions);
     } else if (currentMap === 'testMap') {
       setCollisions(testMapCollisions);
+    } else if (currentMap === 'start') {
+      setCollisions(startCollisions);
+    } else if (currentMap === 'startHouse') {
+      setCollisions(startHouseCollisions);
+    } else if (currentMap === 'enchantedForestLocked') {
+      setCollisions(enchantedForestLockedCollisions);
     }
   }, [currentMap]);
 
@@ -119,8 +123,8 @@ const Map_Manager = ({
           npcY
         )
       ) {
-        console.log(`Character is near NPC with ID: ${npc.id}`);
-        console.log(npc.name);
+        // console.log(`Character is near NPC with ID: ${npc.id}`);
+        // console.log(npc.name);
         isNearAnyNpc = true;
 
         if (isFPressed) {
@@ -132,7 +136,7 @@ const Map_Manager = ({
             )
           );
           setCurrentNPC(npc.name); // This sets which NPC the player is currently interacting with
-          console.log('NPC in MM:', npc.name);
+          // console.log('NPC in MM:', npc.name);
           setScene('dialogue'); // This will show the dialogue box or component
         }
       }
@@ -144,8 +148,8 @@ const Map_Manager = ({
       setNpcColor('transparent');
     }
 
-    console.log(mapPosition);
-    console.log(charPosition);
+    // console.log(mapPosition);
+    // console.log(charPosition);
   }, [charPosition, isFPressed]);
 
   const checkCollisions = (position, collisionMap) => {
