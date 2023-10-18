@@ -36,43 +36,7 @@ const NPC_Map = ({
   let xOffset;
   let yOffset;
 
-  if (currentMap === 'bridgeLeft') {
-    NPC_IMAGES = {
-      1: chestClosed,
-      2: oldMan1,
-      3: chestClosed,
-    };
-    xOffset = 7.81 * tileSize;
-    yOffset = 1.97 * tileSize;
-  } else if (currentMap === 'bridgeRight') {
-    NPC_IMAGES = {
-      1: chestClosed,
-      2: chestClosed,
-      3: oldMan1,
-    };
-    xOffset = 7.81 * tileSize;
-    yOffset = 1.97 * tileSize;
-  } else if (currentMap === 'houseInside') {
-    NPC_IMAGES = {
-      1: chestClosed,
-      2: oldMan1,
-      3: chestClosed,
-    };
-    xOffset = 7.81 * tileSize;
-    yOffset = 1.97 * tileSize;
-  } else if (currentMap === 'grassLand40') {
-    NPC_IMAGES = {};
-    xOffset = 0 * tileSize;
-    yOffset = 0 * tileSize;
-  } else if (currentMap === 'grassLand40x30') {
-    NPC_IMAGES = {};
-    xOffset = 0 * tileSize;
-    yOffset = 0 * tileSize;
-  } else if (currentMap === 'grassLand30') {
-    NPC_IMAGES = {};
-    xOffset = 0 * tileSize;
-    yOffset = 0 * tileSize;
-  } else if (currentMap === 'grassLand20') {
+  if (currentMap === 'start') {
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
@@ -91,6 +55,22 @@ const NPC_Map = ({
       3: oldMan1,
       4: oldMan1,
       5: oldMan1,
+    };
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
+  } else if (currentMap === 'startHouse') {
+    NPC_IMAGES = {};
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
+  } else if (currentMap === 'enchantedForestLocked') {
+    NPC_IMAGES = {
+      1: oldMan1,
+    };
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
+  } else if (currentMap === 'enchantedForest') {
+    NPC_IMAGES = {
+      1: oldMan1,
     };
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
