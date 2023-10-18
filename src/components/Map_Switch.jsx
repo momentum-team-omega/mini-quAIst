@@ -21,6 +21,7 @@ const Map_Switch = ({
   mapImage,
   setMapImage,
   setForeImage,
+  mapPosition,
   setMapPosition,
   setCharPosition,
   setNpcs,
@@ -32,6 +33,9 @@ const Map_Switch = ({
   setIsFPressed,
   hasMapSwitched,
 }) => {
+  
+  const storedMapPosition = localStorage.getItem('mapPosition');
+
   useEffect(() => {
     if (!mapImage || currentMap === 'start') {
       setMapImage(startMap);
@@ -45,7 +49,9 @@ const Map_Switch = ({
           x: -158,
           y: 175,
         });
-        setCharPosition({ x: 7, y: 8 });
+      setCharPosition({ x: 7, y: 8 });  // default value
+      
+      
       }
       setIsFPressed(false);
       setNpcs([]);
@@ -460,7 +466,10 @@ const Map_Switch = ({
           x: -389.5,
           y: -134.5,
         });
-        setCharPosition({ x: 3, y: 3 });
+       
+      setCharPosition({ x: 4, y: 4 });  // default value
+      
+      
       }
       setIsFPressed(false);
       setNpcs([]);
@@ -504,11 +513,15 @@ const Map_Switch = ({
       setMapRows(40);
       setMapOffset({ x: 9.5, y: 6 });
       if (!hasMapSwitched) {
+        if (storedMapPosition) {
+          setMapPosition(JSON.parse(storedMapPosition));
+        } else {
         setMapPosition({
           x: -389.5,
           y: -134.5,
         });
-        setCharPosition({ x: 3, y: 3 });
+      }
+      setCharPosition({ x: 5, y: 5 });  // default value
       }
       setIsFPressed(false);
       setNpcs([
@@ -568,7 +581,10 @@ const Map_Switch = ({
           x: -389.5,
           y: -134.5,
         });
-        setCharPosition({ x: 3, y: 3 });
+      
+      setCharPosition({ x: 7, y: 8 });  // default value
+      
+      
       }
       setIsFPressed(false);
       setNpcs([

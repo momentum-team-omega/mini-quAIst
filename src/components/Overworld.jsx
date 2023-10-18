@@ -79,6 +79,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         setPosition={setMapPosition}
         setDirection={setDirection}
         tileSize={tileSize}
+        charPosition={charPosition}
         setCharPosition={setCharPosition}
         allowedMovements={allowedMovements}
         isMoving={isMoving}
@@ -94,6 +95,7 @@ const Overworld = ({ currentMap, setCurrentMap }) => {
         mapImage={mapImage}
         setForeImage={setForeImage}
         setMapImage={setMapImage}
+        mapPosition={mapPosition}
         setMapPosition={setMapPosition}
         setCharPosition={setCharPosition}
         setNpcs={setNpcs}
