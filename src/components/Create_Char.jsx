@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
-import Char_Bar from 'components/Char_Bar';
-import barbCharacter from 'assets/creation-assets/barbarian-character.png';
-import mageCharacter from 'assets/creation-assets/mage-character.png';
-import rogueCharacter from 'assets/creation-assets/rogue-character.png';
-import charBackground from 'assets/creation-assets/fantasy-world.png';
-import GameContext from './GameContext';
-import '/src/styles/Create_Char.css';
+import React, { useContext, useState } from "react";
+import Char_Bar from "components/Char_Bar";
+import barbCharacter from "assets/creation-assets/barbarian-character.png";
+import mageCharacter from "assets/creation-assets/mage-character.png";
+import rogueCharacter from "assets/creation-assets/rogue-character.png";
+import charBackground from "assets/creation-assets/fantasy-world.png";
+import GameContext from "./GameContext";
+import "/src/styles/Create_Char.css";
 
 const SelectCharacter = ({ charStats, setCharStats }) => {
   const { setScene } = useContext(GameContext);
@@ -53,7 +53,6 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
         "Rogues are skilled thieves, assassins, spies, and scouts. They excel in stealth, dexterity-based skills, and precision attacks.",
       special_attack:
         "Sneak Attack is a precise and stealthy maneuver favored by rogues. Its use allows a Rogue to do double damage, but only once per battle.",
-
     },
   };
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -64,8 +63,8 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
       setSelectedCharacter(null);
       setCharStats({
         ...charStats,
-        name: '',
-        charClass: '',
+        name: "",
+        charClass: "",
         health: null,
         strength: null,
         str_mod: null,
@@ -95,7 +94,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
 
   const handleConfirmClick = () => {
     console.log(charStats);
-    setScene('overworld');
+    setScene("overworld");
   };
 
   const handleChange = (e) => {
@@ -109,9 +108,9 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
     <div
       style={{
         backgroundImage: `url(${charBackground})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
       className="select-character"
     >
@@ -135,20 +134,20 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
         </div>
         <div className="characters-container">
           <div className="character-options">
-            {['mage', 'barbarian', 'rogue'].map((character) => (
+            {["mage", "barbarian", "rogue"].map((character) => (
               <div
                 key={character}
                 className={`character-option ${
-                  selectedCharacter === character ? 'selected' : ''
+                  selectedCharacter === character ? "selected" : ""
                 }`}
                 onClick={() => handleCharacterSelect(character)}
               >
                 <img
                   className="char-img"
                   src={
-                    character === 'mage'
+                    character === "mage"
                       ? mageCharacter
-                      : character === 'barbarian'
+                      : character === "barbarian"
                       ? barbCharacter
                       : rogueCharacter
                   }
