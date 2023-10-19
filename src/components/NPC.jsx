@@ -101,7 +101,7 @@ const NPC = ({
     };
   }
 
-  console.log('currentNPC ', currentNPC);
+  // console.log('currentNPC ', currentNPC);
   return (
     <>
       {currentNPC === NPC.name && (
