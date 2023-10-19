@@ -9,7 +9,7 @@ import Cut_Scene from "./Cut_Scene";
 
 const Game = () => {
 
-  const [scene, setScene] = useState("intro");
+  const [scene, setScene] = useState("overworld");
   const [currentNPC, setCurrentNPC] = useState("");
   const [charStats, setCharStats] = useState({
     name: "game test",
@@ -26,7 +26,7 @@ const Game = () => {
   const [typeOfCheck, setTypeOfCheck] = useState("wis");
   const [outcome, setOutcome] = useState("");
   const [makeCheck, setMakeCheck] = useState(false);
-  const [currentMap, setCurrentMap] = useState("startHouse");
+  const [currentMap, setCurrentMap] = useState("enchantedForestLocked");
 
   const [gameWindow, setGameWindow] = useState({
     height: "720px",
