@@ -11,11 +11,11 @@ import { PlayerSummary } from './PlayerSummary';
 import '/src/styles/Battle.css';
 import GameContext from './GameContext';
 
-const Battle = ({ charStats }) => {
+const Battle = ({ }) => {
   const {
     setScene,
     currentNPC,
-    // charStats,
+    charStats,
   } = useContext(GameContext);
 
   console.log(charStats);
