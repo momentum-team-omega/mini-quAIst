@@ -73,9 +73,14 @@ const Cut_Scene = ({ initialSceneIndex }) => {
 
   return (
     <>
-      <h2 className="page-title">Our story begins......</h2>
+      <h2 className="page-title" style={{ marginBottom: "30px" }}>
+        Our story begins......
+      </h2>
       <div className="gamestart-images">
-        <div className="image-container" style={{ height: "300px" }}>
+        <div
+          className="image-container"
+          style={{ height: "300px", marginBottom: "125px" }}
+        >
           <img
             src={imageUrls[imageIndex]}
             alt={`Image ${imageIndex + 1}`}
