@@ -37,10 +37,8 @@ const Map_Switch = ({
   setIsFPressed,
   hasMapSwitched,
 }) => {
-
-  const storedMapPosition = localStorage.getItem('mapPosition');
+  const storedMapPosition = localStorage.getItem("mapPosition");
   const { currentMap, checkpoint1, setCurrentNPC } = useContext(GameContext);
-
 
   useEffect(() => {
     if (!mapImage || currentMap === "start") {
@@ -59,7 +57,7 @@ const Map_Switch = ({
       }
       setIsFPressed(false);
       setNpcs([]);
-      setCurrentNPC('');
+      setCurrentNPC("");
       setGates([
         {
           id: 1,
@@ -90,7 +88,7 @@ const Map_Switch = ({
           x: 19,
           y: 9,
 
-          map: checkpoint1 ? 'enchantedForest' : 'enchantedForestLocked',
+          map: checkpoint1 ? "enchantedForest" : "enchantedForestLocked",
           destPX: -553.5,
           destPY: 1835.5,
           destX: 0,
@@ -106,7 +104,7 @@ const Map_Switch = ({
           x: 19,
           y: 10,
 
-          map: checkpoint1 ? 'enchantedForest' : 'enchantedForestLocked',
+          map: checkpoint1 ? "enchantedForest" : "enchantedForestLocked",
           destPX: -553.5,
           destPY: 1835.5,
           destX: 0,
@@ -135,7 +133,7 @@ const Map_Switch = ({
       }
       setIsFPressed(false);
       setNpcs([{}]);
-      setCurrentNPC('');
+      setCurrentNPC("");
       setGates([
         {
           id: 1,
@@ -286,10 +284,14 @@ const Map_Switch = ({
       setMapRows(8);
       setMapOffset({ x: 9.5, y: 6 });
       if (!hasMapSwitched) {
-        setMapPosition({
-          x: -538,
-          y: -85,
-        });
+        if (storedMapPosition) {
+          setMapPosition(JSON.parse(storedMapPosition));
+        } else {
+          setMapPosition({
+            x: -538,
+            y: -85,
+          });
+        }
         setCharPosition({ x: 1, y: 4 });
       }
       setIsFPressed(false);
@@ -302,83 +304,77 @@ const Map_Switch = ({
           animationSpeed: 200,
           alive: true,
           triggered: false,
-          message: 'RAWR',
-          name: 'troll',
+          message: "RAWR",
+          name: "troll",
         },
       ]);
-      setCurrentNPC('troll');
+      setCurrentNPC("troll");
       setGates([
         {
           id: 1,
           x: 0,
           y: 3,
-          
-          map: 'village2',
+
+          map: "village2",
           destPX: 1840.5,
           destPY: 753,
           destX: 0,
           destY: 0,
-
         },
         {
           id: 2,
           x: 0,
           y: 4,
 
-          map: 'village2',
+          map: "village2",
           destPX: 1840.5,
           destPY: 753,
           destX: 0,
           destY: 0,
-
         },
         {
           id: 3,
           x: 0,
           y: 5,
 
-          map: 'village2',
+          map: "village2",
           destPX: 1840.5,
           destPY: 753,
           destX: 0,
           destY: 0,
-
         },
         {
           id: 4,
           x: 19,
           y: 3,
 
-          map: 'start',
+          map: "start",
           destPX: -158,
           destPY: 175,
           destX: 0,
           destY: 0,
-
         },
         {
           id: 5,
           x: 19,
           y: 4,
 
-          map: 'start',
+          map: "start",
           destPX: -158,
           destPY: 175,
           destX: 0,
           destY: 0,
-
         },
         {
           id: 6,
           x: 19,
           y: 5,
 
-          map: 'start',
+          map: "start",
           destPX: -158,
           destPY: 175,
           destX: 7,
           destY: 8,
-
         },
       ]);
     } else if (currentMap === "testMap") {
@@ -457,7 +453,7 @@ const Map_Switch = ({
           name: "troll",
         },
       ]);
-      setCurrentNPC('');
+      setCurrentNPC("");
       setGates([
         {
           id: 1,
@@ -506,7 +502,7 @@ const Map_Switch = ({
       }
       setIsFPressed(false);
       setNpcs([]);
-      setCurrentNPC('');
+      setCurrentNPC("");
       setGates([
         {
           id: 1,
@@ -571,7 +567,7 @@ const Map_Switch = ({
           name: "wiseman",
         },
       ]);
-      setCurrentNPC('wiseman');
+      setCurrentNPC("wiseman");
       setGates([
         {
           id: 1,
@@ -636,7 +632,7 @@ const Map_Switch = ({
           name: "wiseman",
         },
       ]);
-      setCurrentNPC('wiseman');
+      setCurrentNPC("wiseman");
       setGates([
         {
           id: 1,
@@ -738,7 +734,7 @@ const Map_Switch = ({
           name: "wiseman",
         },
       ]);
-      setCurrentNPC('');
+      setCurrentNPC("");
       setGates([
         {
           id: 1,
@@ -795,36 +791,33 @@ const Map_Switch = ({
           x: 39,
           y: 16,
 
-          map: 'trollMap',
+          map: "trollMap",
           destPX: -555.5,
           destPY: -82.5,
           destX: 1,
           destY: 4,
-
         },
         {
           id: 7,
           x: 39,
           y: 17,
 
-          map: 'trollMap',
+          map: "trollMap",
           destPX: -555.5,
           destPY: -82.5,
           destX: 1,
           destY: 4,
-
         },
         {
           id: 8,
           x: 39,
           y: 18,
 
-          map: 'trollMap',
+          map: "trollMap",
           destPX: -555.5,
           destPY: -82.5,
           destX: 1,
           destY: 4,
-
         },
       ]);
     } else if (currentMap === "village2inside") {
@@ -843,7 +836,7 @@ const Map_Switch = ({
       }
       setIsFPressed(false);
       setNpcs([]);
-      setCurrentNPC('');
+      setCurrentNPC("");
       setGates([
         {
           id: 1,
