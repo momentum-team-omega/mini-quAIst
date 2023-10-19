@@ -100,7 +100,8 @@ button:focus-visible {
   background-position: center;
   position: relative;
   overflow: hidden;
-  /* border: 1px solid lightgrey;  */
+
+  /* border: 1px solid lightgrey; remove when window is stable */
   margin-left: 50%;
   transform: translateX(-50%);
   margin-bottom: 50px;
