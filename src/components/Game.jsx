@@ -8,23 +8,23 @@ import Battle from './Battle';
 import Cut_Scene from './Cut_Scene';
 
 const Game = () => {
-  const [scene, setScene] = useState('overworld');
-  const [currentNPC, setCurrentNPC] = useState('troll');
+  const [scene, setScene] = useState('intro');
+  const [currentNPC, setCurrentNPC] = useState('');
   const [charStats, setCharStats] = useState({
-    name: 'game test',
-    charClass: 'mage',
-    health: 33,
-    strength: 6,
-    str_mod: -2,
-    wisdom: 14,
-    wis_mod: 2,
-    dexterity: 10,
-    dex_mod: 0,
+    name: '',
+    charClass: '',
+    health: null,
+    strength: null,
+    str_mod: null,
+    wisdom: null,
+    wis_mod: null,
+    dexterity: null,
+    dex_mod: null,
   });
 
-  const [currentMap, setCurrentMap] = useState('village2');
+  const [currentMap, setCurrentMap] = useState('start');
 
-  const [typeOfCheck, setTypeOfCheck] = useState('wis');
+  const [typeOfCheck, setTypeOfCheck] = useState('');
   const [outcome, setOutcome] = useState('');
   const [makeCheck, setMakeCheck] = useState(false);
 
@@ -33,7 +33,7 @@ const Game = () => {
     width: '1280px',
   });
 
-  const [checkpoint1, setCheckpoint1] = useState(true);
+  const [checkpoint1, setCheckpoint1] = useState(false);
 
   return (
     <>

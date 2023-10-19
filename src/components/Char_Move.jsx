@@ -82,8 +82,8 @@ const Char_Move = ({
           JSON.stringify(gridToPixelPosition(gridPos))
         );
 
-        console.log(`X: ${newX}, Y: ${newY}`);
-        console.log('gridPos: ', gridPos);
+        // console.log(`X: ${newX}, Y: ${newY}`);
+        // console.log('gridPos: ', gridPos);
 
         return { x: newX, y: newY };
       });
