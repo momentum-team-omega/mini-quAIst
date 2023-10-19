@@ -81,12 +81,8 @@ const Dialogue = () => {
     console.log('optionId clicked:', optionId)
     
     switch (optionId) {
-        case 'leave':
-            if (currentNPC === 'wiseman' && !checkpoint1) {
-                setScene('characterCreation');
-            } else {
-                setScene('overworld');
-            }
+        case 'leave':           
+            setScene('overworld');           
             break;
 
         case 'start':
