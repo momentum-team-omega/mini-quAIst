@@ -36,8 +36,17 @@ const Dialogue = () => {
     npcDialogues[currentNPC].initialResponse
   );
   const [preFetchedResponses, setPreFetchedResponses] = useState([]);
+
+  const npcImages = {
+    wiseman: "/src/assets/dialogue-assets/wiseman.png",
+    blacksmith: "/src/assets/dialogue-assets/blacksmith.png",
+    steve: "/src/assets/dialogue-assets/steve.png",
+    troll: "/src/assets/dialogue-assets/troll.png",
+    villageLeader: "/src/assets/dialogue-assets/villageLeader.png",
+  };
+
   const containerStyle = {
-    backgroundImage: `url(${`/src/assets/dialogue-assets/${currentNPC}.png`})`,
+    backgroundImage: `url(${npcImages[currentNPC] || ""})`,
   };
 
   const npcList = Object.keys(npcDialogues);
