@@ -10,7 +10,8 @@ export const npcDialogues = {
       their lost cat, tell them to speak with the village leader to the Southeast. 
       if the kid asks you about the mountains, tell him that there are towns with 
       friendly people but also be aware of trolls, goblins, spiders, and even devils. 
-      If the kid asks you who you are explain you are a helpful wiseman in a mysterious way.`,
+      If the kid asks you who you are explain you are a helpful wiseman in a mysterious way. 
+      Keep your responses short in less than 5 sentences.`,
     1: {
       text: "What else would you like to know?",
       options: ["2", "3", "4", "leave"],
@@ -81,33 +82,42 @@ export const npcDialogues = {
     initialResponse:
       "Welcome, traveler. As the leader of this humble village, I extend my greetings. How may I assist you on this fine day?",
     systemContent:
-      "You are the village leader in a medieval fantasy village. A 10-year-old kid approaches you, worried about their lost pet.",
+      `You are the female village leader in a medieval fantasy village. A 10-year-old kid 
+      approaches you, worried about their lost pet. Stay in character DO NOT explain or say anything about dungeons 
+      and dragons. Speak ONLY in 1st person. Do NOT narrate. If the kid asks you about 
+      their lost cat, tell them to speak with Steve of Clan Irwin, one of the townspeople. He loves
+      animals and might have an idea of where the lost cat is. If the kid asks you about the 
+      town, tell him that they are welcome to Dajavinris and invite them to explore and stay as long as 
+      needed. The town is called Dajavinris because of the five founders chris, davis, gavin, jaylan, and nathan. 
+      If the kid asks you about the area, say that your town has proper safety 
+      measures against any unwanted guests including trolls, goblins, and you can inlude a 
+      few more fantasy monsters. Keep your responses short in less than 5 sentences.`,
     1: {
-      text: "Excuse me, village leader. Have you seen my lost pet?",
+      text: "How else can I help you, young one?",
       options: ["2", "3", "4", "leave"],
     },
     2: {
-      text: "Someone told me you might know where lost animals go.",
+      text: "Excuse me, village leader. Where am I?",
       options: ["5", "6", "7", "start"],
     },
     3: {
-      text: "I'm really worried. Can you help me find my pet?",
+      text: "A wiseman told me to ask you for help finding my lost cat.",
       options: ["8", "9", "10", "start"],
     },
     4: {
-      text: "Do animals sometimes wander near the tavern?",
+      text: "I DEMAND that you tell me where my lost cat is.",
       options: ["11", "12", "13", "start"],
     },
     5: {
-      text: "What should I do to find my pet in this village?",
+      text: "Why is the town called Dajavinris?",
       options: ["start", "leave"],
     },
     6: {
-      text: "Have other villagers found lost pets before?",
+      text: "Have you seen my cat around town?",
       options: ["start", "leave"],
     },
     7: {
-      text: "Could someone have taken my pet?",
+      text: "Do you think anyone knows where my cat might be?",
       options: ["start", "leave"],
     },
     8: {
@@ -115,15 +125,15 @@ export const npcDialogues = {
       options: ["start", "leave"],
     },
     9: {
-      text: "Do you think the tavernkeep has seen it?",
+      text: "Do you know anyone who might have seen my cat?",
       options: ["start", "leave"],
     },
     10: {
-      text: "Could it be in danger in this village?",
+      text: "Could my cat be in danger in this village?",
       options: ["start", "leave"],
     },
     11: {
-      text: "I'll check the tavern then. Thank you!",
+      text: "I'm not sure if I believe you. Tell me where my cat is.",
       options: ["start", "leave"],
     },
     12: {
@@ -135,7 +145,7 @@ export const npcDialogues = {
       options: ["start", "leave"],
     },
     start: {
-      text: "I had another question.",
+      text: "I have another question.",
       options: ["1"],
     },
     end: {
@@ -219,43 +229,49 @@ export const npcDialogues = {
   },
   steve: {
     initialResponse:
-      "G'day mate! Steve here. I've got a soft spot for all creatures big and small. How can I help you today?",
+      `G'day mate! Steve here. I've got a soft spot for all creatures big and small. How can I help you today?`,
     systemContent:
-      "You are Steve, a passionate townsman known for your love of animals, reminiscent of Steve Irwin. You have various exotic pets at home, and you're always eager to help with any animal-related issue. A concerned 10-year-old kid approaches you about their lost pet.",
+    `You are steve of clan irwin (based off steve irwin). A 10-year-old kid 
+    approaches you, worried about their lost pet. Stay in character DO NOT explain or say anything about dungeons 
+    and dragons. Speak ONLY in 1st person. Do NOT narrate. If the kid asks you about 
+    their lost cat, tell them you hope one of those goblins didnt run off with it. The goblins have been stealing from your vegetable patch recently.
+    If the kid asks about animals, talk about the exotic animals you have at home. Give a few examples. 
+    If the kid asks who you are, tell them you are steve of clan irwin. And give a little clue about steve irwin
+    but in a subtle manner. Keep your responses short in less than 5 sentences.`,
     1: {
-      text: "Hey Steve, I was told you might be able to help with my lost pet.",
+      text: "How else can I help ya, mate?",
       options: ["2", "3", "4", "leave"],
     },
     2: {
-      text: "You're great with animals. Have you seen my lost pet?",
+      text: "Hi Steve of Clan Irwin, I was told you might be able to help with my lost pet.",
       options: ["5", "6", "7", "start"],
     },
     3: {
-      text: "I'm really worried. Do you think it might have wandered off into the wild?",
+      text: "I'm really worried about my cat. Have you seen him?",
       options: ["8", "9", "10", "start"],
     },
     4: {
-      text: "Can you show me your pets? Maybe it'll help me feel better.",
+      text: "Whoa, there's a lot of animals around here! What kind of animals do you have?",
       options: ["11", "12", "13", "start"],
     },
     5: {
       text: "Where do animals usually go when they're lost?",
-      options: ["14", "15", "start"],
+      options: ["start", "leave"],
     },
     6: {
       text: "What should I do now? Any advice?",
-      options: ["16", "17", "start"],
+      options: ["start", "leave"],
     },
     7: {
       text: "If my pet came to you, would you keep it?",
       options: ["start", "leave"],
     },
     8: {
-      text: "There have been some whispers about goblins recently. Do they... take pets?",
-      options: ["18", "19", "20", "start"],
+      text: "Do goblins... Do they take pets?",
+      options: ["start", "leave"],
     },
     9: {
-      text: "I just hope it didn't get hurt in the forest.",
+      text: "I just hope he doesn't get hurt in the mountains.",
       options: ["start", "leave"],
     },
     10: {
@@ -264,7 +280,7 @@ export const npcDialogues = {
     },
     11: {
       text: "Wow, these are fascinating creatures! How did you get them?",
-      options: ["21", "22", "start"],
+      options: ["start", "leave"],
     },
     12: {
       text: "Your animals look happy and well-cared for.",
