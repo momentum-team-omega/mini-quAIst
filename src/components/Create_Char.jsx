@@ -3,6 +3,9 @@ import Char_Bar from 'components/Char_Bar';
 import barbCharacter from 'assets/creation-assets/barbarian-character.png';
 import mageCharacter from 'assets/creation-assets/mage-character.png';
 import rogueCharacter from 'assets/creation-assets/rogue-character.png';
+import barbGirl from 'assets/creation-assets/barbarian-girl.png';
+import mageGirl from 'assets/creation-assets/mage-girl.png';
+import rogueGirl from 'assets/creation-assets/rogue-girl.png';
 import charBackground from 'assets/creation-assets/fantasy-world.png';
 import GameContext from './GameContext';
 import '/src/styles/Create_Char.css';
@@ -149,10 +152,10 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
                   className="char-img"
                   src={
                     character === 'mage'
-                      ? mageCharacter
+                      ? mageGirl
                       : character === 'barbarian'
-                      ? barbCharacter
-                      : rogueCharacter
+                      ? barbGirl
+                      : rogueGirl
                   }
                   alt={`${character} Character`}
                 />
@@ -204,7 +207,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
             onClick={handleConfirmClick}
             disabled={!selectedCharacter}
           >
-            Confirm Selection
+            Confirm
           </button>
         </div>
       </div>

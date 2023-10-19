@@ -10,6 +10,7 @@
 
   color: var(--clr-light);
   background-color: var(--clr-dark);
+  /* background-color: #000000; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -93,12 +94,13 @@ button:focus-visible {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--clr-dark);
+  /* background-color: var(--clr-dark); */
+  background-color: #000000;
   background-size: cover;
   background-position: center;
   position: relative;
   overflow: hidden;
-  border: 1px solid lightgrey; /* remove when window is stable */
+  /* border: 1px solid lightgrey;  */
   margin-left: 50%;
   transform: translateX(-50%);
   margin-bottom: 50px;
