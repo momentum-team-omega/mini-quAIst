@@ -1,21 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
 import { TypeAnimation } from "react-type-animation";
-import openImage1 from "/src/assets/gamestart-assets/KidsRoomCat.png";
-import openImage2 from "/src/assets/gamestart-assets/LoraEx2.jpeg";
-import openImage3 from "/src/assets/gamestart-assets/LoraEx3.jpeg";
+import openingImage1 from "/src/assets/gamestart-assets/KidsRoomCat.png";
+import openingImage2 from "/src/assets/gamestart-assets/CatRunning.png";
+import openingImage3 from "/src/assets/gamestart-assets/LoraEx3.jpeg";
 import GameContext from "./GameContext";
 
 const scenes = [
   {
-    imageUrls: [openImage1, openImage2, openImage3],
+    imageUrls: [openingImage1, openingImage2, openingImage3],
     textArray: [
       "The beach is beautiful and the sounds of the waves are soothing.",
       "The forest swirls around you, causing you to lose your way.",
-      "The golden leaves hide magical creatures, you can feel eyes upon you.",
     ],
   },
   {
-    imageUrls: [exampleImage1, exampleImage2, exampleImage3],
+    imageUrls: [openingImage1, openingImage2, openingImage3],
     textArray: [
       "You find yourself in a bustling city square, surrounded by people and noise.",
       "Rain starts pouring, and you seek shelter under a nearby awning.",
