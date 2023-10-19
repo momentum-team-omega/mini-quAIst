@@ -1,6 +1,7 @@
 import React, { useMemo, useContext } from 'react';
 import oldMan1 from 'assets/npc-assets/old-man-tileset.png';
 import chestClosed from 'assets/npc-assets/chest-1-closed.png';
+import redTroll from 'assets/npc-assets/red-troll-1.png';
 import NPC from 'components/NPC';
 import GameContext from './GameContext';
 
@@ -40,7 +41,9 @@ const NPC_Map = ({ mapPosition, npcs, tileSize, mapColumns, mapRows }) => {
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
   } else if (currentMap === 'trollMap') {
-    NPC_IMAGES = {};
+    NPC_IMAGES = {
+      1: redTroll,
+    };
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
   } else if (currentMap === 'testMap') {
