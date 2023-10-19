@@ -27,6 +27,7 @@ const Game = () => {
   const [typeOfCheck, setTypeOfCheck] = useState('');
   const [outcome, setOutcome] = useState('');
   const [makeCheck, setMakeCheck] = useState(false);
+  const [currentMap, setCurrentMap] = useState('start');
 
   const [gameWindow, setGameWindow] = useState({
     height: '720px',
