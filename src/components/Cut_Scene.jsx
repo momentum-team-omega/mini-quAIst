@@ -10,8 +10,8 @@ const scenes = [
   {
     imageUrls: [openImage1, openImage2],
     textArray: [
-      "Your cat is known for running in to the forest.",
-      "As you follow your cat the woods beside your house begin to look less familiar.",
+      "Your kitty has a bad habbit of running in to the forest.",
+      "As you follow your cat, the woods beside your house begin to look less familiar...",
     ],
   },
   // {
@@ -93,7 +93,11 @@ const Cut_Scene = ({ initialSceneIndex }) => {
           )}
         </div>
         {showContinueButton && (
-          <button onClick={handleContinue} style={{ marginTop: "60px" }}>
+          <button
+            className="continue-button"
+            onClick={handleContinue}
+            style={{ marginTop: "60px" }}
+          >
             {sceneIndex === 0 ? "Continue" : "End of Chapter 1"}
           </button>
         )}

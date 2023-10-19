@@ -1,3 +1,12 @@
 .page-title {
   margin-bottom: 200;
 }
+
+.continue-button {
+  width: 150px;
+  height: 40px;
+  background-color: rgba(0, 0, 255, 0.5);
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  margin-bottom: 10px;
+}
