@@ -15,7 +15,7 @@ const scenes = [
     ],
   },
   {
-    imageUrls: [exampleImage1, exampleImage2, exampleImage3],
+    imageUrls: [openImage1, openImage2, openImage3],
     textArray: [
       "You find yourself in a bustling city square, surrounded by people and noise.",
       "Rain starts pouring, and you seek shelter under a nearby awning.",
