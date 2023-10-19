@@ -1,11 +1,14 @@
 .char-confirm-button {
-  margin-bottom: 5px;
-  width: 150px;
+  margin-bottom: 10px;
+  width: 120px;
   height: 35px;
-  background-color: rgba(0, 0, 255, 0.5);
+  background-color: rgba(0, 0, 255, 0.668);
   color: white;
   text-shadow: 1px 1px 1px black;
-  font-size: 0.75em;
+  font-size: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button-container {
@@ -37,7 +40,7 @@
 }
 
 .who-are-you {
-  padding-top: 20px;
+  padding-top: 15px;
   padding-bottom: 7px;
   font-family: 'Acme', sans-serif;
   font-size: 2.8em;
@@ -69,27 +72,32 @@
 }
 
 .character-option {
-  width: 30%;
+  width: 33%;
   cursor: pointer;
   border: 1px solid #e3e3e300; 
   border-radius: 25px;
-  padding: 10px;
+  padding: 15px;
 }
 .character-option:hover {
-  border: 1px solid #e3e3e3c3; 
+  border: 1px solid #609bf3; 
   border-radius: 25px;
-  padding: 10px;
 }
 .character-option:active {
+  border: 1px solid #e3e3e3c3; 
   transform: scale(98%);
   transition: transform 0.2s;
+}
+.selected {
+  border: 1px solid #e3e3e3c3; 
+  border-radius: 25px;
+  padding: 15px;
 }
 
 .char-img {
   height: 120px;
   width: 120px;
   border-radius: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .class-name {
@@ -98,7 +106,7 @@
   font-weight: 600;
   line-height: .8;
   color: var(--clr-light);
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .stat-bar-container {
@@ -148,7 +156,7 @@
 }
 
 .char-max {
-  height: 20px;
+  height: 15px;
   border-radius: 5px;
   overflow: hidden;
   box-sizing: border-box;
@@ -179,7 +187,7 @@
 }
 
 .name-input {
-  margin-top: 15px;
+  margin: 20px 0px 20px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -202,7 +210,7 @@
   padding-top: 5px;
   font-family: "Avant Garde", sans-serif;
   font-size: 1em;
-  color: var(--clr-accent-light);
+  color: #0566fa;
   background-color: var(--clr-nav);
   margin-bottom: 5px;
 }

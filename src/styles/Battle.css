@@ -1,9 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+@import url('https://fonts.google.com/specimen/Sofia+Sans+Condensed?stroke=Sans+Serif');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
 /* FIGHT! BATTLE CSS OUCH! OH! NO! BATTLE CSS ENGUARD! */
 .battle-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100%;
+}
+
+.battle-intro-text {
+  font-family: 'Acme', sans-serif;
+  font-size: 3.8em;
+  font-weight: 600;
+  line-height: .8;
+  margin-bottom: 5px;
+  position: absolute;
+  top: 80px;
 }
 
 .flicker-animation {
@@ -48,35 +63,49 @@
 }
 
 .health-change-indicator {
-    position: absolute;
-    top: 350px;
-    right: 165px; 
-    color: red;
-    text-shadow: 1px 1px 1px black;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 24px;
-    /* z-index: 999; */
-    text-align: center;
-}
-
-.enemy-health-change-indicator {
   position: absolute;
   top: 650;
   left: 165px;
-  color: red;
+  color: #bc1f07;
   text-shadow: 1px 1px 1px black;
   padding: 10px;
   border-radius: 5px;
   font-size: 24px;
-  /* z-index: 999; */
   text-align: center;
+  font-family: 'Luckiest Guy', sans-serif;
+  font-size: 1.6em;
+  font-weight: 600;
+  line-height: .9;
+}
+
+.test {
+  color: #35c743;
+}
+
+.enemy-health-change-indicator {
+  position: absolute;
+  top: 350px;
+  right: 165px; 
+  color: #bc1f07;
+  text-shadow: 1px 1px 1px black;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 24px;
+  text-align: center;
+  font-family: 'Luckiest Guy', sans-serif;
+  font-size: 1.6em;
+  font-weight: 600;
+  line-height: .9;
 }
 
 .button-box {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 5px;
+  position: absolute;
+  bottom: 20px;
+  left: 380px;
 }
 
 .fight-button,
@@ -87,25 +116,75 @@
   background-color: rgba(0, 0, 255, 0.5);
   color: white;
   text-shadow: 1px 1px 1px black;
+  margin: 2px 0px 2px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fight-text, .chill-text, .special-text {
+  font-family: 'Sofia Sans Condensed', sans-serif;
+  font-size: 22px;
+  text-align: center;
 }
 
 .player-summary {
   width: 250px;
+  border-radius: 10px;
+  padding: 5px 0px 0px 0px;
+}
+
+.name {
+  font-family: 'Acme', sans-serif;
+  font-size: 1.6em;
+  font-weight: 600;
+  line-height: .8;
+  margin-bottom: 5px;
+}
+
+.main {
+  display: flex;
+  border-radius: 5px;
+  gap: 5px;
+  padding: 5px;
+  align-items: center;
+  background-color: white;
+  height: 35px;
+}
+
+.player-container {
+  position: absolute;
+  left: 100px;
+  bottom: 50px;
+}
+
+.enemy-container {
+  position: absolute;
+  right: 100px;
+  bottom: 50px;
+}
+
+.enemy-summary {
+  width: 250px;
+  position: absolute;
+  right: 100px;
 }
 
 .label {
-  font-size: 32px;
-  font-weight: bold;
+  font-family: 'Luckiest Guy', sans-serif;
+  font-size: 25px;
+  font-weight: 400;
   height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-basis: 50px;
   color: black;
+  margin-top: 8px;
 }
 
 .max {
-  height: 35px;
+  height: 25px;
   border-radius: 5px;
   overflow: hidden;
   box-sizing: border-box;
