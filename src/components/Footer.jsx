@@ -1,5 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
-import "/src/styles/Footer.css";
+import { Link, useLocation } from 'react-router-dom';
+import '/src/styles/Footer.css';
 
 const Footer = () => {
   const location = useLocation();
@@ -13,21 +13,26 @@ const Footer = () => {
     <>
       <div className="footer">
         <div className="footerLinks">
-          {pathname !== "/home" ? (
+          {pathname !== '/home' ? (
             <div className="footerLinkContainer">
-              <Link to={{ pathname: "/home" }} className="footerLink">
+              <Link to={{ pathname: '/home' }} className="footerLink">
                 Home
               </Link>
             </div>
           ) : null}
-          {pathname !== "/wiki" ? (
+          {pathname !== '/wiki' ? (
             <div className="footerLinkContainer">
               <Link to="/wiki" className="footerLink">
                 Wiki
               </Link>
             </div>
           ) : null}
-          {pathname !== "/login" && pathname !== "/register" ? (
+          <div className="footerLinkContainer">
+            <Link to="/play" className="footerLink">
+              Play
+            </Link>
+          </div>
+          {pathname !== '/login' && pathname !== '/register' ? (
             <div className="footerLinkContainer">
               <Link to="/login" className="footerLink">
                 Login

@@ -8,11 +8,12 @@ import Battle from "./Battle";
 import Cut_Scene from "./Cut_Scene";
 
 const Game = () => {
+
   const [scene, setScene] = useState("intro");
   const [currentNPC, setCurrentNPC] = useState("troll");
   const [charStats, setCharStats] = useState({
     name: "game test",
-    charClass: "mage",
+    charClass: "",
     health: 33,
     strength: 6,
     str_mod: -2,

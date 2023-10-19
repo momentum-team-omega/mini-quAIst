@@ -81,14 +81,35 @@ const NPC = ({
     setFrame(1);
   }, [currentMap]);
 
+  let styling = {
+    top: `${rowIndex * tileSize - mapPosition.y - yOffset}px`,
+    left: `${colIndex * tileSize - mapPosition.x - xOffset}px`,
+    width: `${tileSize}px`,
+    height: `${tileSize}px`,
+    backgroundImage: `url(${image})`,
+    backgroundPosition: steps > 1 ? `${bgPositionMap[frame]} 0%` : '0% 0%',
+    backgroundSize: backgroundSizeValue,
+  };
+
+  if (currentNPC === 'troll') {
+    styling = {
+      ...styling,
+      top: `${rowIndex * tileSize - mapPosition.y - yOffset - 132}px`,
+      left: `${colIndex * tileSize - mapPosition.x - xOffset - 10}px`,
+      width: `${tileSize + 30}px`,
+      height: `${tileSize + 30}px`,
+    };
+  }
+
+  console.log('currentNPC ', currentNPC);
   return (
     <>
       {currentNPC === NPC.name && (
         <div
           className="message-box"
           style={{
-            top: `${rowIndex * tileSize - mapPosition.y - yOffset - 40}px`,
-            left: `${colIndex * tileSize - mapPosition.x - xOffset - 10}px`,
+            top: `${rowIndex * tileSize - mapPosition.y - yOffset}px`,
+            left: `${colIndex * tileSize - mapPosition.x - xOffset}px`,
             width: `${tileSize + 20}px`,
             height: `${tileSize - 15}px`,
           }}
@@ -96,19 +117,7 @@ const NPC = ({
           <p className="message-text">{message}</p>
         </div>
       )}
-      <div
-        className="NPC"
-        style={{
-          top: `${rowIndex * tileSize - mapPosition.y - yOffset}px`,
-          left: `${colIndex * tileSize - mapPosition.x - xOffset}px`,
-          width: `${tileSize}px`,
-          height: `${tileSize}px`,
-          backgroundImage: `url(${image})`,
-          backgroundPosition:
-            steps > 1 ? `${bgPositionMap[frame]} 0%` : '0% 0%',
-          backgroundSize: backgroundSizeValue,
-        }}
-      ></div>
+      <div className="NPC" style={styling}></div>
     </>
   );
 };

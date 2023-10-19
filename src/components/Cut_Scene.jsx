@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useContext } from "react";
 import { TypeAnimation } from "react-type-animation";
 import openImage1 from "/src/assets/gamestart-assets/KidsRoomCat.png";
@@ -68,7 +69,7 @@ const Cut_Scene = ({ initialSceneIndex }) => {
   }, [imageIndex, isTyping, imageUrls]);
 
   const handleContinue = () => {
-    setScene("overworld");
+    setScene('overworld');
   };
 
   return (
@@ -77,10 +78,12 @@ const Cut_Scene = ({ initialSceneIndex }) => {
         Our story begins......
       </h2>
       <div className="gamestart-images">
+
         <div
           className="image-container"
           style={{ height: "300px", marginBottom: "125px" }}
         >
+
           <img
             src={imageUrls[imageIndex]}
             alt={`Image ${imageIndex + 1}`}
@@ -92,7 +95,7 @@ const Cut_Scene = ({ initialSceneIndex }) => {
                 sequence={[textArray[imageIndex]]}
                 speed={50}
                 repeat={1}
-                style={{ fontSize: "2em" }}
+                style={{ fontSize: '2em' }}
               />
             </div>
           )}
@@ -104,6 +107,7 @@ const Cut_Scene = ({ initialSceneIndex }) => {
             style={{ marginTop: "60px" }}
           >
             {sceneIndex === 0 ? "Continue" : "End of Chapter 1"}
+
           </button>
         )}
       </div>

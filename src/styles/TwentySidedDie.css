@@ -33,7 +33,7 @@
 }
 
 .dice-container {
-  background-color: #3c3c3c66;
+  background-color: #2a2a2ad8;
   padding: 20px;
   border-radius: 25px;
   border: 1px solid #ececec9a;
@@ -52,7 +52,7 @@
 }
 
 .continue-button {
-  background-color: rgba(0, 0, 255, 0.5);
+  background-color: rgb(40, 40, 190);
   color: white;
   text-shadow: 1px 1px 1px black;
   margin-top: 12px;

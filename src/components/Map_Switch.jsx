@@ -37,8 +37,10 @@ const Map_Switch = ({
   setIsFPressed,
   hasMapSwitched,
 }) => {
-  const storedMapPosition = localStorage.getItem("mapPosition");
-  const { currentMap, checkpoint1 } = useContext(GameContext);
+
+  const storedMapPosition = localStorage.getItem('mapPosition');
+  const { currentMap, checkpoint1, setCurrentNPC } = useContext(GameContext);
+
 
   useEffect(() => {
     if (!mapImage || currentMap === "start") {
@@ -57,6 +59,7 @@ const Map_Switch = ({
       }
       setIsFPressed(false);
       setNpcs([]);
+      setCurrentNPC('');
       setGates([
         {
           id: 1,
@@ -86,11 +89,13 @@ const Map_Switch = ({
           id: 3,
           x: 19,
           y: 9,
-          map: checkpoint1 ? "enchantedForest" : "enchantedForestLocked",
-          destPX: -281,
-          destPY: 260.5,
-          destX: 5,
-          destY: 9,
+
+          map: checkpoint1 ? 'enchantedForest' : 'enchantedForestLocked',
+          destPX: -553.5,
+          destPY: 1835.5,
+          destX: 0,
+          destY: 0,
+
           // destPX: -553.5,
           // destPY: 1835.5,
           // destX: 1,
@@ -100,11 +105,13 @@ const Map_Switch = ({
           id: 4,
           x: 19,
           y: 10,
-          map: checkpoint1 ? "enchantedForest" : "enchantedForestLocked",
-          destPX: -281,
-          destPY: 260.5,
-          destX: 5,
-          destY: 9,
+
+          map: checkpoint1 ? 'enchantedForest' : 'enchantedForestLocked',
+          destPX: -553.5,
+          destPY: 1835.5,
+          destX: 0,
+          destY: 0,
+
           // destPX: -553.5,
           // destPY: 1835.5,
           // destX: 1,
@@ -128,6 +135,7 @@ const Map_Switch = ({
       }
       setIsFPressed(false);
       setNpcs([{}]);
+      setCurrentNPC('');
       setGates([
         {
           id: 1,
@@ -285,67 +293,92 @@ const Map_Switch = ({
         setCharPosition({ x: 1, y: 4 });
       }
       setIsFPressed(false);
-      setNpcs([{}]);
+      setNpcs([
+        {
+          id: 1,
+          x: 10,
+          y: 4,
+          steps: 4,
+          animationSpeed: 200,
+          alive: true,
+          triggered: false,
+          message: 'RAWR',
+          name: 'troll',
+        },
+      ]);
+      setCurrentNPC('troll');
       setGates([
         {
           id: 1,
           x: 0,
           y: 3,
-          map: "bridgeRight",
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
+          
+          map: 'village2',
+          destPX: 1840.5,
+          destPY: 753,
+          destX: 0,
+          destY: 0,
+
         },
         {
           id: 2,
           x: 0,
           y: 4,
-          map: "bridgeRight",
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
+
+          map: 'village2',
+          destPX: 1840.5,
+          destPY: 753,
+          destX: 0,
+          destY: 0,
+
         },
         {
           id: 3,
           x: 0,
           y: 5,
-          map: "bridgeRight",
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
+
+          map: 'village2',
+          destPX: 1840.5,
+          destPY: 753,
+          destX: 0,
+          destY: 0,
+
         },
         {
           id: 4,
           x: 19,
           y: 3,
-          map: "bridgeRight",
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
+
+          map: 'start',
+          destPX: -158,
+          destPY: 175,
+          destX: 0,
+          destY: 0,
+
         },
         {
           id: 5,
           x: 19,
           y: 4,
-          map: "bridgeRight",
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
+
+          map: 'start',
+          destPX: -158,
+          destPY: 175,
+          destX: 0,
+          destY: 0,
+
         },
         {
           id: 6,
           x: 19,
           y: 5,
-          map: "bridgeRight",
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
+
+          map: 'start',
+          destPX: -158,
+          destPY: 175,
+          destX: 7,
+          destY: 8,
+
         },
       ]);
     } else if (currentMap === "testMap") {
@@ -424,6 +457,7 @@ const Map_Switch = ({
           name: "troll",
         },
       ]);
+      setCurrentNPC('');
       setGates([
         {
           id: 1,
@@ -472,6 +506,7 @@ const Map_Switch = ({
       }
       setIsFPressed(false);
       setNpcs([]);
+      setCurrentNPC('');
       setGates([
         {
           id: 1,
@@ -536,6 +571,7 @@ const Map_Switch = ({
           name: "wiseman",
         },
       ]);
+      setCurrentNPC('wiseman');
       setGates([
         {
           id: 1,
@@ -600,6 +636,7 @@ const Map_Switch = ({
           name: "wiseman",
         },
       ]);
+      setCurrentNPC('wiseman');
       setGates([
         {
           id: 1,
@@ -701,6 +738,7 @@ const Map_Switch = ({
           name: "wiseman",
         },
       ]);
+      setCurrentNPC('');
       setGates([
         {
           id: 1,
@@ -756,31 +794,37 @@ const Map_Switch = ({
           id: 6,
           x: 39,
           y: 16,
-          map: "start",
-          destPX: 562,
-          destPY: 175,
-          destX: 18,
-          destY: 8,
+
+          map: 'trollMap',
+          destPX: -555.5,
+          destPY: -82.5,
+          destX: 1,
+          destY: 4,
+
         },
         {
           id: 7,
           x: 39,
           y: 17,
-          map: "start",
-          destPX: 562,
-          destPY: 175,
-          destX: 18,
-          destY: 8,
+
+          map: 'trollMap',
+          destPX: -555.5,
+          destPY: -82.5,
+          destX: 1,
+          destY: 4,
+
         },
         {
           id: 8,
           x: 39,
           y: 18,
-          map: "start",
-          destPX: 562,
-          destPY: 175,
-          destX: 18,
-          destY: 8,
+
+          map: 'trollMap',
+          destPX: -555.5,
+          destPY: -82.5,
+          destX: 1,
+          destY: 4,
+
         },
       ]);
     } else if (currentMap === "village2inside") {
@@ -799,6 +843,7 @@ const Map_Switch = ({
       }
       setIsFPressed(false);
       setNpcs([]);
+      setCurrentNPC('');
       setGates([
         {
           id: 1,

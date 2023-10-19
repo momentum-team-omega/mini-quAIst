@@ -1,6 +1,6 @@
-import { Link, useLocation } from "react-router-dom";
-import homeIcon from "assets/favicon.png";
-import "/src/styles/Nav.css";
+import { Link, useLocation } from 'react-router-dom';
+import homeIcon from 'assets/favicon.png';
+import '/src/styles/Nav.css';
 
 const Nav = () => {
   const location = useLocation();
@@ -15,12 +15,23 @@ const Nav = () => {
           </Link>
         </div>
         <div className="loginContainer">
-          {pathname !== "/login" && pathname !== "/register" ? (
+          {pathname !== '/wiki' ? (
+            <Link to="/wiki">
+              <div className="loginText">wiki</div>
+            </Link>
+          ) : (
+            <Link to="/play">
+              <div className="loginText">play</div>
+            </Link>
+          )}
+        </div>
+        {/* <div className="loginContainer">
+          {pathname !== '/login' && pathname !== '/register' ? (
             <Link to="/login">
               <div className="loginText">login</div>
             </Link>
           ) : null}
-        </div>
+        </div> */}
       </div>
     </>
   );
