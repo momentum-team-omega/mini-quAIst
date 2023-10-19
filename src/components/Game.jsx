@@ -9,7 +9,7 @@ import Cut_Scene from "./Cut_Scene";
 
 const Game = () => {
 
-  const [scene, setScene] = useState("intro");
+  const [scene, setScene] = useState("overworld");
   const [currentNPC, setCurrentNPC] = useState("");
   const [charStats, setCharStats] = useState({
     name: "game test",
@@ -26,7 +26,7 @@ const Game = () => {
   const [typeOfCheck, setTypeOfCheck] = useState("wis");
   const [outcome, setOutcome] = useState("");
   const [makeCheck, setMakeCheck] = useState(false);
-  const [currentMap, setCurrentMap] = useState("startHouse");
+  const [currentMap, setCurrentMap] = useState("village1");
 
   const [gameWindow, setGameWindow] = useState({
     height: "720px",
@@ -66,8 +66,8 @@ const Game = () => {
               width: gameWindow.width,
             }}
           >
-            {scene === "intro" && <Cut_Scene initialSceneIndex={0} />}
-            {scene === "ending" && <Cut_Scene initialSceneIndex={1} />}
+            {scene === "intro" && <Cut_Scene sceneSelection={0} />}
+            {scene === "ending" && <Cut_Scene sceneSelection={1} />}
             {scene === "overworld" && <Overworld />}
             {scene === "characterCreation" && (
               <Create_Char charStats={charStats} setCharStats={setCharStats} />
