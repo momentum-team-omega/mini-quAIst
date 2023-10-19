@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { TypeAnimation } from "react-type-animation";
-import exampleImage1 from "/src/assets/gamestart-assets/LoraEx1.jpeg";
-import exampleImage2 from "/src/assets/gamestart-assets/LoraEx2.jpeg";
-import exampleImage3 from "/src/assets/gamestart-assets/LoraEx3.jpeg";
+import openImage1 from "/src/assets/gamestart-assets/KidsRoomCat.png";
+import openImage2 from "/src/assets/gamestart-assets/LoraEx2.jpeg";
+import openImage3 from "/src/assets/gamestart-assets/LoraEx3.jpeg";
 import GameContext from "./GameContext";
 
 const scenes = [
   {
-    imageUrls: [exampleImage1, exampleImage2, exampleImage3],
+    imageUrls: [openImage1, openImage2, openImage3],
     textArray: [
       "The beach is beautiful and the sounds of the waves are soothing.",
       "The forest swirls around you, causing you to lose your way.",

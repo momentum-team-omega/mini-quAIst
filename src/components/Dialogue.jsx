@@ -6,6 +6,12 @@ import '/src/styles/Dialogue.css';
 import axios from 'axios';
 import { TypeAnimation } from 'react-type-animation';
 
+import wisemanImage from "/src/assets/dialogue-assets/wiseman.png";
+import blacksmithImage from "/src/assets/dialogue-assets/blacksmith.png";
+import steveImage from "/src/assets/dialogue-assets/steve.png";
+import trollImage from "/src/assets/dialogue-assets/troll.png";
+import villageLeaderImage from "/src/assets/dialogue-assets/villageLeader.png";
+
 const Dialogue = () => {
   const {
     setScene,
@@ -37,8 +43,17 @@ const Dialogue = () => {
     npcDialogues[currentNPC].initialResponse
   );
   const [preFetchedResponses, setPreFetchedResponses] = useState([]);
+
+  const npcImages = {
+    wiseman: wisemanImage,
+    blacksmith: blacksmithImage,
+    steve: steveImage,
+    troll: trollImage,
+    villageLeader: villageLeaderImage,
+  };
+
   const containerStyle = {
-    backgroundImage: `url(${`/src/assets/dialogue-assets/${currentNPC}.png`})`,
+    backgroundImage: `url(${npcImages[currentNPC] || ""})`,
   };
 
   const npcList = Object.keys(npcDialogues);
