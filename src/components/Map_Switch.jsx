@@ -703,10 +703,14 @@ const Map_Switch = ({
       setMapRows(30);
       setMapOffset({ x: 9.5, y: 6 });
       if (!hasMapSwitched) {
-        setMapPosition({
-          x: 10.5,
-          y: -134.5,
-        });
+        if (storedMapPosition) {
+          setMapPosition(JSON.parse(storedMapPosition));
+        } else {
+          setMapPosition({
+            x: 10.5,
+            y: -134.5,
+          });
+        }
         setCharPosition({ x: 10, y: 3 }); // default value
       }
       setIsFPressed(false);

@@ -177,10 +177,10 @@ const Dialogue = () => {
   };
 
   const handleRollOutcome = (rollOutcome) => {
-    if (rollOutcome === "passed") {
-      setScene("overworld");
-    } else if (rollOutcome === "failed") {
-      setScene("battle");
+    if (rollOutcome === 'passed') {
+      setScene('ending');
+    } else if (rollOutcome === 'failed') {
+      setScene('battle');
     }
   };
 

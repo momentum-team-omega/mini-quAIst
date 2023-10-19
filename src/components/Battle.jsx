@@ -14,7 +14,7 @@ import GameContext from "./GameContext";
 const Battle = ({}) => {
   const { setScene, currentNPC, charStats } = useContext(GameContext);
 
-  console.log(charStats);
+  // console.log(charStats);
 
   const containerStyle = {
     background: `url(${battlebackground})`,
@@ -195,13 +195,14 @@ const Battle = ({}) => {
   };
 
   const handleOpponentSmackPlayer = () => {
+    // 50% of 2 damage and 50% of 5-15 damage
     if (playerHealth > 0) {
       // Base damage
       let damageToPlayer = 2;
 
       // 50% chance to roll d10 and add to base damage
       if (Math.random() < 0.5) {
-        damageToPlayer += rollD10(); // Assuming rollD10 is in the same scope or imported
+        damageToPlayer += rollD10() + 3; 
       }
 
       const newPlayerHealth = playerHealth - damageToPlayer;
