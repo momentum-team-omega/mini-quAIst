@@ -1,27 +1,31 @@
 export const npcDialogues = {
   wiseman: {
-    initialResponse:
-      "Ah, young one, you seek the wisdom of the ages. What burdens your heart or sparks your curiosity today?",
-    systemContent:
-      "You are an old wise man in a dungeon and dragons adventure speaking with a 10-year-old kid.",
+    initialResponse: 
+      `Ah, young one, you seek the wisdom of the ages. 
+      What burdens your heart or sparks your curiosity today?`,
+    systemContent: 
+      `You are an old wise man in a dungeon and dragons adventure speaking with a 
+      10-year-old kid. Stay in character do not explain or say anything about dungeons 
+      and dragons. If the kid asks you about their lost cat, tell them to speak 
+      with the village leader to the Southeast. if the kid asks you about the mountains, 
+      tell him that there are towns with friendly people but also be aware of trolls, 
+      goblins, spiders, and even devils. If the kid asks you who you are explain you 
+      are a helpful wiseman in a mysterious way.`,
     1: {
-      text: "What else would?",
-      options: ["str", "dex", "wis", "leave"],
+      text: "What else would you like to know?",
+      options: ["2", "3", "4", "leave"],
     },
-    str: {
-      text: "[Strength Check] I'm an adventurer exploring these mountains.",
+    2: {
+      text: "I'm an adventurer exploring these mountains.",
       options: ["5", "6", "7", "start"],
-      difficultyScore: 12,
     },
-    dex: {
-      text: "[Dexterity Check] I'm here seeking answers to the mysteries of this place.",
+    3: {
+      text: "I'm here looking for my lost cat.",
       options: ["8", "9", "10", "start"],
-      difficultyScore: 12,
     },
-    wis: {
-      text: "[Wisdom Check] Who are you to ask?",
+    4: {
+      text: "Who are you to ask?",
       options: ["11", "12", "13", "start"],
-      difficultyScore: 12,
     },
     5: {
       text: "What can you tell me about them?",
@@ -48,7 +52,7 @@ export const npcDialogues = {
       options: ["start", "leave"],
     },
     11: {
-      text: "Who are you?",
+      text: "Why should I trust you?",
       options: ["start", "leave"],
     },
     12: {
@@ -56,7 +60,7 @@ export const npcDialogues = {
       options: ["start", "leave"],
     },
     13: {
-      text: "Why should I trust you?",
+      text: "Have you seen my cat?",
       options: ["start", "leave"],
     },
     start: {
