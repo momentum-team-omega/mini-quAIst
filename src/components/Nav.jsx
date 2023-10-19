@@ -19,7 +19,11 @@ const Nav = () => {
             <Link to="/wiki">
               <div className="loginText">wiki</div>
             </Link>
-          ) : null}
+          ) : (
+            <Link to="/play">
+              <div className="loginText">play</div>
+            </Link>
+          )}
         </div>
         {/* <div className="loginContainer">
           {pathname !== '/login' && pathname !== '/register' ? (
