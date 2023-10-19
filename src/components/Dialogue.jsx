@@ -6,6 +6,12 @@ import "/src/styles/Dialogue.css";
 import axios from "axios";
 import { TypeAnimation } from "react-type-animation";
 
+import wisemanImage from "/src/assets/dialogue-assets/wiseman.png";
+import blacksmithImage from "/src/assets/dialogue-assets/blacksmith.png";
+import steveImage from "/src/assets/dialogue-assets/steve.png";
+import trollImage from "/src/assets/dialogue-assets/troll.png";
+import villageLeaderImage from "/src/assets/dialogue-assets/villageLeader.png";
+
 const Dialogue = () => {
   const {
     setScene,
@@ -38,11 +44,11 @@ const Dialogue = () => {
   const [preFetchedResponses, setPreFetchedResponses] = useState([]);
 
   const npcImages = {
-    wiseman: "/src/assets/dialogue-assets/wiseman.png",
-    blacksmith: "/src/assets/dialogue-assets/blacksmith.png",
-    steve: "/src/assets/dialogue-assets/steve.png",
-    troll: "/src/assets/dialogue-assets/troll.png",
-    villageLeader: "/src/assets/dialogue-assets/villageLeader.png",
+    wiseman: wisemanImage,
+    blacksmith: blacksmithImage,
+    steve: steveImage,
+    troll: trollImage,
+    villageLeader: villageLeaderImage,
   };
 
   const containerStyle = {
