@@ -66,8 +66,8 @@ const Game = () => {
               width: gameWindow.width,
             }}
           >
-            {scene === "intro" && <Cut_Scene initialSceneIndex={0} />}
-            {scene === "ending" && <Cut_Scene initialSceneIndex={1} />}
+            {scene === "intro" && <Cut_Scene sceneSelection={0} />}
+            {scene === "ending" && <Cut_Scene sceneSelection={1} />}
             {scene === "overworld" && <Overworld />}
             {scene === "characterCreation" && (
               <Create_Char charStats={charStats} setCharStats={setCharStats} />
