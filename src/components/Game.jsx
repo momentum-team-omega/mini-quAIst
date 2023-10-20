@@ -35,6 +35,7 @@ const Game = () => {
   });
 
   const [checkpoint1, setCheckpoint1] = useState(false);
+  const [checkpoint2, setCheckpoint2] = useState(false);
 
   return (
     <>
@@ -57,6 +58,8 @@ const Game = () => {
           setCurrentMap,
           checkpoint1,
           setCheckpoint1,
+          checkpoint2,
+          setCheckpoint2,
         }}
       >
         <div className="content">

@@ -22,7 +22,7 @@ const Dialogue = () => {
     outcome,
     setMakeCheck,
     makeCheck,
-    checkpoint1,
+    checkpoint2,
   } = useContext(GameContext);
 
   const [charStats, setCharStats] = useState({
