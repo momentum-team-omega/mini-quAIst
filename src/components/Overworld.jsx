@@ -6,6 +6,8 @@ import Map from 'components/Map';
 import Foreground from 'components/Foreground';
 import Map_Manager from 'components/Map_Manager';
 import Map_Switch from 'components/Map_Switch';
+import Tooltip from 'components/Tooltip';
+import Compass from 'components/Compass';
 import '/src/styles/Overworld.css';
 import GameContext from './GameContext';
 
@@ -35,6 +37,9 @@ const Overworld = ({}) => {
   });
   
   const [gates, setGates] = useState([]);
+
+  const [isVisible, setIsVisible] = useState(false);
+  const [content, setContent] = useState('Put tooltip message here');
 
   return (
     <>
@@ -102,6 +107,12 @@ const Overworld = ({}) => {
         tileSize={tileSize}
         direction={direction}
         isMoving={isMoving}
+        isSpacePressed={isSpacePressed}
+      />
+      <Tooltip isVisible={isVisible} content={content} />
+      <Compass
+        isMoving={isMoving}
+        direction={direction}
         isSpacePressed={isSpacePressed}
       />
     </>

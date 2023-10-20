@@ -71,6 +71,12 @@ buttons for main menu and inventory in top right of game screen
 
 To-Do Later: 🤷‍♂️
 
+add tooltips to beginning of game for what the controls are
+
+dialogue response loading indicator
+
+include charStats in the dialogue prompts 
+
 music for different maps/components, footstep audio 
   - could maybe trigger footsetp audio in the character animation useEffect, then when the iteration speeds up the sound effect will speed up too 
 
@@ -114,6 +120,8 @@ sleeping at inn saves the game?
 
 
 wiki 👇
+
+how to play the game (controls, triggers, etc)
 
 what is abililty check? ✅
 How does battle work? ✅

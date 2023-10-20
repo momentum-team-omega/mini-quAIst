@@ -1,0 +1,16 @@
+.tooltip {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid #eeeeee;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 900;
+  position: absolute;
+  width: 150px;
+}
+
+.tooltip-text {
+  font-family: 'VT323', monospace;
+  font-size: 1em;
+  font-weight: 600;
+}
