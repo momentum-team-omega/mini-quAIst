@@ -30,39 +30,39 @@ export const npcDialogues = {
     },
     5: {
       text: "What can you tell me about them?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     6: {
       text: "Have many others come through here?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     7: {
       text: "Are there any tales about treasures here?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     8: {
       text: "What should I be cautious of?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     9: {
       text: "What have you seen in these parts?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     10: {
       text: "Is there a safe path to take?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     11: {
       text: "Why should I trust you?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     12: {
       text: "Why would you help me?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     13: {
       text: "Have you seen my cat?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     start: {
       text: "Ask a different question.",
@@ -118,43 +118,49 @@ export const npcDialogues = {
     },
     5: {
       text: "Why is the town called Dajavinris?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     6: {
       text: "Have you seen my cat around town?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     7: {
       text: "Do you think anyone knows where my cat might be?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     8: {
       text: "I miss my pet so much. Any advice would help.",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     9: {
       text: "Do you know anyone who might have seen my cat?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     10: {
       text: "Could my cat be in danger in this village?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     11: {
       text: "I'm not sure if I believe you. Tell me where my cat is.",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     12: {
       text: "Has anything like this happened before?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     13: {
       text: "I just want my pet back. I hope it's safe.",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     start: {
       text: "I have another question.",
       options: ["1"],
+    },
+    instruct: {
+      text: "I'm off to find my cat. Thank you for your help.",
+      instructions: `You are welcome. Remember that you can always come back to Dajavinris. 
+      Prepare yourself. You never know what to expect on the mountain pass to the East.`,
+      options: ["start", "leave"],
     },
     end: {
       text: "Thank you for your help.",

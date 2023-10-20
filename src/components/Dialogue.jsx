@@ -24,6 +24,8 @@ const Dialogue = () => {
     makeCheck,
     checkpoint2,
     setCheckpoint2,
+    checkpoint3,
+    setCheckpoint3,
   } = useContext(GameContext);
 
   const [charStats, setCharStats] = useState({
@@ -108,9 +110,11 @@ const Dialogue = () => {
             setCurrentDialogueId(optionId);
 
             if (currentNPC === 'steve') {
-
               setCheckpoint2(true);
               console.log('checkpoint2', checkpoint2)
+            } else if (currentNPC === 'villageLeader') {
+              setCheckpoint3(true);
+              console.log('checkpoint3', checkpoint3) 
             }
             
             break;

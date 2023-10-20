@@ -36,6 +36,7 @@ const Game = () => {
 
   const [checkpoint1, setCheckpoint1] = useState(false);
   const [checkpoint2, setCheckpoint2] = useState(false);
+  const [checkpoint3, setCheckpoint3] = useState(false);
 
   return (
     <>
@@ -60,6 +61,8 @@ const Game = () => {
           setCheckpoint1,
           checkpoint2,
           setCheckpoint2,
+          checkpoint3,
+          setCheckpoint3,
         }}
       >
         <div className="content">
