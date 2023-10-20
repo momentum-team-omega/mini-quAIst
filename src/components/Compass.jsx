@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import compass from 'assets/compass-assets/compass.png';
-import compassUp from 'assets/compass-assets/compass-up.png';
-import compassRight from 'assets/compass-assets/compass-right.png';
-import compassDown from 'assets/compass-assets/compass-down.png';
-import compassLeft from 'assets/compass-assets/compass-left.png';
-import compassUpRun from 'assets/compass-assets/compass-upRun.png';
-import compassRightRun from 'assets/compass-assets/compass-rightRun.png';
-import compassDownRun from 'assets/compass-assets/compass-downRun.png';
-import compassLeftRun from 'assets/compass-assets/compass-leftRun.png';
+import compassUpRed from 'assets/compass-assets/compass-up-red.png';
+import compassRightRed from 'assets/compass-assets/compass-right-red.png';
+import compassDownRed from 'assets/compass-assets/compass-down-red.png';
+import compassLeftRed from 'assets/compass-assets/compass-left-red.png';
+import compassUpBlue from 'assets/compass-assets/compass-up-blue.png';
+import compassRightBlue from 'assets/compass-assets/compass-right-blue.png';
+import compassDownBlue from 'assets/compass-assets/compass-down-blue.png';
+import compassLeftBlue from 'assets/compass-assets/compass-left-blue.png';
 import '/src/styles/Compass.css';
 
 const Compass = ({ isMoving, direction, isSpacePressed }) => {
@@ -18,16 +18,16 @@ const Compass = ({ isMoving, direction, isSpacePressed }) => {
   } else if (isMoving && isSpacePressed) {
     switch (direction) {
       case 'Up':
-        src = compassUpRun;
+        src = compassUpRed;
         break;
       case 'Right':
-        src = compassRightRun;
+        src = compassRightRed;
         break;
       case 'Down':
-        src = compassDownRun;
+        src = compassDownRed;
         break;
       case 'Left':
-        src = compassLeftRun;
+        src = compassLeftRed;
         break;
       default:
         src = compass;
@@ -35,16 +35,16 @@ const Compass = ({ isMoving, direction, isSpacePressed }) => {
   } else {
     switch (direction) {
       case 'Up':
-        src = compassUp;
+        src = compassUpBlue;
         break;
       case 'Right':
-        src = compassRight;
+        src = compassRightBlue;
         break;
       case 'Down':
-        src = compassDown;
+        src = compassDownBlue;
         break;
       case 'Left':
-        src = compassLeft;
+        src = compassLeftBlue;
         break;
       default:
         src = compass;
