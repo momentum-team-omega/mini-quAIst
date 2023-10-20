@@ -51,7 +51,13 @@ const Compass = ({ isMoving, direction, isSpacePressed }) => {
     }
   }
 
-  return <img className="compass" src={src} />;
+  return (
+    <>
+      <div className="compass-container">
+        <img className="compass" src={src} />
+      </div>
+    </>
+  );
 };
 
 export default Compass;
