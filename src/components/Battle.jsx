@@ -12,10 +12,7 @@ import "/src/styles/Battle.css";
 import GameContext from "./GameContext";
 
 const Battle = ({}) => {
-  const { setScene, currentNPC, charStats } = useContext(GameContext);
-
-  // console.log(charStats);
-
+  
   const containerStyle = {
     background: `url(${battlebackground})`,
     backgroundSize: "cover",
@@ -58,6 +55,7 @@ const Battle = ({}) => {
     overlayEnemy.backgroundImage = `url(${enemyImage})`;
   }
 
+  const { setScene, currentNPC, charStats, setCheckpoint4 } = useContext(GameContext);
   const [opponentHealth, setOpponentHealth] = useState(opponentStats.maxHealth);
   const [playerHealth, setPlayerHealth] = useState(charStats.health);
   const [showHealthIndicator, setShowHealthIndicator] = useState(false);
@@ -264,6 +262,7 @@ const Battle = ({}) => {
 
   const handleContinue = () => {
     if (playerHealth >= 0) {
+      setCheckpoint4(true);
       setScene("ending");
     } else {
       setScene("overworld");

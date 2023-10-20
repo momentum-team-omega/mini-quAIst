@@ -26,6 +26,8 @@ const Dialogue = () => {
     setCheckpoint2,
     checkpoint3,
     setCheckpoint3,
+    checkpoint4,
+    setCheckpoint4,
   } = useContext(GameContext);
 
   const [charStats, setCharStats] = useState({
@@ -191,6 +193,7 @@ const Dialogue = () => {
 
   const handleRollOutcome = (rollOutcome) => {
     if (rollOutcome === 'passed') {
+      setCheckpoint4(true);
       setScene('ending');
     } else if (rollOutcome === 'failed') {
       setScene('battle');
