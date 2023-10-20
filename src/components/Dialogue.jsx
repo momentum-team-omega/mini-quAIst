@@ -12,6 +12,7 @@ import steveImage from "/src/assets/dialogue-assets/steve.png";
 import trollImage from "/src/assets/dialogue-assets/troll.png";
 import villageLeaderImage from "/src/assets/dialogue-assets/villageLeader.png";
 
+
 const Dialogue = () => {
   const {
     setScene,
@@ -81,7 +82,12 @@ const Dialogue = () => {
     fetchInitialResponses();
   }, []);
 
+  const [loading, setLoading] = useState(false);
+
   const handleOptionClick = async (optionId) => {
+    setLoading(true);
+    // console.log(`Option ${optionId} clicked`);
+
     const selectedDialogue = npcDialogues[currentNPC][optionId];
     console.log('optionId clicked:', optionId)
     
@@ -183,7 +189,8 @@ const Dialogue = () => {
       );
 
       const data = apiResponse.data;
-      console.log(data.choices[0].message.content);
+      console.log(data.choices[0].message.content)
+      setLoading(false)
       return data.choices[0].message.content;
     } catch (error) {
       console.error("Error:", error);
@@ -218,7 +225,9 @@ const Dialogue = () => {
           onRollComplete={handleRollOutcome}
         />
       )}
-      {response && (
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
         <div>
           <p className="npc-text">{response}</p>
         </div>
