@@ -22,7 +22,7 @@ const Dialogue = () => {
     outcome,
     setMakeCheck,
     makeCheck,
-    checkpoint2,
+    setCheckpoint2,
   } = useContext(GameContext);
 
   const [charStats, setCharStats] = useState({
@@ -100,10 +100,12 @@ const Dialogue = () => {
         case 'fight':
             setScene('battle');
             break;
-        case 'classExplanation':
-            console.log(npcDialogues[currentNPC][optionId].explanation)
-            setResponse(npcDialogues[currentNPC][optionId].explanation);
+            
+        case 'instruct':
+            console.log(npcDialogues[currentNPC][optionId].instructions)
+            setResponse(npcDialogues[currentNPC][optionId].instructions);
             setCurrentDialogueId(optionId);
+            
             break;
         case 'chooseClass':
             console.log('chooseClass')
