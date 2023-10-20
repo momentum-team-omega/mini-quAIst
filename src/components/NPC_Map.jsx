@@ -22,8 +22,8 @@ const getNPCMap = (npcs, mapColumns) => {
   return npcMap;
 };
 
-const NPC_Map = ({ mapPosition, npcs, tileSize, mapColumns, mapRows }) => {
-  const { currentMap } = useContext(GameContext);
+const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows }) => {
+  const { currentMap, npcs } = useContext(GameContext);
   const npcMap = useMemo(() => getNPCMap(npcs, mapColumns), [npcs, mapColumns]);
 
   // console.log(npcMap);

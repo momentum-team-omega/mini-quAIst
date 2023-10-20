@@ -1,100 +1,95 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { TypeAnimation } from 'react-type-animation';
-import openImage1 from '/src/assets/gamestart-assets/KidsRoomCat.png';
-import openImage2 from '/src/assets/gamestart-assets/LoraEx2.jpeg';
-import openImage3 from '/src/assets/gamestart-assets/LoraEx3.jpeg';
-import GameContext from './GameContext';
+import React, { useState, useEffect, useContext } from "react";
+import { TypeAnimation } from "react-type-animation";
+import openImage1 from "/src/assets/gamestart-assets/KidsRoomCat.png";
+import openImage2 from "/src/assets/gamestart-assets/CatRunning.png";
+import endImage1 from "/src/assets/gamestart-assets/CatToBeContinued.png";
+import GameContext from "./GameContext";
+import "/src/styles/Cut_Scene.css";
 
 const scenes = [
   {
-    imageUrls: [openImage1, openImage2, openImage3],
+    imageUrls: [openImage1, openImage2],
     textArray: [
-      'The beach is beautiful and the sounds of the waves are soothing.',
-      'The forest swirls around you, causing you to lose your way.',
-      'The golden leaves hide magical creatures, you can feel eyes upon you.',
+      "Your kitty has a bad habit of running in to the forest.",
+      "As you follow your cat, the woods beside your house begin to look less familiar...",
     ],
   },
   {
-    imageUrls: [openImage1, openImage2, openImage3],
-    textArray: [
-      'You find yourself in a bustling city square, surrounded by people and noise.',
-      'Rain starts pouring, and you seek shelter under a nearby awning.',
-      'A mysterious alley beckons, and you decide to explore its depths.',
-    ],
+    imageUrls: [endImage1],
+    textArray: ["Congratulations, you have completed Chaper One!"],
   },
   // Define more scenes here
 ];
 
-const Cut_Scene = ({ initialSceneIndex }) => {
+const Cut_Scene = ({ sceneSelection }) => {
   const { setScene } = useContext(GameContext);
-  const [showContinueButton, setShowContinueButton] = useState(false);
-  const [sceneIndex, setSceneIndex] = useState(initialSceneIndex || 0);
-  const selectedScene = scenes[sceneIndex];
-  const imageUrls = selectedScene.imageUrls;
-  const textArray = selectedScene.textArray;
+  const selectedScene = scenes[sceneSelection];
   const [imageIndex, setImageIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
+  const [showContinueButton, setShowContinueButton] = useState(false);
 
   useEffect(() => {
-    const advanceImage = () => {
-      setImageIndex((prevIndex) => {
-        if (prevIndex < imageUrls.length - 1) {
-          return prevIndex + 1;
-        }
-        return prevIndex;
-      });
-
-      if (imageIndex < textArray.length - 1) {
+    if (isTyping) {
+      const typingDuration = selectedScene.textArray[imageIndex].length * 50;
+      const typingTimer = setTimeout(() => {
         setIsTyping(false);
-        setTimeout(() => {
-          setIsTyping(true);
-        }, 300);
-      }
-    };
+        setShowContinueButton(true); // Show the "Continue" button once typing is done
+      }, typingDuration + 1000);
 
-    const intervalId = setInterval(advanceImage, 7000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [imageUrls, textArray, imageIndex]);
-
-  useEffect(() => {
-    if (imageIndex === imageUrls.length - 1 && !isTyping) {
-      setTimeout(() => {
-        setShowContinueButton(true);
-      }, 4000);
+      return () => clearTimeout(typingTimer);
     }
-  }, [imageIndex, isTyping, imageUrls]);
+  }, [isTyping, imageIndex, selectedScene.textArray]);
 
   const handleContinue = () => {
-    setScene('overworld');
+    setShowContinueButton(false); // Hide the button
+
+    if (imageIndex < selectedScene.imageUrls.length - 1) {
+      setImageIndex((prevIndex) => prevIndex + 1);
+      setIsTyping(true);
+    } else {
+      setScene("overworld");
+    }
   };
 
   return (
     <>
-      <h2 className="page-title">Our story begins......</h2>
+      <h2 className="page-title" style={{ marginBottom: "30px" }}>
+        Our story begins......
+      </h2>
       <div className="gamestart-images">
-        <div className="image-container" style={{ height: '300px' }}>
+        <div
+          className="image-container"
+          style={{ height: "300px", marginBottom: "125px" }}
+        >
           <img
-            src={imageUrls[imageIndex]}
+            src={selectedScene.imageUrls[imageIndex]}
             alt={`Image ${imageIndex + 1}`}
             className="page-image"
           />
-          {isTyping && (
-            <div className="image-text-container">
-              <TypeAnimation
-                sequence={[textArray[imageIndex]]}
-                speed={50}
-                repeat={1}
-                style={{ fontSize: '2em' }}
-              />
-            </div>
-          )}
+          <div className="image-text-container">
+            <TypeAnimation
+              key={imageIndex} // This forces the component to remount when imageIndex changes
+              sequence={[selectedScene.textArray[imageIndex]]}
+              speed={50}
+              repeat={0}
+              style={{ fontSize: "2em" }}
+              onComplete={() => setIsTyping(false)}
+            />
+          </div>
         </div>
         {showContinueButton && (
-          <button onClick={handleContinue} style={{ marginTop: '60px' }}>
-            {sceneIndex === 0 ? 'Continue' : 'End of Chapter 1'}
+          <button
+            className="continue-button"
+            onClick={handleContinue}
+            style={{
+              marginTop: "60px",
+              position: "absolute",
+              bottom: "20px", // or whatever distance from the bottom you prefer
+              left: "50%",
+              transform: "translateX(-50%)", // center the button horizontally
+            }}
+          >
+            {sceneSelection === 0 ? "Continue" : "End Chapter 1"}
           </button>
         )}
       </div>

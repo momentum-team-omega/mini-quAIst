@@ -1,76 +1,28 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
-import playerImage from '/src/assets/battle-assets/barbarian-test-3.png';
-import mageGirl from '/src/assets/battle-assets/mage-girl.png';
-import barbGirl from '/src/assets/battle-assets/barb-girl.png';
-import rogueGirl from '/src/assets/battle-assets/rogue-girl.png';
-import redTroll from '/src/assets/battle-assets/red-troll.png';
-import enemyImage from '/src/assets/battle-assets/mage-placeholder-transp.png';
-import battlebackground from '/src/assets/battle-assets/720p-battle-background.png';
-import { opponentStats, playerStats } from '/src/shared';
-import { PlayerSummary } from './PlayerSummary';
-import '/src/styles/Battle.css';
-import GameContext from './GameContext';
+import React, { useContext, useState, useEffect, useRef } from "react";
+import playerImage from "/src/assets/battle-assets/barbarian-test-3.png";
+import mageGirl from "/src/assets/battle-assets/mage-girl.png";
+import barbGirl from "/src/assets/battle-assets/barb-girl.png";
+import rogueGirl from "/src/assets/battle-assets/rogue-girl.png";
+import redTroll from "/src/assets/battle-assets/red-troll.png";
+import enemyImage from "/src/assets/battle-assets/mage-placeholder-transp.png";
+import battlebackground from "/src/assets/battle-assets/720p-battle-background.png";
+import { opponentStats, playerStats } from "/src/shared";
+import { PlayerSummary } from "./PlayerSummary";
+import "/src/styles/Battle.css";
+import GameContext from "./GameContext";
 
-const Battle = ({ charStats }) => {
-  const {
-    setScene,
-    currentNPC,
-    // charStats,
-  } = useContext(GameContext);
-
-  console.log(charStats);
-
-  const containerStyle = {
-    background: `url(${battlebackground})`,
-    backgroundSize: 'cover',
-    width: '100%',
-    height: '100vh',
-    position: 'relative',
-  };
-
-  const overlayPlayer = {
-    width: '200px',
-    height: '200px',
-    position: 'absolute',
-    bottom: '30px',
-    left: '150px',
-    backgroundSize: 'cover',
-  };
-
-  if (charStats.charClass === 'mage') {
-    overlayPlayer.backgroundImage = `url(${mageGirl})`;
-  } else if (charStats.charClass === 'barb') {
-    overlayPlayer.backgroundImage = `url(${barbGirl})`;
-  } else if (charStats.charClass === 'rogue') {
-    overlayPlayer.backgroundImage = `url(${rogueGirl})`;
-  } else {
-    overlayPlayer.backgroundImage = `url(${playerImage})`;
-  }
-
-  const overlayEnemy = {
-    width: '200px',
-    height: '200px',
-    position: 'absolute',
-    bottom: '30px',
-    right: '150px',
-    backgroundSize: 'cover',
-  };
-
-  if (currentNPC === 'troll') {
-    overlayEnemy.backgroundImage = `url(${redTroll})`;
-  } else {
-    overlayEnemy.backgroundImage = `url(${enemyImage})`;
-  }
-
+const Battle = ({}) => {
+  
+  const { setScene, currentNPC, charStats, setCheckpoint4, npcs, setNpcs } = useContext(GameContext);
   const [opponentHealth, setOpponentHealth] = useState(opponentStats.maxHealth);
   const [playerHealth, setPlayerHealth] = useState(charStats.health);
   const [showHealthIndicator, setShowHealthIndicator] = useState(false);
-  const [healthIndicatorMessage, setHealthIndicatorMessage] = useState('');
+  const [healthIndicatorMessage, setHealthIndicatorMessage] = useState("");
   const [showEnemyHealthIndicator, setShowEnemyHealthIndicator] =
     useState(false);
   const [enemyHealthIndicatorMessage, setEnemyHealthIndicatorMessage] =
-    useState('');
-  const [indicatorColor, setIndicatorColor] = useState('');
+    useState("");
+  const [indicatorColor, setIndicatorColor] = useState("");
   const [someoneDied, setSomeoneDied] = useState(false);
   const [playerFlicker, setPlayerFlicker] = useState(false);
   const [enemyFlicker, setEnemyFlicker] = useState(false);
@@ -84,8 +36,51 @@ const Battle = ({ charStats }) => {
   const [healingPotions, setHealingPotions] = useState(2);
   const [specialMoves, setSpecialMoves] = useState(1);
   const [specialMovesUsed, setSpecialMovesUsed] = useState(false);
-  const selectedClass = 'rogue';
-  // console.log(charStats)
+  const selectedClass = "rogue";
+  
+  const containerStyle = {
+    background: `url(${battlebackground})`,
+    backgroundSize: "cover",
+    width: "100%",
+    height: "100vh",
+    position: "relative",
+  };
+
+  const overlayPlayer = {
+    width: "200px",
+    height: "200px",
+    position: "absolute",
+    bottom: "30px",
+    left: "150px",
+    backgroundSize: "cover",
+  };
+
+  if (charStats.charClass === "mage") {
+    overlayPlayer.backgroundImage = `url(${mageGirl})`;
+  } else if (charStats.charClass === "barb") {
+    overlayPlayer.backgroundImage = `url(${barbGirl})`;
+  } else if (charStats.charClass === "rogue") {
+    overlayPlayer.backgroundImage = `url(${rogueGirl})`;
+  } else {
+    overlayPlayer.backgroundImage = `url(${playerImage})`;
+  }
+
+  const overlayEnemy = {
+    width: "200px",
+    height: "200px",
+    position: "absolute",
+    bottom: "30px",
+    right: "150px",
+    backgroundSize: "cover",
+  };
+
+  if (currentNPC === "troll") {
+    overlayEnemy.backgroundImage = `url(${redTroll})`;
+  } else {
+    overlayEnemy.backgroundImage = `url(${enemyImage})`;
+  }
+
+  
 
   const handlePlayerMove = (action) => {
     if (isLocked) return;
@@ -101,10 +96,10 @@ const Battle = ({ charStats }) => {
 
     if (isPlayerTurn && !someoneDied) {
       switch (action) {
-        case 'smack':
+        case "smack":
           handlePlayerSmackOpponent();
           break;
-        case 'chill':
+        case "chill":
           handleChill();
           break;
         default:
@@ -137,8 +132,8 @@ const Battle = ({ charStats }) => {
   }, [isPlayerTurn]);
 
   const handleHealthChange = (newValue, source) => {
-    const sign = source === 'chill' ? '+' : '-';
-    const textColor = source === 'chill' ? '#35c743' : '#bc1f07';
+    const sign = source === "chill" ? "+" : "-";
+    const textColor = source === "chill" ? "#35c743" : "#bc1f07";
 
     setHealthIndicatorMessage(
       `Health: ${sign}${Math.abs(newValue - playerHealth)}`
@@ -146,10 +141,10 @@ const Battle = ({ charStats }) => {
     setShowHealthIndicator(true);
     setIndicatorColor(textColor);
 
-    setIsChillSource(source === 'chill');
+    setIsChillSource(source === "chill");
 
     // If the source is "smack," set the player flicker state to true
-    if (source === 'smack') {
+    if (source === "smack") {
       setPlayerFlicker(true);
     }
 
@@ -159,7 +154,7 @@ const Battle = ({ charStats }) => {
       setIsChillSource(false);
 
       // If the source is "smack," set the player flicker state back to false
-      if (source === 'smack') {
+      if (source === "smack") {
         setPlayerFlicker(false);
       }
     }, 1700);
@@ -168,7 +163,7 @@ const Battle = ({ charStats }) => {
   };
 
   const handleEnemyHealthChange = (newValue, source) => {
-    const sign = source === 'smack' ? '-' : '+';
+    const sign = source === "smack" ? "-" : "+";
     setEnemyHealthIndicatorMessage(
       `Health: ${sign}${Math.abs(newValue - opponentHealth)}`
     );
@@ -191,7 +186,7 @@ const Battle = ({ charStats }) => {
     if (opponentHealth > 0) {
       const damageToOpponent = rollD10() + 3;
 
-      handleEnemyHealthChange(opponentHealth - damageToOpponent, 'smack');
+      handleEnemyHealthChange(opponentHealth - damageToOpponent, "smack");
       if (opponentHealth - damageToOpponent <= 0) {
         setSomeoneDied(true);
       }
@@ -199,13 +194,14 @@ const Battle = ({ charStats }) => {
   };
 
   const handleOpponentSmackPlayer = () => {
+    // 50% of 2 damage and 50% of 5-15 damage
     if (playerHealth > 0) {
       // Base damage
       let damageToPlayer = 2;
 
       // 50% chance to roll d10 and add to base damage
       if (Math.random() < 0.5) {
-        damageToPlayer += rollD10(); // Assuming rollD10 is in the same scope or imported
+        damageToPlayer += rollD10() + 3; 
       }
 
       const newPlayerHealth = playerHealth - damageToPlayer;
@@ -215,7 +211,7 @@ const Battle = ({ charStats }) => {
       setTimeout(() => {
         setIsPaused(false);
         if (!someoneDied) {
-          handleHealthChange(newPlayerHealth, 'smack');
+          handleHealthChange(newPlayerHealth, "smack");
         }
       }, 1700);
 
@@ -235,7 +231,7 @@ const Battle = ({ charStats }) => {
         charStats.health
       );
 
-      handleHealthChange(newPlayerHealth, 'chill');
+      handleHealthChange(newPlayerHealth, "chill");
 
       // Decrease the number of available potions
       setHealingPotions(healingPotions - 1);
@@ -249,7 +245,7 @@ const Battle = ({ charStats }) => {
 
     if (playerHealth > 0) {
       const damageToOpponent = (rollD10() + 3) * 2; // lets go!
-      handleEnemyHealthChange(opponentHealth - damageToOpponent, 'smack');
+      handleEnemyHealthChange(opponentHealth - damageToOpponent, "smack");
       if (opponentHealth - damageToOpponent <= 0) {
         setSomeoneDied(true);
       }
@@ -266,7 +262,26 @@ const Battle = ({ charStats }) => {
   }, []);
 
   const handleContinue = () => {
-    setScene('overworld');
+    if (playerHealth >= 0) {
+      setCheckpoint4(true);
+      setNpcs([
+        {
+          id: 1,
+          x: 10,
+          y: 4,
+          steps: 4,
+          animationSpeed: 200,
+          alive: false,
+          triggered: false,
+          message: "RAWR",
+          name: "troll",
+        },
+      ]);
+      console.log(npcs);
+      setScene("ending");
+    } else {
+      setScene("overworld");
+    }
   };
 
   const handleTryAgain = () => {
@@ -291,9 +306,9 @@ const Battle = ({ charStats }) => {
     // Reset health indicators and related states
     setHealingPotions(2);
     setShowHealthIndicator(false);
-    setHealthIndicatorMessage('');
+    setHealthIndicatorMessage("");
     setShowEnemyHealthIndicator(false);
-    setEnemyHealthIndicatorMessage('');
+    setEnemyHealthIndicatorMessage("");
     setSpecialMovesUsed(false);
   };
 
@@ -301,7 +316,7 @@ const Battle = ({ charStats }) => {
     <div className="battle-container" style={containerStyle}>
       {someoneDied && (
         <div className="someone-died-box">
-          {playerHealth <= 0 ? 'YOU DIED!' : 'YOU WIN!'}
+          {playerHealth <= 0 ? "YOU DIED!" : "YOU WIN!"}
           <button onClick={handleContinue}>Continue</button>
           <button onClick={handleTryAgain}>Try Again</button>
         </div>
@@ -309,7 +324,7 @@ const Battle = ({ charStats }) => {
       <h1
         className="battle-intro-text"
         style={{
-          textShadow: '2px 2px 2px black',
+          textShadow: "2px 2px 2px black",
         }}
       >
         {charStats.name} vs {opponentStats.name}
@@ -317,37 +332,37 @@ const Battle = ({ charStats }) => {
       <div
         className={`overlay ${
           isChillSource
-            ? 'chill-animation'
+            ? "chill-animation"
             : playerFlicker
-            ? 'flicker-animation'
-            : ''
+            ? "flicker-animation"
+            : ""
         }`}
         style={overlayPlayer}
       ></div>
       <div
         className="button-box"
-        style={{ display: isPlayerTurn || !isLocked ? 'flex' : 'none' }}
+        style={{ display: isPlayerTurn || !isLocked ? "flex" : "none" }}
       >
         <button
           ref={smackButtonRef}
           className="fight-button"
-          onClick={() => handlePlayerMove('smack')}
+          onClick={() => handlePlayerMove("smack")}
           disabled={!isPlayerTurn}
         >
           <p className="fight-text">
-            {charStats.charClass === 'barb'
-              ? 'Swing Axe!'
-              : charStats.charClass === 'mage'
-              ? 'Swing Staff!'
-              : charStats.charClass === 'rogue'
-              ? 'Loose an Arrow!'
-              : 'Attack'}
+            {charStats.charClass === "barb"
+              ? "Swing Axe!"
+              : charStats.charClass === "mage"
+              ? "Swing Staff!"
+              : charStats.charClass === "rogue"
+              ? "Loose an Arrow!"
+              : "Attack"}
           </p>
         </button>
         <button
           ref={chillButtonRef}
           className="chill-button"
-          onClick={() => handlePlayerMove('chill')}
+          onClick={() => handlePlayerMove("chill")}
           disabled={!isPlayerTurn || healingPotions === 0}
         >
           <p className="chill-text">POTION ({healingPotions})</p>
@@ -358,19 +373,19 @@ const Battle = ({ charStats }) => {
           disabled={specialMovesUsed || isLocked}
         >
           <p className="special-text">
-            {charStats.charClass === 'barb'
-              ? 'RAGE'
-              : charStats.charClass === 'mage'
-              ? 'FIREBALL'
-              : charStats.charClass === 'rogue'
-              ? 'SNEAK ATTACK'
-              : 'Special Move'}{' '}
-            {specialMovesUsed ? '(0)' : '(1)'}
+            {charStats.charClass === "barb"
+              ? "RAGE"
+              : charStats.charClass === "mage"
+              ? "FIREBALL"
+              : charStats.charClass === "rogue"
+              ? "SNEAK ATTACK"
+              : "Special Move"}{" "}
+            {specialMovesUsed ? "(0)" : "(1)"}
           </p>
         </button>
       </div>
       <div
-        className={`overlay ${enemyFlicker ? 'flicker-animation' : ''}`}
+        className={`overlay ${enemyFlicker ? "flicker-animation" : ""}`}
         style={overlayEnemy}
       ></div>
       {showEnemyHealthIndicator && (
@@ -383,12 +398,12 @@ const Battle = ({ charStats }) => {
       <div
         className="battle-options"
         style={{
-          position: 'absolute',
-          bottom: '200px',
-          textAlign: 'center',
-          display: 'flex',
-          width: '100%',
-          justifyContent: 'center',
+          position: "absolute",
+          bottom: "200px",
+          textAlign: "center",
+          display: "flex",
+          width: "100%",
+          justifyContent: "center",
         }}
       >
         <div className="player-container">

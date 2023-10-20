@@ -20,15 +20,13 @@ const Map_Manager = ({
   allowedMovements,
   setAllowedMovements,
   tileSize,
-  npcs,
-  setNpcs,
   mapColumns,
   gates,
   isFPressed,
   setHasMapSwitched,
 }) => {
   const [collisions, setCollisions] = useState(startCollisions);
-  const { setScene, setCurrentNPC, currentMap, setCurrentMap } =
+  const { setScene, setCurrentNPC, currentMap, setCurrentMap, npcs, setNpcs } =
     useContext(GameContext);
 
   // console.log('manager collisions: ', collisions);

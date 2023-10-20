@@ -10,70 +10,31 @@ import '/src/styles/Overworld.css';
 import GameContext from './GameContext';
 
 const Overworld = ({}) => {
-  const { currentMap, setCurrentMap } = useContext(GameContext);
+  const { currentMap, setCurrentMap, npcs, setNpcs } = useContext(GameContext);
   const [mapImage, setMapImage] = useState(null);
   const [foreImage, setForeImage] = useState(null);
   const [tileSize, setTileSize] = useState(48);
   const [mapColumns, setMapColumns] = useState(11);
   const [mapRows, setMapRows] = useState(11);
-  const [mapPosition, setMapPosition] = useState({
-    x: 0,
-    y: 0,
-  });
   const [mapOffset, setMapOffset] = useState({ x: 9, y: 6 });
   const [hasMapSwitched, setHasMapSwitched] = useState(false);
-
   const [direction, setDirection] = useState('Down');
-
   const [isMoving, setIsMoving] = useState(false);
   const [isSpacePressed, setIsSpacePressed] = useState(false);
   const [isFPressed, setIsFPressed] = useState(false);
   const [charPosition, setCharPosition] = useState({ x: 5, y: 5 });
+  const [mapPosition, setMapPosition] = useState({
+    x: 0,
+    y: 0,
+  });
   const [allowedMovements, setAllowedMovements] = useState({
     up: true,
     down: true,
     left: true,
     right: true,
   });
-
-  const [npcs, setNpcs] = useState([
-    {
-      id: 1,
-      x: 2,
-      y: 1,
-      steps: 1,
-      animationSpeed: 0,
-      alive: true,
-      triggered: false,
-      message: "'F'to open",
-    },
-    {
-      id: 2,
-      x: 1,
-      y: 8,
-      steps: 1,
-      animationSpeed: 0,
-      alive: true,
-      triggered: false,
-      message: "'F'to open",
-    },
-    {
-      id: 3,
-      x: 7,
-      y: 7,
-      steps: 2,
-      animationSpeed: 800,
-      alive: true,
-      triggered: false,
-      message: 'Greetings',
-      name: 'wiseman',
-    },
-  ]);
-  const [gates, setGates] = useState([
-    { id: 1, x: 10, y: 4 },
-    { id: 2, x: 10, y: 5 },
-    { id: 3, x: 10, y: 6 },
-  ]);
+  
+  const [gates, setGates] = useState([]);
 
   return (
     <>
@@ -99,7 +60,6 @@ const Overworld = ({}) => {
         mapPosition={mapPosition}
         setMapPosition={setMapPosition}
         setCharPosition={setCharPosition}
-        setNpcs={setNpcs}
         setMapColumns={setMapColumns}
         setMapRows={setMapRows}
         setGates={setGates}
@@ -117,7 +77,6 @@ const Overworld = ({}) => {
         setAllowedMovements={setAllowedMovements}
         tileSize={tileSize}
         npcs={npcs}
-        setNpcs={setNpcs}
         mapColumns={mapColumns}
         mapRows={mapRows}
         gates={gates}
