@@ -10,7 +10,7 @@ import '/src/styles/Overworld.css';
 import GameContext from './GameContext';
 
 const Overworld = ({}) => {
-  const { currentMap, setCurrentMap } = useContext(GameContext);
+  const { currentMap, setCurrentMap, npcs, setNpcs } = useContext(GameContext);
   const [mapImage, setMapImage] = useState(null);
   const [foreImage, setForeImage] = useState(null);
   const [tileSize, setTileSize] = useState(48);
@@ -33,7 +33,7 @@ const Overworld = ({}) => {
     left: true,
     right: true,
   });
-  const [npcs, setNpcs] = useState([]);
+  
   const [gates, setGates] = useState([]);
 
   return (
@@ -60,7 +60,6 @@ const Overworld = ({}) => {
         mapPosition={mapPosition}
         setMapPosition={setMapPosition}
         setCharPosition={setCharPosition}
-        setNpcs={setNpcs}
         setMapColumns={setMapColumns}
         setMapRows={setMapRows}
         setGates={setGates}
@@ -78,7 +77,6 @@ const Overworld = ({}) => {
         setAllowedMovements={setAllowedMovements}
         tileSize={tileSize}
         npcs={npcs}
-        setNpcs={setNpcs}
         mapColumns={mapColumns}
         mapRows={mapRows}
         gates={gates}

@@ -13,6 +13,31 @@ import GameContext from "./GameContext";
 
 const Battle = ({}) => {
   
+  const { setScene, currentNPC, charStats, setCheckpoint4, npcs, setNpcs } = useContext(GameContext);
+  const [opponentHealth, setOpponentHealth] = useState(opponentStats.maxHealth);
+  const [playerHealth, setPlayerHealth] = useState(charStats.health);
+  const [showHealthIndicator, setShowHealthIndicator] = useState(false);
+  const [healthIndicatorMessage, setHealthIndicatorMessage] = useState("");
+  const [showEnemyHealthIndicator, setShowEnemyHealthIndicator] =
+    useState(false);
+  const [enemyHealthIndicatorMessage, setEnemyHealthIndicatorMessage] =
+    useState("");
+  const [indicatorColor, setIndicatorColor] = useState("");
+  const [someoneDied, setSomeoneDied] = useState(false);
+  const [playerFlicker, setPlayerFlicker] = useState(false);
+  const [enemyFlicker, setEnemyFlicker] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isChillSource, setIsChillSource] = useState(false);
+  const [isPlayerTurn, setIsPlayerTurn] = useState(true);
+  const smackButtonRef = useRef(null);
+  const chillButtonRef = useRef(null);
+  const opponentMoveTimeoutRef = useRef(null);
+  const [isLocked, setIsLocked] = useState(false);
+  const [healingPotions, setHealingPotions] = useState(2);
+  const [specialMoves, setSpecialMoves] = useState(1);
+  const [specialMovesUsed, setSpecialMovesUsed] = useState(false);
+  const selectedClass = "rogue";
+  
   const containerStyle = {
     background: `url(${battlebackground})`,
     backgroundSize: "cover",
@@ -55,31 +80,7 @@ const Battle = ({}) => {
     overlayEnemy.backgroundImage = `url(${enemyImage})`;
   }
 
-  const { setScene, currentNPC, charStats, setCheckpoint4 } = useContext(GameContext);
-  const [opponentHealth, setOpponentHealth] = useState(opponentStats.maxHealth);
-  const [playerHealth, setPlayerHealth] = useState(charStats.health);
-  const [showHealthIndicator, setShowHealthIndicator] = useState(false);
-  const [healthIndicatorMessage, setHealthIndicatorMessage] = useState("");
-  const [showEnemyHealthIndicator, setShowEnemyHealthIndicator] =
-    useState(false);
-  const [enemyHealthIndicatorMessage, setEnemyHealthIndicatorMessage] =
-    useState("");
-  const [indicatorColor, setIndicatorColor] = useState("");
-  const [someoneDied, setSomeoneDied] = useState(false);
-  const [playerFlicker, setPlayerFlicker] = useState(false);
-  const [enemyFlicker, setEnemyFlicker] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-  const [isChillSource, setIsChillSource] = useState(false);
-  const [isPlayerTurn, setIsPlayerTurn] = useState(true);
-  const smackButtonRef = useRef(null);
-  const chillButtonRef = useRef(null);
-  const opponentMoveTimeoutRef = useRef(null);
-  const [isLocked, setIsLocked] = useState(false);
-  const [healingPotions, setHealingPotions] = useState(2);
-  const [specialMoves, setSpecialMoves] = useState(1);
-  const [specialMovesUsed, setSpecialMovesUsed] = useState(false);
-  const selectedClass = "rogue";
-  // console.log(charStats)
+  
 
   const handlePlayerMove = (action) => {
     if (isLocked) return;
@@ -263,6 +264,20 @@ const Battle = ({}) => {
   const handleContinue = () => {
     if (playerHealth >= 0) {
       setCheckpoint4(true);
+      setNpcs([
+        {
+          id: 1,
+          x: 10,
+          y: 4,
+          steps: 4,
+          animationSpeed: 200,
+          alive: false,
+          triggered: false,
+          message: "RAWR",
+          name: "troll",
+        },
+      ]);
+      console.log(npcs);
       setScene("ending");
     } else {
       setScene("overworld");
