@@ -22,7 +22,12 @@ const Dialogue = () => {
     outcome,
     setMakeCheck,
     makeCheck,
-    checkpoint1,
+    checkpoint2,
+    setCheckpoint2,
+    checkpoint3,
+    setCheckpoint3,
+    checkpoint4,
+    setCheckpoint4,
   } = useContext(GameContext);
 
   const [charStats, setCharStats] = useState({
@@ -100,10 +105,20 @@ const Dialogue = () => {
         case 'fight':
             setScene('battle');
             break;
-        case 'classExplanation':
-            console.log(npcDialogues[currentNPC][optionId].explanation)
-            setResponse(npcDialogues[currentNPC][optionId].explanation);
+
+        case 'instruct':
+            console.log(npcDialogues[currentNPC][optionId].instructions)
+            setResponse(npcDialogues[currentNPC][optionId].instructions);
             setCurrentDialogueId(optionId);
+
+            if (currentNPC === 'steve') {
+              setCheckpoint2(true);
+              console.log('checkpoint2', checkpoint2)
+            } else if (currentNPC === 'villageLeader') {
+              setCheckpoint3(true);
+              console.log('checkpoint3', checkpoint3) 
+            }
+            
             break;
         case 'chooseClass':
             console.log('chooseClass')
@@ -178,6 +193,7 @@ const Dialogue = () => {
 
   const handleRollOutcome = (rollOutcome) => {
     if (rollOutcome === 'passed') {
+      setCheckpoint4(true);
       setScene('ending');
     } else if (rollOutcome === 'failed') {
       setScene('battle');

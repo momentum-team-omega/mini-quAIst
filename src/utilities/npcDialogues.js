@@ -30,47 +30,47 @@ export const npcDialogues = {
     },
     5: {
       text: "What can you tell me about them?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     6: {
       text: "Have many others come through here?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     7: {
       text: "Are there any tales about treasures here?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     8: {
       text: "What should I be cautious of?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     9: {
       text: "What have you seen in these parts?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     10: {
       text: "Is there a safe path to take?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     11: {
       text: "Why should I trust you?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     12: {
       text: "Why would you help me?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     13: {
       text: "Have you seen my cat?",
-      options: ["start", "classExplanation"],
+      options: ["start", "instruct"],
     },
     start: {
       text: "Ask a different question.",
       options: ["1"],
     },
-    classExplanation: {
+    instruct: {
       text: "Well, I better get going.",
-      explanation: `I would like to impart you with a gift. 
+      instructions: `I would like to impart you with a gift. 
       Either the strength of a warror, the nimbleness of a rogue, or 
       the wisdom of a mage. This is your class. Choose wisely.`,
       options: ["start", "chooseClass"],
@@ -118,43 +118,49 @@ export const npcDialogues = {
     },
     5: {
       text: "Why is the town called Dajavinris?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     6: {
       text: "Have you seen my cat around town?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     7: {
       text: "Do you think anyone knows where my cat might be?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     8: {
       text: "I miss my pet so much. Any advice would help.",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     9: {
       text: "Do you know anyone who might have seen my cat?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     10: {
       text: "Could my cat be in danger in this village?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     11: {
       text: "I'm not sure if I believe you. Tell me where my cat is.",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     12: {
       text: "Has anything like this happened before?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     13: {
       text: "I just want my pet back. I hope it's safe.",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     start: {
       text: "I have another question.",
       options: ["1"],
+    },
+    instruct: {
+      text: "I'm off to find my cat. Thank you for your help.",
+      instructions: `You are welcome. Remember that you can always come back to Dajavinris. 
+      Prepare yourself. You never know what to expect on the mountain pass to the East.`,
+      options: ["start", "leave"],
     },
     end: {
       text: "Thank you for your help.",
@@ -264,90 +270,52 @@ export const npcDialogues = {
     },
     5: {
       text: "Where do animals usually go when they're lost?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     6: {
       text: "What should I do now? Any advice?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     7: {
       text: "If my pet came to you, would you keep it?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     8: {
       text: "Do goblins... Do they take pets?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     9: {
       text: "I just hope he doesn't get hurt in the mountains.",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     10: {
       text: "Any idea how I can track my pet in the wild?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     11: {
       text: "Wow, these are fascinating creatures! How did you get them?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     12: {
       text: "Your animals look happy and well-cared for.",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     13: {
       text: "Did any of these animals ever get lost and then come back?",
-      options: ["start", "leave"],
-    },
-    14: {
-      text: "Could the goblins in the area be involved?",
-      options: ["23", "24", "start"],
-    },
-    15: {
-      text: "How can I safely search for it in the woods?",
-      options: ["start", "leave"],
-    },
-    16: {
-      text: "Thanks for the advice, Steve.",
-      options: ["leave"],
-    },
-    17: {
-      text: "Maybe someone in town has seen it?",
-      options: ["start", "leave"],
-    },
-    18: {
-      text: "Goblins? That's worrying. How do I approach them?",
-      options: ["start", "leave"],
-    },
-    19: {
-      text: "I need to find these goblins then.",
-      options: ["start", "leave"],
-    },
-    20: {
-      text: "Are the goblins dangerous?",
-      options: ["start", "leave"],
-    },
-    21: {
-      text: "Each one has its own story, right?",
-      options: ["start", "leave"],
-    },
-    22: {
-      text: "Must be a lot of work taking care of all of them.",
-      options: ["start", "leave"],
-    },
-    23: {
-      text: "I've heard they can be tricky. How do I deal with goblins?",
-      options: ["start", "leave"],
-    },
-    24: {
-      text: "Where can I find these goblins?",
-      options: ["start", "leave"],
+      options: ["start", "instruct"],
     },
     start: {
       text: "I had another question.",
       options: ["1"],
     },
+    instruct: {
+      text: "What should I do next?",
+      instructions: "I would recommend talking to the village leader. She might know where to find those goblins.",
+      options: ["start", "leave"],
+    },
     leave: {
       text: "Thank you for your help, Steve.",
+      instructions: "I would recommend talking to the village leader. She might know where to find those goblins.",
       options: [],
     },
   },
