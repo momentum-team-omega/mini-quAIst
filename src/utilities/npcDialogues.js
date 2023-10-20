@@ -30,50 +30,58 @@ export const npcDialogues = {
     },
     5: {
       text: "What can you tell me about them?",
-      options: ["start", "leave"],
+      options: ["start", "classExplanation"],
     },
     6: {
       text: "Have many others come through here?",
-      options: ["start", "leave"],
+      options: ["start", "classExplanation"],
     },
     7: {
       text: "Are there any tales about treasures here?",
-      options: ["start", "leave"],
+      options: ["start", "classExplanation"],
     },
     8: {
       text: "What should I be cautious of?",
-      options: ["start", "leave"],
+      options: ["start", "classExplanation"],
     },
     9: {
       text: "What have you seen in these parts?",
-      options: ["start", "leave"],
+      options: ["start", "classExplanation"],
     },
     10: {
       text: "Is there a safe path to take?",
-      options: ["start", "leave"],
+      options: ["start", "classExplanation"],
     },
     11: {
       text: "Why should I trust you?",
-      options: ["start", "leave"],
+      options: ["start", "classExplanation"],
     },
     12: {
       text: "Why would you help me?",
-      options: ["start", "leave"],
+      options: ["start", "classExplanation"],
     },
     13: {
       text: "Have you seen my cat?",
-      options: ["start", "leave"],
+      options: ["start", "classExplanation"],
     },
     start: {
       text: "Ask a different question.",
       options: ["1"],
     },
-    end: {
-      text: "Goodbye.",
-      options: ["start", "leave"],
+    classExplanation: {
+      text: "Well, I better get going.",
+      explanation: `I would like to impart you with a gift. 
+      Either the strength of a warror, the nimbleness of a rogue, or 
+      the wisdom of a mage. This is your class. Choose wisely.`,
+      options: ["start", "chooseClass"],
+    },
+    chooseClass: {
+      text: "Choose your class.",
+      text2: "Thank you for your wisdom.",
+      options: [],
     },
     leave: {
-      text: "Leave the conversation.",
+      text: "Goodbye, wise man",
       options: [],
     },
   },
