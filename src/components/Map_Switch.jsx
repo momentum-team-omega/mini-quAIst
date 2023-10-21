@@ -37,7 +37,8 @@ const Map_Switch = ({
   hasMapSwitched,
 }) => {
   const storedMapPosition = localStorage.getItem("mapPosition");
-  const { currentMap, checkpoint1, setCurrentNPC, setNpcs } = useContext(GameContext);
+  const { currentMap, checkpoint1, setCurrentNPC, setNpcs } =
+    useContext(GameContext);
 
   useEffect(() => {
     if (!mapImage || currentMap === "start") {

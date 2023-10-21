@@ -89,74 +89,73 @@ const Dialogue = () => {
     // console.log(`Option ${optionId} clicked`);
 
     const selectedDialogue = npcDialogues[currentNPC][optionId];
-    console.log('optionId clicked:', optionId)
-    
+    console.log("optionId clicked:", optionId);
+
     switch (optionId) {
-        case 'leave':           
-            setScene('overworld');           
-            break;
+      case "leave":
+        setScene("overworld");
+        break;
 
-        case 'start':
-            setCurrentDialogueId('1');
-            setResponse('What else would you like to know young one?');
-            break;
+      case "start":
+        setCurrentDialogueId("1");
+        setResponse("What else would you like to know young one?");
+        break;
 
-        case 'str':
-        case 'dex':
-        case 'wis':
-            setTypeOfCheck(optionId);
-            setMakeCheck(true);
-            break;
+      case "str":
+      case "dex":
+      case "wis":
+        setTypeOfCheck(optionId);
+        setMakeCheck(true);
+        break;
 
-        case 'fight':
-            setScene('battle');
-            break;
+      case "fight":
+        setScene("battle");
+        break;
 
-        case 'instruct':
-            console.log(npcDialogues[currentNPC][optionId].instructions)
-            setResponse(npcDialogues[currentNPC][optionId].instructions);
-            setCurrentDialogueId(optionId);
+      case "instruct":
+        console.log(npcDialogues[currentNPC][optionId].instructions);
+        setResponse(npcDialogues[currentNPC][optionId].instructions);
+        setCurrentDialogueId(optionId);
 
-            if (currentNPC === 'steve') {
-              setCheckpoint2(true);
-              console.log('checkpoint2', checkpoint2)
-            } else if (currentNPC === 'villageLeader') {
-              setCheckpoint3(true);
-              console.log('checkpoint3', checkpoint3) 
-            }
-            
-            break;
-        case 'chooseClass':
-            console.log('chooseClass')
-            setScene('characterCreation');
-        default:
-            const optionIndex = currentDialogue.options.indexOf(optionId);
+        if (currentNPC === "steve") {
+          setCheckpoint2(true);
+          console.log("checkpoint2", checkpoint2);
+        } else if (currentNPC === "villageLeader") {
+          setCheckpoint3(true);
+          console.log("checkpoint3", checkpoint3);
+        }
 
-            if (preFetchedResponses[optionIndex]) {
-                setResponse(preFetchedResponses[optionIndex]);
-            } else {
-                const userChoice = selectedDialogue.text;
-                const response = await handleChatGPT(userChoice);
-                setResponse(response);
-            }
+        break;
+      case "chooseClass":
+        console.log("chooseClass");
+        setScene("characterCreation");
+      default:
+        const optionIndex = currentDialogue.options.indexOf(optionId);
 
-            setCurrentDialogueId(optionId);
+        if (preFetchedResponses[optionIndex]) {
+          setResponse(preFetchedResponses[optionIndex]);
+        } else {
+          const userChoice = selectedDialogue.text;
+          const response = await handleChatGPT(userChoice);
+          setResponse(response);
+        }
 
-            // Make API calls for the next set of dialogue options and cache them
-            const nextDialogueOptions = npcDialogues[currentNPC][optionId].options;
-            const nextResponses = [];
+        setCurrentDialogueId(optionId);
 
-            for (let nextOptionId of nextDialogueOptions) {
-                const nextUserChoice = npcDialogues[currentNPC][nextOptionId].text;
-                const response = await handleChatGPT(nextUserChoice);
-                nextResponses.push(response);
-            }
+        // Make API calls for the next set of dialogue options and cache them
+        const nextDialogueOptions = npcDialogues[currentNPC][optionId].options;
+        const nextResponses = [];
 
-            setPreFetchedResponses(nextResponses);
-            break;
+        for (let nextOptionId of nextDialogueOptions) {
+          const nextUserChoice = npcDialogues[currentNPC][nextOptionId].text;
+          const response = await handleChatGPT(nextUserChoice);
+          nextResponses.push(response);
+        }
+
+        setPreFetchedResponses(nextResponses);
+        break;
     }
-};
-
+  };
 
   const handleChatGPT = async (userContent) => {
     const systemContent = npcDialogues[currentNPC].systemContent;
@@ -199,11 +198,11 @@ const Dialogue = () => {
   };
 
   const handleRollOutcome = (rollOutcome) => {
-    if (rollOutcome === 'passed') {
+    if (rollOutcome === "passed") {
       setCheckpoint4(true);
-      setScene('ending');
-    } else if (rollOutcome === 'failed') {
-      setScene('battle');
+      setScene("ending");
+    } else if (rollOutcome === "failed") {
+      setScene("battle");
     }
   };
 
@@ -229,7 +228,12 @@ const Dialogue = () => {
         <p>Loading...</p>
       ) : (
         <div>
-          <p className="npc-text">{response}</p>
+          <p
+            className="npc-text"
+            style={{ padding: "10px", marginLeft: "10px", marginRight: "10px" }}
+          >
+            {response}
+          </p>
         </div>
       )}
       <div
