@@ -8,6 +8,8 @@ import Map_Manager from 'components/Map_Manager';
 import Map_Switch from 'components/Map_Switch';
 import Tooltip from 'components/Tooltip';
 import Compass from 'components/Compass';
+import Menu_Icon from 'components/Menu_Icon';
+import Menu from 'components/Menu';
 import '/src/styles/Overworld.css';
 import GameContext from './GameContext';
 
@@ -35,11 +37,13 @@ const Overworld = ({}) => {
     left: true,
     right: true,
   });
-  
+
   const [gates, setGates] = useState([]);
 
   const [isVisible, setIsVisible] = useState(false);
   const [content, setContent] = useState('Put tooltip message here');
+
+  const [help, setHelp] = useState(false);
 
   return (
     <>
@@ -57,6 +61,7 @@ const Overworld = ({}) => {
         mapOffset={mapOffset}
         isFPressed={isFPressed}
         setIsFPressed={setIsFPressed}
+        help={help}
       />
       <Map_Switch
         mapImage={mapImage}
@@ -110,11 +115,14 @@ const Overworld = ({}) => {
         isSpacePressed={isSpacePressed}
       />
       <Tooltip isVisible={isVisible} content={content} />
-      <Compass
-        isMoving={isMoving}
-        direction={direction}
-        isSpacePressed={isSpacePressed}
-      />
+      {!help && (
+        <Compass
+          isMoving={isMoving}
+          direction={direction}
+          isSpacePressed={isSpacePressed}
+        />
+      )}
+      {help ? <Menu setHelp={setHelp} /> : <Menu_Icon setHelp={setHelp} />}
     </>
   );
 };

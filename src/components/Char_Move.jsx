@@ -14,6 +14,7 @@ const Char_Move = ({
   mapOffset,
   isFPressed,
   setIsFPressed,
+  help,
 }) => {
   const [keys, setKeys] = useState({
     w: { pressed: false },
@@ -92,44 +93,48 @@ const Char_Move = ({
 
   useEffect(() => {
     const handleDownKey = (e) => {
-      let keyPressed = null;
-      switch (e.key) {
-        case 'ArrowUp':
-        case 'w':
-          keyPressed = 'w';
-          break;
-        case 'ArrowLeft':
-        case 'a':
-          keyPressed = 'a';
-          break;
-        case 'ArrowDown':
-        case 's':
-          keyPressed = 's';
-          break;
-        case 'ArrowRight':
-        case 'd':
-          keyPressed = 'd';
-          break;
-      }
-      if (keyPressed) {
-        e.preventDefault();
-        setDirection({ w: 'Up', a: 'Left', s: 'Down', d: 'Right' }[keyPressed]);
-        setKeyOrder((prevOrder) => [
-          ...prevOrder.filter((key) => key !== keyPressed),
-          keyPressed,
-        ]);
-        setKeys((prevKeys) => ({
-          ...prevKeys,
-          [keyPressed]: { pressed: true },
-        }));
-      }
-      if (e.key === ' ') {
-        setIsSpacePressed(true);
-        e.preventDefault();
-      }
-      if (e.key === 'f') {
-        e.preventDefault();
-        setIsFPressed(true);
+      if (!help) {
+        let keyPressed = null;
+        switch (e.key) {
+          case 'ArrowUp':
+          case 'w':
+            keyPressed = 'w';
+            break;
+          case 'ArrowLeft':
+          case 'a':
+            keyPressed = 'a';
+            break;
+          case 'ArrowDown':
+          case 's':
+            keyPressed = 's';
+            break;
+          case 'ArrowRight':
+          case 'd':
+            keyPressed = 'd';
+            break;
+        }
+        if (keyPressed) {
+          e.preventDefault();
+          setDirection(
+            { w: 'Up', a: 'Left', s: 'Down', d: 'Right' }[keyPressed]
+          );
+          setKeyOrder((prevOrder) => [
+            ...prevOrder.filter((key) => key !== keyPressed),
+            keyPressed,
+          ]);
+          setKeys((prevKeys) => ({
+            ...prevKeys,
+            [keyPressed]: { pressed: true },
+          }));
+        }
+        if (e.key === ' ') {
+          setIsSpacePressed(true);
+          e.preventDefault();
+        }
+        if (e.key === 'f') {
+          e.preventDefault();
+          setIsFPressed(true);
+        }
       }
     };
 
