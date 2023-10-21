@@ -16,6 +16,7 @@ import enchantedForest from 'assets/map-assets/enchantedForest-sheet.png';
 import enchantedForestFore from 'assets/map-assets/enchantedForest-fore.png';
 import enchantedForestLocked from 'assets/map-assets/enchantedForestLocked-sheet.png';
 import village2 from 'assets/map-assets/village2-sheet.png';
+import village2Locked from 'assets/map-assets/village2locked-sheet.png';
 import village2Fore from 'assets/map-assets/Village2-fore.png';
 import village2inside from 'assets/map-assets/village2inside-sheet.png';
 
@@ -822,6 +823,102 @@ const Map_Switch = ({
           destPY: -82.5,
           destX: 1,
           destY: 4,
+        },
+      ]);
+    } else if (currentMap === 'village2Locked') {
+      setMapImage(village2Locked);
+      setForeImage(village2Fore);
+      setTileSize(64);
+      setMapColumns(40);
+      setMapRows(30);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        if (storedMapPosition) {
+          setMapPosition(JSON.parse(storedMapPosition));
+        } else {
+          setMapPosition({
+            x: 10.5,
+            y: -134.5,
+          });
+        }
+        setCharPosition({ x: 10, y: 3 }); // default value
+      }
+      setIsFPressed(false);
+      setNpcs([
+        {
+          id: 1,
+          x: 4,
+          y: 4,
+          steps: 2,
+          animationSpeed: 800,
+          alive: true,
+          triggered: false,
+          message: 'Crikey!',
+          name: 'steve',
+        },
+        {
+          id: 2,
+          x: 37,
+          y: 12,
+          steps: 2,
+          animationSpeed: 800,
+          alive: true,
+          triggered: false,
+          message: 'Greetings',
+          name: 'wiseman',
+        },
+      ]);
+      setCurrentNPC('');
+      setGates([
+        {
+          id: 1,
+          x: 0,
+          y: 20,
+          map: 'enchantedForest',
+          destPX: 564,
+          destPY: 1835.5,
+          destX: 0,
+          destY: 0,
+        },
+        {
+          id: 2,
+          x: 0,
+          y: 21,
+          map: 'enchantedForest',
+          destPX: 564,
+          destPY: 1835.5,
+          destX: 0,
+          destY: 0,
+        },
+        {
+          id: 3,
+          x: 0,
+          y: 22,
+          map: 'enchantedForest',
+          destPX: 564,
+          destPY: 1835.5,
+          destX: 0,
+          destY: 0,
+        },
+        {
+          id: 4,
+          x: 19,
+          y: 10,
+          map: 'village2inside',
+          destPX: 0.5,
+          destPY: 635.5,
+          destX: 10,
+          destY: 15,
+        },
+        {
+          id: 5,
+          x: 20,
+          y: 10,
+          map: 'village2inside',
+          destPX: 0.5,
+          destPY: 635.5,
+          destX: 10,
+          destY: 15,
         },
       ]);
     } else if (currentMap === 'village2inside') {

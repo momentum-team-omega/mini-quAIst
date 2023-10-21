@@ -25,7 +25,8 @@ const Game = () => {
   const [typeOfCheck, setTypeOfCheck] = useState('wis');
   const [outcome, setOutcome] = useState('');
   const [makeCheck, setMakeCheck] = useState(false);
-  const [currentMap, setCurrentMap] = useState('village2');
+
+  const [currentMap, setCurrentMap] = useState('startMap');
   const [npcs, setNpcs] = useState([]);
 
   const [gameWindow, setGameWindow] = useState({
@@ -46,7 +47,6 @@ const Game = () => {
 
   return (
     <>
-      <Nav />
       <GameContext.Provider
         value={{
           scene,
