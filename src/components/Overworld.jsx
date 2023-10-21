@@ -24,7 +24,7 @@ const Overworld = ({}) => {
   const [isMoving, setIsMoving] = useState(false);
   const [isSpacePressed, setIsSpacePressed] = useState(false);
   const [isFPressed, setIsFPressed] = useState(false);
-  const [charPosition, setCharPosition] = useState({ x: 5, y: 5 });
+  const [charPosition, setCharPosition] = useState({ x: 5.5, y: 5 });
   const [mapPosition, setMapPosition] = useState({
     x: 0,
     y: 0,
@@ -87,6 +87,7 @@ const Overworld = ({}) => {
         gates={gates}
         isFPressed={isFPressed}
         setHasMapSwitched={setHasMapSwitched}
+        isMoving={isMoving}
       />
       <Map
         mapPosition={mapPosition}
@@ -109,7 +110,11 @@ const Overworld = ({}) => {
         isMoving={isMoving}
         isSpacePressed={isSpacePressed}
       />
-      <Tooltip isVisible={isVisible} content={content} />
+      <Tooltip
+        charPosition={charPosition}
+        isSpacePressed={isSpacePressed}
+        isFPressed={isFPressed}
+      />
       <Compass
         isMoving={isMoving}
         direction={direction}

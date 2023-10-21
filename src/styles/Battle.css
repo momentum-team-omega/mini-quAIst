@@ -323,3 +323,10 @@
     opacity: 0;
   }
 }
+
+.health-number {
+  left: 50%;
+  transform: translate(-50%, 50%);
+  font-size: 16px;
+  color: white;
+}

@@ -24,6 +24,7 @@ const Map_Manager = ({
   gates,
   isFPressed,
   setHasMapSwitched,
+  isMoving,
 }) => {
   const [collisions, setCollisions] = useState(startCollisions);
   const { setScene, setCurrentNPC, currentMap, setCurrentMap, npcs, setNpcs } =
@@ -125,8 +126,6 @@ const Map_Manager = ({
           npcY
         )
       ) {
-        // console.log(`Character is near NPC with ID: ${npc.id}`);
-        // console.log(npc.name);
         isNearAnyNpc = true;
 
         if (isFPressed) {
