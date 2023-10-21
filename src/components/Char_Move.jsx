@@ -129,7 +129,7 @@ const Char_Move = ({
       }
       if (e.key === 'f') {
         e.preventDefault();
-        setIsFPressed((prevIsFPressed) => !prevIsFPressed);
+        setIsFPressed(true);
       }
     };
 
@@ -164,6 +164,9 @@ const Char_Move = ({
       }
       if (e.key === ' ') {
         setIsSpacePressed(false);
+      }
+      if (e.key === ' ') {
+        setIsFPressed(false);
       }
     };
 

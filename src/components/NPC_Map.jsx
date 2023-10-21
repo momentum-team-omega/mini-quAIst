@@ -1,9 +1,9 @@
-import React, { useMemo, useContext } from "react";
-import oldMan1 from "assets/npc-assets/old-man-tileset.png";
-import chestClosed from "assets/npc-assets/chest-1-closed.png";
-import redTroll from "assets/npc-assets/red-troll-1.png";
-import NPC from "components/NPC";
-import GameContext from "./GameContext";
+import React, { useMemo, useContext } from 'react';
+import oldMan1 from 'assets/npc-assets/old-man-tileset.png';
+import chestClosed from 'assets/npc-assets/chest-1-closed.png';
+import redTroll from 'assets/npc-assets/red-troll-1.png';
+import NPC from 'components/NPC';
+import GameContext from './GameContext';
 
 const getNPCMap = (npcs, mapColumns) => {
   const npcMap = [];
@@ -32,21 +32,21 @@ const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows }) => {
   let xOffset;
   let yOffset;
 
-  if (currentMap === "start") {
+  if (currentMap === 'start') {
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
-  } else if (currentMap === "village1") {
+  } else if (currentMap === 'village1') {
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
-  } else if (currentMap === "trollMap") {
+  } else if (currentMap === 'trollMap') {
     NPC_IMAGES = {
       1: redTroll,
     };
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
-  } else if (currentMap === "testMap") {
+  } else if (currentMap === 'testMap') {
     NPC_IMAGES = {
       1: oldMan1,
       2: oldMan1,
@@ -56,30 +56,37 @@ const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows }) => {
     };
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
-  } else if (currentMap === "startHouse") {
+  } else if (currentMap === 'startHouse') {
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
-  } else if (currentMap === "enchantedForestLocked") {
+  } else if (currentMap === 'enchantedForestLocked') {
     NPC_IMAGES = {
       1: oldMan1,
     };
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
-  } else if (currentMap === "enchantedForest") {
+  } else if (currentMap === 'enchantedForest') {
     NPC_IMAGES = {
       1: oldMan1,
     };
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
-  } else if (currentMap === "village2") {
+  } else if (currentMap === 'village2') {
     NPC_IMAGES = {
       1: oldMan1,
       2: oldMan1,
     };
     xOffset = -10 * tileSize;
     yOffset = 0 * tileSize;
-  } else if (currentMap === "village2inside") {
+  } else if (currentMap === 'village2Locked') {
+    NPC_IMAGES = {
+      1: oldMan1,
+      2: oldMan1,
+    };
+    xOffset = -10 * tileSize;
+    yOffset = 0 * tileSize;
+  } else if (currentMap === 'village2inside') {
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
@@ -95,7 +102,7 @@ const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows }) => {
     <div
       className="npc-container"
       style={{
-        position: "relative",
+        position: 'relative',
         width: `${mapColumns * tileSize}px`,
         height: `${mapRows * tileSize}px`,
       }}

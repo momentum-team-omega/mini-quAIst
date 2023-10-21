@@ -9,6 +9,7 @@ import {
   enchantedForestCollisions,
   enchantedForestLockedCollisions,
   village2Collisions,
+  village2LockedCollisions,
   village2insideCollisions,
 } from 'utilities/collisionsData.js';
 
@@ -60,6 +61,8 @@ const Map_Manager = ({
       setCollisions(enchantedForestCollisions);
     } else if (currentMap === 'village2') {
       setCollisions(village2Collisions);
+    } else if (currentMap === 'village2Locked') {
+      setCollisions(village2LockedCollisions);
     } else if (currentMap === 'village2inside') {
       setCollisions(village2insideCollisions);
     }
