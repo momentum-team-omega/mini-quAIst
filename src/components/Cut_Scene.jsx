@@ -73,6 +73,7 @@ const Cut_Scene = ({ sceneSelection }) => {
               speed={50}
               repeat={0}
               style={{ fontSize: "2em" }}
+              cursor={false}
               onComplete={() => setIsTyping(false)}
             />
           </div>

@@ -42,7 +42,56 @@ const Map_Switch = ({
     useContext(GameContext);
 
   useEffect(() => {
-    if (!mapImage || currentMap === 'start') {
+    if (!mapImage || currentMap === 'startHouse') {
+      setMapImage(startHouse);
+      setForeImage();
+      setTileSize(64);
+      setMapColumns(11);
+      setMapRows(11);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        setMapPosition({
+          x: -287,
+          y: -15,
+        });
+        setCharPosition({ x: 5.5, y: 5 }); // default value
+      }
+      setIsFPressed(false);
+      setNpcs([]);
+      setCurrentNPC('');
+      setGates([
+        {
+          id: 1,
+          x: 4,
+          y: 10,
+          map: 'start',
+          destPX: -158,
+          destPY: 175,
+          destX: 7,
+          destY: 8,
+        },
+        {
+          id: 2,
+          x: 5,
+          y: 10,
+          map: 'start',
+          destPX: -158,
+          destPY: 175,
+          destX: 7,
+          destY: 8,
+        },
+        {
+          id: 3,
+          x: 6,
+          y: 10,
+          map: 'start',
+          destPX: -158,
+          destPY: 175,
+          destX: 7,
+          destY: 8,
+        },
+      ]);
+    } else if (currentMap === 'start') {
       setMapImage(startMap);
       setForeImage(startMapFore);
       setTileSize(64);
@@ -54,7 +103,7 @@ const Map_Switch = ({
           x: -158,
           y: 175,
         });
-        setCharPosition({ x: 7, y: 8 }); // default value
+        setCharPosition({ x: 7.5, y: 8 });
       }
       setIsFPressed(false);
       setNpcs([]);
@@ -485,55 +534,6 @@ const Map_Switch = ({
           destPY: -112,
           destX: 8,
           destY: 5,
-        },
-      ]);
-    } else if (currentMap === 'startHouse') {
-      setMapImage(startHouse);
-      setForeImage();
-      setTileSize(64);
-      setMapColumns(11);
-      setMapRows(11);
-      setMapOffset({ x: 9.5, y: 6 });
-      if (!hasMapSwitched) {
-        setMapPosition({
-          x: -389.5,
-          y: -134.5,
-        });
-        setCharPosition({ x: 4, y: 4 }); // default value
-      }
-      setIsFPressed(false);
-      setNpcs([]);
-      setCurrentNPC('');
-      setGates([
-        {
-          id: 1,
-          x: 4,
-          y: 10,
-          map: 'start',
-          destPX: -158,
-          destPY: 175,
-          destX: 7,
-          destY: 8,
-        },
-        {
-          id: 2,
-          x: 5,
-          y: 10,
-          map: 'start',
-          destPX: -158,
-          destPY: 175,
-          destX: 7,
-          destY: 8,
-        },
-        {
-          id: 3,
-          x: 6,
-          y: 10,
-          map: 'start',
-          destPX: -158,
-          destPY: 175,
-          destX: 7,
-          destY: 8,
         },
       ]);
     } else if (currentMap === 'enchantedForestLocked') {

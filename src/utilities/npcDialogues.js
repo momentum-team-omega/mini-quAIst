@@ -1,10 +1,8 @@
 export const npcDialogues = {
   wiseman: {
-    initialResponse: 
-      `Ah, young one, you seek the wisdom of the ages. 
+    initialResponse: `Ah, young one, you seek the wisdom of the ages. 
       What burdens your heart or sparks your curiosity today?`,
-    systemContent: 
-      `You are an old wise man in a dungeon and dragons adventure speaking with a 
+    systemContent: `You are an old wise man in a dungeon and dragons adventure speaking with a 
       10-year-old kid. Stay in character DO NOT explain or say anything about dungeons 
       and dragons. Speak ONLY in 1st person. Do NOT narrate. If the kid asks you about 
       their lost cat, tell them to speak with the village leader to the Southeast. 
@@ -89,8 +87,7 @@ export const npcDialogues = {
   villageLeader: {
     initialResponse:
       "Welcome, traveler. As the leader of this humble village, I extend my greetings. How may I assist you on this fine day?",
-    systemContent:
-      `You are the female village leader in a medieval fantasy village. A 10-year-old kid 
+    systemContent: `You are the female village leader in a medieval fantasy village. A 10-year-old kid 
       approaches you, worried about their lost pet. Stay in character DO NOT explain or say anything about dungeons 
       and dragons. Speak ONLY in 1st person. Do NOT narrate. If the kid asks you about 
       their lost cat, tell them to speak with Steve of Clan Irwin, one of the townspeople. He loves
@@ -242,10 +239,8 @@ export const npcDialogues = {
     },
   },
   steve: {
-    initialResponse:
-      `G'day mate! Steve here. I've got a soft spot for all creatures big and small. How can I help you today?`,
-    systemContent:
-    `You are steve of clan irwin (based off steve irwin). A 10-year-old kid 
+    initialResponse: `G'day mate! Steve here. I've got a soft spot for all creatures big and small. How can I help you today?`,
+    systemContent: `You are steve of clan irwin (based off steve irwin). A 10-year-old kid 
     approaches you, worried about their lost pet. Stay in character DO NOT explain or say anything about dungeons 
     and dragons. Speak ONLY in 1st person. Do NOT narrate. If the kid asks you about 
     their lost cat, tell them you hope one of those goblins didnt run off with it. The goblins have been stealing from your vegetable patch recently.
@@ -310,12 +305,14 @@ export const npcDialogues = {
     },
     instruct: {
       text: "What should I do next?",
-      instructions: "I would recommend talking to the village leader. She might know where to find those goblins.",
+      instructions:
+        "I would recommend talking to the village leader. She might know where to find those goblins.",
       options: ["start", "leave"],
     },
     leave: {
       text: "Thank you for your help, Steve.",
-      instructions: "I would recommend talking to the village leader. She might know where to find those goblins.",
+      instructions:
+        "I would recommend talking to the village leader. She might know where to find those goblins.",
       options: [],
     },
   },

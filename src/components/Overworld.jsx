@@ -22,11 +22,11 @@ const Overworld = ({}) => {
   const [mapRows, setMapRows] = useState(11);
   const [mapOffset, setMapOffset] = useState({ x: 9, y: 6 });
   const [hasMapSwitched, setHasMapSwitched] = useState(false);
-  const [direction, setDirection] = useState('Down');
+  const [direction, setDirection] = useState("Down");
   const [isMoving, setIsMoving] = useState(false);
   const [isSpacePressed, setIsSpacePressed] = useState(false);
   const [isFPressed, setIsFPressed] = useState(false);
-  const [charPosition, setCharPosition] = useState({ x: 5, y: 5 });
+  const [charPosition, setCharPosition] = useState({ x: 5.5, y: 5 });
   const [mapPosition, setMapPosition] = useState({
     x: 0,
     y: 0,
@@ -41,7 +41,7 @@ const Overworld = ({}) => {
   const [gates, setGates] = useState([]);
 
   const [isVisible, setIsVisible] = useState(false);
-  const [content, setContent] = useState('Put tooltip message here');
+  const [content, setContent] = useState("Put tooltip message here");
 
   const [help, setHelp] = useState(false);
 
@@ -92,6 +92,7 @@ const Overworld = ({}) => {
         gates={gates}
         isFPressed={isFPressed}
         setHasMapSwitched={setHasMapSwitched}
+        isMoving={isMoving}
       />
       <Map
         mapPosition={mapPosition}

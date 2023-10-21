@@ -11,8 +11,8 @@ const Game = () => {
   const [scene, setScene] = useState('overworld');
   const [currentNPC, setCurrentNPC] = useState('');
   const [charStats, setCharStats] = useState({
-    name: 'game test',
-    charClass: 'barb',
+    name: '',
+    charClass: '',
     health: 30,
     strength: 6,
     str_mod: -2,
@@ -25,6 +25,7 @@ const Game = () => {
   const [typeOfCheck, setTypeOfCheck] = useState('wis');
   const [outcome, setOutcome] = useState('');
   const [makeCheck, setMakeCheck] = useState(false);
+
   const [currentMap, setCurrentMap] = useState('startMap');
   const [npcs, setNpcs] = useState([]);
 
@@ -37,6 +38,12 @@ const Game = () => {
   const [checkpoint2, setCheckpoint2] = useState(false);
   const [checkpoint3, setCheckpoint3] = useState(false);
   const [checkpoint4, setCheckpoint4] = useState(false);
+
+  const [toolTips, setToolTips] = useState({
+    1: false,
+    2: false,
+    3: false,
+  });
 
   return (
     <>
@@ -66,6 +73,8 @@ const Game = () => {
           setCheckpoint3,
           checkpoint4,
           setCheckpoint4,
+          toolTips,
+          setToolTips,
         }}
       >
         <div className="content">
