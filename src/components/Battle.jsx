@@ -339,7 +339,6 @@ const Battle = ({}) => {
         }`}
         style={overlayPlayer}
       ></div>
-      <span className="health-number">{playerHealth}</span>
       <div
         className="button-box"
         style={{ display: isPlayerTurn || !isLocked ? "flex" : "none" }}
@@ -389,7 +388,6 @@ const Battle = ({}) => {
         className={`overlay ${enemyFlicker ? "flicker-animation" : ""}`}
         style={overlayEnemy}
       ></div>
-      <span className="health-number">{opponentHealth}</span>
       {showEnemyHealthIndicator && (
         <div className="enemy-health-change-indicator">
           <span style={{ color: indicatorColor }}>
