@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect, useMemo } from 'react';
-import GameContext from './GameContext';
+import React, { useContext, useState, useEffect, useMemo } from "react";
+import GameContext from "./GameContext";
 import {
   village1Collisions,
   trollMapCollisions,
@@ -10,7 +10,7 @@ import {
   enchantedForestLockedCollisions,
   village2Collisions,
   village2insideCollisions,
-} from 'utilities/collisionsData.js';
+} from "utilities/collisionsData.js";
 
 const Map_Manager = ({
   mapPosition,
@@ -36,8 +36,8 @@ const Map_Manager = ({
   const INT = 777;
   const GATE = 500;
 
-  const [gateColor, setGateColor] = useState('transparent');
-  const [npcColor, setNpcColor] = useState('transparent');
+  const [gateColor, setGateColor] = useState("transparent");
+  const [npcColor, setNpcColor] = useState("transparent");
 
   const styles = {
     top: `${-mapPosition.y}px`,
@@ -45,23 +45,23 @@ const Map_Manager = ({
   };
 
   useEffect(() => {
-    if (currentMap === 'village1') {
+    if (currentMap === "village1") {
       setCollisions(village1Collisions);
-    } else if (currentMap === 'trollMap') {
+    } else if (currentMap === "trollMap") {
       setCollisions(trollMapCollisions);
-    } else if (currentMap === 'testMap') {
+    } else if (currentMap === "testMap") {
       setCollisions(testMapCollisions);
-    } else if (currentMap === 'start') {
+    } else if (currentMap === "start") {
       setCollisions(startCollisions);
-    } else if (currentMap === 'startHouse') {
+    } else if (currentMap === "startHouse") {
       setCollisions(startHouseCollisions);
-    } else if (currentMap === 'enchantedForestLocked') {
+    } else if (currentMap === "enchantedForestLocked") {
       setCollisions(enchantedForestLockedCollisions);
-    } else if (currentMap === 'enchantedForest') {
+    } else if (currentMap === "enchantedForest") {
       setCollisions(enchantedForestCollisions);
-    } else if (currentMap === 'village2') {
+    } else if (currentMap === "village2") {
       setCollisions(village2Collisions);
-    } else if (currentMap === 'village2inside') {
+    } else if (currentMap === "village2inside") {
       setCollisions(village2insideCollisions);
     }
   }, [currentMap]);
@@ -107,9 +107,9 @@ const Map_Manager = ({
     });
 
     if (isNearAnyGate) {
-      setGateColor('orange');
+      setGateColor("orange");
     } else {
-      setGateColor('transparent');
+      setGateColor("transparent");
     }
 
     let isNearAnyNpc = false;
@@ -136,16 +136,16 @@ const Map_Manager = ({
                 : prevNpc
             )
           );
-          setCurrentNPC(npc.name);
-          setScene('dialogue');
+          setCurrentNPC(npc.name); // This sets which NPC the player is currently interacting with
+          setScene("dialogue"); // This will show the dialogue box or component
         }
       }
     });
 
     if (isNearAnyNpc) {
-      setNpcColor('cyan');
+      setNpcColor("cyan");
     } else {
-      setNpcColor('transparent');
+      setNpcColor("transparent");
     }
 
     // console.log(mapPosition);
@@ -266,7 +266,7 @@ const Map_Manager = ({
                     left: `${colIndex * tileSize}px`,
                     width: `${tileSize}px`,
                     height: `${tileSize}px`,
-                    backgroundColor: 'blue',
+                    backgroundColor: "blue",
                   }}
                 />
               )}

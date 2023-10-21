@@ -1,15 +1,15 @@
-import React, { useState, useContext } from 'react';
-import Char from 'components/Char';
-import NPC_Map from 'components/NPC_Map';
-import Char_Move from 'components/Char_Move';
-import Map from 'components/Map';
-import Foreground from 'components/Foreground';
-import Map_Manager from 'components/Map_Manager';
-import Map_Switch from 'components/Map_Switch';
-import Tooltip from 'components/Tooltip';
-import Compass from 'components/Compass';
-import '/src/styles/Overworld.css';
-import GameContext from './GameContext';
+import React, { useState, useContext } from "react";
+import Char from "components/Char";
+import NPC_Map from "components/NPC_Map";
+import Char_Move from "components/Char_Move";
+import Map from "components/Map";
+import Foreground from "components/Foreground";
+import Map_Manager from "components/Map_Manager";
+import Map_Switch from "components/Map_Switch";
+import Tooltip from "components/Tooltip";
+import Compass from "components/Compass";
+import "/src/styles/Overworld.css";
+import GameContext from "./GameContext";
 
 const Overworld = ({}) => {
   const { currentMap, setCurrentMap, npcs, setNpcs } = useContext(GameContext);
@@ -20,7 +20,7 @@ const Overworld = ({}) => {
   const [mapRows, setMapRows] = useState(11);
   const [mapOffset, setMapOffset] = useState({ x: 9, y: 6 });
   const [hasMapSwitched, setHasMapSwitched] = useState(false);
-  const [direction, setDirection] = useState('Down');
+  const [direction, setDirection] = useState("Down");
   const [isMoving, setIsMoving] = useState(false);
   const [isSpacePressed, setIsSpacePressed] = useState(false);
   const [isFPressed, setIsFPressed] = useState(false);
@@ -37,6 +37,9 @@ const Overworld = ({}) => {
   });
 
   const [gates, setGates] = useState([]);
+
+  const [isVisible, setIsVisible] = useState(false);
+  const [content, setContent] = useState("Put tooltip message here");
 
   return (
     <>
