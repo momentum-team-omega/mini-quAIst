@@ -14,7 +14,8 @@ const Char_Move = ({
   mapOffset,
   isFPressed,
   setIsFPressed,
-  help,
+  menu,
+  setMenu,
 }) => {
   const [keys, setKeys] = useState({
     w: { pressed: false },
@@ -46,54 +47,56 @@ const Char_Move = ({
   const RUN_MOVE_SPEED = 5;
 
   const moveCharacter = () => {
-    const actualMoveSpeed = isSpacePressed
-      ? RUN_MOVE_SPEED
-      : DEFAULT_MOVE_SPEED;
+    if (!menu) {
+      const actualMoveSpeed = isSpacePressed
+        ? RUN_MOVE_SPEED
+        : DEFAULT_MOVE_SPEED;
 
-    if (isMoving && keyOrder.length > 0) {
-      setPosition((currentPos) => {
-        let newX = currentPos.x;
-        let newY = currentPos.y;
-        // console.log(`currentPos: ${currentPos.x}, ${currentPos.y}`);
-        const lastKey = keyOrder[keyOrder.length - 1];
-        switch (lastKey) {
-          case 'ArrowUp':
-          case 'w':
-            if (allowedMovements.up) newY -= actualMoveSpeed;
-            break;
-          case 'ArrowLeft':
-          case 'a':
-            if (allowedMovements.left) newX -= actualMoveSpeed;
-            break;
-          case 'ArrowDown':
-          case 's':
-            if (allowedMovements.down) newY += actualMoveSpeed;
-            break;
-          case 'ArrowRight':
-          case 'd':
-            if (allowedMovements.right) newX += actualMoveSpeed;
-            break;
-        }
-        const gridPos = pixelToGridPosition({ x: newX, y: newY });
-        setCharPosition(gridPos);
+      if (isMoving && keyOrder.length > 0) {
+        setPosition((currentPos) => {
+          let newX = currentPos.x;
+          let newY = currentPos.y;
+          // console.log(`currentPos: ${currentPos.x}, ${currentPos.y}`);
+          const lastKey = keyOrder[keyOrder.length - 1];
+          switch (lastKey) {
+            case 'ArrowUp':
+            case 'w':
+              if (allowedMovements.up) newY -= actualMoveSpeed;
+              break;
+            case 'ArrowLeft':
+            case 'a':
+              if (allowedMovements.left) newX -= actualMoveSpeed;
+              break;
+            case 'ArrowDown':
+            case 's':
+              if (allowedMovements.down) newY += actualMoveSpeed;
+              break;
+            case 'ArrowRight':
+            case 'd':
+              if (allowedMovements.right) newX += actualMoveSpeed;
+              break;
+          }
+          const gridPos = pixelToGridPosition({ x: newX, y: newY });
+          setCharPosition(gridPos);
 
-        localStorage.setItem('charPosition', JSON.stringify(gridPos));
-        localStorage.setItem(
-          'mapPosition',
-          JSON.stringify(gridToPixelPosition(gridPos))
-        );
+          localStorage.setItem('charPosition', JSON.stringify(gridPos));
+          localStorage.setItem(
+            'mapPosition',
+            JSON.stringify(gridToPixelPosition(gridPos))
+          );
 
-        // console.log(`X: ${newX}, Y: ${newY}`);
-        // console.log('gridPos: ', gridPos);
+          console.log(`X: ${newX}, Y: ${newY}`);
+          console.log('gridPos: ', gridPos);
 
-        return { x: newX, y: newY };
-      });
+          return { x: newX, y: newY };
+        });
+      }
     }
   };
 
   useEffect(() => {
     const handleDownKey = (e) => {
-      if (!help) {
+      if (!menu) {
         let keyPressed = null;
         switch (e.key) {
           case 'ArrowUp':
@@ -214,6 +217,21 @@ const Char_Move = ({
       }
     };
   }, [isMoving, keyOrder, isSpacePressed]);
+
+  useEffect(() => {
+    const handleEscapeKey = (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setMenu((prevMenu) => !prevMenu);
+      }
+    };
+
+    window.addEventListener('keydown', handleEscapeKey);
+
+    return () => {
+      window.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [setMenu]);
 
   return null;
 };

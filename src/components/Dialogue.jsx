@@ -21,6 +21,7 @@ const Dialogue = () => {
     outcome,
     setMakeCheck,
     makeCheck,
+    setCurrentMap,
     checkpoint2,
     setCheckpoint2,
     checkpoint3,
@@ -30,7 +31,7 @@ const Dialogue = () => {
   } = useContext(GameContext);
 
   const [charStats, setCharStats] = useState({
-    name: "",
+    name: '',
     health: 50,
     strength: 6,
     str_mod: -2,
@@ -40,7 +41,7 @@ const Dialogue = () => {
     dex_mod: 0,
   });
 
-  const [currentDialogueId, setCurrentDialogueId] = useState("1");
+  const [currentDialogueId, setCurrentDialogueId] = useState('1');
   const currentOption = npcDialogues[currentNPC][currentDialogueId];
 
   const [response, setResponse] = useState(
@@ -77,7 +78,7 @@ const Dialogue = () => {
   };
 
   const containerStyle = {
-    backgroundImage: `url(${npcImages[currentNPC] || ""})`,
+    backgroundImage: `url(${npcImages[currentNPC] || ''})`,
   };
 
   const npcList = Object.keys(npcDialogues);
@@ -109,39 +110,45 @@ const Dialogue = () => {
     const selectedDialogue = npcDialogues[currentNPC][optionId];
 
     switch (optionId) {
-      case "leave":
-        setScene("overworld");
+      case 'leave':
+        setScene('overworld');
         break;
 
-      case "start":
-        setCurrentDialogueId("1");
-        setResponse("What else would you like to know young one?");
+      case 'start':
+        setCurrentDialogueId('1');
+        setResponse('What else would you like to know young one?');
         break;
 
-      case "str":
-      case "dex":
-      case "wis":
+      case 'str':
+      case 'dex':
+      case 'wis':
         setTypeOfCheck(optionId);
         setMakeCheck(true);
         break;
 
-      case "fight":
-        setScene("battle");
+      case 'fight':
+        setScene('battle');
         break;
-
-      case "instruct":
+      case 'instruct':
         setResponse(npcDialogues[currentNPC][optionId].instructions);
         setCurrentDialogueId(optionId);
 
-        if (currentNPC === "steve") {
-          setCheckpoint2(true);
-        } else if (currentNPC === "villageLeader") {
-          setCheckpoint3(true);
+        if (currentNPC === 'steve') {
+          if (!checkpoint3) {
+            setCheckpoint2(true);
+            console.log('checkpoint2', checkpoint2);
+            setCurrentMap('village2Locked2');
+          }
+        } else if (currentNPC === 'villageLeader') {
+          if (!checkpoint4) {
+            setCheckpoint3(true);
+            console.log('checkpoint3', checkpoint3);
+          }
         }
 
         break;
-      case "chooseClass":
-        setScene("characterCreation");
+      case 'chooseClass':
+        setScene('characterCreation');
       default:
         const optionIndex = currentDialogue.options.indexOf(optionId);
 
@@ -174,26 +181,26 @@ const Dialogue = () => {
     try {
       const messages = [
         {
-          role: "system",
+          role: 'system',
           content: systemContent,
         },
         {
-          role: "user",
+          role: 'user',
           content: userContent,
         },
       ];
       const payload = {
-        model: "gpt-3.5-turbo",
+        model: 'gpt-3.5-turbo',
         messages,
         max_tokens: 80,
       };
 
       const apiResponse = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
+        'https://api.openai.com/v1/chat/completions',
         payload,
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${import.meta.env.VITE_CHATGPT_SECRET_KEY}`,
           },
         }
@@ -203,17 +210,17 @@ const Dialogue = () => {
       setLoading(false);
       return data.choices[0].message.content;
     } catch (error) {
-      console.error("Error:", error);
-      return "Error fetching response.";
+      console.error('Error:', error);
+      return 'Error fetching response.';
     }
   };
 
   const handleRollOutcome = (rollOutcome) => {
-    if (rollOutcome === "passed") {
+    if (rollOutcome === 'passed') {
       setCheckpoint4(true);
-      setScene("ending");
-    } else if (rollOutcome === "failed") {
-      setScene("battle");
+      setScene('ending');
+    } else if (rollOutcome === 'failed') {
+      setScene('battle');
     }
   };
 
@@ -252,8 +259,8 @@ const Dialogue = () => {
           width: 600,
           height: 338,
           backgroundImage: containerStyle.backgroundImage,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       ></div>
       <div className="options-wrapper">

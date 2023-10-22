@@ -1,9 +1,9 @@
 import React from 'react';
 import '/src/styles/Menu.css';
 
-const Menu_Icon = ({ setHelp }) => {
+const Menu_Icon = ({ setMenu }) => {
   const handleHelp = () => {
-    setHelp(true);
+    setMenu(true);
   };
   return (
     <div className="menu-icon-container" onClick={handleHelp}>

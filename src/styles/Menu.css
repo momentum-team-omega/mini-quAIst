@@ -69,6 +69,14 @@
   text-align: center;
 }
 
+.exit-options {
+  position: absolute;
+  top: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .exit-game-button {
   width: 100px;
   height: 50px;
@@ -77,9 +85,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 550px;
   cursor: pointer;
+  margin: 0px 5px 0px 5px;
 }
 .exit-game-button:hover {
   background-color: #000000af;
