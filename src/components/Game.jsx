@@ -8,7 +8,7 @@ import Battle from "./Battle";
 import Cut_Scene from "./Cut_Scene";
 
 const Game = () => {
-  const [scene, setScene] = useState("battle");
+  const [scene, setScene] = useState("overworld");
   const [currentMap, setCurrentMap] = useState("startHouse");
 
   const [currentNPC, setCurrentNPC] = useState("");
