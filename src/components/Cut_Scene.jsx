@@ -26,22 +26,22 @@ const Cut_Scene = ({ sceneSelection }) => {
   const selectedScene = scenes[sceneSelection];
   const [imageIndex, setImageIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
-  const [showContinueButton, setShowContinueButton] = useState(false);
+  const [showContinueButton, setShowContinueButton] = useState(true);
 
   useEffect(() => {
     if (isTyping) {
       const typingDuration = selectedScene.textArray[imageIndex].length * 50;
       const typingTimer = setTimeout(() => {
-        setIsTyping(false);
+        setIsTyping(true);
         setShowContinueButton(true); // Show the "Continue" button once typing is done
-      }, typingDuration + 1000);
+      }, typingDuration);
 
       return () => clearTimeout(typingTimer);
     }
   }, [isTyping, imageIndex, selectedScene.textArray]);
 
   const handleContinue = () => {
-    setShowContinueButton(false); // Hide the button
+    setShowContinueButton(true); // Ability to hide the button
 
     if (imageIndex < selectedScene.imageUrls.length - 1) {
       setImageIndex((prevIndex) => prevIndex + 1);
