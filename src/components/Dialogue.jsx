@@ -49,25 +49,24 @@ const Dialogue = () => {
   const [preFetchedResponses, setPreFetchedResponses] = useState([]);
 
   const [showOptions, setShowOptions] = useState(false);
+  const [isTyping, setIsTyping] = useState(true);
 
   const handleShowOptions = () => {
     setShowOptions(true);
   };
 
-  // Calculate animation time based on text length and speed
-  const animationTime = response.length * 50 + 500; // Assuming speed is 50 milliseconds per character
-
   useEffect(() => {
-    if (!showOptions) {
-      // Schedule a callback after the animation duration
-      const animationTimeout = setTimeout(() => {
-        handleShowOptions();
-      }, animationTime);
+    // Calculate the animation time based on response length and typing speed
+    const animationTime = response.length * 50 + 900;
 
-      // Clear the timeout in case the component unmounts or animation completes
-      return () => clearTimeout(animationTimeout);
-    }
-  }, [showOptions, animationTime]);
+    const animationTimeout = setTimeout(() => {
+      setIsTyping(false); // Animation is complete
+      handleShowOptions();
+    }, animationTime);
+
+    // Clear the timeout if the component unmounts or animation completes
+    return () => clearTimeout(animationTimeout);
+  }, [response]);
 
   const npcImages = {
     wiseman: wisemanImage,
@@ -103,6 +102,8 @@ const Dialogue = () => {
   const [loading, setLoading] = useState(false);
 
   const handleOptionClick = async (optionId) => {
+    setIsTyping(true);
+    setShowOptions(false);
     setLoading(true);
 
     const selectedDialogue = npcDialogues[currentNPC][optionId];
@@ -255,17 +256,22 @@ const Dialogue = () => {
           backgroundPosition: "center",
         }}
       ></div>
-      <div className="options-container">
-        {showOptions &&
-          currentDialogue?.options?.map((optionId) => (
-            <div
-              key={optionId}
-              className="option"
-              onClick={() => handleOptionClick(optionId)}
-            >
-              {npcDialogues[currentNPC][optionId].text}
-            </div>
-          ))}
+      <div className="options-wrapper">
+        <div
+          className="options-container"
+          style={{ display: showOptions ? "block" : "none" }}
+        >
+          {showOptions &&
+            currentDialogue?.options?.map((optionId) => (
+              <div
+                key={optionId}
+                className="option"
+                onClick={() => handleOptionClick(optionId)}
+              >
+                {npcDialogues[currentNPC][optionId].text}
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
