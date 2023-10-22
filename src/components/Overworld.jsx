@@ -40,7 +40,7 @@ const Overworld = ({}) => {
 
   const [gates, setGates] = useState([]);
 
-  const [help, setHelp] = useState(false);
+  const [menu, setMenu] = useState(false);
 
   return (
     <>
@@ -58,13 +58,13 @@ const Overworld = ({}) => {
         mapOffset={mapOffset}
         isFPressed={isFPressed}
         setIsFPressed={setIsFPressed}
-        help={help}
+        menu={menu}
+        setMenu={setMenu}
       />
       <Map_Switch
         mapImage={mapImage}
         setForeImage={setForeImage}
         setMapImage={setMapImage}
-        mapPosition={mapPosition}
         setMapPosition={setMapPosition}
         setCharPosition={setCharPosition}
         setMapColumns={setMapColumns}
@@ -117,14 +117,14 @@ const Overworld = ({}) => {
         isSpacePressed={isSpacePressed}
         isFPressed={isFPressed}
       />
-      {!help && (
+      {!menu && (
         <Compass
           isMoving={isMoving}
           direction={direction}
           isSpacePressed={isSpacePressed}
         />
       )}
-      {help ? <Menu setHelp={setHelp} /> : <Menu_Icon setHelp={setHelp} />}
+      {menu ? <Menu setMenu={setMenu} /> : <Menu_Icon setMenu={setMenu} />}
     </>
   );
 };
