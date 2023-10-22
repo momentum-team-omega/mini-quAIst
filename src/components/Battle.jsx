@@ -12,8 +12,8 @@ import "/src/styles/Battle.css";
 import GameContext from "./GameContext";
 
 const Battle = ({}) => {
-  
-  const { setScene, currentNPC, charStats, setCheckpoint4, npcs, setNpcs } = useContext(GameContext);
+  const { setScene, currentNPC, charStats, setCheckpoint4, npcs, setNpcs } =
+    useContext(GameContext);
   const [opponentHealth, setOpponentHealth] = useState(opponentStats.maxHealth);
   const [playerHealth, setPlayerHealth] = useState(charStats.health);
   const [showHealthIndicator, setShowHealthIndicator] = useState(false);
@@ -37,7 +37,7 @@ const Battle = ({}) => {
   const [specialMoves, setSpecialMoves] = useState(1);
   const [specialMovesUsed, setSpecialMovesUsed] = useState(false);
   const selectedClass = "rogue";
-  
+
   const containerStyle = {
     background: `url(${battlebackground})`,
     backgroundSize: "cover",
@@ -79,8 +79,6 @@ const Battle = ({}) => {
   } else {
     overlayEnemy.backgroundImage = `url(${enemyImage})`;
   }
-
-  
 
   const handlePlayerMove = (action) => {
     if (isLocked) return;
@@ -201,7 +199,7 @@ const Battle = ({}) => {
 
       // 50% chance to roll d10 and add to base damage
       if (Math.random() < 0.5) {
-        damageToPlayer += rollD10() + 3; 
+        damageToPlayer += rollD10() + 3;
       }
 
       const newPlayerHealth = playerHealth - damageToPlayer;
@@ -317,8 +315,12 @@ const Battle = ({}) => {
       {someoneDied && (
         <div className="someone-died-box">
           {playerHealth <= 0 ? "YOU DIED!" : "YOU WIN!"}
-          <button onClick={handleContinue}>Continue</button>
-          <button onClick={handleTryAgain}>Try Again</button>
+          <button className="you-died-buttons" onClick={handleContinue}>
+            Continue
+          </button>
+          <button className="you-died-buttons" onClick={handleTryAgain}>
+            Try Again
+          </button>
         </div>
       )}
       <h1
@@ -339,6 +341,7 @@ const Battle = ({}) => {
         }`}
         style={overlayPlayer}
       ></div>
+
       <div
         className="button-box"
         style={{ display: isPlayerTurn || !isLocked ? "flex" : "none" }}
@@ -365,7 +368,7 @@ const Battle = ({}) => {
           onClick={() => handlePlayerMove("chill")}
           disabled={!isPlayerTurn || healingPotions === 0}
         >
-          <p className="chill-text">POTION ({healingPotions})</p>
+          <p className="chill-text">Potion ({healingPotions})</p>
         </button>
         <button
           className="special-move-button"
@@ -384,6 +387,7 @@ const Battle = ({}) => {
           </p>
         </button>
       </div>
+
       <div
         className={`overlay ${enemyFlicker ? "flicker-animation" : ""}`}
         style={overlayEnemy}
