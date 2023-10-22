@@ -12,6 +12,7 @@ import enchantedForestFore from 'assets/map-assets/enchantedForest-fore.png';
 import enchantedForestLocked from 'assets/map-assets/enchantedForestLocked-sheet.png';
 import village2 from 'assets/map-assets/village2-sheet.png';
 import village2Locked from 'assets/map-assets/village2locked-sheet.png';
+import village2LockedFore from 'assets/map-assets/Village2Locked-fore.png';
 import village2Fore from 'assets/map-assets/Village2-fore.png';
 import village2inside from 'assets/map-assets/village2inside-sheet.png';
 import village2insideFore from 'assets/map-assets/village2inside-fore.png';
@@ -236,11 +237,12 @@ const Map_Switch = ({
           x: 0,
           y: 3,
 
-          map: checkpoint2
-            ? 'village2Locked2'
-            : checkpoint3
-            ? 'village2'
-            : 'village2Locked',
+          map:
+            checkpoint2 && !checkpoint3
+              ? 'village2Locked2'
+              : checkpoint3
+              ? 'village2'
+              : 'village2Locked',
           destPX: 1840.5,
           destPY: 753,
           destX: 0,
@@ -251,11 +253,12 @@ const Map_Switch = ({
           x: 0,
           y: 4,
 
-          map: checkpoint2
-            ? 'village2Locked2'
-            : checkpoint3
-            ? 'village2'
-            : 'village2Locked',
+          map:
+            checkpoint2 && !checkpoint3
+              ? 'village2Locked2'
+              : checkpoint3
+              ? 'village2'
+              : 'village2Locked',
           destPX: 1840.5,
           destPY: 753,
           destX: 0,
@@ -266,11 +269,12 @@ const Map_Switch = ({
           x: 0,
           y: 5,
 
-          map: checkpoint2
-            ? 'village2Locked2'
-            : checkpoint3
-            ? 'village2'
-            : 'village2Locked',
+          map:
+            checkpoint2 && !checkpoint3
+              ? 'village2Locked2'
+              : checkpoint3
+              ? 'village2'
+              : 'village2Locked',
           destPX: 1840.5,
           destPY: 753,
           destX: 0,
@@ -613,7 +617,7 @@ const Map_Switch = ({
       ]);
     } else if (currentMap === 'village2Locked') {
       setMapImage(village2Locked);
-      setForeImage(village2Fore);
+      setForeImage(village2LockedFore);
       setTileSize(64);
       setMapColumns(40);
       setMapRows(30);
@@ -689,7 +693,7 @@ const Map_Switch = ({
       ]);
     } else if (currentMap === 'village2Locked2') {
       setMapImage(village2Locked);
-      setForeImage(village2Fore);
+      setForeImage(village2LockedFore);
       setTileSize(64);
       setMapColumns(40);
       setMapRows(30);
