@@ -234,9 +234,14 @@ const Dialogue = () => {
         <div>
           <div
             className="npc-text"
-            style={{ padding: "10px", marginLeft: "10px", marginRight: "10px" }}
+            style={{
+              width: "1070px",
+              padding: "10px",
+              marginLeft: "10px",
+              marginRight: "10px",
+            }}
           >
-            <TypeAnimation sequence={[response]} speed={50} repeat={0} />
+            <TypeAnimation sequence={[response]} speed={60} repeat={0} />
           </div>
         </div>
       )}

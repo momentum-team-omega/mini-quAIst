@@ -1,18 +1,18 @@
-import React, { useContext, useState } from 'react';
-import Nav from 'components/Nav';
-import Overworld from './Overworld';
-import Dialogue from './Dialogue';
-import Create_Char from './Create_Char';
-import GameContext from './GameContext';
-import Battle from './Battle';
-import Cut_Scene from './Cut_Scene';
+import React, { useContext, useState } from "react";
+import Nav from "components/Nav";
+import Overworld from "./Overworld";
+import Dialogue from "./Dialogue";
+import Create_Char from "./Create_Char";
+import GameContext from "./GameContext";
+import Battle from "./Battle";
+import Cut_Scene from "./Cut_Scene";
 
 const Game = () => {
-  const [scene, setScene] = useState('overworld');
-  const [currentNPC, setCurrentNPC] = useState('');
+  const [scene, setScene] = useState("overworld");
+  const [currentNPC, setCurrentNPC] = useState("");
   const [charStats, setCharStats] = useState({
-    name: '',
-    charClass: '',
+    name: "",
+    charClass: "",
     health: 30,
     strength: 6,
     str_mod: -2,
@@ -22,16 +22,16 @@ const Game = () => {
     dex_mod: 0,
   });
 
-  const [typeOfCheck, setTypeOfCheck] = useState('wis');
-  const [outcome, setOutcome] = useState('');
+  const [typeOfCheck, setTypeOfCheck] = useState("wis");
+  const [outcome, setOutcome] = useState("");
   const [makeCheck, setMakeCheck] = useState(false);
 
-  const [currentMap, setCurrentMap] = useState('startHouse');
+  const [currentMap, setCurrentMap] = useState("village2Locked");
   const [npcs, setNpcs] = useState([]);
 
   const [gameWindow, setGameWindow] = useState({
-    height: '720px',
-    width: '1280px',
+    height: "720px",
+    width: "1280px",
   });
 
   const [checkpoint1, setCheckpoint1] = useState(false);
@@ -85,14 +85,14 @@ const Game = () => {
               width: gameWindow.width,
             }}
           >
-            {scene === 'intro' && <Cut_Scene sceneSelection={0} />}
-            {scene === 'ending' && <Cut_Scene sceneSelection={1} />}
-            {scene === 'overworld' && <Overworld />}
-            {scene === 'characterCreation' && (
+            {scene === "intro" && <Cut_Scene sceneSelection={0} />}
+            {scene === "ending" && <Cut_Scene sceneSelection={1} />}
+            {scene === "overworld" && <Overworld />}
+            {scene === "characterCreation" && (
               <Create_Char charStats={charStats} setCharStats={setCharStats} />
             )}
-            {scene === 'dialogue' && <Dialogue />}
-            {scene === 'battle' && <Battle />}
+            {scene === "dialogue" && <Dialogue />}
+            {scene === "battle" && <Battle />}
           </div>
         </div>
       </GameContext.Provider>
