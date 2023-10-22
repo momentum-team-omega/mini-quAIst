@@ -32,6 +32,7 @@ const Map_Switch = ({
   setMapOffset,
   setIsFPressed,
   hasMapSwitched,
+  setMapNpcs,
 }) => {
   const storedMapPosition = localStorage.getItem('mapPosition');
   const {
@@ -40,7 +41,7 @@ const Map_Switch = ({
     checkpoint2,
     checkpoint3,
     setCurrentNPC,
-    setNpcs,
+    npcs,
   } = useContext(GameContext);
 
   useEffect(() => {
@@ -59,7 +60,7 @@ const Map_Switch = ({
         setCharPosition({ x: 5.5, y: 5 });
       }
       setIsFPressed(false);
-      setNpcs([]);
+      setMapNpcs([]);
       setCurrentNPC('');
       setGates([
         {
@@ -108,7 +109,7 @@ const Map_Switch = ({
         setCharPosition({ x: 7.5, y: 8 });
       }
       setIsFPressed(false);
-      setNpcs([]);
+      setMapNpcs([]);
       setCurrentNPC('');
       setGates([
         {
@@ -184,7 +185,7 @@ const Map_Switch = ({
         setCharPosition({ x: 24, y: 11 });
       }
       setIsFPressed(false);
-      setNpcs([{}]);
+      setMapNpcs([]);
       setCurrentNPC('');
       setGates([
         {
@@ -217,17 +218,11 @@ const Map_Switch = ({
         setCharPosition({ x: 1, y: 4 });
       }
       setIsFPressed(false);
-      setNpcs([
+      setMapNpcs([
         {
-          id: 1,
+          npc: npcs.find((npc) => npc.id === 5),
           x: 10,
           y: 4,
-          steps: 4,
-          animationSpeed: 200,
-          alive: true,
-          triggered: false,
-          message: 'RAWR',
-          name: 'troll',
         },
       ]);
       setCurrentNPC('troll');
@@ -333,17 +328,11 @@ const Map_Switch = ({
         setCharPosition({ x: 5, y: 5 }); // default value
       }
       setIsFPressed(false);
-      setNpcs([
+      setMapNpcs([
         {
-          id: 1,
+          npc: npcs.find((npc) => npc.id === 1),
           x: 15,
           y: 4,
-          steps: 4,
-          animationSpeed: 800,
-          alive: true,
-          triggered: false,
-          message: 'Greetings',
-          name: 'wiseman',
         },
       ]);
       setCurrentNPC('wiseman');
@@ -398,17 +387,11 @@ const Map_Switch = ({
         setCharPosition({ x: 5, y: 5 }); // default value
       }
       setIsFPressed(false);
-      setNpcs([
+      setMapNpcs([
         {
-          id: 1,
+          npc: npcs.find((npc) => npc.id === 1),
           x: 15,
           y: 4,
-          steps: 4,
-          animationSpeed: 800,
-          alive: true,
-          triggered: false,
-          message: 'Greetings',
-          name: 'wiseman',
         },
       ]);
       setCurrentNPC('wiseman');
@@ -505,28 +488,16 @@ const Map_Switch = ({
         setCharPosition({ x: 10, y: 3 }); // default value
       }
       setIsFPressed(false);
-      setNpcs([
+      setMapNpcs([
         {
-          id: 1,
+          npc: npcs.find((npc) => npc.id === 2),
           x: 4,
           y: 4,
-          steps: 4,
-          animationSpeed: 400,
-          alive: true,
-          triggered: false,
-          message: 'Crikey!',
-          name: 'steve',
         },
         {
-          id: 2,
+          npc: npcs.find((npc) => npc.id === 4),
           x: 37,
           y: 12,
-          steps: 4,
-          animationSpeed: 200,
-          alive: true,
-          triggered: false,
-          message: 'Greetings',
-          name: 'blacksmith',
         },
       ]);
       setCurrentNPC('');
@@ -634,28 +605,16 @@ const Map_Switch = ({
         setCharPosition({ x: 10, y: 3 });
       }
       setIsFPressed(false);
-      setNpcs([
+      setMapNpcs([
         {
-          id: 1,
+          npc: npcs.find((npc) => npc.id === 2),
           x: 4,
           y: 4,
-          steps: 4,
-          animationSpeed: 400,
-          alive: true,
-          triggered: false,
-          message: 'Crikey!',
-          name: 'steve',
         },
         {
-          id: 2,
+          npc: npcs.find((npc) => npc.id === 4),
           x: 19,
           y: 12,
-          steps: 4,
-          animationSpeed: 200,
-          alive: true,
-          triggered: false,
-          message: 'Greetings',
-          name: 'blacksmith',
         },
       ]);
       setCurrentNPC('');
@@ -710,28 +669,16 @@ const Map_Switch = ({
         setCharPosition({ x: 10, y: 3 });
       }
       setIsFPressed(false);
-      setNpcs([
+      setMapNpcs([
         {
-          id: 1,
+          npc: npcs.find((npc) => npc.id === 2),
           x: 4,
           y: 4,
-          steps: 4,
-          animationSpeed: 400,
-          alive: true,
-          triggered: false,
-          message: 'Crikey!',
-          name: 'steve',
         },
         {
-          id: 2,
+          npc: npcs.find((npc) => npc.id === 4),
           x: 37,
           y: 12,
-          steps: 4,
-          animationSpeed: 200,
-          alive: true,
-          triggered: false,
-          message: 'Greetings',
-          name: 'blacksmith',
         },
       ]);
       setCurrentNPC('');
@@ -802,17 +749,11 @@ const Map_Switch = ({
         setCharPosition({ x: 10, y: 15 });
       }
       setIsFPressed(false);
-      setNpcs([
+      setMapNpcs([
         {
-          id: 1,
+          npc: npcs.find((npc) => npc.id === 3),
           x: 10,
           y: 9,
-          steps: 4,
-          animationSpeed: 200,
-          alive: true,
-          triggered: false,
-          message: 'Hello There!',
-          name: 'villageLeader',
         },
       ]);
       setCurrentNPC('');

@@ -42,6 +42,10 @@ const Overworld = ({}) => {
 
   const [menu, setMenu] = useState(false);
 
+  const [mapNpcs, setMapNpcs] = useState([]);
+
+  console.log(mapNpcs);
+
   return (
     <>
       <Char_Move
@@ -74,6 +78,7 @@ const Overworld = ({}) => {
         setMapOffset={setMapOffset}
         setIsFPressed={setIsFPressed}
         hasMapSwitched={hasMapSwitched}
+        setMapNpcs={setMapNpcs}
       />
       <Map_Manager
         mapPosition={mapPosition}
@@ -89,7 +94,8 @@ const Overworld = ({}) => {
         gates={gates}
         isFPressed={isFPressed}
         setHasMapSwitched={setHasMapSwitched}
-        isMoving={isMoving}
+        mapNpcs={mapNpcs}
+        setMapNpcs={setMapNpcs}
       />
       <Map
         mapPosition={mapPosition}
@@ -105,6 +111,7 @@ const Overworld = ({}) => {
         tileSize={tileSize}
         mapColumns={mapColumns}
         mapRows={mapRows}
+        mapNpcs={mapNpcs}
       />
       <Char
         tileSize={tileSize}
