@@ -341,6 +341,7 @@ const Battle = ({}) => {
         }`}
         style={overlayPlayer}
       ></div>
+
       <div
         className="button-box"
         style={{ display: isPlayerTurn || !isLocked ? "flex" : "none" }}
@@ -386,6 +387,7 @@ const Battle = ({}) => {
           </p>
         </button>
       </div>
+
       <div
         className={`overlay ${enemyFlicker ? "flicker-animation" : ""}`}
         style={overlayEnemy}
