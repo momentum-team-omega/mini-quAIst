@@ -11,6 +11,7 @@ export const Bar = ({ label, value, maxValue, main }) => {
 
   return (
     <div className="main">
+      <div className="health-number">{value}</div>
       <div className={`label ${label}`}>{label}</div>
       <div className="max">
         <div className={`value ${value}`} style={valueStyle}></div>

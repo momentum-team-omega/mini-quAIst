@@ -1,15 +1,17 @@
-import React, { useState, useContext } from "react";
-import Char from "components/Char";
-import NPC_Map from "components/NPC_Map";
-import Char_Move from "components/Char_Move";
-import Map from "components/Map";
-import Foreground from "components/Foreground";
-import Map_Manager from "components/Map_Manager";
-import Map_Switch from "components/Map_Switch";
-import Tooltip from "components/Tooltip";
-import Compass from "components/Compass";
-import "/src/styles/Overworld.css";
-import GameContext from "./GameContext";
+import React, { useState, useContext } from 'react';
+import Char from 'components/Char';
+import NPC_Map from 'components/NPC_Map';
+import Char_Move from 'components/Char_Move';
+import Map from 'components/Map';
+import Foreground from 'components/Foreground';
+import Map_Manager from 'components/Map_Manager';
+import Map_Switch from 'components/Map_Switch';
+import Tooltip from 'components/Tooltip';
+import Compass from 'components/Compass';
+import Menu_Icon from 'components/Menu_Icon';
+import Menu from 'components/Menu';
+import '/src/styles/Overworld.css';
+import GameContext from './GameContext';
 
 const Overworld = ({}) => {
   const { currentMap, setCurrentMap, npcs, setNpcs } = useContext(GameContext);
@@ -20,11 +22,11 @@ const Overworld = ({}) => {
   const [mapRows, setMapRows] = useState(11);
   const [mapOffset, setMapOffset] = useState({ x: 9, y: 6 });
   const [hasMapSwitched, setHasMapSwitched] = useState(false);
-  const [direction, setDirection] = useState("Down");
+  const [direction, setDirection] = useState('Down');
   const [isMoving, setIsMoving] = useState(false);
   const [isSpacePressed, setIsSpacePressed] = useState(false);
   const [isFPressed, setIsFPressed] = useState(false);
-  const [charPosition, setCharPosition] = useState({ x: 5, y: 5 });
+  const [charPosition, setCharPosition] = useState({ x: 5.5, y: 5 });
   const [mapPosition, setMapPosition] = useState({
     x: 0,
     y: 0,
@@ -38,8 +40,7 @@ const Overworld = ({}) => {
 
   const [gates, setGates] = useState([]);
 
-  const [isVisible, setIsVisible] = useState(false);
-  const [content, setContent] = useState("Put tooltip message here");
+  const [help, setHelp] = useState(false);
 
   return (
     <>
@@ -57,6 +58,7 @@ const Overworld = ({}) => {
         mapOffset={mapOffset}
         isFPressed={isFPressed}
         setIsFPressed={setIsFPressed}
+        help={help}
       />
       <Map_Switch
         mapImage={mapImage}
@@ -87,6 +89,7 @@ const Overworld = ({}) => {
         gates={gates}
         isFPressed={isFPressed}
         setHasMapSwitched={setHasMapSwitched}
+        isMoving={isMoving}
       />
       <Map
         mapPosition={mapPosition}
@@ -109,12 +112,19 @@ const Overworld = ({}) => {
         isMoving={isMoving}
         isSpacePressed={isSpacePressed}
       />
-      <Tooltip isVisible={isVisible} content={content} />
-      <Compass
-        isMoving={isMoving}
-        direction={direction}
+      <Tooltip
+        charPosition={charPosition}
         isSpacePressed={isSpacePressed}
+        isFPressed={isFPressed}
       />
+      {!help && (
+        <Compass
+          isMoving={isMoving}
+          direction={direction}
+          isSpacePressed={isSpacePressed}
+        />
+      )}
+      {help ? <Menu setHelp={setHelp} /> : <Menu_Icon setHelp={setHelp} />}
     </>
   );
 };

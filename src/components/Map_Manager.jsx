@@ -9,6 +9,7 @@ import {
   enchantedForestCollisions,
   enchantedForestLockedCollisions,
   village2Collisions,
+  village2LockedCollisions,
   village2insideCollisions,
 } from "utilities/collisionsData.js";
 
@@ -24,6 +25,7 @@ const Map_Manager = ({
   gates,
   isFPressed,
   setHasMapSwitched,
+  isMoving,
 }) => {
   const [collisions, setCollisions] = useState(startCollisions);
   const { setScene, setCurrentNPC, currentMap, setCurrentMap, npcs, setNpcs } =
@@ -60,6 +62,8 @@ const Map_Manager = ({
       setCollisions(enchantedForestCollisions);
     } else if (currentMap === "village2") {
       setCollisions(village2Collisions);
+    } else if (currentMap === "village2Locked") {
+      setCollisions(village2LockedCollisions);
     } else if (currentMap === "village2inside") {
       setCollisions(village2insideCollisions);
     }
@@ -125,8 +129,6 @@ const Map_Manager = ({
           npcY
         )
       ) {
-        // console.log(`Character is near NPC with ID: ${npc.id}`);
-        // console.log(npc.name);
         isNearAnyNpc = true;
 
         if (isFPressed) {
@@ -229,7 +231,7 @@ const Map_Manager = ({
                   left: `${colIndex * tileSize}px`,
                   width: `${tileSize}px`,
                   height: `${tileSize}px`,
-                  // backgroundColor: 'red',
+                  backgroundColor: "red",
                 }}
               />
             )}
@@ -267,7 +269,7 @@ const Map_Manager = ({
                     left: `${colIndex * tileSize}px`,
                     width: `${tileSize}px`,
                     height: `${tileSize}px`,
-                    // backgroundColor: 'blue',
+                    backgroundColor: "blue",
                   }}
                 />
               )}
