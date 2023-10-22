@@ -15,6 +15,7 @@ const Char_Move = ({
   isFPressed,
   setIsFPressed,
   menu,
+  setMenu,
 }) => {
   const [keys, setKeys] = useState({
     w: { pressed: false },
@@ -216,6 +217,21 @@ const Char_Move = ({
       }
     };
   }, [isMoving, keyOrder, isSpacePressed]);
+
+  useEffect(() => {
+    const handleEscapeKey = (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setMenu((prevMenu) => !prevMenu);
+      }
+    };
+
+    window.addEventListener('keydown', handleEscapeKey);
+
+    return () => {
+      window.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [setMenu]);
 
   return null;
 };

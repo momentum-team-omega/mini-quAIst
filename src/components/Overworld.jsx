@@ -59,6 +59,7 @@ const Overworld = ({}) => {
         isFPressed={isFPressed}
         setIsFPressed={setIsFPressed}
         menu={menu}
+        setMenu={setMenu}
       />
       <Map_Switch
         mapImage={mapImage}
