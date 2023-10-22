@@ -1,9 +1,4 @@
 import { useEffect, useContext } from 'react';
-import bridgeLeft from 'assets/map-assets/bridge-left-sheet.png';
-import bridgeLeftFore from 'assets/map-assets/bridge-map-left-fore.png';
-import bridgeRight from 'assets/map-assets/bridge-right-sheet.png';
-import bridgeRightFore from 'assets/map-assets/bridge-map-right-fore.png';
-import houseInside from 'assets/map-assets/house-inside-sheet.png';
 import village1 from 'assets/map-assets/village1-map-sheet.png';
 import village1Fore from 'assets/map-assets/village1-fore.png';
 import trollMap from 'assets/map-assets/troll-map-sheet.png';
