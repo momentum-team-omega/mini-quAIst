@@ -341,53 +341,53 @@ const Battle = ({}) => {
         }`}
         style={overlayPlayer}
       ></div>
-
-      <div
-        className="button-box"
-        style={{ display: isPlayerTurn || !isLocked ? "flex" : "none" }}
-      >
-        <button
-          ref={smackButtonRef}
-          className="fight-button"
-          onClick={() => handlePlayerMove("smack")}
-          disabled={!isPlayerTurn}
+      {!someoneDied && (
+        <div
+          className="button-box"
+          style={{ display: isPlayerTurn || !isLocked ? "flex" : "none" }}
         >
-          <p className="fight-text">
-            {charStats.charClass === "barb"
-              ? "Swing Axe!"
-              : charStats.charClass === "mage"
-              ? "Swing Staff!"
-              : charStats.charClass === "rogue"
-              ? "Loose an Arrow!"
-              : "Attack"}
-          </p>
-        </button>
-        <button
-          ref={chillButtonRef}
-          className="chill-button"
-          onClick={() => handlePlayerMove("chill")}
-          disabled={!isPlayerTurn || healingPotions === 0}
-        >
-          <p className="chill-text">Potion ({healingPotions})</p>
-        </button>
-        <button
-          className="special-move-button"
-          onClick={handleSpecialMoves}
-          disabled={specialMovesUsed || isLocked}
-        >
-          <p className="special-text">
-            {charStats.charClass === "barb"
-              ? "RAGE"
-              : charStats.charClass === "mage"
-              ? "FIREBALL"
-              : charStats.charClass === "rogue"
-              ? "SNEAK ATTACK"
-              : "Special Move"}{" "}
-            {specialMovesUsed ? "(0)" : "(1)"}
-          </p>
-        </button>
-      </div>
-
+          <button
+            ref={smackButtonRef}
+            className="fight-button"
+            onClick={() => handlePlayerMove("smack")}
+            disabled={!isPlayerTurn}
+          >
+            <p className="fight-text">
+              {charStats.charClass === "barb"
+                ? "Swing Axe!"
+                : charStats.charClass === "mage"
+                ? "Swing Staff!"
+                : charStats.charClass === "rogue"
+                ? "Loose an Arrow!"
+                : "Attack"}
+            </p>
+          </button>
+          <button
+            ref={chillButtonRef}
+            className="chill-button"
+            onClick={() => handlePlayerMove("chill")}
+            disabled={!isPlayerTurn || healingPotions === 0}
+          >
+            <p className="chill-text">Potion ({healingPotions})</p>
+          </button>
+          <button
+            className="special-move-button"
+            onClick={handleSpecialMoves}
+            disabled={specialMovesUsed || isLocked}
+          >
+            <p className="special-text">
+              {charStats.charClass === "barb"
+                ? "RAGE"
+                : charStats.charClass === "mage"
+                ? "FIREBALL"
+                : charStats.charClass === "rogue"
+                ? "SNEAK ATTACK"
+                : "Special Move"}{" "}
+              {specialMovesUsed ? "(0)" : "(1)"}
+            </p>
+          </button>
+        </div>
+      )}
       <div
         className={`overlay ${enemyFlicker ? "flicker-animation" : ""}`}
         style={overlayEnemy}
