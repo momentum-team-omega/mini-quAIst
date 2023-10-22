@@ -1,5 +1,10 @@
 /* DIALOGUE CSS - START */
 
+.index-module_type__E-SaG {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 .npc-image-container {
   z-index: 1;
   background-size: cover;
@@ -26,12 +31,14 @@
     2px -2px 2px black,  /* South-East */
     -2px 2px 2px black;  /* North-West */
   margin-bottom: 20px;
+  height: 160px;
 }
 
 .options-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  height: 176px;
 }
 
 .option {

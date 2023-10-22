@@ -12,14 +12,12 @@ import steveImage from "/src/assets/dialogue-assets/steve.png";
 import trollImage from "/src/assets/dialogue-assets/troll.png";
 import villageLeaderImage from "/src/assets/dialogue-assets/villageLeader.png";
 
-
 const Dialogue = () => {
   const {
     setScene,
     currentNPC,
     typeOfCheck,
     setTypeOfCheck,
-    // charStats,
     outcome,
     setMakeCheck,
     makeCheck,
@@ -50,6 +48,27 @@ const Dialogue = () => {
   );
   const [preFetchedResponses, setPreFetchedResponses] = useState([]);
 
+  const [showOptions, setShowOptions] = useState(false);
+
+  const handleShowOptions = () => {
+    setShowOptions(true);
+  };
+
+  // Calculate animation time based on text length and speed
+  const animationTime = response.length * 50 + 500; // Assuming speed is 50 milliseconds per character
+
+  useEffect(() => {
+    if (!showOptions) {
+      // Schedule a callback after the animation duration
+      const animationTimeout = setTimeout(() => {
+        handleShowOptions();
+      }, animationTime);
+
+      // Clear the timeout in case the component unmounts or animation completes
+      return () => clearTimeout(animationTimeout);
+    }
+  }, [showOptions, animationTime]);
+
   const npcImages = {
     wiseman: wisemanImage,
     blacksmith: blacksmithImage,
@@ -76,7 +95,6 @@ const Dialogue = () => {
       }
 
       setPreFetchedResponses(fetchedResponses);
-      // console.log("Fetched responses", fetchedResponses);
     }
 
     fetchInitialResponses();
@@ -86,10 +104,8 @@ const Dialogue = () => {
 
   const handleOptionClick = async (optionId) => {
     setLoading(true);
-    // console.log(`Option ${optionId} clicked`);
 
     const selectedDialogue = npcDialogues[currentNPC][optionId];
-    console.log("optionId clicked:", optionId);
 
     switch (optionId) {
       case "leave":
@@ -113,21 +129,17 @@ const Dialogue = () => {
         break;
 
       case "instruct":
-        console.log(npcDialogues[currentNPC][optionId].instructions);
         setResponse(npcDialogues[currentNPC][optionId].instructions);
         setCurrentDialogueId(optionId);
 
         if (currentNPC === "steve") {
           setCheckpoint2(true);
-          console.log("checkpoint2", checkpoint2);
         } else if (currentNPC === "villageLeader") {
           setCheckpoint3(true);
-          console.log("checkpoint3", checkpoint3);
         }
 
         break;
       case "chooseClass":
-        console.log("chooseClass");
         setScene("characterCreation");
       default:
         const optionIndex = currentDialogue.options.indexOf(optionId);
@@ -142,7 +154,6 @@ const Dialogue = () => {
 
         setCurrentDialogueId(optionId);
 
-        // Make API calls for the next set of dialogue options and cache them
         const nextDialogueOptions = npcDialogues[currentNPC][optionId].options;
         const nextResponses = [];
 
@@ -188,8 +199,7 @@ const Dialogue = () => {
       );
 
       const data = apiResponse.data;
-      console.log(data.choices[0].message.content)
-      setLoading(false)
+      setLoading(false);
       return data.choices[0].message.content;
     } catch (error) {
       console.error("Error:", error);
@@ -208,12 +218,6 @@ const Dialogue = () => {
 
   const currentDialogue = npcDialogues[currentNPC][currentDialogueId];
 
-  // console.log('CURRENT DIALOGUE', currentDialogue);
-
-  // console.log('charStats: ', charStats);
-
-  // console.log('outcome', outcome)
-
   return (
     <div className="dialogue-container">
       {makeCheck && (
@@ -228,12 +232,12 @@ const Dialogue = () => {
         <p>Loading...</p>
       ) : (
         <div>
-          <p
+          <div
             className="npc-text"
             style={{ padding: "10px", marginLeft: "10px", marginRight: "10px" }}
           >
-            {response}
-          </p>
+            <TypeAnimation sequence={[response]} speed={50} repeat={0} />
+          </div>
         </div>
       )}
       <div
@@ -247,15 +251,16 @@ const Dialogue = () => {
         }}
       ></div>
       <div className="options-container">
-        {currentDialogue?.options?.map((optionId) => (
-          <div
-            key={optionId}
-            className="option"
-            onClick={() => handleOptionClick(optionId)}
-          >
-            {npcDialogues[currentNPC][optionId].text}
-          </div>
-        ))}
+        {showOptions &&
+          currentDialogue?.options?.map((optionId) => (
+            <div
+              key={optionId}
+              className="option"
+              onClick={() => handleOptionClick(optionId)}
+            >
+              {npcDialogues[currentNPC][optionId].text}
+            </div>
+          ))}
       </div>
     </div>
   );

@@ -267,7 +267,7 @@ const Map_Manager = ({
                     left: `${colIndex * tileSize}px`,
                     width: `${tileSize}px`,
                     height: `${tileSize}px`,
-                    backgroundColor: "blue",
+                    // backgroundColor: 'blue',
                   }}
                 />
               )}

@@ -85,9 +85,9 @@ const Cut_Scene = ({ sceneSelection }) => {
             style={{
               marginTop: "60px",
               position: "absolute",
-              bottom: "20px", // or whatever distance from the bottom you prefer
+              bottom: "20px",
               left: "50%",
-              transform: "translateX(-50%)", // center the button horizontally
+              transform: "translateX(-50%)",
             }}
           >
             {sceneSelection === 0 ? "Continue" : "End Chapter 1"}
