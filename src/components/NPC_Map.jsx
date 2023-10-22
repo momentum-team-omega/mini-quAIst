@@ -1,5 +1,9 @@
 import React, { useMemo, useContext } from 'react';
 import oldMan1 from 'assets/npc-assets/old-man-tileset.png';
+import wiseman from 'assets/npc-assets/wiseman-sheet.png';
+import steve from 'assets/npc-assets/steve-sheet.png';
+import villageLeader from 'assets/npc-assets/village-leader-sheet.png';
+import blacksmith from 'assets/npc-assets/blacksmith-sheet.png';
 import chestClosed from 'assets/npc-assets/chest-1-closed.png';
 import redTroll from 'assets/npc-assets/red-troll-1.png';
 import NPC from 'components/NPC';
@@ -62,32 +66,41 @@ const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows }) => {
     yOffset = 0 * tileSize;
   } else if (currentMap === 'enchantedForestLocked') {
     NPC_IMAGES = {
-      1: oldMan1,
+      1: wiseman,
     };
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
   } else if (currentMap === 'enchantedForest') {
     NPC_IMAGES = {
-      1: oldMan1,
+      1: wiseman,
     };
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
   } else if (currentMap === 'village2') {
     NPC_IMAGES = {
-      1: oldMan1,
-      2: oldMan1,
+      1: steve,
+      2: blacksmith,
     };
     xOffset = -10 * tileSize;
     yOffset = 0 * tileSize;
   } else if (currentMap === 'village2Locked') {
     NPC_IMAGES = {
-      1: oldMan1,
-      2: oldMan1,
+      1: steve,
+      2: blacksmith,
+    };
+    xOffset = -10 * tileSize;
+    yOffset = 0 * tileSize;
+  } else if (currentMap === 'village2Locked2') {
+    NPC_IMAGES = {
+      1: steve,
+      2: blacksmith,
     };
     xOffset = -10 * tileSize;
     yOffset = 0 * tileSize;
   } else if (currentMap === 'village2inside') {
-    NPC_IMAGES = {};
+    NPC_IMAGES = {
+      1: villageLeader,
+    };
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
   }

@@ -14,6 +14,7 @@ import village2 from 'assets/map-assets/village2-sheet.png';
 import village2Locked from 'assets/map-assets/village2locked-sheet.png';
 import village2Fore from 'assets/map-assets/Village2-fore.png';
 import village2inside from 'assets/map-assets/village2inside-sheet.png';
+import village2insideFore from 'assets/map-assets/village2inside-fore.png';
 
 import GameContext from './GameContext';
 
@@ -21,7 +22,6 @@ const Map_Switch = ({
   mapImage,
   setMapImage,
   setForeImage,
-  mapPosition,
   setMapPosition,
   setCharPosition,
   setMapColumns,
@@ -33,8 +33,14 @@ const Map_Switch = ({
   hasMapSwitched,
 }) => {
   const storedMapPosition = localStorage.getItem('mapPosition');
-  const { currentMap, checkpoint1, setCurrentNPC, setNpcs } =
-    useContext(GameContext);
+  const {
+    currentMap,
+    checkpoint1,
+    checkpoint2,
+    checkpoint3,
+    setCurrentNPC,
+    setNpcs,
+  } = useContext(GameContext);
 
   useEffect(() => {
     if (!mapImage || currentMap === 'startHouse') {
@@ -49,7 +55,7 @@ const Map_Switch = ({
           x: -287,
           y: -15,
         });
-        setCharPosition({ x: 5.5, y: 5 }); // default value
+        setCharPosition({ x: 5.5, y: 5 });
       }
       setIsFPressed(false);
       setNpcs([]);
@@ -190,136 +196,6 @@ const Map_Switch = ({
           destX: 8,
           destY: 5,
         },
-        {
-          id: 2,
-          x: 0,
-          y: 11,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 3,
-          x: 0,
-          y: 12,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 4,
-          x: 9,
-          y: 1,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 5,
-          x: 10,
-          y: 1,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 6,
-          x: 11,
-          y: 1,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 7,
-          x: 31,
-          y: 29,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 8,
-          x: 32,
-          y: 29,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 9,
-          x: 33,
-          y: 29,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 10,
-          x: 39,
-          y: 14,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 11,
-          x: 39,
-          y: 15,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 12,
-          x: 39,
-          y: 16,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 12,
-          x: 24,
-          y: 9,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 13,
-          x: 25,
-          y: 9,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
       ]);
     } else if (currentMap === 'trollMap') {
       setMapImage(trollMap);
@@ -360,7 +236,11 @@ const Map_Switch = ({
           x: 0,
           y: 3,
 
-          map: 'village2',
+          map: checkpoint2
+            ? 'village2Locked2'
+            : checkpoint3
+            ? 'village2'
+            : 'village2Locked',
           destPX: 1840.5,
           destPY: 753,
           destX: 0,
@@ -371,7 +251,11 @@ const Map_Switch = ({
           x: 0,
           y: 4,
 
-          map: 'village2',
+          map: checkpoint2
+            ? 'village2Locked2'
+            : checkpoint3
+            ? 'village2'
+            : 'village2Locked',
           destPX: 1840.5,
           destPY: 753,
           destX: 0,
@@ -382,7 +266,11 @@ const Map_Switch = ({
           x: 0,
           y: 5,
 
-          map: 'village2',
+          map: checkpoint2
+            ? 'village2Locked2'
+            : checkpoint3
+            ? 'village2'
+            : 'village2Locked',
           destPX: 1840.5,
           destPY: 753,
           destX: 0,
@@ -422,115 +310,6 @@ const Map_Switch = ({
           destY: 8,
         },
       ]);
-    } else if (currentMap === 'testMap') {
-      setMapImage(testMap);
-      setForeImage(null);
-      setTileSize(64);
-      setMapColumns(20);
-      setMapRows(20);
-      setMapOffset({ x: 9.5, y: 6 });
-      if (!hasMapSwitched) {
-        if (storedMapPosition) {
-          setMapPosition(JSON.parse(storedMapPosition));
-        } else {
-          setMapPosition({
-            x: 299.5,
-            y: 390,
-          });
-        }
-        setCharPosition({ x: 14, y: 11 });
-      }
-      setIsFPressed(false);
-      setNpcs([
-        {
-          id: 1,
-          x: 3,
-          y: 11,
-          steps: 2,
-          animationSpeed: 800,
-          alive: true,
-          triggered: false,
-          message: 'Hello There',
-          name: 'wiseman',
-        },
-        {
-          id: 2,
-          x: 5,
-          y: 8,
-          steps: 2,
-          animationSpeed: 800,
-          alive: true,
-          triggered: false,
-          message: 'Greetings',
-          name: 'villageLeader',
-        },
-        {
-          id: 3,
-          x: 10,
-          y: 6,
-          steps: 2,
-          animationSpeed: 800,
-          alive: true,
-          triggered: false,
-          message: 'Good Evening',
-          name: 'tavernKeeper',
-        },
-        {
-          id: 4,
-          x: 14,
-          y: 8,
-          steps: 2,
-          animationSpeed: 800,
-          alive: true,
-          triggered: false,
-          message: 'Crikey!',
-          name: 'steve',
-        },
-        {
-          id: 5,
-          x: 16,
-          y: 11,
-          steps: 2,
-          animationSpeed: 800,
-          alive: true,
-          triggered: false,
-          message: 'RAWR',
-          name: 'troll',
-        },
-      ]);
-      setCurrentNPC('');
-      setGates([
-        {
-          id: 1,
-          x: 9,
-          y: 19,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 2,
-          x: 10,
-          y: 19,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-        {
-          id: 3,
-          x: 11,
-          y: 19,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
-        },
-      ]);
     } else if (currentMap === 'enchantedForestLocked') {
       setMapImage(enchantedForestLocked);
       setForeImage(enchantedForestFore);
@@ -555,7 +334,7 @@ const Map_Switch = ({
           id: 1,
           x: 15,
           y: 4,
-          steps: 2,
+          steps: 4,
           animationSpeed: 800,
           alive: true,
           triggered: false,
@@ -620,7 +399,7 @@ const Map_Switch = ({
           id: 1,
           x: 15,
           y: 4,
-          steps: 2,
+          steps: 4,
           animationSpeed: 800,
           alive: true,
           triggered: false,
@@ -664,7 +443,11 @@ const Map_Switch = ({
           id: 4,
           x: 19,
           y: 33,
-          map: 'village2',
+          map: checkpoint2
+            ? 'village2Locked2'
+            : checkpoint3
+            ? 'village2'
+            : 'village2Locked',
           destPX: -543,
           destPY: 1007.5,
           destX: 1,
@@ -674,7 +457,11 @@ const Map_Switch = ({
           id: 5,
           x: 19,
           y: 34,
-          map: 'village2',
+          map: checkpoint2
+            ? 'village2Locked2'
+            : checkpoint3
+            ? 'village2'
+            : 'village2Locked',
           destPX: -543,
           destPY: 1007.5,
           destX: 1,
@@ -684,7 +471,11 @@ const Map_Switch = ({
           id: 6,
           x: 19,
           y: 35,
-          map: 'village2',
+          map: checkpoint2
+            ? 'village2Locked2'
+            : checkpoint3
+            ? 'village2'
+            : 'village2Locked',
           destPX: -543,
           destPY: 1007.5,
           destX: 1,
@@ -715,8 +506,8 @@ const Map_Switch = ({
           id: 1,
           x: 4,
           y: 4,
-          steps: 2,
-          animationSpeed: 800,
+          steps: 4,
+          animationSpeed: 400,
           alive: true,
           triggered: false,
           message: 'Crikey!',
@@ -726,12 +517,12 @@ const Map_Switch = ({
           id: 2,
           x: 37,
           y: 12,
-          steps: 2,
-          animationSpeed: 800,
+          steps: 4,
+          animationSpeed: 200,
           alive: true,
           triggered: false,
           message: 'Greetings',
-          name: 'wiseman',
+          name: 'blacksmith',
         },
       ]);
       setCurrentNPC('');
@@ -836,7 +627,7 @@ const Map_Switch = ({
             y: -134.5,
           });
         }
-        setCharPosition({ x: 10, y: 3 }); // default value
+        setCharPosition({ x: 10, y: 3 });
       }
       setIsFPressed(false);
       setNpcs([
@@ -844,8 +635,84 @@ const Map_Switch = ({
           id: 1,
           x: 4,
           y: 4,
-          steps: 2,
-          animationSpeed: 800,
+          steps: 4,
+          animationSpeed: 400,
+          alive: true,
+          triggered: false,
+          message: 'Crikey!',
+          name: 'steve',
+        },
+        {
+          id: 2,
+          x: 19,
+          y: 12,
+          steps: 4,
+          animationSpeed: 200,
+          alive: true,
+          triggered: false,
+          message: 'Greetings',
+          name: 'blacksmith',
+        },
+      ]);
+      setCurrentNPC('');
+      setGates([
+        {
+          id: 1,
+          x: 0,
+          y: 20,
+          map: 'enchantedForest',
+          destPX: 564,
+          destPY: 1835.5,
+          destX: 0,
+          destY: 0,
+        },
+        {
+          id: 2,
+          x: 0,
+          y: 21,
+          map: 'enchantedForest',
+          destPX: 564,
+          destPY: 1835.5,
+          destX: 0,
+          destY: 0,
+        },
+        {
+          id: 3,
+          x: 0,
+          y: 22,
+          map: 'enchantedForest',
+          destPX: 564,
+          destPY: 1835.5,
+          destX: 0,
+          destY: 0,
+        },
+      ]);
+    } else if (currentMap === 'village2Locked2') {
+      setMapImage(village2Locked);
+      setForeImage(village2Fore);
+      setTileSize(64);
+      setMapColumns(40);
+      setMapRows(30);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        if (storedMapPosition) {
+          setMapPosition(JSON.parse(storedMapPosition));
+        } else {
+          setMapPosition({
+            x: 10.5,
+            y: -134.5,
+          });
+        }
+        setCharPosition({ x: 10, y: 3 });
+      }
+      setIsFPressed(false);
+      setNpcs([
+        {
+          id: 1,
+          x: 4,
+          y: 4,
+          steps: 4,
+          animationSpeed: 400,
           alive: true,
           triggered: false,
           message: 'Crikey!',
@@ -855,12 +722,12 @@ const Map_Switch = ({
           id: 2,
           x: 37,
           y: 12,
-          steps: 2,
-          animationSpeed: 800,
+          steps: 4,
+          animationSpeed: 200,
           alive: true,
           triggered: false,
           message: 'Greetings',
-          name: 'wiseman',
+          name: 'blacksmith',
         },
       ]);
       setCurrentNPC('');
@@ -918,7 +785,7 @@ const Map_Switch = ({
       ]);
     } else if (currentMap === 'village2inside') {
       setMapImage(village2inside);
-      setForeImage(null);
+      setForeImage(village2insideFore);
       setTileSize(64);
       setMapColumns(20);
       setMapRows(20);
@@ -928,17 +795,34 @@ const Map_Switch = ({
           x: 0.5,
           y: 635.5,
         });
-        setCharPosition({ x: 10, y: 15 }); // default value
+        setCharPosition({ x: 10, y: 15 });
       }
       setIsFPressed(false);
-      setNpcs([]);
+      setNpcs([
+        {
+          id: 1,
+          x: 10,
+          y: 9,
+          steps: 4,
+          animationSpeed: 200,
+          alive: true,
+          triggered: false,
+          message: 'Hello There!',
+          name: 'villageLeader',
+        },
+      ]);
       setCurrentNPC('');
       setGates([
         {
           id: 1,
           x: 9,
           y: 16,
-          map: 'village2',
+          map:
+            checkpoint2 && !checkpoint3
+              ? 'village2Locked2'
+              : checkpoint3
+              ? 'village2'
+              : 'village2Locked',
           destPX: 634.5,
           destPY: 375,
           destX: 19,
@@ -948,7 +832,12 @@ const Map_Switch = ({
           id: 2,
           x: 10,
           y: 16,
-          map: 'village2',
+          map:
+            checkpoint2 && !checkpoint3
+              ? 'village2Locked2'
+              : checkpoint3
+              ? 'village2'
+              : 'village2Locked',
           destPX: 634.5,
           destPY: 375,
           destX: 19,

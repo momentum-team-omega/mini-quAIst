@@ -10,6 +10,7 @@ import {
   enchantedForestLockedCollisions,
   village2Collisions,
   village2LockedCollisions,
+  village2Locked2Collisions,
   village2insideCollisions,
 } from 'utilities/collisionsData.js';
 
@@ -64,6 +65,8 @@ const Map_Manager = ({
       setCollisions(village2Collisions);
     } else if (currentMap === 'village2Locked') {
       setCollisions(village2LockedCollisions);
+    } else if (currentMap === 'village2Locked2') {
+      setCollisions(village2Locked2Collisions);
     } else if (currentMap === 'village2inside') {
       setCollisions(village2insideCollisions);
     }
@@ -231,7 +234,7 @@ const Map_Manager = ({
                   left: `${colIndex * tileSize}px`,
                   width: `${tileSize}px`,
                   height: `${tileSize}px`,
-                  backgroundColor: 'red',
+                  // backgroundColor: 'red',
                 }}
               />
             )}

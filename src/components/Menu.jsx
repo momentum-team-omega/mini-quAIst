@@ -3,11 +3,11 @@ import Menu_Content from 'components/Menu_Content';
 import Confirm from 'components/Confirm';
 import '/src/styles/Menu.css';
 
-const Menu = ({ setHelp }) => {
+const Menu = ({ setMenu }) => {
   const [confirm, setConfirm] = useState(false);
 
   const handleExit = () => {
-    setHelp(false);
+    setMenu(false);
   };
   const handleGameExit = () => {
     setConfirm(true);
