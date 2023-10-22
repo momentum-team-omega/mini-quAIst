@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Nav from 'components/Nav';
 import Under from 'components/Under';
 import Footer from 'components/Footer';
+import playButton from 'assets/home-assets/play-button.png';
 import buttonImg from 'assets/home-assets/button-img.png';
 import '/src/styles/Home.css';
 
@@ -19,8 +20,12 @@ const Home = () => {
         </div>
         <div className="link-container">
           <p className="link-subtext">YOUR ADVENTURE AWAITS</p>
-          <Link to="/play" className="button-img">
-            <img src={buttonImg}></img>
+          <Link to="/play" className="button-img-link">
+            <div className="button-img-container">
+              <img className="play-button" src={playButton} />
+              <div className="img-shadow" />
+              <img className="button-img" src={buttonImg} />
+            </div>
           </Link>
           {/* <p className="link-subtext">(click on the box)</p> */}
         </div>
