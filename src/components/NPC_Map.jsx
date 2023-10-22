@@ -9,7 +9,7 @@ import redTroll from 'assets/npc-assets/red-troll-1.png';
 import NPC from 'components/NPC';
 import GameContext from './GameContext';
 
-const getNPCMap = (npcs, mapColumns) => {
+const getNPCMap = (mapNpcs, mapColumns) => {
   const npcMap = [];
   for (let i = 0; i < mapColumns; i++) {
     const row = [];
@@ -18,17 +18,20 @@ const getNPCMap = (npcs, mapColumns) => {
     }
     npcMap.push(row);
   }
-  npcs.forEach((npc) => {
-    if (npcMap[npc.y] && npcMap[npc.y][npc.x] === null) {
-      npcMap[npc.y][npc.x] = npc.id;
+  mapNpcs.forEach((npc) => {
+    if (npc.x >= 0 && npc.x < mapColumns && npc.y >= 0 && npc.y < mapColumns) {
+      npcMap[npc.y][npc.x] = npc.npc.id;
     }
   });
   return npcMap;
 };
 
-const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows }) => {
+const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows, mapNpcs }) => {
   const { currentMap, npcs } = useContext(GameContext);
-  const npcMap = useMemo(() => getNPCMap(npcs, mapColumns), [npcs, mapColumns]);
+  const npcMap = useMemo(
+    () => getNPCMap(mapNpcs, mapColumns),
+    [mapNpcs, mapColumns]
+  );
 
   // console.log(npcMap);
 
@@ -40,23 +43,9 @@ const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows }) => {
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
-  } else if (currentMap === 'village1') {
-    NPC_IMAGES = {};
-    xOffset = 0 * tileSize;
-    yOffset = 0 * tileSize;
   } else if (currentMap === 'trollMap') {
     NPC_IMAGES = {
-      1: redTroll,
-    };
-    xOffset = 0 * tileSize;
-    yOffset = 0 * tileSize;
-  } else if (currentMap === 'testMap') {
-    NPC_IMAGES = {
-      1: oldMan1,
-      2: oldMan1,
-      3: oldMan1,
-      4: oldMan1,
-      5: oldMan1,
+      5: redTroll,
     };
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
@@ -78,28 +67,28 @@ const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows }) => {
     yOffset = 0 * tileSize;
   } else if (currentMap === 'village2') {
     NPC_IMAGES = {
-      1: steve,
-      2: blacksmith,
+      2: steve,
+      4: blacksmith,
     };
     xOffset = -10 * tileSize;
     yOffset = 0 * tileSize;
   } else if (currentMap === 'village2Locked') {
     NPC_IMAGES = {
-      1: steve,
-      2: blacksmith,
+      2: steve,
+      4: blacksmith,
     };
     xOffset = -10 * tileSize;
     yOffset = 0 * tileSize;
   } else if (currentMap === 'village2Locked2') {
     NPC_IMAGES = {
-      1: steve,
-      2: blacksmith,
+      2: steve,
+      4: blacksmith,
     };
     xOffset = -10 * tileSize;
     yOffset = 0 * tileSize;
   } else if (currentMap === 'village2inside') {
     NPC_IMAGES = {
-      1: villageLeader,
+      3: villageLeader,
     };
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
@@ -110,6 +99,8 @@ const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows }) => {
   const getNPCById = (npcs, npcId) => {
     return npcs.find((npc) => npc.id === npcId);
   };
+
+  console.log('npcMap: ', npcMap);
 
   return (
     <div
