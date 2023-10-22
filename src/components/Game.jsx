@@ -26,7 +26,7 @@ const Game = () => {
   const [outcome, setOutcome] = useState('');
   const [makeCheck, setMakeCheck] = useState(false);
 
-  const [currentMap, setCurrentMap] = useState('startMap');
+  const [currentMap, setCurrentMap] = useState('startHouse');
   const [npcs, setNpcs] = useState([]);
 
   const [gameWindow, setGameWindow] = useState({
