@@ -153,7 +153,9 @@ const Game = () => {
             }}
           >
             {!mute && <SFX />}
-            {!menu && <Menu_Icon />}
+            {!menu && scene !== 'dialogue' && scene !== 'intro' && (
+              <Menu_Icon />
+            )}
             {!menu && <Vol_Icon />}
             {scene === 'intro' && <Cut_Scene sceneSelection={0} />}
             {scene === 'ending' && <Cut_Scene sceneSelection={1} />}
