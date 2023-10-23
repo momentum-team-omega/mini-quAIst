@@ -1,28 +1,36 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
-import playerImage from "/src/assets/battle-assets/barbarian-test-3.png";
-import mageGirl from "/src/assets/battle-assets/mage-girl.png";
-import barbGirl from "/src/assets/battle-assets/barb-girl.png";
-import rogueGirl from "/src/assets/battle-assets/rogue-girl.png";
-import redTroll from "/src/assets/battle-assets/red-troll.png";
-import enemyImage from "/src/assets/battle-assets/mage-placeholder-transp.png";
-import battlebackground from "/src/assets/battle-assets/720p-battle-background.png";
-import { opponentStats, playerStats } from "/src/shared";
-import { PlayerSummary } from "./PlayerSummary";
-import "/src/styles/Battle.css";
-import GameContext from "./GameContext";
+import React, { useContext, useState, useEffect, useRef } from 'react';
+import Menu from 'components/menu/Menu';
+import playerImage from '/src/assets/battle-assets/barbarian-test-3.png';
+import mageGirl from '/src/assets/battle-assets/mage-girl.png';
+import barbGirl from '/src/assets/battle-assets/barb-girl.png';
+import rogueGirl from '/src/assets/battle-assets/rogue-girl.png';
+import redTroll from '/src/assets/battle-assets/red-troll.png';
+import enemyImage from '/src/assets/battle-assets/mage-placeholder-transp.png';
+import battlebackground from '/src/assets/battle-assets/720p-battle-background.png';
+import { opponentStats, playerStats } from '/src/shared';
+import { PlayerSummary } from './PlayerSummary';
+import '/src/styles/Battle.css';
+import GameContext from './GameContext';
 
 const Battle = ({}) => {
-  const { setScene, currentNPC, charStats, setCheckpoint4, npcs, setNpcs } =
-    useContext(GameContext);
+  const {
+    setScene,
+    currentNPC,
+    charStats,
+    setCheckpoint4,
+    npcs,
+    setNpcs,
+    menu,
+  } = useContext(GameContext);
   const [opponentHealth, setOpponentHealth] = useState(opponentStats.maxHealth);
   const [playerHealth, setPlayerHealth] = useState(charStats.health);
   const [showHealthIndicator, setShowHealthIndicator] = useState(false);
-  const [healthIndicatorMessage, setHealthIndicatorMessage] = useState("");
+  const [healthIndicatorMessage, setHealthIndicatorMessage] = useState('');
   const [showEnemyHealthIndicator, setShowEnemyHealthIndicator] =
     useState(false);
   const [enemyHealthIndicatorMessage, setEnemyHealthIndicatorMessage] =
-    useState("");
-  const [indicatorColor, setIndicatorColor] = useState("");
+    useState('');
+  const [indicatorColor, setIndicatorColor] = useState('');
   const [someoneDied, setSomeoneDied] = useState(false);
   const [playerFlicker, setPlayerFlicker] = useState(false);
   const [enemyFlicker, setEnemyFlicker] = useState(false);
@@ -36,45 +44,45 @@ const Battle = ({}) => {
   const [healingPotions, setHealingPotions] = useState(2);
   const [specialMoves, setSpecialMoves] = useState(1);
   const [specialMovesUsed, setSpecialMovesUsed] = useState(false);
-  const selectedClass = "rogue";
+  const selectedClass = 'rogue';
 
   const containerStyle = {
     background: `url(${battlebackground})`,
-    backgroundSize: "cover",
-    width: "100%",
-    height: "100vh",
-    position: "relative",
+    backgroundSize: 'cover',
+    width: '100%',
+    height: '100vh',
+    position: 'relative',
   };
 
   const overlayPlayer = {
-    width: "200px",
-    height: "200px",
-    position: "absolute",
-    bottom: "30px",
-    left: "150px",
-    backgroundSize: "cover",
+    width: '200px',
+    height: '200px',
+    position: 'absolute',
+    bottom: '30px',
+    left: '150px',
+    backgroundSize: 'cover',
   };
 
-  if (charStats.charClass === "mage") {
+  if (charStats.charClass === 'mage') {
     overlayPlayer.backgroundImage = `url(${mageGirl})`;
-  } else if (charStats.charClass === "barb") {
+  } else if (charStats.charClass === 'barb') {
     overlayPlayer.backgroundImage = `url(${barbGirl})`;
-  } else if (charStats.charClass === "rogue") {
+  } else if (charStats.charClass === 'rogue') {
     overlayPlayer.backgroundImage = `url(${rogueGirl})`;
   } else {
     overlayPlayer.backgroundImage = `url(${playerImage})`;
   }
 
   const overlayEnemy = {
-    width: "200px",
-    height: "200px",
-    position: "absolute",
-    bottom: "30px",
-    right: "150px",
-    backgroundSize: "cover",
+    width: '200px',
+    height: '200px',
+    position: 'absolute',
+    bottom: '30px',
+    right: '150px',
+    backgroundSize: 'cover',
   };
 
-  if (currentNPC === "troll") {
+  if (currentNPC === 'troll') {
     overlayEnemy.backgroundImage = `url(${redTroll})`;
   } else {
     overlayEnemy.backgroundImage = `url(${enemyImage})`;
@@ -94,10 +102,10 @@ const Battle = ({}) => {
 
     if (isPlayerTurn && !someoneDied) {
       switch (action) {
-        case "smack":
+        case 'smack':
           handlePlayerSmackOpponent();
           break;
-        case "chill":
+        case 'chill':
           handleChill();
           break;
         default:
@@ -130,8 +138,8 @@ const Battle = ({}) => {
   }, [isPlayerTurn]);
 
   const handleHealthChange = (newValue, source) => {
-    const sign = source === "chill" ? "+" : "-";
-    const textColor = source === "chill" ? "#35c743" : "#bc1f07";
+    const sign = source === 'chill' ? '+' : '-';
+    const textColor = source === 'chill' ? '#35c743' : '#bc1f07';
 
     setHealthIndicatorMessage(
       `Health: ${sign}${Math.abs(newValue - playerHealth)}`
@@ -139,10 +147,10 @@ const Battle = ({}) => {
     setShowHealthIndicator(true);
     setIndicatorColor(textColor);
 
-    setIsChillSource(source === "chill");
+    setIsChillSource(source === 'chill');
 
     // If the source is "smack," set the player flicker state to true
-    if (source === "smack") {
+    if (source === 'smack') {
       setPlayerFlicker(true);
     }
 
@@ -152,7 +160,7 @@ const Battle = ({}) => {
       setIsChillSource(false);
 
       // If the source is "smack," set the player flicker state back to false
-      if (source === "smack") {
+      if (source === 'smack') {
         setPlayerFlicker(false);
       }
     }, 1700);
@@ -161,7 +169,7 @@ const Battle = ({}) => {
   };
 
   const handleEnemyHealthChange = (newValue, source) => {
-    const sign = source === "smack" ? "-" : "+";
+    const sign = source === 'smack' ? '-' : '+';
     setEnemyHealthIndicatorMessage(
       `Health: ${sign}${Math.abs(newValue - opponentHealth)}`
     );
@@ -184,7 +192,7 @@ const Battle = ({}) => {
     if (opponentHealth > 0) {
       const damageToOpponent = rollD10() + 3;
 
-      handleEnemyHealthChange(opponentHealth - damageToOpponent, "smack");
+      handleEnemyHealthChange(opponentHealth - damageToOpponent, 'smack');
       if (opponentHealth - damageToOpponent <= 0) {
         setSomeoneDied(true);
       }
@@ -209,7 +217,7 @@ const Battle = ({}) => {
       setTimeout(() => {
         setIsPaused(false);
         if (!someoneDied) {
-          handleHealthChange(newPlayerHealth, "smack");
+          handleHealthChange(newPlayerHealth, 'smack');
         }
       }, 1700);
 
@@ -229,7 +237,7 @@ const Battle = ({}) => {
         charStats.health
       );
 
-      handleHealthChange(newPlayerHealth, "chill");
+      handleHealthChange(newPlayerHealth, 'chill');
 
       // Decrease the number of available potions
       setHealingPotions(healingPotions - 1);
@@ -243,7 +251,7 @@ const Battle = ({}) => {
 
     if (playerHealth > 0) {
       const damageToOpponent = (rollD10() + 3) * 2; // lets go!
-      handleEnemyHealthChange(opponentHealth - damageToOpponent, "smack");
+      handleEnemyHealthChange(opponentHealth - damageToOpponent, 'smack');
       if (opponentHealth - damageToOpponent <= 0) {
         setSomeoneDied(true);
       }
@@ -271,14 +279,14 @@ const Battle = ({}) => {
           animationSpeed: 200,
           alive: false,
           triggered: false,
-          message: "RAWR",
-          name: "troll",
+          message: 'RAWR',
+          name: 'troll',
         },
       ]);
-      console.log(npcs);
-      setScene("ending");
+      // console.log(npcs);
+      setScene('ending');
     } else {
-      setScene("overworld");
+      setScene('overworld');
     }
   };
 
@@ -304,141 +312,146 @@ const Battle = ({}) => {
     // Reset health indicators and related states
     setHealingPotions(2);
     setShowHealthIndicator(false);
-    setHealthIndicatorMessage("");
+    setHealthIndicatorMessage('');
     setShowEnemyHealthIndicator(false);
-    setEnemyHealthIndicatorMessage("");
+    setEnemyHealthIndicatorMessage('');
     setSpecialMovesUsed(false);
   };
 
   return (
     <div className="battle-container" style={containerStyle}>
-      {someoneDied && (
-        <div className="someone-died-box">
-          {playerHealth <= 0 ? "YOU DIED!" : "YOU WIN!"}
-          <button className="you-died-buttons" onClick={handleContinue}>
-            Continue
-          </button>
-          <button className="you-died-buttons" onClick={handleTryAgain}>
-            Try Again
-          </button>
-        </div>
-      )}
-      <h1
-        className="battle-intro-text"
-        style={{
-          textShadow: "2px 2px 2px black",
-        }}
-      >
-        {charStats.name} vs {opponentStats.name}
-      </h1>
-      <div
-        className={`overlay ${
-          isChillSource
-            ? "chill-animation"
-            : playerFlicker
-            ? "flicker-animation"
-            : ""
-        }`}
-        style={overlayPlayer}
-      ></div>
-      {!someoneDied && (
-        <div
-          className="button-box"
-          style={{ display: isPlayerTurn || !isLocked ? "flex" : "none" }}
-        >
-          <button
-            ref={smackButtonRef}
-            className="fight-button"
-            onClick={() => handlePlayerMove("smack")}
-            disabled={!isPlayerTurn}
+      {menu && <Menu />}
+      {menu ? null : (
+        <>
+          {someoneDied && (
+            <div className="someone-died-box">
+              {playerHealth <= 0 ? 'YOU DIED!' : 'YOU WIN!'}
+              <button className="you-died-buttons" onClick={handleContinue}>
+                Continue
+              </button>
+              <button className="you-died-buttons" onClick={handleTryAgain}>
+                Try Again
+              </button>
+            </div>
+          )}
+          <h1
+            className="battle-intro-text"
+            style={{
+              textShadow: '2px 2px 2px black',
+            }}
           >
-            <p className="fight-text">
-              {charStats.charClass === "barb"
-                ? "Swing Axe!"
-                : charStats.charClass === "mage"
-                ? "Swing Staff!"
-                : charStats.charClass === "rogue"
-                ? "Loose an Arrow!"
-                : "Attack"}
-            </p>
-          </button>
-          <button
-            ref={chillButtonRef}
-            className="chill-button"
-            onClick={() => handlePlayerMove("chill")}
-            disabled={!isPlayerTurn || healingPotions === 0}
+            {charStats.name} vs {opponentStats.name}
+          </h1>
+          <div
+            className={`overlay ${
+              isChillSource
+                ? 'chill-animation'
+                : playerFlicker
+                ? 'flicker-animation'
+                : ''
+            }`}
+            style={overlayPlayer}
+          ></div>
+          {!someoneDied && (
+            <div
+              className="button-box"
+              style={{ display: isPlayerTurn || !isLocked ? 'flex' : 'none' }}
+            >
+              <button
+                ref={smackButtonRef}
+                className="fight-button"
+                onClick={() => handlePlayerMove('smack')}
+                disabled={!isPlayerTurn}
+              >
+                <p className="fight-text">
+                  {charStats.charClass === 'barb'
+                    ? 'Swing Axe!'
+                    : charStats.charClass === 'mage'
+                    ? 'Swing Staff!'
+                    : charStats.charClass === 'rogue'
+                    ? 'Loose an Arrow!'
+                    : 'Attack'}
+                </p>
+              </button>
+              <button
+                ref={chillButtonRef}
+                className="chill-button"
+                onClick={() => handlePlayerMove('chill')}
+                disabled={!isPlayerTurn || healingPotions === 0}
+              >
+                <p className="chill-text">Potion ({healingPotions})</p>
+              </button>
+              <button
+                className="special-move-button"
+                onClick={handleSpecialMoves}
+                disabled={specialMovesUsed || isLocked}
+              >
+                <p className="special-text">
+                  {charStats.charClass === 'barb'
+                    ? 'RAGE'
+                    : charStats.charClass === 'mage'
+                    ? 'FIREBALL'
+                    : charStats.charClass === 'rogue'
+                    ? 'SNEAK ATTACK'
+                    : 'Special Move'}{' '}
+                  {specialMovesUsed ? '(0)' : '(1)'}
+                </p>
+              </button>
+            </div>
+          )}
+          <div
+            className={`overlay ${enemyFlicker ? 'flicker-animation' : ''}`}
+            style={overlayEnemy}
+          ></div>
+          {showEnemyHealthIndicator && (
+            <div className="enemy-health-change-indicator">
+              <span style={{ color: indicatorColor }}>
+                {enemyHealthIndicatorMessage}
+              </span>
+            </div>
+          )}
+          <div
+            className="battle-options"
+            style={{
+              position: 'absolute',
+              bottom: '200px',
+              textAlign: 'center',
+              display: 'flex',
+              width: '100%',
+              justifyContent: 'center',
+            }}
           >
-            <p className="chill-text">Potion ({healingPotions})</p>
-          </button>
-          <button
-            className="special-move-button"
-            onClick={handleSpecialMoves}
-            disabled={specialMovesUsed || isLocked}
-          >
-            <p className="special-text">
-              {charStats.charClass === "barb"
-                ? "RAGE"
-                : charStats.charClass === "mage"
-                ? "FIREBALL"
-                : charStats.charClass === "rogue"
-                ? "SNEAK ATTACK"
-                : "Special Move"}{" "}
-              {specialMovesUsed ? "(0)" : "(1)"}
-            </p>
-          </button>
-        </div>
-      )}
-      <div
-        className={`overlay ${enemyFlicker ? "flicker-animation" : ""}`}
-        style={overlayEnemy}
-      ></div>
-      {showEnemyHealthIndicator && (
-        <div className="enemy-health-change-indicator">
-          <span style={{ color: indicatorColor }}>
-            {enemyHealthIndicatorMessage}
-          </span>
-        </div>
-      )}
-      <div
-        className="battle-options"
-        style={{
-          position: "absolute",
-          bottom: "200px",
-          textAlign: "center",
-          display: "flex",
-          width: "100%",
-          justifyContent: "center",
-        }}
-      >
-        <div className="player-container">
-          <div className="summary">
-            <PlayerSummary
-              main
-              value={playerHealth}
-              maxValue={charStats.health}
-              name={charStats.name}
-              level={charStats.level}
-              onSmackClick={handleOpponentMove}
-            />
+            <div className="player-container">
+              <div className="summary">
+                <PlayerSummary
+                  main
+                  value={playerHealth}
+                  maxValue={charStats.health}
+                  name={charStats.name}
+                  level={charStats.level}
+                  onSmackClick={handleOpponentMove}
+                />
+              </div>
+            </div>
+            <div className="enemy-container">
+              <div className="summary">
+                <PlayerSummary
+                  value={opponentHealth}
+                  maxValue={opponentStats.maxHealth}
+                  name={opponentStats.name}
+                  level={opponentStats.level}
+                />
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="enemy-container">
-          <div className="summary">
-            <PlayerSummary
-              value={opponentHealth}
-              maxValue={opponentStats.maxHealth}
-              name={opponentStats.name}
-              level={opponentStats.level}
-            />
-          </div>
-        </div>
-      </div>
-      {showHealthIndicator && (
-        <div className="health-change-indicator">
-          <span style={{ color: indicatorColor }}>
-            {healthIndicatorMessage}
-          </span>
-        </div>
+          {showHealthIndicator && (
+            <div className="health-change-indicator">
+              <span style={{ color: indicatorColor }}>
+                {healthIndicatorMessage}
+              </span>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

@@ -1,42 +1,51 @@
-import React, { useContext, useState } from "react";
-import Nav from "components/Nav";
-import Overworld from "./Overworld";
-import Dialogue from "./Dialogue";
-import Create_Char from "./Create_Char";
-import GameContext from "./GameContext";
-import Battle from "./Battle";
-import Cut_Scene from "./Cut_Scene";
+import React, { useState } from 'react';
+import useLocalStorageState from 'use-local-storage-state';
+import SFX from 'components/SFX';
+import Menu_Icon from 'components/menu/Menu_Icon';
+import Vol_Icon from 'components/menu/Vol_Icon';
+import Overworld from 'components/Overworld';
+import Dialogue from 'components/Dialogue';
+import Create_Char from 'components/Create_Char';
+import GameContext from 'components/GameContext';
+import Battle from 'components/Battle';
+import Cut_Scene from 'components/Cut_Scene';
 
 const Game = () => {
-  const [scene, setScene] = useState("overworld");
-  const [currentMap, setCurrentMap] = useState("startHouse");
+  const [scene, setScene] = useState('intro');
+  const [currentMap, setCurrentMap] = useState('startHouse');
 
-  const [currentNPC, setCurrentNPC] = useState("");
+  const [currentNPC, setCurrentNPC] = useState('');
   const [charStats, setCharStats] = useState({
-    name: "",
-    charClass: "",
-    health: 30,
-    strength: 6,
-    str_mod: -2,
-    wisdom: 14,
-    wis_mod: 2,
-    dexterity: 10,
-    dex_mod: 0,
+    name: '',
+    charClass: '',
+    health: null,
+    strength: null,
+    str_mod: null,
+    wisdom: null,
+    wis_mod: null,
+    dexterity: null,
+    dex_mod: null,
   });
 
-  const [typeOfCheck, setTypeOfCheck] = useState("wis");
-  const [outcome, setOutcome] = useState("");
+  const [typeOfCheck, setTypeOfCheck] = useState('wis');
+  const [outcome, setOutcome] = useState('');
   const [makeCheck, setMakeCheck] = useState(false);
 
   const [gameWindow, setGameWindow] = useState({
-    height: "720px",
-    width: "1280px",
+    height: '720px',
+    width: '1280px',
   });
 
-  const [checkpoint1, setCheckpoint1] = useState(false);
-  const [checkpoint2, setCheckpoint2] = useState(false);
-  const [checkpoint3, setCheckpoint3] = useState(false);
-  const [checkpoint4, setCheckpoint4] = useState(false);
+  const [isMoving, setIsMoving] = useState(false);
+  const [isSpacePressed, setIsSpacePressed] = useState(false);
+  const [isFPressed, setIsFPressed] = useState(false);
+
+  const [checkpoints, setCheckpoints] = useState({
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+  });
 
   const [toolTips, setToolTips] = useState({
     1: false,
@@ -44,51 +53,56 @@ const Game = () => {
     3: false,
   });
 
+  const [menu, setMenu] = useState(false);
+
+  const [mute, setMute] = useLocalStorageState('mute', true);
+  const [music, setMusic] = useState('');
+
   const [npcs, setNpcs] = useState([
     {
       id: 1,
-      name: "wiseman",
+      name: 'wiseman',
       steps: 4,
       animationSpeed: 800,
       alive: true,
       triggered: false,
-      message: "Greetings",
+      message: 'Greetings',
     },
     {
       id: 2,
-      name: "steve",
+      name: 'steve',
       steps: 4,
       animationSpeed: 400,
       alive: true,
       triggered: false,
-      message: "Crikey!",
+      message: 'Crikey!',
     },
     {
       id: 3,
-      name: "villageLeader",
+      name: 'villageLeader',
       steps: 4,
       animationSpeed: 200,
       alive: true,
       triggered: false,
-      message: "Hello There!",
+      message: 'Hello There!',
     },
     {
       id: 4,
-      name: "blacksmith",
+      name: 'blacksmith',
       steps: 4,
       animationSpeed: 200,
       alive: true,
       triggered: false,
-      message: "Greetings",
+      message: 'Greetings',
     },
     {
       id: 5,
-      name: "troll",
+      name: 'troll',
       steps: 4,
       animationSpeed: 200,
       alive: true,
       triggered: false,
-      message: "RAWR",
+      message: 'RAWR',
     },
   ]);
 
@@ -112,16 +126,22 @@ const Game = () => {
           setCurrentMap,
           npcs,
           setNpcs,
-          checkpoint1,
-          setCheckpoint1,
-          checkpoint2,
-          setCheckpoint2,
-          checkpoint3,
-          setCheckpoint3,
-          checkpoint4,
-          setCheckpoint4,
+          checkpoints,
+          setCheckpoints,
           toolTips,
           setToolTips,
+          menu,
+          setMenu,
+          mute,
+          setMute,
+          music,
+          setMusic,
+          isMoving,
+          setIsMoving,
+          isSpacePressed,
+          setIsSpacePressed,
+          isFPressed,
+          setIsFPressed,
         }}
       >
         <div className="content">
@@ -132,14 +152,19 @@ const Game = () => {
               width: gameWindow.width,
             }}
           >
-            {scene === "intro" && <Cut_Scene sceneSelection={0} />}
-            {scene === "ending" && <Cut_Scene sceneSelection={1} />}
-            {scene === "overworld" && <Overworld />}
-            {scene === "characterCreation" && (
+            {!mute && <SFX />}
+            {!menu && scene !== 'dialogue' && scene !== 'intro' && (
+              <Menu_Icon />
+            )}
+            {!menu && <Vol_Icon />}
+            {scene === 'intro' && <Cut_Scene sceneSelection={0} />}
+            {scene === 'ending' && <Cut_Scene sceneSelection={1} />}
+            {scene === 'overworld' && <Overworld />}
+            {scene === 'characterCreation' && (
               <Create_Char charStats={charStats} setCharStats={setCharStats} />
             )}
-            {scene === "dialogue" && <Dialogue />}
-            {scene === "battle" && <Battle />}
+            {scene === 'dialogue' && <Dialogue />}
+            {scene === 'battle' && <Battle />}
           </div>
         </div>
       </GameContext.Provider>

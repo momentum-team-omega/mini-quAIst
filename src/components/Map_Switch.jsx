@@ -1,9 +1,6 @@
 import { useEffect, useContext } from 'react';
-import village1 from 'assets/map-assets/village1-map-sheet.png';
-import village1Fore from 'assets/map-assets/village1-fore.png';
 import trollMap from 'assets/map-assets/troll-map-sheet.png';
 import trollMapFore from 'assets/map-assets/Troll-Map-Fore.png';
-import testMap from 'assets/map-assets/TestMap-sheet.png';
 import startMap from 'assets/map-assets/startMap-sheet.png';
 import startMapFore from 'assets/map-assets/startMap-fore.png';
 import startHouse from 'assets/map-assets/startHouse-sheet.png';
@@ -30,22 +27,15 @@ const Map_Switch = ({
   setGates,
   setTileSize,
   setMapOffset,
-  setIsFPressed,
   hasMapSwitched,
   setMapNpcs,
 }) => {
   const storedMapPosition = localStorage.getItem('mapPosition');
-  const {
-    currentMap,
-    checkpoint1,
-    checkpoint2,
-    checkpoint3,
-    setCurrentNPC,
-    npcs,
-  } = useContext(GameContext);
+  const { currentMap, checkpoints, setCurrentNPC, npcs, setIsFPressed } =
+    useContext(GameContext);
 
   useEffect(() => {
-    if (!mapImage || currentMap === 'startHouse') {
+    if (currentMap === 'startHouse') {
       setMapImage(startHouse);
       setForeImage();
       setTileSize(64);
@@ -126,11 +116,7 @@ const Map_Switch = ({
           id: 2,
           x: 19,
           y: 8,
-          map: checkpoint1 ? 'enchantedForest' : 'enchantedForestLocked',
-          // destPX: -256,
-          // destPY: -59.5,
-          // destX: 5,
-          // destY: 9,
+          map: checkpoints[1] ? 'enchantedForest' : 'enchantedForestLocked',
           destPX: -553.5,
           destPY: 1835.5,
           destX: 0,
@@ -141,62 +127,22 @@ const Map_Switch = ({
           x: 19,
           y: 9,
 
-          map: checkpoint1 ? 'enchantedForest' : 'enchantedForestLocked',
+          map: checkpoints[1] ? 'enchantedForest' : 'enchantedForestLocked',
           destPX: -553.5,
           destPY: 1835.5,
           destX: 0,
           destY: 0,
-
-          // destPX: -553.5,
-          // destPY: 1835.5,
-          // destX: 1,
-          // destY: 34,
         },
         {
           id: 4,
           x: 19,
           y: 10,
 
-          map: checkpoint1 ? 'enchantedForest' : 'enchantedForestLocked',
+          map: checkpoints[1] ? 'enchantedForest' : 'enchantedForestLocked',
           destPX: -553.5,
           destPY: 1835.5,
           destX: 0,
           destY: 0,
-
-          // destPX: -553.5,
-          // destPY: 1835.5,
-          // destX: 1,
-          // destY: 34,
-        },
-      ]);
-    }
-    if (currentMap === 'village1') {
-      setMapImage(village1);
-      setForeImage(village1Fore);
-      setTileSize(64);
-      setMapColumns(40);
-      setMapRows(30);
-      setMapOffset({ x: 9.5, y: 6 });
-      if (!hasMapSwitched) {
-        setMapPosition({
-          x: 953,
-          y: 376.5,
-        });
-        setCharPosition({ x: 24, y: 11 });
-      }
-      setIsFPressed(false);
-      setMapNpcs([]);
-      setCurrentNPC('');
-      setGates([
-        {
-          id: 1,
-          x: 0,
-          y: 10,
-          map: 'bridgeRight',
-          destPX: -252,
-          destPY: -112,
-          destX: 8,
-          destY: 5,
         },
       ]);
     } else if (currentMap === 'trollMap') {
@@ -231,11 +177,10 @@ const Map_Switch = ({
           id: 1,
           x: 0,
           y: 3,
-
           map:
-            checkpoint2 && !checkpoint3
+            checkpoints[2] && !checkpoints[3]
               ? 'village2Locked2'
-              : checkpoint3
+              : checkpoints[3]
               ? 'village2'
               : 'village2Locked',
           destPX: 1840.5,
@@ -247,11 +192,10 @@ const Map_Switch = ({
           id: 2,
           x: 0,
           y: 4,
-
           map:
-            checkpoint2 && !checkpoint3
+            checkpoints[2] && !checkpoints[3]
               ? 'village2Locked2'
-              : checkpoint3
+              : checkpoints[3]
               ? 'village2'
               : 'village2Locked',
           destPX: 1840.5,
@@ -263,11 +207,10 @@ const Map_Switch = ({
           id: 3,
           x: 0,
           y: 5,
-
           map:
-            checkpoint2 && !checkpoint3
+            checkpoints[2] && !checkpoints[3]
               ? 'village2Locked2'
-              : checkpoint3
+              : checkpoints[3]
               ? 'village2'
               : 'village2Locked',
           destPX: 1840.5,
@@ -279,7 +222,6 @@ const Map_Switch = ({
           id: 4,
           x: 19,
           y: 3,
-
           map: 'start',
           destPX: -158,
           destPY: 175,
@@ -290,7 +232,6 @@ const Map_Switch = ({
           id: 5,
           x: 19,
           y: 4,
-
           map: 'start',
           destPX: -158,
           destPY: 175,
@@ -301,7 +242,6 @@ const Map_Switch = ({
           id: 6,
           x: 19,
           y: 5,
-
           map: 'start',
           destPX: -158,
           destPY: 175,
@@ -325,7 +265,7 @@ const Map_Switch = ({
             y: -134.5,
           });
         }
-        setCharPosition({ x: 5, y: 5 }); // default value
+        setCharPosition({ x: 5, y: 5 });
       }
       setIsFPressed(false);
       setMapNpcs([
@@ -384,7 +324,7 @@ const Map_Switch = ({
             y: -134.5,
           });
         }
-        setCharPosition({ x: 5, y: 5 }); // default value
+        setCharPosition({ x: 5, y: 5 });
       }
       setIsFPressed(false);
       setMapNpcs([
@@ -430,9 +370,9 @@ const Map_Switch = ({
           id: 4,
           x: 19,
           y: 33,
-          map: checkpoint2
+          map: checkpoints[2]
             ? 'village2Locked2'
-            : checkpoint3
+            : checkpoints[3]
             ? 'village2'
             : 'village2Locked',
           destPX: -543,
@@ -444,9 +384,9 @@ const Map_Switch = ({
           id: 5,
           x: 19,
           y: 34,
-          map: checkpoint2
+          map: checkpoints[2]
             ? 'village2Locked2'
-            : checkpoint3
+            : checkpoints[3]
             ? 'village2'
             : 'village2Locked',
           destPX: -543,
@@ -458,9 +398,9 @@ const Map_Switch = ({
           id: 6,
           x: 19,
           y: 35,
-          map: checkpoint2
+          map: checkpoints[2]
             ? 'village2Locked2'
-            : checkpoint3
+            : checkpoints[3]
             ? 'village2'
             : 'village2Locked',
           destPX: -543,
@@ -485,7 +425,7 @@ const Map_Switch = ({
             y: -134.5,
           });
         }
-        setCharPosition({ x: 10, y: 3 }); // default value
+        setCharPosition({ x: 10, y: 3 });
       }
       setIsFPressed(false);
       setMapNpcs([
@@ -556,7 +496,6 @@ const Map_Switch = ({
           id: 6,
           x: 39,
           y: 16,
-
           map: 'trollMap',
           destPX: -555.5,
           destPY: -82.5,
@@ -567,7 +506,6 @@ const Map_Switch = ({
           id: 7,
           x: 39,
           y: 17,
-
           map: 'trollMap',
           destPX: -555.5,
           destPY: -82.5,
@@ -578,7 +516,6 @@ const Map_Switch = ({
           id: 8,
           x: 39,
           y: 18,
-
           map: 'trollMap',
           destPX: -555.5,
           destPY: -82.5,
@@ -763,9 +700,9 @@ const Map_Switch = ({
           x: 9,
           y: 16,
           map:
-            checkpoint2 && !checkpoint3
+            checkpoints[2] && !checkpoints[3]
               ? 'village2Locked2'
-              : checkpoint3
+              : checkpoints[3]
               ? 'village2'
               : 'village2Locked',
           destPX: 634.5,
@@ -778,9 +715,9 @@ const Map_Switch = ({
           x: 10,
           y: 16,
           map:
-            checkpoint2 && !checkpoint3
+            checkpoints[2] && !checkpoints[3]
               ? 'village2Locked2'
-              : checkpoint3
+              : checkpoints[3]
               ? 'village2'
               : 'village2Locked',
           destPX: 634.5,

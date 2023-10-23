@@ -1,28 +1,24 @@
-import React, { useEffect, useState, useContext } from "react";
-import GameContext from "./GameContext";
-import "/src/styles/TwentySidedDie.css";
+import React, { useEffect, useState, useContext } from 'react';
+import GameContext from './GameContext';
+import '/src/styles/TwentySidedDie.css';
 
-const TwentySidedDie = ({ typeOfCheck, charStats, onRollComplete }) => {
+const TwentySidedDie = ({ typeOfCheck, onRollComplete }) => {
   // variable, declaration and assigment
   const [diceRoll, setDiceRoll] = useState(null);
   const [hasRolled, setHasRolled] = useState(false);
-
-  const {
-    // charStats,
-    setOutcome,
-    outcome,
-    setMakeCheck,
-  } = useContext(GameContext);
-
   // useState pulls an array with 2 things from it. State variable & updater function
   // null value being passed thru is a defualt value for dice roll
+
+  const { charStats, setOutcome, outcome, setMakeCheck } =
+    useContext(GameContext);
+
   const difficultyScore = 11;
 
   useEffect(() => {
     const newOutcome =
       diceRoll + charStats[`${typeOfCheck}_mod`] - difficultyScore >= 0
-        ? "passed"
-        : "failed";
+        ? 'passed'
+        : 'failed';
     setOutcome(newOutcome);
   }, [diceRoll, typeOfCheck, difficultyScore]);
 
@@ -46,12 +42,12 @@ const TwentySidedDie = ({ typeOfCheck, charStats, onRollComplete }) => {
     <div
       className="dice-container"
       style={{
-        textAlign: "center",
-        marginTop: "175px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
+        textAlign: 'center',
+        marginTop: '175px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
       }}
     >
       {/* <h1>Ability Check</h1> */}
@@ -66,14 +62,14 @@ const TwentySidedDie = ({ typeOfCheck, charStats, onRollComplete }) => {
       <div
         className="twenty-sided-die"
         style={{
-          width: "100px",
-          height: "100px",
-          border: "2px solid #000000",
-          borderRadius: "10px",
-          cursor: "pointer",
-          transition: "transform 0.5s ease-in-out",
-          backgroundColor: "white",
-          color: "black",
+          width: '100px',
+          height: '100px',
+          border: '2px solid #000000',
+          borderRadius: '10px',
+          cursor: 'pointer',
+          transition: 'transform 0.5s ease-in-out',
+          backgroundColor: 'white',
+          color: 'black',
         }}
         onClick={rollDie}
       >
