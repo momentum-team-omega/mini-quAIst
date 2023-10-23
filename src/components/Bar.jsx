@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
 
 export const Bar = ({ label, value, maxValue, main }) => {
-  const red = '#821200';
-  const blue = '#1953cb';
+  const red = "#821200";
+  const blue = "#1953cb";
+
+  const normalizedValue = Math.max(value, 0);
 
   const valueStyle = {
-    width: `${(value / maxValue) * 100}%`,
+    width: `${(normalizedValue / maxValue) * 100}%`,
     backgroundColor: main ? (value < 15 ? red : blue) : red,
   };
 
