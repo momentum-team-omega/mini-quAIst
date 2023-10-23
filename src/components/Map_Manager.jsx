@@ -24,14 +24,20 @@ const Map_Manager = ({
   tileSize,
   mapColumns,
   gates,
-  isFPressed,
   setHasMapSwitched,
   mapNpcs,
   setMapNpcs,
 }) => {
+  const {
+    setScene,
+    setCurrentNPC,
+    currentMap,
+    setCurrentMap,
+    npcs,
+    setNpcs,
+    isFPressed,
+  } = useContext(GameContext);
   const [collisions, setCollisions] = useState(startCollisions);
-  const { setScene, setCurrentNPC, currentMap, setCurrentMap, npcs, setNpcs } =
-    useContext(GameContext);
 
   // console.log('manager collisions: ', collisions);
 
@@ -48,13 +54,7 @@ const Map_Manager = ({
   };
 
   useEffect(() => {
-    if (currentMap === 'village1') {
-      setCollisions(village1Collisions);
-    } else if (currentMap === 'trollMap') {
-      setCollisions(trollMapCollisions);
-    } else if (currentMap === 'testMap') {
-      setCollisions(testMapCollisions);
-    } else if (currentMap === 'start') {
+    if (currentMap === 'start') {
       setCollisions(startCollisions);
     } else if (currentMap === 'startHouse') {
       setCollisions(startHouseCollisions);
@@ -70,6 +70,8 @@ const Map_Manager = ({
       setCollisions(village2Locked2Collisions);
     } else if (currentMap === 'village2inside') {
       setCollisions(village2insideCollisions);
+    } else if (currentMap === 'trollMap') {
+      setCollisions(trollMapCollisions);
     }
   }, [currentMap]);
 
@@ -81,9 +83,6 @@ const Map_Manager = ({
 
     return tempCollisionMap;
   }, [collisions, mapColumns]);
-
-  // console.log('collisions: ', collisions);
-  // console.log('collisionMap: ', collisionMap);
 
   const isNearNPC = (charX, charY, npcX, npcY) => {
     return Math.abs(charX - npcX) <= 1 && Math.abs(charY - npcY) <= 1;
@@ -108,7 +107,6 @@ const Map_Manager = ({
           gateY
         )
       ) {
-        // console.log(`Character is near Gate with ID: ${gate.id}`);
         isNearAnyGate = true;
       }
     });

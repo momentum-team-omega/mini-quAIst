@@ -42,11 +42,25 @@ add dialogue box above NPC head and test triggering dialogue ✅
 make npc that the character is next to also highlighted (no border so doesn't work on NPCs that fill their entire tile such as the chest) ✅
 figure out how to trigger an inteaction ✅
 NPCs continue to animate between map changes ✅
+Refactored NPCs to be unique ✅
+Added SFX component✅
+  -added footstep audio
+  -added map-specific background audio
+added in-game menu with option to quit game✅
+  -added in overworld and battle
+added in-game compass with highlighted current facing direction✅
+added tooltips to appear at the beginning to prompt user on controls ✅
+added map animations ✅
+added unique NPC assets ✅
+buttons for main menu and volume in top right of game screen ✅
+
 
 
 
 
 To-Do Now: 🚨
+
+map audio doesn't mute when mute is hit, waits till song is done playing
 
 
 conditionally render NPCs based on their 'alive' value
@@ -62,7 +76,6 @@ make only the gate the character is next to highlighted (currently they all get 
 collision detection version 2.0 
   -add player-zone ✅ figure out running bug
 
-buttons for main menu and inventory in top right of game screen
 
 
 
@@ -71,14 +84,9 @@ buttons for main menu and inventory in top right of game screen
 
 To-Do Later: 🤷‍♂️
 
-add tooltips to beginning of game for what the controls are
-
 dialogue response loading indicator
 
 include charStats in the dialogue prompts 
-
-music for different maps/components, footstep audio 
-  - could maybe trigger footsetp audio in the character animation useEffect, then when the iteration speeds up the sound effect will speed up too 
 
 
 intro cutscene with stable diffusion images
@@ -98,9 +106,11 @@ add tool tips for early game 'to move, do this'
 
 Considerations 🧠
 
-alternate collision data for when NPC is not 'alive' 
+dialogue component takes a very long time sometimes to populate results
+  -long pause after 'well I better get going', etc.
+NPCs often repeat their first dialogue 
 
-similar to how we animate the character, we could have 4 different maps with static animations that get switched between 
+alternate collision data for when NPC is not 'alive' 
 
 maybe add stamina meter for sprint etc ?
 

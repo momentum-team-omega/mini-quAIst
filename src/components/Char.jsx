@@ -21,10 +21,10 @@ import barbRight from 'assets/char-assets/barbRight.png';
 import { useState, useEffect, useContext } from 'react';
 import GameContext from './GameContext';
 
-const Char = ({ tileSize, direction, isMoving, isSpacePressed }) => {
-  const [frame, setFrame] = useState(1);
+const Char = ({ tileSize, direction }) => {
+  const { charStats, isMoving, isSpacePressed } = useContext(GameContext);
 
-  const { charStats } = useContext(GameContext);
+  const [frame, setFrame] = useState(1);
 
   const DEFAULT_ANIMATION_SPEED = 80;
   const RUN_ANIMATION_SPEED = 40;

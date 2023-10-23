@@ -1,22 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import GameContext from './GameContext';
 
 const Char_Move = ({
   setPosition,
   setDirection,
   tileSize,
-  charPosition,
   setCharPosition,
   allowedMovements,
-  isMoving,
-  setIsMoving,
-  isSpacePressed,
-  setIsSpacePressed,
   mapOffset,
-  isFPressed,
-  setIsFPressed,
-  menu,
-  setMenu,
 }) => {
+  const {
+    menu,
+    setMenu,
+    isMoving,
+    setIsMoving,
+    isSpacePressed,
+    setIsSpacePressed,
+    setIsFPressed,
+  } = useContext(GameContext);
+
   const [keys, setKeys] = useState({
     w: { pressed: false },
     a: { pressed: false },
@@ -85,8 +87,8 @@ const Char_Move = ({
             JSON.stringify(gridToPixelPosition(gridPos))
           );
 
-          console.log(`X: ${newX}, Y: ${newY}`);
-          console.log('gridPos: ', gridPos);
+          // console.log(`X: ${newX}, Y: ${newY}`);
+          // console.log('gridPos: ', gridPos);
 
           return { x: newX, y: newY };
         });

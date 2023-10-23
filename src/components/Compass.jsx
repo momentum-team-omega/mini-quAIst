@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import compass from 'assets/compass-assets/compass.png';
 import compassUpRed from 'assets/compass-assets/compass-up-red.png';
 import compassRightRed from 'assets/compass-assets/compass-right-red.png';
@@ -8,9 +8,12 @@ import compassUpBlue from 'assets/compass-assets/compass-up-blue.png';
 import compassRightBlue from 'assets/compass-assets/compass-right-blue.png';
 import compassDownBlue from 'assets/compass-assets/compass-down-blue.png';
 import compassLeftBlue from 'assets/compass-assets/compass-left-blue.png';
+import GameContext from './GameContext';
 import '/src/styles/Compass.css';
 
-const Compass = ({ isMoving, direction, isSpacePressed }) => {
+const Compass = ({ direction }) => {
+  const { isMoving, isSpacePressed } = useContext(GameContext);
+
   let src;
 
   if (!isMoving) {

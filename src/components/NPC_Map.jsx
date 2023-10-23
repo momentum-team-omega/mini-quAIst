@@ -33,8 +33,6 @@ const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows, mapNpcs }) => {
     [mapNpcs, mapColumns]
   );
 
-  // console.log(npcMap);
-
   let NPC_IMAGES;
   let xOffset;
   let yOffset;
@@ -94,13 +92,9 @@ const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows, mapNpcs }) => {
     yOffset = 0 * tileSize;
   }
 
-  // console.log(npcs);
-
   const getNPCById = (npcs, npcId) => {
     return npcs.find((npc) => npc.id === npcId);
   };
-
-  console.log('npcMap: ', npcMap);
 
   return (
     <div

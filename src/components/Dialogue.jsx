@@ -1,16 +1,16 @@
-import { useContext, useState, useEffect } from "react";
-import { npcDialogues } from "../utilities/npcDialogues";
-import TwentySidedDie from "./TwentySidedDie";
-import GameContext from "./GameContext";
-import "/src/styles/Dialogue.css";
-import axios from "axios";
-import { TypeAnimation } from "react-type-animation";
+import { useContext, useState, useEffect } from 'react';
+import { npcDialogues } from '../utilities/npcDialogues';
+import TwentySidedDie from './TwentySidedDie';
+import GameContext from './GameContext';
+import '/src/styles/Dialogue.css';
+import axios from 'axios';
+import { TypeAnimation } from 'react-type-animation';
 
-import wisemanImage from "/src/assets/dialogue-assets/wiseman.png";
-import blacksmithImage from "/src/assets/dialogue-assets/blacksmith.png";
-import steveImage from "/src/assets/dialogue-assets/steve.png";
-import trollImage from "/src/assets/dialogue-assets/troll.png";
-import villageLeaderImage from "/src/assets/dialogue-assets/villageLeader.png";
+import wisemanImage from '/src/assets/dialogue-assets/wiseman.png';
+import blacksmithImage from '/src/assets/dialogue-assets/blacksmith.png';
+import steveImage from '/src/assets/dialogue-assets/steve.png';
+import trollImage from '/src/assets/dialogue-assets/troll.png';
+import villageLeaderImage from '/src/assets/dialogue-assets/villageLeader.png';
 
 const Dialogue = () => {
   const {
@@ -22,24 +22,9 @@ const Dialogue = () => {
     setMakeCheck,
     makeCheck,
     setCurrentMap,
-    checkpoint2,
-    setCheckpoint2,
-    checkpoint3,
-    setCheckpoint3,
-    checkpoint4,
-    setCheckpoint4,
+    checkpoints,
+    setCheckpoints,
   } = useContext(GameContext);
-
-  const [charStats, setCharStats] = useState({
-    name: '',
-    health: 50,
-    strength: 6,
-    str_mod: -2,
-    wisdom: 14,
-    wis_mod: 2,
-    dexterity: 10,
-    dex_mod: 0,
-  });
 
   const [currentDialogueId, setCurrentDialogueId] = useState('1');
   const currentOption = npcDialogues[currentNPC][currentDialogueId];
@@ -134,15 +119,15 @@ const Dialogue = () => {
         setCurrentDialogueId(optionId);
 
         if (currentNPC === 'steve') {
-          if (!checkpoint3) {
-            setCheckpoint2(true);
-            console.log('checkpoint2', checkpoint2);
+          if (!checkpoints[3]) {
+            setCheckpoints((prev) => ({ ...prev, 2: true }));
+            // console.log('checkpoint2', checkpoint2);
             setCurrentMap('village2Locked2');
           }
         } else if (currentNPC === 'villageLeader') {
-          if (!checkpoint4) {
-            setCheckpoint3(true);
-            console.log('checkpoint3', checkpoint3);
+          if (!checkpoints[4]) {
+            setCheckpoints((prev) => ({ ...prev, 3: true }));
+            // console.log('checkpoint3', checkpoint3);
           }
         }
 
@@ -217,7 +202,7 @@ const Dialogue = () => {
 
   const handleRollOutcome = (rollOutcome) => {
     if (rollOutcome === 'passed') {
-      setCheckpoint4(true);
+      setCheckpoints((prev) => ({ ...prev, 4: true }));
       setScene('ending');
     } else if (rollOutcome === 'failed') {
       setScene('battle');
@@ -232,7 +217,6 @@ const Dialogue = () => {
         <TwentySidedDie
           typeOfCheck={typeOfCheck}
           difficultyScore={currentOption?.difficultyScore}
-          charStats={charStats}
           onRollComplete={handleRollOutcome}
         />
       )}
@@ -243,10 +227,10 @@ const Dialogue = () => {
           <div
             className="npc-text"
             style={{
-              width: "1070px",
-              padding: "10px",
-              marginLeft: "10px",
-              marginRight: "10px",
+              width: '1070px',
+              padding: '10px',
+              marginLeft: '10px',
+              marginRight: '10px',
             }}
           >
             <TypeAnimation sequence={[response]} speed={60} repeat={0} />
@@ -266,7 +250,7 @@ const Dialogue = () => {
       <div className="options-wrapper">
         <div
           className="options-container"
-          style={{ display: showOptions ? "block" : "none" }}
+          style={{ display: showOptions ? 'block' : 'none' }}
         >
           {showOptions &&
             currentDialogue?.options?.map((optionId) => (

@@ -11,7 +11,7 @@ import GameContext from './GameContext';
 import '/src/styles/Create_Char.css';
 
 const SelectCharacter = ({ charStats, setCharStats }) => {
-  const { setScene, setCurrentMap, setCheckpoint1 } = useContext(GameContext);
+  const { setScene, setCurrentMap, setCheckpoints } = useContext(GameContext);
 
   const characterAttributes = {
     mage: {
@@ -76,7 +76,7 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
         dexterity: null,
         dex_mod: null,
       });
-      setCheckpoint1(false);
+      setCheckpoints((prev) => ({ ...prev, 1: false }));
     } else {
       // Set the selected character and update charStats
       setSelectedCharacter(character);
@@ -91,15 +91,15 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
         dexterity: characterAttributes[character].dexterity,
         dex_mod: characterAttributes[character].dex_mod,
       });
-      setCheckpoint1(true);
+      setCheckpoints((prev) => ({ ...prev, 1: true }));
       setCurrentMap('enchantedForest');
     }
   };
 
-  console.log(charStats);
+  // console.log(charStats);
 
   const handleConfirmClick = () => {
-    console.log(charStats);
+    // console.log(charStats);
     setScene('overworld');
   };
 
