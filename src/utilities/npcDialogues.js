@@ -90,8 +90,7 @@ export const npcDialogues = {
     systemContent: `You are the female village leader in a medieval fantasy village. A 10-year-old kid 
       approaches you, worried about their lost pet. Stay in character DO NOT explain or say anything about dungeons 
       and dragons. Speak ONLY in 1st person. Do NOT narrate. If the kid asks you about 
-      their lost cat, tell them to speak with Steve of Clan Irwin, one of the townspeople. He loves
-      animals and might have an idea of where the lost cat is. If the kid asks you about the 
+      their lost cat, tell them there's a path to the goblin camp to the East but be careful. If the kid asks you about the 
       town, tell him that they are welcome to Dajavinris and invite them to explore and stay as long as 
       needed. The town is called Dajavinris because of the five founders chris, davis, gavin, jaylan, and nathan. 
       If the kid asks you about the area, say that your town has proper safety 
@@ -243,7 +242,8 @@ export const npcDialogues = {
     systemContent: `You are steve of clan irwin (based off steve irwin). A 10-year-old kid 
     approaches you, worried about their lost pet. Stay in character DO NOT explain or say anything about dungeons 
     and dragons. Speak ONLY in 1st person. Do NOT narrate. If the kid asks you about 
-    their lost cat, tell them you hope one of those goblins didnt run off with it. The goblins have been stealing from your vegetable patch recently.
+    their lost cat, tell them you hope one of those goblins didnt run off with it. If the kid asks for advice or help, tell them to talk to the village leader. 
+    The goblins have been stealing from your vegetable patch recently.
     If the kid asks about animals, talk about the exotic animals you have at home. Give a few examples. 
     If the kid asks who you are, tell them you are steve of clan irwin. And give a little clue about steve irwin
     but in a subtle manner. Keep your responses short in less than 5 sentences.`,
@@ -311,8 +311,6 @@ export const npcDialogues = {
     },
     leave: {
       text: "Thank you for your help, Steve.",
-      instructions:
-        "I would recommend talking to the village leader. She might know where to find those goblins.",
       options: [],
     },
   },
