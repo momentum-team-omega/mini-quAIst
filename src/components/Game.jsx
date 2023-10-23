@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
-import SFX from 'components/SFX';
-import Menu_Icon from 'components/menu/Menu_Icon';
-import Vol_Icon from 'components/menu/Vol_Icon';
-import Overworld from 'components/Overworld';
-import Dialogue from 'components/Dialogue';
-import Create_Char from 'components/Create_Char';
-import GameContext from 'components/GameContext';
-import Battle from 'components/Battle';
-import Cut_Scene from 'components/Cut_Scene';
+import React, { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import SFX from "components/SFX";
+import Menu_Icon from "components/menu/Menu_Icon";
+import Vol_Icon from "components/menu/Vol_Icon";
+import Overworld from "components/Overworld";
+import Dialogue from "components/Dialogue";
+import Create_Char from "components/Create_Char";
+import GameContext from "components/GameContext";
+import Battle from "components/Battle";
+import Cut_Scene from "components/Cut_Scene";
 
 const Game = () => {
-  const [scene, setScene] = useState('intro');
-  const [currentMap, setCurrentMap] = useState('startHouse');
+  const [scene, setScene] = useState("intro");
+  const [currentMap, setCurrentMap] = useState("startHouse");
 
-  const [currentNPC, setCurrentNPC] = useState('');
+  const [currentNPC, setCurrentNPC] = useState("");
   const [charStats, setCharStats] = useState({
-    name: '',
-    charClass: '',
+    name: "",
+    charClass: "",
     health: null,
     strength: null,
     str_mod: null,
@@ -27,13 +27,13 @@ const Game = () => {
     dex_mod: null,
   });
 
-  const [typeOfCheck, setTypeOfCheck] = useState('wis');
-  const [outcome, setOutcome] = useState('');
+  const [typeOfCheck, setTypeOfCheck] = useState("wis");
+  const [outcome, setOutcome] = useState("");
   const [makeCheck, setMakeCheck] = useState(false);
 
   const [gameWindow, setGameWindow] = useState({
-    height: '720px',
-    width: '1280px',
+    height: "720px",
+    width: "1280px",
   });
 
   const [isMoving, setIsMoving] = useState(false);
@@ -55,54 +55,54 @@ const Game = () => {
 
   const [menu, setMenu] = useState(false);
 
-  const [mute, setMute] = useLocalStorageState('mute', true);
-  const [music, setMusic] = useState('');
+  const [mute, setMute] = useLocalStorageState("mute", true);
+  const [music, setMusic] = useState("");
 
   const [npcs, setNpcs] = useState([
     {
       id: 1,
-      name: 'wiseman',
+      name: "wiseman",
       steps: 4,
       animationSpeed: 800,
       alive: true,
       triggered: false,
-      message: 'Greetings',
+      message: "Greetings",
     },
     {
       id: 2,
-      name: 'steve',
+      name: "steve",
       steps: 4,
       animationSpeed: 400,
       alive: true,
       triggered: false,
-      message: 'Crikey!',
+      message: "Crikey!",
     },
     {
       id: 3,
-      name: 'villageLeader',
+      name: "villageLeader",
       steps: 4,
       animationSpeed: 200,
       alive: true,
       triggered: false,
-      message: 'Hello There!',
+      message: "Hello There!",
     },
     {
       id: 4,
-      name: 'blacksmith',
+      name: "blacksmith",
       steps: 4,
       animationSpeed: 200,
       alive: true,
       triggered: false,
-      message: 'Greetings',
+      message: "Greetings",
     },
     {
       id: 5,
-      name: 'troll',
+      name: "troll",
       steps: 4,
       animationSpeed: 200,
       alive: true,
       triggered: false,
-      message: 'RAWR',
+      message: "RAWR",
     },
   ]);
 
@@ -153,18 +153,18 @@ const Game = () => {
             }}
           >
             {!mute && <SFX />}
-            {!menu && scene !== 'dialogue' && scene !== 'intro' && (
+            {!menu && scene !== "dialogue" && scene !== "intro" && (
               <Menu_Icon />
             )}
             {!menu && <Vol_Icon />}
-            {scene === 'intro' && <Cut_Scene sceneSelection={0} />}
-            {scene === 'ending' && <Cut_Scene sceneSelection={1} />}
-            {scene === 'overworld' && <Overworld />}
-            {scene === 'characterCreation' && (
+            {scene === "intro" && <Cut_Scene sceneSelection={0} />}
+            {scene === "ending" && <Cut_Scene sceneSelection={1} />}
+            {scene === "overworld" && <Overworld />}
+            {scene === "characterCreation" && (
               <Create_Char charStats={charStats} setCharStats={setCharStats} />
             )}
-            {scene === 'dialogue' && <Dialogue />}
-            {scene === 'battle' && <Battle />}
+            {scene === "dialogue" && <Dialogue />}
+            {scene === "battle" && <Battle />}
           </div>
         </div>
       </GameContext.Provider>
