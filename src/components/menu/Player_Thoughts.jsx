@@ -20,13 +20,12 @@ const Player_Thoughts = ({ charPosition }) => {
   };
 
   useEffect(() => {
-    if (currentMap === "startHouse" && charPosition.y === 8) {
-      if (!playerThoughts["1"]) {
-        setContent("I should look for my cat outside");
-        setIsVisible(true);
-        setPlayerThoughts({ ...playerThoughts, 1: true });
-      }
-    } else if (playerThoughts["1"] === true) {
+    const isWithinRange = charPosition.y >= 8;
+
+    if (currentMap === "startHouse" && isWithinRange) {
+      setContent("I should look for my cat outside");
+      setIsVisible(true);
+    } else {
       setIsVisible(false);
       setContent("");
     }
@@ -34,64 +33,61 @@ const Player_Thoughts = ({ charPosition }) => {
 
   useEffect(() => {
     const isWithinRange =
-      charPosition.x >= 16.5 && charPosition.y >= 33 && charPosition.y <= 35;
+      charPosition.x >= 16.5 && charPosition.y >= 8 && charPosition.y <= 10;
 
-    if (currentMap === "enchantedForestLocked" && isWithinRange) {
-      console.log("enchanted forest locked");
-      if (!playerThoughts["2"]) {
-        setContent(
-          "This path looks blocked. I wonder if someone could help me get through..."
-        );
-        setIsVisible(true);
-        // setPlayerThoughts({ ...playerThoughts, 2: true });
-      }
-    } else if (playerThoughts["2"] === true) {
+    if (currentMap === "start" && isWithinRange) {
+      setContent("I think my cat went this way...");
+      setIsVisible(true);
+    } else {
       setIsVisible(false);
       setContent("");
     }
   }, [currentMap, charPosition, playerThoughts]);
 
-  //   useEffect(() => {
-  //     if (currentMap === 'start' && !isSpacePressed) {
-  //       if (!playerThoughts['2']) {
-  //         setContent('Press SPACEBAR to run');
-  //         setIsVisible(true);
-  //       }
-  //     } else if (currentMap === 'start' && isSpacePressed && !playerThoughts['2']) {
-  //       setPlayerThoughts({ ...playerThoughts, 2: true });
-  //     } else if (playerThoughts['2'] === true) {
-  //       setIsVisible(false);
-  //       setContent('');
-  //     }
-  //   }, [currentMap, charPosition, isSpacePressed, playerThoughts]);
+  useEffect(() => {
+    const isWithinRange1 =
+      charPosition.x >= 16.5 && charPosition.y >= 33 && charPosition.y <= 35;
+    const isWithinRange2 =
+      charPosition.x >= 2.5 &&
+      charPosition.x <= 4.5 &&
+      charPosition.y >= 7 &&
+      charPosition.y <= 9;
 
-  //   useEffect(() => {
-  //     const isWithinRange =
-  //       charPosition.x >= 14.5 &&
-  //       charPosition.x <= 16.5 &&
-  //       charPosition.y >= 3 &&
-  //       charPosition.y <= 5;
+    if (currentMap === "enchantedForestLocked" && isWithinRange1) {
+      setContent(
+        "This path looks blocked. I wonder if someone could help me get through..."
+      );
+      setIsVisible(true);
+    } else if (currentMap === "enchantedForestLocked" && isWithinRange2) {
+      setContent("I hear someone. Maybe I should go talk to them...");
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+      setContent("");
+    }
+  }, [currentMap, charPosition, playerThoughts]);
 
-  //     if (
-  //       currentMap === 'enchantedForestLocked' &&
-  //       isWithinRange &&
-  //       !isFPressed
-  //     ) {
-  //       if (!playerThoughts['3']) {
-  //         setContent("Press 'F' To Interact");
-  //         setIsVisible(true);
-  //       }
-  //     } else if (
-  //       currentMap === 'enchantedForestLocked' &&
-  //       isFPressed &&
-  //       !playerThoughts['3']
-  //     ) {
-  //       setPlayerThoughts({ ...playerThoughts, 3: true });
-  //     } else if (playerThoughts['3'] === true) {
-  //       setIsVisible(false);
-  //       setContent('');
-  //     }
-  //   }, [currentMap, charPosition, isFPressed, playerThoughts]);
+  useEffect(() => {
+    if (
+      currentMap === "village2Locked" &&
+      charPosition.x <= 4 &&
+      charPosition.y >= 18 &&
+      charPosition.y <= 24
+    ) {
+      if (!playerThoughts["3"]) {
+        setContent(
+          `You hear a whisper similar to the wise man's voice. "Look for a man named steve in the northwest corner of the village."`
+        );
+        setIsVisible(true);
+        //   setPlayerThoughts({ ...playerThoughts, 3: true });
+      }
+    } else if (playerThoughts["3"] === true) {
+      setIsVisible(false);
+      setContent("");
+    }
+  }, [currentMap, charPosition, playerThoughts]);
+
+  console.log("currentMap", currentMap);
 
   return (
     <>
