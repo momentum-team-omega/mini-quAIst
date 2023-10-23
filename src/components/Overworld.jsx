@@ -11,6 +11,7 @@ import Compass from 'components/Compass';
 import Menu from 'components/menu/Menu';
 import '/src/styles/Overworld.css';
 import GameContext from './GameContext';
+import Player_Thoughts from './menu/Player_Thoughts';
 
 const Overworld = ({}) => {
   const { npcs, menu } = useContext(GameContext);
@@ -96,8 +97,10 @@ const Overworld = ({}) => {
       />
       <Char tileSize={tileSize} direction={direction} />
       <Tooltip charPosition={charPosition} />
+      <Player_Thoughts charPosition={charPosition} />
       {!menu && <Compass direction={direction} />}
       {menu && <Menu />}
+
     </>
   );
 };

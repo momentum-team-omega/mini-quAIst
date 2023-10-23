@@ -11,7 +11,7 @@ import Battle from "components/Battle";
 import Cut_Scene from "components/Cut_Scene";
 
 const Game = () => {
-  const [scene, setScene] = useState("intro");
+  const [scene, setScene] = useState("overworld");
   const [currentMap, setCurrentMap] = useState("startHouse");
 
   const [currentNPC, setCurrentNPC] = useState("");
@@ -51,6 +51,9 @@ const Game = () => {
     1: false,
     2: false,
     3: false,
+  });
+  const [playerThoughts, setPlayerThoughts] = useState({
+    1: false,
   });
 
   const [menu, setMenu] = useState(false);
@@ -130,6 +133,8 @@ const Game = () => {
           setCheckpoints,
           toolTips,
           setToolTips,
+          playerThoughts,
+          setPlayerThoughts,
           menu,
           setMenu,
           mute,
