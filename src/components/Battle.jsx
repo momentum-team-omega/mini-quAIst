@@ -17,7 +17,7 @@ const Battle = ({}) => {
     setScene,
     currentNPC,
     charStats,
-    setCheckpoint4,
+    setCheckpoints,
     npcs,
     setNpcs,
     menu,
@@ -269,7 +269,7 @@ const Battle = ({}) => {
 
   const handleContinue = () => {
     if (playerHealth >= 0) {
-      setCheckpoint4(true);
+      setCheckpoints((prev) => ({ ...prev, 4: true }));
       setNpcs([
         {
           id: 1,
