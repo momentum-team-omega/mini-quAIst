@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import GameContext from "../GameContext";
+import "/src/styles/PlayerThoughts.css";
 
 const Player_Thoughts = ({ charPosition }) => {
   const {
@@ -16,7 +17,7 @@ const Player_Thoughts = ({ charPosition }) => {
   const playerThoughtsStyle = {
     top: "50%",
     left: "50%",
-    transform: "translate(-130%, -50%)",
+    transform: "translate(-110%, -170%)",
   };
 
   useEffect(() => {
@@ -69,8 +70,8 @@ const Player_Thoughts = ({ charPosition }) => {
   return (
     <>
       {isVisible && (
-        <div className="tooltip" style={playerThoughtsStyle}>
-          <p className="tooltip-text">{content}</p>
+        <div className="thought-bubble" style={playerThoughtsStyle}>
+          <p className="bubble-text">{content}</p>
         </div>
       )}
     </>
