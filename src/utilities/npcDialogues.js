@@ -325,21 +325,21 @@ export const npcDialogues = {
       options: ["str", "dex", "wis", "fight", "6"],
     },
     str: {
-      text: "[Strength Check] I'm not scared of you! Let me pass, or you'll regret it.",
+      text: " I'm not scared of you! Let me pass, or you'll regret it.",
       options: ["7", "8"],
-      check: "str",
+      check: "strength",
       difficultyScore: 12,
     },
     dex: {
-      text: "[Dexterity Check] Without warning, you make a dash to slip between the troll's legs.",
+      text: " Without warning, you make a dash to slip between the troll's legs.",
       options: ["9", "10"],
-      check: "dex",
+      check: "dexterity",
       difficultyScore: 12,
     },
     wis: {
-      text: "[Wisdom Check] If I bring a sheep as a toll in the future, will you let me cross now?",
+      text: " If I bring a sheep as a toll in the future, will you let me cross now?",
       options: ["11", "12"],
-      check: "wis",
+      check: "wisdom",
       difficultyScore: 12,
     },
     fight: {

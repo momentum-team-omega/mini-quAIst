@@ -24,6 +24,7 @@ const Dialogue = () => {
     setCurrentMap,
     checkpoints,
     setCheckpoints,
+    charStats
   } = useContext(GameContext);
 
   const [currentDialogueId, setCurrentDialogueId] = useState("1");
@@ -215,7 +216,7 @@ const Dialogue = () => {
         <div
           className="options-container"
           style={{ display: showOptions ? "block" : "none" }}
-        >
+          >
           {showOptions &&
             currentDialogue?.options?.map((optionId) => (
               <div
@@ -223,7 +224,7 @@ const Dialogue = () => {
                 className="option"
                 onClick={() => handleOptionClick(optionId)}
               >
-                {npcDialogues[currentNPC][optionId].text}
+                [{npcDialogues[currentNPC][optionId].check} check ({charStats[npcDialogues[currentNPC][optionId].check]})]{npcDialogues[currentNPC][optionId].text}
               </div>
             ))}
         </div>
