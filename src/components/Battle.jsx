@@ -56,10 +56,10 @@ const Battle = ({}) => {
   };
 
   const overlayPlayer = {
-    width: "200px",
-    height: "200px",
+    width: "150px",
+    height: "150px",
     position: "absolute",
-    bottom: "30px",
+    bottom: "25px",
     left: "150px",
     backgroundSize: "cover",
   };
