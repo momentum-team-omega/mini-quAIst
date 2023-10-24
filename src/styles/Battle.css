@@ -3,6 +3,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
 /* FIGHT! BATTLE CSS OUCH! OH! NO! BATTLE CSS ENGUARD! */
+.loss-text {
+  color: red;
+}
+
+.someone-died-box-win-text {
+  color: yellow;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  padding: 20px;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .battle-container {
   display: flex;
   flex-direction: column;
@@ -49,8 +69,9 @@
 
 .someone-died-box {
   position: absolute;
-  top: 300px;
-  left: 520px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: red;
   font-size: 36px;
   padding: 20px;

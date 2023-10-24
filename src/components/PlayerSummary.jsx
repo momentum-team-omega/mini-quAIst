@@ -1,8 +1,8 @@
-import React from 'react';
-import { Bar } from './Bar';
+import React from "react";
+import { Bar } from "./Bar";
 
-const red = '#821200';
-const blue = '#1953cb';
+const red = "rgba(255, 0, 0, 0.5)";
+const blue = "rgba(0, 0, 255, 0.5)";
 
 export const PlayerSummary = ({
   main = false,

@@ -45,6 +45,7 @@ const Battle = ({}) => {
   const [specialMoves, setSpecialMoves] = useState(1);
   const [specialMovesUsed, setSpecialMovesUsed] = useState(false);
   const selectedClass = "rogue";
+  const [gameOutcome, setGameOutcome] = useState(null);
 
   const containerStyle = {
     background: `url(${battlebackground})`,
@@ -194,6 +195,7 @@ const Battle = ({}) => {
 
       handleEnemyHealthChange(opponentHealth - damageToOpponent, "smack");
       if (opponentHealth - damageToOpponent <= 0) {
+        setGameOutcome("win");
         setSomeoneDied(true);
       }
     }
@@ -222,6 +224,7 @@ const Battle = ({}) => {
       }, 1700);
 
       if (newPlayerHealth <= 0) {
+        setGameOutcome("loss");
         setSomeoneDied(true);
       }
     }
@@ -324,8 +327,12 @@ const Battle = ({}) => {
       {menu ? null : (
         <>
           {someoneDied && (
-            <div className="someone-died-box">
-              {playerHealth <= 0 ? "YOU DIED!" : "YOU WIN!"}
+            <div
+              className={`someone-died-box-${
+                gameOutcome === "loss" ? "loss-text" : "win-text"
+              }`}
+            >
+              {gameOutcome === "loss" ? "YOU DIED!" : "YOU WIN!"}
               <button className="you-died-buttons" onClick={handleContinue}>
                 Continue
               </button>
