@@ -11,10 +11,10 @@ import Battle from "components/Battle";
 import Cut_Scene from "components/Cut_Scene";
 
 const Game = () => {
-  const [scene, setScene] = useState("dialogue");
+  const [scene, setScene] = useState("death");
   const [currentMap, setCurrentMap] = useState("startHouse");
 
-  const [currentNPC, setCurrentNPC] = useState("wiseman");
+  const [currentNPC, setCurrentNPC] = useState("");
   const [charStats, setCharStats] = useState({
     name: "",
     charClass: "",
@@ -168,6 +168,7 @@ const Game = () => {
             {!menu && <Vol_Icon />}
             {scene === "intro" && <Cut_Scene sceneSelection={0} />}
             {scene === "ending" && <Cut_Scene sceneSelection={1} />}
+            {scene === "death" && <Cut_Scene sceneSelection={2} />}
             {scene === "overworld" && <Overworld />}
             {scene === "characterCreation" && (
               <Create_Char charStats={charStats} setCharStats={setCharStats} />
