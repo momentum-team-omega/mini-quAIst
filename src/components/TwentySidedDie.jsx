@@ -73,9 +73,15 @@ const TwentySidedDie = ({ typeOfCheck, onRollComplete }) => {
         }}
         onClick={rollDie}
       >
-        {diceRoll && <div className="rolled-number">{diceRoll}</div>}
+        {diceRoll === null ? (
+          <div className="placeholder">?</div>
+        ) : (
+          <div className="rolled-number">{diceRoll}</div>
+        )}
       </div>
-      <div>{diceRoll && <div className="rolled-outcome">{outcome}</div>}</div>
+      <div>
+        {diceRoll && <div className="rolled-outcome">{outcome}</div>}
+      </div>
       <button
         className="continue-button"
         onClick={handleContinue}
@@ -85,6 +91,6 @@ const TwentySidedDie = ({ typeOfCheck, onRollComplete }) => {
       </button>
     </div>
   );
-};
+        };
 
 export default TwentySidedDie;
