@@ -10,3 +10,8 @@
   text-shadow: 1px 1px 1px black;
   margin-bottom: 10px;
 }
+
+.image-text-container {
+  width: 1000px;
+  height: 200px;
+}
