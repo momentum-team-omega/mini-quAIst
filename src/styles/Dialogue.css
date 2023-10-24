@@ -34,7 +34,7 @@
     -2px -2px 2px black, /* South-West */
     2px -2px 2px black,  /* South-East */
     -2px 2px 2px black;  /* North-West */
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   height: 160px;
 }
 
@@ -60,6 +60,18 @@
 .option:hover {
   text-decoration: underline;
   color: rgb(220, 187, 0);
+}
+
+.skeleton {
+  /* background-color: red;
+  color: aqua; */
+  display: flex;
+  margin-bottom: 150px;
+  position: absolute;
+}
+
+.skeleton-box {
+  margin-bottom: 50px;
 }
 
 
