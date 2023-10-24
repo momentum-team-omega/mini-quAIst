@@ -20,11 +20,11 @@ const Game = () => {
     charClass: "",
     health: null,
     strength: null,
-    str_mod: null,
+    str_mod: 2,
     wisdom: null,
-    wis_mod: null,
+    wis_mod: -2,
     dexterity: null,
-    dex_mod: null,
+    dex_mod: 0,
   });
 
   const [typeOfCheck, setTypeOfCheck] = useState("wis");

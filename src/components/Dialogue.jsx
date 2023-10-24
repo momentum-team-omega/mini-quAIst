@@ -12,8 +12,8 @@ import steveImage from "/src/assets/dialogue-assets/steve.png";
 import trollImage from "/src/assets/dialogue-assets/troll.png";
 import villageLeaderImage from "/src/assets/dialogue-assets/villageLeader.png";
 import Skeleton from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css';
-import { SkeletonTheme } from "react-loading-skeleton"
+import "react-loading-skeleton/dist/skeleton.css";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 const Dialogue = () => {
   const {
@@ -27,7 +27,7 @@ const Dialogue = () => {
     setCurrentMap,
     checkpoints,
     setCheckpoints,
-    charStats
+    charStats,
   } = useContext(GameContext);
 
   const [currentDialogueId, setCurrentDialogueId] = useState("1");
@@ -37,7 +37,6 @@ const Dialogue = () => {
   const [response, setResponse] = useState(
     npcDialogues[currentNPC].initialResponse
   );
-
 
   const handleShowOptions = () => {
     setShowOptions(true);
@@ -104,11 +103,14 @@ const Dialogue = () => {
 
       case "instruct":
         setLoading(false);
-        console.log('instruct optionId', optionId)
+        console.log("instruct optionId", optionId);
         setResponse(npcDialogues[currentNPC][optionId].instructions);
-        console.log('instructions', npcDialogues[currentNPC][optionId].instructions)
+        console.log(
+          "instructions",
+          npcDialogues[currentNPC][optionId].instructions
+        );
         setCurrentDialogueId(optionId);
-        console.log('optionId', optionId)
+        console.log("optionId", optionId);
 
         if (currentNPC === "steve") {
           if (!checkpoints[3]) {
@@ -170,7 +172,7 @@ const Dialogue = () => {
 
       const data = apiResponse.data;
       setLoading(false);
-      console.log(data.choices[0].message.content)
+      console.log(data.choices[0].message.content);
       return data.choices[0].message.content;
     } catch (error) {
       console.error("Error:", error);
@@ -189,6 +191,22 @@ const Dialogue = () => {
 
   const currentDialogue = npcDialogues[currentNPC][currentDialogueId];
 
+  const getModifierText = (modifierValue) => {
+    if (modifierValue > 0) {
+      return `+${modifierValue}`;
+    }
+    return `${modifierValue}`;
+  };
+
+  const renderCheckText = (optionId) => {
+    if (["str", "dex", "wis"].includes(optionId)) {
+      const checkType = npcDialogues[currentNPC][optionId].check;
+      const modifierValue = charStats[`${optionId}_mod`];
+      return `[${checkType} check (${getModifierText(modifierValue)})]`;
+    }
+    return "";
+  };
+
   const Box = ({ children }) => (
     <div
       style={{
@@ -197,7 +215,7 @@ const Dialogue = () => {
     >
       {children}
     </div>
-  )
+  );
 
   return (
     <div className="dialogue-container">
@@ -209,11 +227,11 @@ const Dialogue = () => {
         />
       )}
       {loading && (
-    <Box>
-      <SkeletonTheme color="#202020" highlightColor="#444">
-        <Skeleton count={3} height={20} width={600} />
-      </SkeletonTheme>
-    </Box>
+        <Box>
+          <SkeletonTheme color="#202020" highlightColor="#444">
+            <Skeleton count={3} height={20} width={600} />
+          </SkeletonTheme>
+        </Box>
       )}
       {!loading && (
         <div>
@@ -227,7 +245,12 @@ const Dialogue = () => {
             }}
           >
             {/* <div className="npc-text">{response}</div> */}
-            <TypeAnimation key={response} sequence={[response]} speed={60} repeat={0} />
+            <TypeAnimation
+              key={response}
+              sequence={[response]}
+              speed={60}
+              repeat={0}
+            />
           </div>
         </div>
       )}
@@ -245,7 +268,7 @@ const Dialogue = () => {
         <div
           className="options-container"
           style={{ display: showOptions ? "block" : "none" }}
-          >
+        >
           {showOptions &&
             currentDialogue?.options?.map((optionId) => (
               <div
@@ -253,7 +276,8 @@ const Dialogue = () => {
                 className="option"
                 onClick={() => handleOptionClick(optionId)}
               >
-                [{npcDialogues[currentNPC][optionId].check} check ({charStats[npcDialogues[currentNPC][optionId].check]})]{npcDialogues[currentNPC][optionId].text}
+                {renderCheckText(optionId)}
+                {npcDialogues[currentNPC][optionId].text}
               </div>
             ))}
         </div>
