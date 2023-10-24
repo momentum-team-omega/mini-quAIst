@@ -32,20 +32,20 @@ const Dialogue = () => {
 
   const [currentDialogueId, setCurrentDialogueId] = useState("1");
   const currentOption = npcDialogues[currentNPC][currentDialogueId];
-
+  const [showOptions, setShowOptions] = useState(false);
+  const [isTyping, setIsTyping] = useState(true);
   const [response, setResponse] = useState(
     npcDialogues[currentNPC].initialResponse
   );
-  const [preFetchedResponses, setPreFetchedResponses] = useState([]);
 
-  const [showOptions, setShowOptions] = useState(false);
-  const [isTyping, setIsTyping] = useState(true);
 
   const handleShowOptions = () => {
     setShowOptions(true);
   };
 
   useEffect(() => {
+    console.log("Response has changed:", response);
+
     // Calculate the animation time based on response length and typing speed
     const animationTime = response.length * 50 + 900;
 
@@ -85,6 +85,7 @@ const Dialogue = () => {
         break;
 
       case "start":
+        setLoading(false);
         setCurrentDialogueId("1");
         setResponse("What else would you like to know young one?");
         break;
@@ -92,6 +93,7 @@ const Dialogue = () => {
       case "str":
       case "dex":
       case "wis":
+        setLoading(false);
         setTypeOfCheck(optionId);
         setMakeCheck(true);
         break;
@@ -99,9 +101,14 @@ const Dialogue = () => {
       case "fight":
         setScene("battle");
         break;
+
       case "instruct":
+        setLoading(false);
+        console.log('instruct optionId', optionId)
         setResponse(npcDialogues[currentNPC][optionId].instructions);
+        console.log('instructions', npcDialogues[currentNPC][optionId].instructions)
         setCurrentDialogueId(optionId);
+        console.log('optionId', optionId)
 
         if (currentNPC === "steve") {
           if (!checkpoints[3]) {
@@ -117,8 +124,11 @@ const Dialogue = () => {
         }
 
         break;
+
       case "chooseClass":
         setScene("characterCreation");
+        break;
+
       default:
         const userChoice = selectedDialogue.text;
         const response = await handleChatGPT(userChoice);
@@ -216,7 +226,8 @@ const Dialogue = () => {
               marginRight: "10px",
             }}
           >
-            <TypeAnimation sequence={[response]} speed={60} repeat={0} />
+            {/* <div className="npc-text">{response}</div> */}
+            <TypeAnimation key={response} sequence={[response]} speed={60} repeat={0} />
           </div>
         </div>
       )}
