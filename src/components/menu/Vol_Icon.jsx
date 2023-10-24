@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
-import muteImg from '/src/assets/sfx-assets/mute-icon.svg';
-import unmuteImg from '/src/assets/sfx-assets/unmute-icon.svg';
+import muteImg from '/src/assets/menu-assets/mute-icon.svg';
+import unmuteImg from '/src/assets/menu-assets/unmute-icon.svg';
 import GameContext from 'components/GameContext';
 import '/src/styles/Volume.css';
 
 const Vol_Icon = ({}) => {
   const { mute, setMute } = useContext(GameContext);
-  const handleHelp = () => {
+  const handleMute = () => {
     setMute(!mute);
   };
   return (
-    <div className="vol-icon-container" onClick={handleHelp}>
+    <div className="vol-icon-container" onClick={handleMute}>
       {mute ? (
         <img src={muteImg} className="vol-icon" />
       ) : (
