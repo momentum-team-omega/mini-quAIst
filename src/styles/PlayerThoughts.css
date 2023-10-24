@@ -1,0 +1,50 @@
+.thought-bubble {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    z-index: 900;
+    position: absolute;
+    width: 150px;
+    margin: 1em auto 80px;
+    border: 2px solid black;
+    text-align: center;
+    color: #333;
+    background: #fff;
+    border-radius: 240px / 140px;
+}  
+
+/* creates the larger circle */
+.thought-bubble:before {
+    content: "";
+    position: absolute;
+    z-index: 950;
+    bottom: -21px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+    background: #fff;
+    border-radius: 30px;
+    display: block;
+}
+
+/* creates the smaller circle */
+.thought-bubble:after {
+    content: "";
+    position: absolute;
+    z-index: 1000;
+    bottom: -28px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    border: 2px solid black;
+    background: #fff;
+    border-radius: 15px;
+    display: block;
+}
+
+.bubble-text {
+    font-family: 'VT323', monospace;
+    font-size: 1em;
+    font-weight: 600;
+} 
