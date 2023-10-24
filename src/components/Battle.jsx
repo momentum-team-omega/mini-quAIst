@@ -289,7 +289,7 @@ const Battle = ({}) => {
       // console.log(npcs);
       setScene('ending');
     } else {
-      setScene('overworld');
+      setScene("death");
     }
   };
 

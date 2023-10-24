@@ -3,6 +3,7 @@ import { TypeAnimation } from "react-type-animation";
 import openImage1 from "/src/assets/gamestart-assets/KidsRoomCat.png";
 import openImage2 from "/src/assets/gamestart-assets/CatRunning.png";
 import endImage1 from "/src/assets/gamestart-assets/CatToBeContinued.png";
+import deathScene from "/src/assets/gamestart-assets/death-image.png";
 import GameContext from "./GameContext";
 import "/src/styles/Cut_Scene.css";
 
@@ -13,12 +14,23 @@ const scenes = [
       "Your kitty has a bad habit of running in to the forest.",
       "As you follow your cat, the woods beside your house begin to look less familiar...",
     ],
+    sceneHeader: ["Our story begins..."],
+    sceneButton: ["Continue"],
   },
   {
     imageUrls: [endImage1],
     textArray: ["Congratulations, you have completed Chaper One!"],
+    sceneHeader: ["Huzzah!"],
+    sceneButton: ["End Chapter"],
   },
-  // Define more scenes here
+  {
+    imageUrls: [deathScene],
+    textArray: [
+      "The villagers find you washed up on the banks of the river to the south and carry you back to town.",
+    ],
+    sceneHeader: ["You were defeated..."],
+    sceneButton: ["Try Again"],
+  },
 ];
 
 const Cut_Scene = ({ sceneSelection }) => {
@@ -54,12 +66,12 @@ const Cut_Scene = ({ sceneSelection }) => {
   return (
     <>
       <h2 className="page-title" style={{ marginBottom: "30px" }}>
-        Our story begins......
+        {selectedScene.sceneHeader}
       </h2>
       <div className="gamestart-images">
         <div
           className="image-container"
-          style={{ height: "300px", marginBottom: "125px" }}
+          style={{ height: "300px", marginBottom: "225px" }}
         >
           <img
             src={selectedScene.imageUrls[imageIndex]}
@@ -90,7 +102,7 @@ const Cut_Scene = ({ sceneSelection }) => {
               transform: "translateX(-50%)",
             }}
           >
-            {sceneSelection === 0 ? "Continue" : "End Chapter 1"}
+            {selectedScene.sceneButton}
           </button>
         )}
       </div>

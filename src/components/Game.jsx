@@ -12,8 +12,8 @@ import Battle from 'components/Battle';
 import Cut_Scene from 'components/Cut_Scene';
 
 const Game = () => {
-  const [scene, setScene] = useState('overworld');
-  const [currentMap, setCurrentMap] = useState('village2');
+  const [scene, setScene] = useState('intro');
+  const [currentMap, setCurrentMap] = useState('startHouse');
 
   const [currentNPC, setCurrentNPC] = useState('');
   const [charStats, setCharStats] = useState({
@@ -177,6 +177,7 @@ const Game = () => {
               scene !== 'intro' && <Menu_Icon position={'normal'} />}
             {scene === 'intro' && <Cut_Scene sceneSelection={0} />}
             {scene === 'ending' && <Cut_Scene sceneSelection={1} />}
+            {scene === "death" && <Cut_Scene sceneSelection={2} />}
             {scene === 'overworld' && <Overworld />}
             {scene === 'characterCreation' && (
               <Create_Char charStats={charStats} setCharStats={setCharStats} />
