@@ -12,7 +12,7 @@ import Cut_Scene from "components/Cut_Scene";
 
 const Game = () => {
   const [scene, setScene] = useState("overworld");
-  const [currentMap, setCurrentMap] = useState("startHouse");
+  const [currentMap, setCurrentMap] = useState("village2Locked");
 
   const [currentNPC, setCurrentNPC] = useState("");
   const [charStats, setCharStats] = useState({
