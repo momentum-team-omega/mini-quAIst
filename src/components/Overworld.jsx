@@ -9,12 +9,13 @@ import Map_Switch from 'components/Map_Switch';
 import Tooltip from 'components/menu/Tooltip';
 import Compass from 'components/Compass';
 import Menu from 'components/menu/Menu';
+import Inventory from 'components/menu/Inventory';
 import '/src/styles/Overworld.css';
 import GameContext from './GameContext';
 import Player_Thoughts from './menu/Player_Thoughts';
 
 const Overworld = ({}) => {
-  const { npcs, menu } = useContext(GameContext);
+  const { npcs, menu, inventory } = useContext(GameContext);
   const [mapImage, setMapImage] = useState(null);
   const [foreImage, setForeImage] = useState(null);
   const [tileSize, setTileSize] = useState(48);
@@ -98,9 +99,9 @@ const Overworld = ({}) => {
       <Char tileSize={tileSize} direction={direction} />
       <Tooltip charPosition={charPosition} />
       <Player_Thoughts charPosition={charPosition} />
-      {!menu && <Compass direction={direction} />}
-      {menu && <Menu />}
-
+      {!menu && !inventory && <Compass direction={direction} />}
+      {!menu && inventory && <Inventory />}
+      {menu && !inventory && <Menu />}
     </>
   );
 };

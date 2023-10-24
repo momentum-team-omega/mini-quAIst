@@ -11,6 +11,8 @@ const Char_Move = ({
 }) => {
   const {
     menu,
+    inventory,
+    setInventory,
     setMenu,
     isMoving,
     setIsMoving,
@@ -221,19 +223,22 @@ const Char_Move = ({
   }, [isMoving, keyOrder, isSpacePressed]);
 
   useEffect(() => {
-    const handleEscapeKey = (e) => {
+    const handleMenuKey = (e) => {
       if (e.key === 'Escape') {
         e.preventDefault();
         setMenu((prevMenu) => !prevMenu);
+      } else if (e.key === 'Tab') {
+        e.preventDefault();
+        setInventory((prevInventory) => !prevInventory);
       }
     };
 
-    window.addEventListener('keydown', handleEscapeKey);
+    window.addEventListener('keydown', handleMenuKey);
 
     return () => {
-      window.removeEventListener('keydown', handleEscapeKey);
+      window.removeEventListener('keydown', handleMenuKey);
     };
-  }, [setMenu]);
+  }, [setMenu, setInventory]);
 
   return null;
 };

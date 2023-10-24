@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import Overworld_Menu from 'components/menu/Overworld_Menu';
 import Battle_Menu from 'components/menu/Battle_Menu';
 import Confirm from 'components/menu/Confirm';
-import muteImg from '/src/assets/sfx-assets/mute-icon.svg';
-import unmuteImg from '/src/assets/sfx-assets/unmute-icon.svg';
+import Vol_Icon from 'components/menu/Vol_Icon';
+import Inventory_Icon from 'components/menu/Inventory_Icon';
 import '/src/styles/Menu.css';
 import GameContext from '../GameContext';
 
@@ -26,13 +26,8 @@ const Menu = ({}) => {
       <div className="exit-icon-container" onClick={handleExit}>
         <p className="exit-icon">X</p>
       </div>
-      <div className="vol-icon-container" onClick={handleHelp}>
-        {mute ? (
-          <img src={muteImg} className="vol-icon" />
-        ) : (
-          <img src={unmuteImg} className="vol-icon" />
-        )}
-      </div>
+      <Vol_Icon />
+      <Inventory_Icon />
       {!confirm && scene === 'overworld' && <Overworld_Menu />}
       {!confirm && scene === 'battle' && <Battle_Menu />}
       {confirm ? (
