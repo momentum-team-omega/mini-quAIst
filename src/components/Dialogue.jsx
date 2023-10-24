@@ -11,6 +11,9 @@ import blacksmithImage from "/src/assets/dialogue-assets/blacksmith.png";
 import steveImage from "/src/assets/dialogue-assets/steve.png";
 import trollImage from "/src/assets/dialogue-assets/troll.png";
 import villageLeaderImage from "/src/assets/dialogue-assets/villageLeader.png";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css';
+import { SkeletonTheme } from "react-loading-skeleton"
 
 const Dialogue = () => {
   const {
@@ -175,6 +178,16 @@ const Dialogue = () => {
 
   const currentDialogue = npcDialogues[currentNPC][currentDialogueId];
 
+  const Box = ({ children }) => (
+    <div
+      style={{
+        marginBottom: "50px",
+      }}
+    >
+      {children}
+    </div>
+  )
+
   return (
     <div className="dialogue-container">
       {makeCheck && (
@@ -184,9 +197,14 @@ const Dialogue = () => {
           onRollComplete={handleRollOutcome}
         />
       )}
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
+      {loading && (
+    <Box>
+      <SkeletonTheme color="#202020" highlightColor="#444">
+        <Skeleton count={3} height={20} width={600} />
+      </SkeletonTheme>
+    </Box>
+      )}
+      {!loading && (
         <div>
           <div
             className="npc-text"
