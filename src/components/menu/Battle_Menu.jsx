@@ -1,8 +1,14 @@
-import React from 'react';
-import compass from 'assets/compass-assets/compass-up-red.png';
-import keys from 'assets/compass-assets/arrow-keys.png';
-import fkey from 'assets/compass-assets/f-key.png';
-import '/src/styles/Menu.css';
+import React from "react";
+import compass from "assets/compass-assets/compass-up-red.png";
+import keys from "assets/compass-assets/arrow-keys.png";
+import fkey from "assets/compass-assets/f-key.png";
+import potion from "/src/assets/battle-assets/potion.png";
+import skull from "/src/assets/battle-assets/Skull.png";
+import specialAttack from "/src/assets/battle-assets/Special-attack.png";
+import crossedSwords from "/src/assets/battle-assets/crossed-swords.png";
+import damage from "/src/assets/battle-assets/damage.png";
+
+import "/src/styles/Menu.css";
 
 const Battle_Menu = ({}) => {
   return (
@@ -12,28 +18,51 @@ const Battle_Menu = ({}) => {
       </div>
       <div className="menu-item-container">
         <div className="menu-item">
-          <p className="item-header">Controls: </p>
+          <p className="battle-item-header">Combat: </p>
           <p className="item-text">
-            Use WASD or the arrow keys (←↑↓→) to move around the map. You can
-            hold SPACE to run.
+            In this turn-based combat system, players alternate actions and use
+            character-specific abilities to overcome opponents in a tactical
+            battle experience.
           </p>
         </div>
-        <img src={keys} alt="compass" className="menu-img" />
+        <img
+          style={{ height: "34px", width: "34px" }}
+          src={crossedSwords}
+          alt="crossed swords"
+          className="menu-img"
+        />
         <div className="menu-item">
-          <p className="item-header">Compass: </p>
+          <p className="battle-item-header">Damage: </p>
           <p className="item-text">
-            Refer to the compass in the top left corner of the game screen for
-            directions.
+            Damage is calculated based on a combination of the character's base
+            statistics and rolls effected by modifiers, adding a layer of
+            unpredictability to each combat encounter.
           </p>
         </div>
-        <img src={compass} alt="compass" className="menu-img" />
+        <img
+          style={{ height: "34px", width: "34px" }}
+          src={damage}
+          alt="damage"
+          className="menu-img"
+        />
         <div className="menu-item">
-          <p className="item-header">Interaction: </p>
+          <p className="battle-item-header">Actions: </p>
+          <img src={skull} alt="skull" className="menu-img" />
           <p className="item-text">
-            Press "F" when next to a Non-Player-Character (NPC) to interact.
+            Attack: Deliver a basic attack using your character's equipped
+            weapon or abilities.{" "}
+          </p>
+          <img src={potion} alt="potion" className="menu-img" />
+          <p className="item-text">
+            Potion: Consume a healing potion to restore a portion of your
+            character's health.
+          </p>
+          <img src={specialAttack} alt="lightning" className="menu-img" />
+          <p className="item-text">
+            Special Attack: Unleash a powerful, class-specific special move with
+            the potential for increased damage or unique effects.
           </p>
         </div>
-        <img src={fkey} alt="compass" className="menu-img" />
       </div>
     </div>
   );

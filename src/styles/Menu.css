@@ -208,6 +208,16 @@
   line-height: .85;
   margin-right: 10px;
 }
+
+.battle-item-header {
+  margin-left: 10px;
+  font-family: 'VT323', monospace;
+  font-size: 2em;
+  font-weight: 600;
+  line-height: .85;
+  margin-right: 10px;
+}
+
 .item-text {
   font-family: 'VT323', monospace;
   font-size: 1.5em;
