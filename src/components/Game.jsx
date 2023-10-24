@@ -11,8 +11,8 @@ import Battle from "components/Battle";
 import Cut_Scene from "components/Cut_Scene";
 
 const Game = () => {
-  const [scene, setScene] = useState("death");
-  const [currentMap, setCurrentMap] = useState("startHouse");
+  const [scene, setScene] = useState("characterCreation");
+  const [currentMap, setCurrentMap] = useState("");
 
   const [currentNPC, setCurrentNPC] = useState("");
   const [charStats, setCharStats] = useState({

@@ -96,10 +96,8 @@ const SelectCharacter = ({ charStats, setCharStats }) => {
     }
   };
 
-  // console.log(charStats);
-
   const handleConfirmClick = () => {
-    // console.log(charStats);
+    console.log(charStats);
     setScene('overworld');
   };
 
