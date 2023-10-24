@@ -11,10 +11,10 @@ import Battle from "components/Battle";
 import Cut_Scene from "components/Cut_Scene";
 
 const Game = () => {
-  const [scene, setScene] = useState("overworld");
+  const [scene, setScene] = useState("dialogue");
   const [currentMap, setCurrentMap] = useState("startHouse");
 
-  const [currentNPC, setCurrentNPC] = useState("");
+  const [currentNPC, setCurrentNPC] = useState("wiseman");
   const [charStats, setCharStats] = useState({
     name: "",
     charClass: "",
