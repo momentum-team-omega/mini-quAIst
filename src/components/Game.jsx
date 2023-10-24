@@ -59,7 +59,7 @@ const Game = () => {
   const [menu, setMenu] = useState(false);
 
   const [mute, setMute] = useLocalStorageState("mute", true);
-  const [music, setMusic] = useState("");
+  const [music, setMusic] = useState(null);
 
   const [npcs, setNpcs] = useState([
     {
@@ -108,6 +108,10 @@ const Game = () => {
       message: "RAWR",
     },
   ]);
+
+  const handleMuteButtonClick = () => {
+    setMute(!mute); // Toggle between muted and unmuted state
+  };
 
   return (
     <>
