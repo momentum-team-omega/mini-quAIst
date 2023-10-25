@@ -6,6 +6,7 @@ const TwentySidedDie = ({ typeOfCheck, onRollComplete }) => {
   // variable, declaration and assigment
   const [diceRoll, setDiceRoll] = useState(null);
   const [hasRolled, setHasRolled] = useState(false);
+  const [animate, setAnimate] = useState(false);
   // useState pulls an array with 2 things from it. State variable & updater function
   // null value being passed thru is a defualt value for dice roll
 
@@ -27,9 +28,14 @@ const TwentySidedDie = ({ typeOfCheck, onRollComplete }) => {
       const newRoll = Math.floor(Math.random() * 20) + 1;
       setDiceRoll(newRoll);
       setHasRolled(true);
+      setAnimate(true);
     }
     // calling the state setter function and giving it a new value
   };
+
+  const handleAnimationEnd = () => {
+    setAnimate(false);
+  }
 
   const handleContinue = () => {
     if (onRollComplete) {
@@ -60,7 +66,7 @@ const TwentySidedDie = ({ typeOfCheck, onRollComplete }) => {
         Difficulty Score {difficultyScore}
       </div>
       <div
-        className="twenty-sided-die"
+        className={`twenty-sided-die ${animate ? 'animate' : ''}`}
         style={{
           width: '100px',
           height: '100px',
@@ -72,6 +78,7 @@ const TwentySidedDie = ({ typeOfCheck, onRollComplete }) => {
           color: 'black',
         }}
         onClick={rollDie}
+        onAnimationEnd={handleAnimationEnd}
       >
         {diceRoll === null ? (
           <div className="placeholder">?</div>

@@ -57,3 +57,16 @@
   text-shadow: 1px 1px 1px black;
   margin-top: 12px;
 }
+
+@keyframes roll {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate {
+  animation: roll 1s ease-in-out;
+}
