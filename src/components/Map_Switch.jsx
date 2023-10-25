@@ -1,5 +1,6 @@
 import { useEffect, useContext } from 'react';
 import trollMap from 'assets/map-assets/troll-map-sheet.png';
+import trollMapCat from 'assets/map-assets/troll-map-cat-sheet.png';
 import trollMapFore from 'assets/map-assets/Troll-Map-Fore.png';
 import startMap from 'assets/map-assets/startMap-sheet.png';
 import startMapFore from 'assets/map-assets/startMap-fore.png';
@@ -147,6 +148,110 @@ const Map_Switch = ({
       ]);
     } else if (currentMap === 'trollMap') {
       setMapImage(trollMap);
+      setForeImage(trollMapFore);
+      setTileSize(64);
+      setMapColumns(20);
+      setMapRows(8);
+      setMapOffset({ x: 9.5, y: 6 });
+      if (!hasMapSwitched) {
+        if (storedMapPosition) {
+          setMapPosition(JSON.parse(storedMapPosition));
+        } else {
+          setMapPosition({
+            x: -130.5,
+            y: -89,
+          });
+        }
+        setCharPosition({ x: 12.5, y: 4 });
+      }
+      setIsFPressed(false);
+      setMapNpcs([
+        {
+          npc: npcs.find((npc) => npc.id === 5),
+          x: 10,
+          y: 4,
+        },
+      ]);
+      setCurrentNPC('troll');
+      setGates([
+        {
+          id: 1,
+          x: 0,
+          y: 3,
+          map:
+            checkpoints[2] && !checkpoints[3]
+              ? 'village2Locked2'
+              : checkpoints[3]
+              ? 'village2'
+              : 'village2Locked',
+          destPX: 1840.5,
+          destPY: 753,
+          destX: 0,
+          destY: 0,
+        },
+        {
+          id: 2,
+          x: 0,
+          y: 4,
+          map:
+            checkpoints[2] && !checkpoints[3]
+              ? 'village2Locked2'
+              : checkpoints[3]
+              ? 'village2'
+              : 'village2Locked',
+          destPX: 1840.5,
+          destPY: 753,
+          destX: 0,
+          destY: 0,
+        },
+        {
+          id: 3,
+          x: 0,
+          y: 5,
+          map:
+            checkpoints[2] && !checkpoints[3]
+              ? 'village2Locked2'
+              : checkpoints[3]
+              ? 'village2'
+              : 'village2Locked',
+          destPX: 1840.5,
+          destPY: 753,
+          destX: 0,
+          destY: 0,
+        },
+        {
+          id: 4,
+          x: 19,
+          y: 3,
+          map: 'start',
+          destPX: -158,
+          destPY: 175,
+          destX: 0,
+          destY: 0,
+        },
+        {
+          id: 5,
+          x: 19,
+          y: 4,
+          map: 'start',
+          destPX: -158,
+          destPY: 175,
+          destX: 0,
+          destY: 0,
+        },
+        {
+          id: 6,
+          x: 19,
+          y: 5,
+          map: 'start',
+          destPX: -158,
+          destPY: 175,
+          destX: 7,
+          destY: 8,
+        },
+      ]);
+    } else if (currentMap === 'trollMapCat') {
+      setMapImage(trollMapCat);
       setForeImage(trollMapFore);
       setTileSize(64);
       setMapColumns(20);
@@ -496,7 +601,7 @@ const Map_Switch = ({
           id: 6,
           x: 39,
           y: 16,
-          map: 'trollMap',
+          map: checkpoints[4] ? 'trollMapCat' : 'trollMap',
           destPX: -555.5,
           destPY: -82.5,
           destX: 1,
@@ -506,7 +611,7 @@ const Map_Switch = ({
           id: 7,
           x: 39,
           y: 17,
-          map: 'trollMap',
+          map: checkpoints[4] ? 'trollMapCat' : 'trollMap',
           destPX: -555.5,
           destPY: -82.5,
           destX: 1,
@@ -516,7 +621,7 @@ const Map_Switch = ({
           id: 8,
           x: 39,
           y: 18,
-          map: 'trollMap',
+          map: checkpoints[4] ? 'trollMapCat' : 'trollMap',
           destPX: -555.5,
           destPY: -82.5,
           destX: 1,

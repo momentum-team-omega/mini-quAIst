@@ -3,6 +3,7 @@ import GameContext from './GameContext';
 import {
   village1Collisions,
   trollMapCollisions,
+  trollMapCollisions2,
   testMapCollisions,
   startCollisions,
   startHouseCollisions,
@@ -30,6 +31,7 @@ const Map_Manager = ({
 }) => {
   const {
     setScene,
+    currentNPC,
     setCurrentNPC,
     currentMap,
     setCurrentMap,
@@ -71,6 +73,8 @@ const Map_Manager = ({
     } else if (currentMap === 'village2inside') {
       setCollisions(village2insideCollisions);
     } else if (currentMap === 'trollMap') {
+      setCollisions(trollMapCollisions);
+    } else if (currentMap === 'trollMapCat') {
       setCollisions(trollMapCollisions);
     }
   }, [currentMap]);
@@ -132,6 +136,7 @@ const Map_Manager = ({
         )
       ) {
         isNearAnyNpc = true;
+        setCurrentNPC(mapNpc.npc.name);
 
         if (isNearAnyNpc) {
           setNpcs((prevNpcs) =>
@@ -139,7 +144,7 @@ const Map_Manager = ({
               prevNpc.id === mapNpc.npc.id
                 ? {
                     ...prevNpc,
-                    triggered: !prevNpc.triggered,
+                    triggered: true,
                   }
                 : prevNpc
             )
@@ -147,11 +152,19 @@ const Map_Manager = ({
         }
 
         if (isFPressed) {
-          setCurrentNPC(mapNpc.npc.name);
           setScene('dialogue');
         }
       }
     });
+
+    if (!isNearAnyNpc) {
+      setNpcs((prevNpcs) =>
+        prevNpcs.map((prevNpc) => ({
+          ...prevNpc,
+          triggered: false,
+        }))
+      );
+    }
 
     if (isNearAnyNpc) {
       setNpcColor('cyan');
@@ -159,8 +172,8 @@ const Map_Manager = ({
       setNpcColor('transparent');
     }
 
-    // console.log(mapPosition);
-    // console.log(charPosition);
+    console.log(mapPosition);
+    console.log(charPosition);
   }, [charPosition, isFPressed, mapNpcs]);
 
   const checkCollisions = (position, collisionMap) => {

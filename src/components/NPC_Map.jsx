@@ -46,6 +46,12 @@ const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows, mapNpcs }) => {
     };
     xOffset = 0 * tileSize;
     yOffset = 0 * tileSize;
+  } else if (currentMap === 'trollMapCat') {
+    NPC_IMAGES = {
+      5: redTroll,
+    };
+    xOffset = 0 * tileSize;
+    yOffset = 0 * tileSize;
   } else if (currentMap === 'startHouse') {
     NPC_IMAGES = {};
     xOffset = 0 * tileSize;
