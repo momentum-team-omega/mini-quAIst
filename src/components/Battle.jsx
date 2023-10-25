@@ -46,6 +46,7 @@ const Battle = ({}) => {
   const [specialMovesUsed, setSpecialMovesUsed] = useState(false);
   const selectedClass = "rogue";
   const [gameOutcome, setGameOutcome] = useState(null);
+  const [animationDone, setAnimationDone] = useState(false);
 
   const containerStyle = {
     background: `url(${battlebackground})`,
@@ -90,18 +91,11 @@ const Battle = ({}) => {
   }
 
   const handlePlayerMove = (action) => {
-    if (isLocked) return;
+    if (isLocked || someoneDied) return;
 
-    // Clear any existing opponent move timeouts
-    if (opponentMoveTimeoutRef.current) {
-      clearTimeout(opponentMoveTimeoutRef.current);
-    }
-    setIsLocked(true); // Lock the actions immediately.
+    if (isPlayerTurn) {
+      setIsLocked(true);
 
-    if (smackButtonRef.current) smackButtonRef.current.disabled = true;
-    if (chillButtonRef.current) chillButtonRef.current.disabled = true;
-
-    if (isPlayerTurn && !someoneDied) {
       switch (action) {
         case "smack":
           handlePlayerSmackOpponent();
@@ -109,12 +103,33 @@ const Battle = ({}) => {
         case "chill":
           handleChill();
           break;
+        case "special":
+          handleSpecialMoves();
+          break;
         default:
           break;
       }
-      setIsPlayerTurn(false); // switch turn to opponent after player makes a move
+
+      setIsPlayerTurn(false);
     }
   };
+
+  useEffect(() => {
+    if (!isPlayerTurn) {
+      // Delay opponent's turn to make it feel more natural
+      opponentMoveTimeoutRef.current = setTimeout(() => {
+        handleOpponentMove();
+      }, 1000);
+    }
+  }, [isPlayerTurn]);
+
+  // Add a useEffect to track the animation state
+  useEffect(() => {
+    const animationDuration = 1700; // Adjust this value to match your animation duration
+    setTimeout(() => {
+      setIsAnimationFinished(true);
+    }, animationDuration);
+  }, []);
 
   const handleOpponentMove = () => {
     // This can be the AI logic or another player's action
@@ -341,6 +356,7 @@ const Battle = ({}) => {
               </button>
             </div>
           )}
+
           <h1
             className="battle-intro-text"
             style={{
@@ -349,6 +365,7 @@ const Battle = ({}) => {
           >
             {charStats.name} vs {opponentStats.name}
           </h1>
+
           <div
             className={`overlay ${
               isChillSource
@@ -362,13 +379,13 @@ const Battle = ({}) => {
           {!someoneDied && (
             <div
               className="button-box"
-              style={{ display: isPlayerTurn || !isLocked ? "flex" : "none" }}
+              style={{ display: isPlayerTurn || isLocked ? "flex" : "none" }}
             >
               <button
                 ref={smackButtonRef}
                 className="fight-button"
                 onClick={() => handlePlayerMove("smack")}
-                disabled={!isPlayerTurn}
+                disabled={!isPlayerTurn || isLocked}
               >
                 <p className="fight-text">
                   {charStats.charClass === "barb"
@@ -384,14 +401,15 @@ const Battle = ({}) => {
                 ref={chillButtonRef}
                 className="chill-button"
                 onClick={() => handlePlayerMove("chill")}
-                disabled={!isPlayerTurn || healingPotions === 0}
+                disabled={!isPlayerTurn || healingPotions === 0 || isLocked}
               >
                 <p className="chill-text">Potion ({healingPotions})</p>
               </button>
+
               <button
                 className="special-move-button"
                 onClick={handleSpecialMoves}
-                disabled={specialMovesUsed || isLocked}
+                disabled={specialMovesUsed || isLocked || !isPlayerTurn} // Disable when it's not the player's turn
               >
                 <p className="special-text">
                   {charStats.charClass === "barb"
