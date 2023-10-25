@@ -1,19 +1,26 @@
-import { useContext, useState, useEffect } from "react";
-import { npcDialogues } from "../utilities/npcDialogues";
-import TwentySidedDie from "./TwentySidedDie";
-import GameContext from "./GameContext";
-import "/src/styles/Dialogue.css";
-import axios from "axios";
-import { TypeAnimation } from "react-type-animation";
+import { useContext, useState, useEffect } from 'react';
+import { npcDialogues } from 'utilities/npcDialogues';
+import TwentySidedDie from 'components/TwentySidedDie';
+import Menu from 'components/menu/Menu';
+import Inventory from 'components/menu/Inventory';
+import GameContext from 'components/GameContext';
+import '/src/styles/Dialogue.css';
+import axios from 'axios';
+import { TypeAnimation } from 'react-type-animation';
 
-import wisemanImage from "/src/assets/dialogue-assets/wiseman.png";
-import blacksmithImage from "/src/assets/dialogue-assets/blacksmith.png";
-import steveImage from "/src/assets/dialogue-assets/steve.png";
-import trollImage from "/src/assets/dialogue-assets/troll.png";
-import villageLeaderImage from "/src/assets/dialogue-assets/villageLeader.png";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import { SkeletonTheme } from "react-loading-skeleton";
+import wisemanImage from '/src/assets/dialogue-assets/wiseman.png';
+import blacksmithImage from '/src/assets/dialogue-assets/blacksmith.png';
+import steveImage from '/src/assets/dialogue-assets/steve.png';
+import trollImage from '/src/assets/dialogue-assets/troll.png';
+import villageLeaderImage from '/src/assets/dialogue-assets/villageLeader-upscaled.png';
+import wisemanUpscaled from '/src/assets/dialogue-assets/wiseman-upscaled.png';
+import blacksmithUpscaled from '/src/assets/dialogue-assets/blacksmith-upscaled.png';
+import steveUpscaled from '/src/assets/dialogue-assets/steve-upscaled.png';
+import trollUpscaled from '/src/assets/dialogue-assets/troll-upscaled.png';
+import villageLeaderUpscaled from '/src/assets/dialogue-assets/villageLeader-upscaled.png';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 const Dialogue = () => {
   const {
@@ -28,9 +35,11 @@ const Dialogue = () => {
     checkpoints,
     setCheckpoints,
     charStats,
+    menu,
+    inventory,
   } = useContext(GameContext);
 
-  const [currentDialogueId, setCurrentDialogueId] = useState("1");
+  const [currentDialogueId, setCurrentDialogueId] = useState('1');
   const currentOption = npcDialogues[currentNPC][currentDialogueId];
   const [showOptions, setShowOptions] = useState(false);
   const [isTyping, setIsTyping] = useState(true);
@@ -43,7 +52,7 @@ const Dialogue = () => {
   };
 
   useEffect(() => {
-    console.log("Response has changed:", response);
+    console.log('Response has changed:', response);
 
     // Calculate the animation time based on response length and typing speed
     const animationTime = response.length * 50 + 900;
@@ -66,7 +75,7 @@ const Dialogue = () => {
   };
 
   const containerStyle = {
-    backgroundImage: `url(${npcImages[currentNPC] || ""})`,
+    backgroundImage: `url(${npcImages[currentNPC] || ''})`,
   };
 
   const [loading, setLoading] = useState(false);
@@ -79,46 +88,46 @@ const Dialogue = () => {
     const selectedDialogue = npcDialogues[currentNPC][optionId];
 
     switch (optionId) {
-      case "leave":
-        setScene("overworld");
+      case 'leave':
+        setScene('overworld');
         break;
 
-      case "start":
+      case 'start':
         setLoading(false);
-        setCurrentDialogueId("1");
-        setResponse("What else would you like to know young one?");
+        setCurrentDialogueId('1');
+        setResponse('What else would you like to know young one?');
         break;
 
-      case "str":
-      case "dex":
-      case "wis":
+      case 'str':
+      case 'dex':
+      case 'wis':
         setLoading(false);
         setTypeOfCheck(optionId);
         setMakeCheck(true);
         break;
 
-      case "fight":
-        setScene("battle");
+      case 'fight':
+        setScene('battle');
         break;
 
-      case "instruct":
+      case 'instruct':
         setLoading(false);
-        console.log("instruct optionId", optionId);
+        console.log('instruct optionId', optionId);
         setResponse(npcDialogues[currentNPC][optionId].instructions);
         console.log(
-          "instructions",
+          'instructions',
           npcDialogues[currentNPC][optionId].instructions
         );
         setCurrentDialogueId(optionId);
-        console.log("optionId", optionId);
+        console.log('optionId', optionId);
 
-        if (currentNPC === "steve") {
+        if (currentNPC === 'steve') {
           if (!checkpoints[3]) {
             setCheckpoints((prev) => ({ ...prev, 2: true }));
             // console.log('checkpoint2', checkpoint2);
-            setCurrentMap("village2Locked2");
+            setCurrentMap('village2Locked2');
           }
-        } else if (currentNPC === "villageLeader") {
+        } else if (currentNPC === 'villageLeader') {
           if (!checkpoints[4]) {
             setCheckpoints((prev) => ({ ...prev, 3: true }));
             // console.log('checkpoint3', checkpoint3);
@@ -127,8 +136,8 @@ const Dialogue = () => {
 
         break;
 
-      case "chooseClass":
-        setScene("characterCreation");
+      case 'chooseClass':
+        setScene('characterCreation');
         break;
 
       default:
@@ -145,26 +154,26 @@ const Dialogue = () => {
     try {
       const messages = [
         {
-          role: "system",
+          role: 'system',
           content: systemContent,
         },
         {
-          role: "user",
+          role: 'user',
           content: userContent,
         },
       ];
       const payload = {
-        model: "gpt-3.5-turbo",
+        model: 'gpt-3.5-turbo',
         messages,
         max_tokens: 80,
       };
 
       const apiResponse = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
+        'https://api.openai.com/v1/chat/completions',
         payload,
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${import.meta.env.VITE_CHATGPT_SECRET_KEY}`,
           },
         }
@@ -175,17 +184,17 @@ const Dialogue = () => {
       console.log(data.choices[0].message.content);
       return data.choices[0].message.content;
     } catch (error) {
-      console.error("Error:", error);
-      return "Error fetching response.";
+      console.error('Error:', error);
+      return 'Error fetching response.';
     }
   };
 
   const handleRollOutcome = (rollOutcome) => {
-    if (rollOutcome === "passed") {
+    if (rollOutcome === 'passed') {
       setCheckpoints((prev) => ({ ...prev, 4: true }));
-      setScene("ending");
-    } else if (rollOutcome === "failed") {
-      setScene("battle");
+      setScene('ending');
+    } else if (rollOutcome === 'failed') {
+      setScene('battle');
     }
   };
 
@@ -199,18 +208,18 @@ const Dialogue = () => {
   };
 
   const renderCheckText = (optionId) => {
-    if (["str", "dex", "wis"].includes(optionId)) {
+    if (['str', 'dex', 'wis'].includes(optionId)) {
       const checkType = npcDialogues[currentNPC][optionId].check;
       const modifierValue = charStats[`${optionId}_mod`];
       return `[${checkType} check (${getModifierText(modifierValue)})]`;
     }
-    return "";
+    return '';
   };
 
   const Box = ({ children }) => (
     <div
       style={{
-        marginBottom: "50px",
+        marginBottom: '50px',
       }}
     >
       {children}
@@ -218,71 +227,81 @@ const Dialogue = () => {
   );
 
   return (
-    <div className="dialogue-container">
-      {makeCheck && (
-        <TwentySidedDie
-          typeOfCheck={typeOfCheck}
-          difficultyScore={currentOption?.difficultyScore}
-          onRollComplete={handleRollOutcome}
-        />
-      )}
-      {loading && (
-        <Box>
-          <SkeletonTheme color="#202020" highlightColor="#444">
-            <Skeleton count={3} height={20} width={600} />
-          </SkeletonTheme>
-        </Box>
-      )}
-      {!loading && (
-        <div>
-          <div
-            className="npc-text"
-            style={{
-              width: "1070px",
-              padding: "10px",
-              marginLeft: "10px",
-              marginRight: "10px",
-            }}
-          >
-            {/* <div className="npc-text">{response}</div> */}
-            <TypeAnimation
-              key={response}
-              sequence={[response]}
-              speed={60}
-              repeat={0}
-            />
-          </div>
-        </div>
-      )}
-      <div
-        className="npc-image-container"
-        style={{
-          width: 600,
-          height: 338,
-          backgroundImage: containerStyle.backgroundImage,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      ></div>
-      <div className="options-wrapper">
-        <div
-          className="options-container"
-          style={{ display: showOptions ? "block" : "none" }}
-        >
-          {showOptions &&
-            currentDialogue?.options?.map((optionId) => (
-              <div
-                key={optionId}
-                className="option"
-                onClick={() => handleOptionClick(optionId)}
-              >
-                {renderCheckText(optionId)}
-                {npcDialogues[currentNPC][optionId].text}
+    <>
+      {menu && <Menu />}
+      {inventory && <Inventory />}
+      <div className="dialogue-container">
+        {!menu && !inventory && (
+          <div className="title-container">
+            {makeCheck && (
+              <TwentySidedDie
+                typeOfCheck={typeOfCheck}
+                difficultyScore={currentOption?.difficultyScore}
+                onRollComplete={handleRollOutcome}
+              />
+            )}
+            {loading && (
+              <Box>
+                <SkeletonTheme color="#202020" highlightColor="#444">
+                  <Skeleton count={3} height={20} width={600} />
+                </SkeletonTheme>
+              </Box>
+            )}
+            {!loading && (
+              <div>
+                <div
+                  className="npc-text"
+                  style={{
+                    width: '1070px',
+                    padding: '10px',
+                    marginLeft: '10px',
+                    marginRight: '10px',
+                  }}
+                >
+                  {/* <div className="npc-text">{response}</div> */}
+                  <TypeAnimation
+                    key={response}
+                    sequence={[response]}
+                    speed={60}
+                    repeat={0}
+                  />
+                </div>
               </div>
-            ))}
+            )}
+          </div>
+        )}
+        <div
+          className="npc-image-container"
+          style={{
+            width: 600,
+            height: 338,
+            backgroundImage: containerStyle.backgroundImage,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        ></div>
+        <div className="options-wrapper">
+          {!menu && !inventory && (
+            <div
+              className="options-container"
+              style={{ display: showOptions ? 'block' : 'none' }}
+            >
+              {showOptions &&
+                currentDialogue?.options?.map((optionId) => (
+                  <div
+                    key={optionId}
+                    className="option"
+                    onClick={() => handleOptionClick(optionId)}
+                  >
+                    {renderCheckText(optionId)}
+                    {npcDialogues[currentNPC][optionId].text}
+                  </div>
+                ))}
+            </div>
+          )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

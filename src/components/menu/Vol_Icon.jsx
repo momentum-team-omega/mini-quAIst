@@ -8,16 +8,11 @@ const Vol_Icon = ({}) => {
   const { scene, mute, setMute } = useContext(GameContext);
 
   let style;
-  if (
-    scene === 'intro' ||
-    scene === 'ending' ||
-    scene === 'death' ||
-    scene === 'dialogue'
-  ) {
+  if (scene === 'intro' || scene === 'ending' || scene === 'death') {
     style = {
       right: '10px',
     };
-  } else if (scene === 'overworld' || scene === 'battle') {
+  } else {
     style = {
       right: '110px',
     };

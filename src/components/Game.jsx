@@ -9,12 +9,13 @@ import Create_Char from 'components/Create_Char';
 import GameContext from 'components/GameContext';
 import Battle from 'components/Battle';
 import Cut_Scene from 'components/Cut_Scene';
+import Menu_Keys from 'components/Menu_Keys';
 
 const Game = ({ mute, setMute }) => {
-  const [scene, setScene] = useState('intro');
-  const [currentMap, setCurrentMap] = useState('startHouse');
+  const [scene, setScene] = useState('dialogue');
+  const [currentMap, setCurrentMap] = useState('trollMap');
 
-  const [currentNPC, setCurrentNPC] = useState('');
+  const [currentNPC, setCurrentNPC] = useState('troll');
   const [charStats, setCharStats] = useState({
     name: '',
     charClass: '',
@@ -151,6 +152,7 @@ const Game = ({ mute, setMute }) => {
           setInventory,
         }}
       >
+        <Menu_Keys />
         <div className="content">
           <div
             className="game-container"
@@ -161,14 +163,10 @@ const Game = ({ mute, setMute }) => {
           >
             {!mute && <SFX />}
             {!menu && !inventory && <Vol_Icon />}
-            {!menu &&
-              !inventory &&
-              scene !== 'dialogue' &&
-              scene !== 'intro' && <Inventory_Icon />}
-            {!menu &&
-              !inventory &&
-              scene !== 'dialogue' &&
-              scene !== 'intro' && <Menu_Icon position={'normal'} />}
+            {!menu && !inventory && scene !== 'intro' && <Inventory_Icon />}
+            {!menu && !inventory && scene !== 'intro' && (
+              <Menu_Icon position={'normal'} />
+            )}
             {scene === 'intro' && <Cut_Scene sceneSelection={0} />}
             {scene === 'ending' && <Cut_Scene sceneSelection={1} />}
             {scene === 'death' && <Cut_Scene sceneSelection={2} />}
