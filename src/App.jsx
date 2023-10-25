@@ -1,25 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
-import "./App.css";
-import Home from "components/Home";
-import Login from "components/Login";
-import Register from "components/Register";
-import Game from "components/Game";
-import Wiki from "components/wiki/Wiki";
-import WikiQuaist from "components/wiki/Wiki-quaist";
-import WikiClasses from "components/wiki/Wiki-classes";
-import WikiMage from "components/wiki/Wiki-mage";
-import WikiBarb from "components/wiki/Wiki-barb";
-import WikiRogue from "components/wiki/Wiki-rogue";
-import WikiBattle from "components/wiki/Wiki-battle";
-import WikiAbilityCheck from "./components/wiki/Wiki-ability-check";
-import TempBattle from "components/Temp-battle";
-import TempDialogue from "./components/Temp-dialogue";
-import TempCreate from "./components/Temp-create";
-import TempCheck from "./components/Temp-check";
-import TempInventory from "./components/Temp-inventory";
-import TempScene from "./components/Temp-scene";
-import GameContext from "./components/GameContext";
+import React, { useState, useEffect } from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import './App.css';
+import Home from 'components/Home';
+import Login from 'components/Login';
+import Register from 'components/Register';
+import Game from 'components/Game';
+import Wiki from 'components/wiki/Wiki';
+import WikiQuaist from 'components/wiki/Wiki-quaist';
+import WikiClasses from 'components/wiki/Wiki-classes';
+import WikiMage from 'components/wiki/Wiki-mage';
+import WikiBarb from 'components/wiki/Wiki-barb';
+import WikiRogue from 'components/wiki/Wiki-rogue';
+import WikiBattle from 'components/wiki/Wiki-battle';
+import WikiAbilityCheck from './components/wiki/Wiki-ability-check';
+import GameContext from './components/GameContext';
 
 function App() {
   const [token, setToken] = useState(false);
@@ -34,7 +28,7 @@ function App() {
   const [scene, setScene] = useState("intro"); // Initial scene
   const [currentNPC, setCurrentNPC] = useState("troll"); // set to test
   const [charStats, setCharStats] = useState({
-    name: "",
+    name: '',
     health: null,
     strength: null,
     str_mod: null,
@@ -97,12 +91,6 @@ function App() {
           <Route path="/wiki/rogue" element={<WikiRogue />} />;
           <Route path="/wiki/battle" element={<WikiBattle />} />;
           <Route path="/wiki/ability_check" element={<WikiAbilityCheck />} />;
-          <Route path="/battle" element={<TempBattle />} />;
-          <Route path="/dialogue" element={<TempDialogue />} />;
-          <Route path="/create" element={<TempCreate />} />;
-          <Route path="/check" element={<TempCheck />} />;
-          <Route path="/inventory" element={<TempInventory />} />;
-          <Route path="/scene" element={<TempScene />} />;
         </Routes>
       </GameContext.Provider>
     </>
