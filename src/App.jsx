@@ -25,8 +25,14 @@ function App() {
   const [token, setToken] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const [scene, setScene] = useState('overworld'); // Initial scene
-  const [currentNPC, setCurrentNPC] = useState('troll'); // set to test
+  const [mute, setMute] = useState(true);
+
+  const toggleMute = () => {
+    setMute((prevMute) => !prevMute);
+  };
+
+  const [scene, setScene] = useState("intro"); // Initial scene
+  const [currentNPC, setCurrentNPC] = useState("troll"); // set to test
   const [charStats, setCharStats] = useState({
     name: "",
     health: null,
@@ -39,9 +45,9 @@ function App() {
   });
 
   const initializeLocalStorage = () => {
-    if (!localStorage.getItem('mapPosition')) {
+    if (!localStorage.getItem("mapPosition")) {
       const defaultMapPosition = { x: 252, y: -100 };
-      localStorage.setItem('mapPosition', JSON.stringify(defaultMapPosition));
+      localStorage.setItem("mapPosition", JSON.stringify(defaultMapPosition));
     }
   };
 
@@ -61,40 +67,44 @@ function App() {
           setCharStats,
         }}
       >
-
-      <Routes>
-        <Route path="/" element={<Navigate to="/home" replace />} />;
-        <Route path="/home" element={<Home />} />;
-        <Route
-          path="/login"
-          element={<Login setToken={setToken} setIsLoggedIn={setIsLoggedIn} />}
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" replace />} />;
+          <Route path="/home" element={<Home toggleMute={toggleMute} />} />;
+          <Route
+            path="/login"
+            element={
+              <Login setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
+            }
           />
-        ;
-        <Route
-          path="/register"
-          element={
-            <Register setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
-          }
+          ;
+          <Route
+            path="/register"
+            element={
+              <Register setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
+            }
           />
-        ;
-        <Route path="/play" element={<Game />} />;
-        <Route path="/wiki" element={<Wiki />} />;
-        <Route path="/wiki/mini_quaist" element={<WikiQuaist />} />;
-        <Route path="/wiki/classes" element={<WikiClasses />} />;
-        <Route path="/wiki/mage" element={<WikiMage />} />;
-        <Route path="/wiki/barbarian" element={<WikiBarb />} />;
-        <Route path="/wiki/rogue" element={<WikiRogue />} />;
-        <Route path="/wiki/battle" element={<WikiBattle />} />;
-        <Route path="/wiki/ability_check" element={<WikiAbilityCheck />} />;
-        <Route path="/battle" element={<TempBattle />} />;
-        <Route path="/dialogue" element={<TempDialogue />} />;
-        <Route path="/create" element={<TempCreate />} />;
-        <Route path="/check" element={<TempCheck />} />;
-        <Route path="/inventory" element={<TempInventory />} />;
-        <Route path="/scene" element={<TempScene />} />;
-      </Routes>
+          ;
+          <Route
+            path="/play"
+            element={<Game mute={mute} setMute={setMute} />}
+          />
+          ;
+          <Route path="/wiki" element={<Wiki />} />;
+          <Route path="/wiki/mini_quaist" element={<WikiQuaist />} />;
+          <Route path="/wiki/classes" element={<WikiClasses />} />;
+          <Route path="/wiki/mage" element={<WikiMage />} />;
+          <Route path="/wiki/barbarian" element={<WikiBarb />} />;
+          <Route path="/wiki/rogue" element={<WikiRogue />} />;
+          <Route path="/wiki/battle" element={<WikiBattle />} />;
+          <Route path="/wiki/ability_check" element={<WikiAbilityCheck />} />;
+          <Route path="/battle" element={<TempBattle />} />;
+          <Route path="/dialogue" element={<TempDialogue />} />;
+          <Route path="/create" element={<TempCreate />} />;
+          <Route path="/check" element={<TempCheck />} />;
+          <Route path="/inventory" element={<TempInventory />} />;
+          <Route path="/scene" element={<TempScene />} />;
+        </Routes>
       </GameContext.Provider>
-
     </>
   );
 }

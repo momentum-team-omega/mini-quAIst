@@ -22,6 +22,7 @@ const SFX = () => {
       if (!mute) {
         footstepAudioRef.current.pause();
         footstepAudioRef.current.currentTime = 0;
+        footstepAudioRef.current.volume = 0.6;
         footstepAudioRef.current.play();
       }
     };
@@ -72,6 +73,7 @@ const SFX = () => {
       }
       if (!mute) {
         mapAudioRef.current = new Audio(audioSrc);
+        mapAudioRef.current.volume = 0.33;
         mapAudioRef.current.play();
       }
     }

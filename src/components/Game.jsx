@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import useLocalStorageState from "use-local-storage-state";
 import SFX from "components/SFX";
 import Menu_Icon from "components/menu/Menu_Icon";
 import Vol_Icon from "components/menu/Vol_Icon";
@@ -10,8 +9,8 @@ import GameContext from "components/GameContext";
 import Battle from "components/Battle";
 import Cut_Scene from "components/Cut_Scene";
 
-const Game = () => {
-  const [scene, setScene] = useState("death");
+const Game = ({ mute, setMute }) => {
+  const [scene, setScene] = useState("intro");
   const [currentMap, setCurrentMap] = useState("startHouse");
 
   const [currentNPC, setCurrentNPC] = useState("");
@@ -58,7 +57,6 @@ const Game = () => {
 
   const [menu, setMenu] = useState(false);
 
-  const [mute, setMute] = useLocalStorageState("mute", true);
   const [music, setMusic] = useState(null);
 
   const [npcs, setNpcs] = useState([
