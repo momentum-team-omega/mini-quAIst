@@ -11,10 +11,10 @@ import Battle from 'components/Battle';
 import Cut_Scene from 'components/Cut_Scene';
 
 const Game = ({ mute, setMute }) => {
-  const [scene, setScene] = useState('battle');
+  const [scene, setScene] = useState('intro');
   const [currentMap, setCurrentMap] = useState('startHouse');
 
-  const [currentNPC, setCurrentNPC] = useState('troll');
+  const [currentNPC, setCurrentNPC] = useState('');
   const [charStats, setCharStats] = useState({
     name: '',
     charClass: '',
