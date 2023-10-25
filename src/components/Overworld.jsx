@@ -96,7 +96,9 @@ const Overworld = ({}) => {
         mapRows={mapRows}
         mapNpcs={mapNpcs}
       />
-      <Char tileSize={tileSize} direction={direction} />
+      {!inventory && !menu && (
+        <Char tileSize={tileSize} direction={direction} />
+      )}
       <Tooltip charPosition={charPosition} />
       <Player_Thoughts charPosition={charPosition} />
       {!menu && !inventory && <Compass direction={direction} />}

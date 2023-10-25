@@ -1,10 +1,10 @@
-import React, { useEffect, useContext, useRef } from "react";
-import footstep from "assets/sfx-assets/footstep.wav";
-import field1 from "assets/sfx-assets/field-1.wav";
-import forest1 from "assets/sfx-assets/forest-1.wav";
-import inside1 from "assets/sfx-assets/inside-1.wav";
-import village1 from "assets/sfx-assets/village-1.wav";
-import GameContext from "components/GameContext";
+import React, { useEffect, useContext, useRef } from 'react';
+import footstep from 'assets/sfx-assets/footstep.wav';
+import field1 from 'assets/sfx-assets/field-1.wav';
+import forest1 from 'assets/sfx-assets/forest-1.wav';
+import inside1 from 'assets/sfx-assets/inside-1.wav';
+import village1 from 'assets/sfx-assets/village-1.wav';
+import GameContext from 'components/GameContext';
 
 const SFX = () => {
   const { currentMap, isMoving, isSpacePressed, mute } =
@@ -47,19 +47,25 @@ const SFX = () => {
     let audioSrc = null;
 
     switch (currentMap) {
-      case "startHouse":
+      case 'startHouse':
         audioSrc = inside1;
         break;
-      case "start":
+      case 'start':
         audioSrc = field1;
         break;
-      case "enchantedForest":
+      case 'enchantedForest':
         audioSrc = forest1;
         break;
-      case "enchantedForestLocked":
+      case 'enchantedForestLocked':
         audioSrc = forest1;
         break;
-      case "village2":
+      case 'village2':
+        audioSrc = village1;
+        break;
+      case 'village2Locked':
+        audioSrc = village1;
+        break;
+      case 'village2Locked2':
         audioSrc = village1;
         break;
       default:
@@ -74,6 +80,7 @@ const SFX = () => {
       if (!mute) {
         mapAudioRef.current = new Audio(audioSrc);
         mapAudioRef.current.volume = 0.33;
+        mapAudioRef.current.loop = true;
         mapAudioRef.current.play();
       }
     }

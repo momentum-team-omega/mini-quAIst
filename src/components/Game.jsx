@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import SFX from "components/SFX";
-import Menu_Icon from "components/menu/Menu_Icon";
-import Vol_Icon from "components/menu/Vol_Icon";
-import Overworld from "components/Overworld";
-import Dialogue from "components/Dialogue";
-import Create_Char from "components/Create_Char";
-import GameContext from "components/GameContext";
-import Battle from "components/Battle";
-import Cut_Scene from "components/Cut_Scene";
+import React, { useState } from 'react';
+import SFX from 'components/SFX';
+import Vol_Icon from 'components/menu/Vol_Icon';
+import Inventory_Icon from 'components/menu/Inventory_Icon';
+import Menu_Icon from 'components/menu/Menu_Icon';
+import Overworld from 'components/Overworld';
+import Dialogue from 'components/Dialogue';
+import Create_Char from 'components/Create_Char';
+import GameContext from 'components/GameContext';
+import Battle from 'components/Battle';
+import Cut_Scene from 'components/Cut_Scene';
 
 const Game = ({ mute, setMute }) => {
-  const [scene, setScene] = useState("intro");
-  const [currentMap, setCurrentMap] = useState("startHouse");
+  const [scene, setScene] = useState('intro');
+  const [currentMap, setCurrentMap] = useState('startHouse');
 
   const [currentNPC, setCurrentNPC] = useState('');
   const [charStats, setCharStats] = useState({
@@ -19,11 +20,11 @@ const Game = ({ mute, setMute }) => {
     charClass: '',
     health: null,
     strength: null,
-    str_mod: 2,
+    str_mod: null,
     wisdom: null,
-    wis_mod: -2,
+    wis_mod: null,
     dexterity: null,
-    dex_mod: 0,
+    dex_mod: null,
   });
 
   const [typeOfCheck, setTypeOfCheck] = useState('wis');

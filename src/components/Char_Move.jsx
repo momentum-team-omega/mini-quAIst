@@ -11,9 +11,9 @@ const Char_Move = ({
 }) => {
   const {
     menu,
+    setMenu,
     inventory,
     setInventory,
-    setMenu,
     isMoving,
     setIsMoving,
     isSpacePressed,
@@ -53,7 +53,7 @@ const Char_Move = ({
   const RUN_MOVE_SPEED = 5;
 
   const moveCharacter = () => {
-    if (!menu) {
+    if (!menu && !inventory) {
       const actualMoveSpeed = isSpacePressed
         ? RUN_MOVE_SPEED
         : DEFAULT_MOVE_SPEED;
@@ -102,7 +102,7 @@ const Char_Move = ({
 
   useEffect(() => {
     const handleDownKey = (e) => {
-      if (!menu) {
+      if (!menu && !inventory) {
         let keyPressed = null;
         switch (e.key) {
           case 'ArrowUp':
@@ -228,9 +228,11 @@ const Char_Move = ({
     const handleMenuKey = (e) => {
       if (e.key === 'Escape') {
         e.preventDefault();
+        setInventory(false);
         setMenu((prevMenu) => !prevMenu);
       } else if (e.key === 'Tab') {
         e.preventDefault();
+        setMenu(false);
         setInventory((prevInventory) => !prevInventory);
       } else if (e.key === 'm') {
         e.preventDefault();
