@@ -1,14 +1,11 @@
-import React from "react";
-import compass from "assets/compass-assets/compass-up-red.png";
-import keys from "assets/compass-assets/arrow-keys.png";
-import fkey from "assets/compass-assets/f-key.png";
-import potion from "/src/assets/battle-assets/potion.png";
-import skull from "/src/assets/battle-assets/Skull.png";
-import specialAttack from "/src/assets/battle-assets/Special-attack.png";
-import crossedSwords from "/src/assets/battle-assets/crossed-swords.png";
-import damage from "/src/assets/battle-assets/damage.png";
+import React from 'react';
+import potion from '/src/assets/battle-assets/potion.png';
+import skull from '/src/assets/battle-assets/Skull.png';
+import specialAttack from '/src/assets/battle-assets/Special-attack.png';
+import crossedSwords from '/src/assets/battle-assets/crossed-swords.png';
+import damage from '/src/assets/battle-assets/damage.png';
 
-import "/src/styles/Menu.css";
+import '/src/styles/Menu.css';
 
 const Battle_Menu = ({}) => {
   return (
@@ -26,7 +23,7 @@ const Battle_Menu = ({}) => {
           </p>
         </div>
         <img
-          style={{ height: "34px", width: "34px" }}
+          style={{ height: '34px', width: '34px' }}
           src={crossedSwords}
           alt="crossed swords"
           className="menu-img"
@@ -40,7 +37,7 @@ const Battle_Menu = ({}) => {
           </p>
         </div>
         <img
-          style={{ height: "34px", width: "34px" }}
+          style={{ height: '34px', width: '34px' }}
           src={damage}
           alt="damage"
           className="menu-img"
@@ -50,7 +47,7 @@ const Battle_Menu = ({}) => {
           <img src={skull} alt="skull" className="menu-img" />
           <p className="item-text">
             Attack: Deliver a basic attack using your character's equipped
-            weapon or abilities.{" "}
+            weapon or abilities.{' '}
           </p>
           <img src={potion} alt="potion" className="menu-img" />
           <p className="item-text">

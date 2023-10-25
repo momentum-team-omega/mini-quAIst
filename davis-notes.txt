@@ -60,6 +60,8 @@ buttons for main menu and volume in top right of game screen ✅
 
 To-Do Now: 🚨
 
+modifier values in dialoge ability check should be colored based on their value
+
 map audio doesn't mute when mute is hit, waits till song is done playing
 
 

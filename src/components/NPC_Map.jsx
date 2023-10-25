@@ -4,7 +4,6 @@ import wiseman from 'assets/npc-assets/wiseman-sheet.png';
 import steve from 'assets/npc-assets/steve-sheet.png';
 import villageLeader from 'assets/npc-assets/village-leader-sheet.png';
 import blacksmith from 'assets/npc-assets/blacksmith-sheet.png';
-import chestClosed from 'assets/npc-assets/chest-1-closed.png';
 import redTroll from 'assets/npc-assets/red-troll-1.png';
 import NPC from 'components/NPC';
 import GameContext from './GameContext';
