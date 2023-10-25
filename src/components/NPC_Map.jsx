@@ -96,6 +96,8 @@ const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows, mapNpcs }) => {
     return npcs.find((npc) => npc.id === npcId);
   };
 
+  const aliveNpcs = npcs.filter((npc) => npc.alive);
+
   return (
     <div
       className="npc-container"
@@ -107,7 +109,7 @@ const NPC_Map = ({ mapPosition, tileSize, mapColumns, mapRows, mapNpcs }) => {
     >
       {npcMap.map((row, rowIndex) =>
         row.map((npcId, colIndex) => {
-          const currentNPC = getNPCById(npcs, npcId);
+          const currentNPC = getNPCById(aliveNpcs, npcId);
 
           return (
             <React.Fragment key={`${rowIndex}-${colIndex}`}>
