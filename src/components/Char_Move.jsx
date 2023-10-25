@@ -32,7 +32,7 @@ const Char_Move = ({
 
   const gridToPixelPosition = (gridPosition) => {
     return {
-      x: (gridPosition.x - mapOffset.x) * tileSize - tileSize - 8 / 2,
+      x: (gridPosition.x - mapOffset.x) * tileSize - (tileSize - 8) / 2,
       y: (gridPosition.y - mapOffset.y) * tileSize + tileSize / 2,
     };
   };
