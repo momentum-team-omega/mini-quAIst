@@ -3,7 +3,7 @@ import Vol_Icon from 'components/menu/Vol_Icon';
 import Menu_Icon from 'components/menu/Menu_Icon';
 import Char_Bar from 'components/Char_Bar';
 import defaultGirl from 'assets/battle-assets/default-girl.png';
-import barbGirl from 'assets/battle-assets/barbarian-girl.png';
+import barbGirl from 'assets/battle-assets/barb-girl.png';
 import mageGirl from 'assets/battle-assets/mage-girl.png';
 import rogueGirl from 'assets/battle-assets/rogue-girl.png';
 import '/src/styles/Inventory.css';
