@@ -95,6 +95,7 @@
   width: 400px;
   display: flex;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .char-bar-box {
@@ -124,7 +125,8 @@
   text-align: center;
   line-height: .85;
   color: white; 
-  width: 250px;
+  width: 300px;
+  /* width: 250px; */
   margin: 10px;
 }
 

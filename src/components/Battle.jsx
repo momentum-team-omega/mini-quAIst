@@ -48,6 +48,7 @@ const Battle = ({}) => {
   const selectedClass = 'rogue';
   const [gameOutcome, setGameOutcome] = useState(null);
   const [animationDone, setAnimationDone] = useState(false);
+  const [areOptionsDisabled, setAreOptionsDisabled] = useState(false);
 
   const containerStyle = {
     background: `url(${battlebackground})`,
@@ -92,7 +93,13 @@ const Battle = ({}) => {
   }
 
   const handlePlayerMove = (action) => {
-    if (isLocked || someoneDied) return;
+    if (isLocked || someoneDied || areOptionsDisabled) return;
+
+    setAreOptionsDisabled(true);
+
+    setTimeout(() => {
+      setAreOptionsDisabled(false);
+    }, 5000);
 
     if (isPlayerTurn) {
       setIsLocked(true);
@@ -128,7 +135,6 @@ const Battle = ({}) => {
   useEffect(() => {
     const animationDuration = 1700; // Adjust this value to match your animation duration
     setTimeout(() => {
-      setIsAnimationFinished(true);
     }, animationDuration);
   }, []);
 
@@ -387,7 +393,7 @@ const Battle = ({}) => {
                 ref={smackButtonRef}
                 className="fight-button"
                 onClick={() => handlePlayerMove("smack")}
-                disabled={!isPlayerTurn || isLocked}
+                disabled={areOptionsDisabled}
               >
                 <p className="fight-text">
                   {charStats.charClass === 'barb'
@@ -403,15 +409,15 @@ const Battle = ({}) => {
                 ref={chillButtonRef}
                 className="chill-button"
                 onClick={() => handlePlayerMove("chill")}
-                disabled={!isPlayerTurn || healingPotions === 0 || isLocked}
+                disabled={areOptionsDisabled}
               >
                 <p className="chill-text">Potion ({healingPotions})</p>
               </button>
 
               <button
                 className="special-move-button"
-                onClick={handleSpecialMoves}
-                disabled={specialMovesUsed || isLocked || !isPlayerTurn} // Disable when it's not the player's turn
+                onClick={() => handlePlayerMove('special')}
+                disabled={areOptionsDisabled} // Disable when it's not the player's turn
               >
                 <p className="special-text">
                   {charStats.charClass === 'barb'
