@@ -133,21 +133,7 @@ const Map_Manager = ({
       ) {
         isNearAnyNpc = true;
 
-        if (isFPressed) {
-          setMapNpcs((prevMapNpcs) =>
-            prevMapNpcs.map((prevMapNpc) =>
-              prevMapNpc.npc.id === mapNpc.npc.id
-                ? {
-                    ...prevMapNpc,
-                    npc: {
-                      ...prevMapNpc.npc,
-                      triggered: !prevMapNpc.npc.triggered,
-                    },
-                  }
-                : prevMapNpc
-            )
-          );
-          setCurrentNPC(mapNpc.npc.name);
+        if (isNearAnyNpc) {
           setNpcs((prevNpcs) =>
             prevNpcs.map((prevNpc) =>
               prevNpc.id === mapNpc.npc.id
@@ -158,6 +144,10 @@ const Map_Manager = ({
                 : prevNpc
             )
           );
+        }
+
+        if (isFPressed) {
+          setCurrentNPC(mapNpc.npc.name);
           setScene('dialogue');
         }
       }
@@ -171,7 +161,7 @@ const Map_Manager = ({
 
     // console.log(mapPosition);
     // console.log(charPosition);
-  }, [charPosition, isFPressed, mapNpcs, npcs]);
+  }, [charPosition, isFPressed, mapNpcs]);
 
   const checkCollisions = (position, collisionMap) => {
     const x = Math.floor(position.x);
@@ -287,7 +277,7 @@ const Map_Manager = ({
                     left: `${colIndex * tileSize}px`,
                     width: `${tileSize}px`,
                     height: `${tileSize}px`,
-                    backgroundColor: 'blue',
+                    // backgroundColor: 'blue',
                   }}
                 />
               )}

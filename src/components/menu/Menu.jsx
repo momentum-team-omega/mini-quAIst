@@ -8,11 +8,12 @@ import '/src/styles/Menu.css';
 import GameContext from '../GameContext';
 
 const Menu = ({}) => {
-  const { scene, setMenu, mute, setMute } = useContext(GameContext);
+  const { scene, setMenu, setInventory } = useContext(GameContext);
   const [confirm, setConfirm] = useState(false);
 
   const handleExit = () => {
     setMenu(false);
+    setInventory(false);
   };
   const handleGameExit = () => {
     setConfirm(true);

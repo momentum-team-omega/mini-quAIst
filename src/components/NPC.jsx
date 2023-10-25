@@ -104,7 +104,7 @@ const NPC = ({
   // console.log('currentNPC ', currentNPC);
   return (
     <>
-      {currentNPC === NPC.name && (
+      {triggered && (
         <div
           className="message-box"
           style={{

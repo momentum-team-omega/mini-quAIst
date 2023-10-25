@@ -1,8 +1,5 @@
 import React, { useContext, useState } from 'react';
 import Char_Bar from 'components/Char_Bar';
-import barbCharacter from 'assets/creation-assets/barbarian-character.png';
-import mageCharacter from 'assets/creation-assets/mage-character.png';
-import rogueCharacter from 'assets/creation-assets/rogue-character.png';
 import barbGirl from 'assets/creation-assets/barbarian-girl.png';
 import mageGirl from 'assets/creation-assets/mage-girl.png';
 import rogueGirl from 'assets/creation-assets/rogue-girl.png';
