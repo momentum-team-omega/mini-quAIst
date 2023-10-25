@@ -66,12 +66,20 @@ const Dialogue = () => {
     return () => clearTimeout(animationTimeout);
   }, [response]);
 
+  // const npcImages = {
+  //   wiseman: wisemanImage,
+  //   blacksmith: blacksmithImage,
+  //   steve: steveImage,
+  //   troll: trollImage,
+  //   villageLeader: villageLeaderImage,
+  // };
+
   const npcImages = {
-    wiseman: wisemanImage,
-    blacksmith: blacksmithImage,
-    steve: steveImage,
-    troll: trollImage,
-    villageLeader: villageLeaderImage,
+    wiseman: wisemanUpscaled,
+    blacksmith: blacksmithUpscaled,
+    steve: steveUpscaled,
+    troll: trollUpscaled,
+    villageLeader: villageLeaderUpscaled,
   };
 
   const containerStyle = {
@@ -230,16 +238,16 @@ const Dialogue = () => {
     <>
       {menu && <Menu />}
       {inventory && <Inventory />}
+      {makeCheck && (
+        <TwentySidedDie
+          typeOfCheck={typeOfCheck}
+          difficultyScore={currentOption?.difficultyScore}
+          onRollComplete={handleRollOutcome}
+        />
+      )}
       <div className="dialogue-container">
         {!menu && !inventory && (
           <div className="title-container">
-            {makeCheck && (
-              <TwentySidedDie
-                typeOfCheck={typeOfCheck}
-                difficultyScore={currentOption?.difficultyScore}
-                onRollComplete={handleRollOutcome}
-              />
-            )}
             {loading && (
               <Box>
                 <SkeletonTheme color="#202020" highlightColor="#444">
@@ -273,8 +281,6 @@ const Dialogue = () => {
         <div
           className="npc-image-container"
           style={{
-            width: 600,
-            height: 338,
             backgroundImage: containerStyle.backgroundImage,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
