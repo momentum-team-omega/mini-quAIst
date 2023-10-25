@@ -1,7 +1,7 @@
 import React from 'react';
 import compass from 'assets/compass-assets/compass-up-red.png';
-import keys from 'assets/compass-assets/arrow-keys.png';
-import fkey from 'assets/compass-assets/f-key.png';
+import keys from 'assets/menu-assets/arrow-keys.png';
+import fkey from 'assets/menu-assets/f-key.png';
 import '/src/styles/Menu.css';
 
 const Overworld_Menu = ({}) => {

@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import SFX from "components/SFX";
-import Menu_Icon from "components/menu/Menu_Icon";
-import Vol_Icon from "components/menu/Vol_Icon";
-import Overworld from "components/Overworld";
-import Dialogue from "components/Dialogue";
-import Create_Char from "components/Create_Char";
-import GameContext from "components/GameContext";
-import Battle from "components/Battle";
-import Cut_Scene from "components/Cut_Scene";
-import Inventory_Icon from "components/menu/Inventory_Icon.jsx";
+import React, { useState } from 'react';
+import SFX from 'components/SFX';
+import Vol_Icon from 'components/menu/Vol_Icon';
+import Inventory_Icon from 'components/menu/Inventory_Icon';
+import Menu_Icon from 'components/menu/Menu_Icon';
+import Overworld from 'components/Overworld';
+import Dialogue from 'components/Dialogue';
+import Create_Char from 'components/Create_Char';
+import GameContext from 'components/GameContext';
+import Battle from 'components/Battle';
+import Cut_Scene from 'components/Cut_Scene';
+import Menu_Keys from 'components/Menu_Keys';
 
 const Game = ({ mute, setMute }) => {
   const [scene, setScene] = useState("intro");
   const [currentMap, setCurrentMap] = useState("startHouse");
 
-  const [currentNPC, setCurrentNPC] = useState("");
   const [charStats, setCharStats] = useState({
     name: "",
     charClass: "",
@@ -155,6 +155,7 @@ const Game = ({ mute, setMute }) => {
           setInventory,
         }}
       >
+        <Menu_Keys />
         <div className="content">
           <div
             className="game-container"
@@ -165,19 +166,15 @@ const Game = ({ mute, setMute }) => {
           >
             {!mute && <SFX />}
             {!menu && !inventory && <Vol_Icon />}
-            {!menu &&
-              !inventory &&
-              scene !== "dialogue" &&
-              scene !== "intro" && <Inventory_Icon />}
-            {!menu &&
-              !inventory &&
-              scene !== "dialogue" &&
-              scene !== "intro" && <Menu_Icon position={"normal"} />}
-            {scene === "intro" && <Cut_Scene sceneSelection={0} />}
-            {scene === "ending" && <Cut_Scene sceneSelection={1} />}
-            {scene === "death" && <Cut_Scene sceneSelection={2} />}
-            {scene === "overworld" && <Overworld />}
-            {scene === "characterCreation" && (
+            {!menu && !inventory && scene !== 'intro' && <Inventory_Icon />}
+            {!menu && !inventory && scene !== 'intro' && (
+              <Menu_Icon position={'normal'} />
+            )}
+            {scene === 'intro' && <Cut_Scene sceneSelection={0} />}
+            {scene === 'ending' && <Cut_Scene sceneSelection={1} />}
+            {scene === 'death' && <Cut_Scene sceneSelection={2} />}
+            {scene === 'overworld' && <Overworld />}
+            {scene === 'characterCreation' && (
               <Create_Char charStats={charStats} setCharStats={setCharStats} />
             )}
             {scene === "dialogue" && <Dialogue />}

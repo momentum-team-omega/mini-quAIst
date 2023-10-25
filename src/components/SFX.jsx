@@ -68,6 +68,9 @@ const SFX = () => {
       case 'village2Locked2':
         audioSrc = village1;
         break;
+      case 'village2inside':
+        audioSrc = inside1;
+        break;
       default:
         audioSrc = null;
     }

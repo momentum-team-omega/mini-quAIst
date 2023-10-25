@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import Overworld_Menu from 'components/menu/Overworld_Menu';
 import Battle_Menu from 'components/menu/Battle_Menu';
+import Dialogue_Menu from 'components/menu/Dialogue_Menu';
 import Confirm from 'components/menu/Confirm';
 import Vol_Icon from 'components/menu/Vol_Icon';
 import Inventory_Icon from 'components/menu/Inventory_Icon';
@@ -28,6 +29,7 @@ const Menu = ({}) => {
       <Inventory_Icon />
       {!confirm && scene === 'overworld' && <Overworld_Menu />}
       {!confirm && scene === 'battle' && <Battle_Menu />}
+      {!confirm && scene === 'dialogue' && <Dialogue_Menu />}
       {confirm ? (
         <Confirm setConfirm={setConfirm} />
       ) : (
