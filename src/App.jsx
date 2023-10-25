@@ -19,8 +19,14 @@ function App() {
   const [token, setToken] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const [scene, setScene] = useState('overworld'); // Initial scene
-  const [currentNPC, setCurrentNPC] = useState('troll'); // set to test
+  const [mute, setMute] = useState(true);
+
+  const toggleMute = () => {
+    setMute((prevMute) => !prevMute);
+  };
+
+  const [scene, setScene] = useState("intro"); // Initial scene
+  const [currentNPC, setCurrentNPC] = useState("troll"); // set to test
   const [charStats, setCharStats] = useState({
     name: '',
     health: null,
@@ -33,9 +39,9 @@ function App() {
   });
 
   const initializeLocalStorage = () => {
-    if (!localStorage.getItem('mapPosition')) {
+    if (!localStorage.getItem("mapPosition")) {
       const defaultMapPosition = { x: 252, y: -100 };
-      localStorage.setItem('mapPosition', JSON.stringify(defaultMapPosition));
+      localStorage.setItem("mapPosition", JSON.stringify(defaultMapPosition));
     }
   };
 
@@ -57,7 +63,7 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace />} />;
-          <Route path="/home" element={<Home />} />;
+          <Route path="/home" element={<Home toggleMute={toggleMute} />} />;
           <Route
             path="/login"
             element={
@@ -72,7 +78,11 @@ function App() {
             }
           />
           ;
-          <Route path="/play" element={<Game />} />;
+          <Route
+            path="/play"
+            element={<Game mute={mute} setMute={setMute} />}
+          />
+          ;
           <Route path="/wiki" element={<Wiki />} />;
           <Route path="/wiki/mini_quaist" element={<WikiQuaist />} />;
           <Route path="/wiki/classes" element={<WikiClasses />} />;

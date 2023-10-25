@@ -1,5 +1,8 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
-const GameContext = createContext();
+const GameContext = createContext({
+  mute: true,
+  setMute: () => {},
+});
 
 export default GameContext;
