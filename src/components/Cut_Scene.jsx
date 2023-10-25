@@ -58,7 +58,8 @@ const Cut_Scene = ({ sceneSelection }) => {
     if (imageIndex < selectedScene.imageUrls.length - 1) {
       setImageIndex((prevIndex) => prevIndex + 1);
       setIsTyping(true);
-    } else {
+    } else if (sceneSelection < scenes.length - 1) {
+      // Check if there are more scenes
       setScene("overworld");
     }
   };
