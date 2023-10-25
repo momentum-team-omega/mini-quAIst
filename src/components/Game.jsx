@@ -109,10 +109,6 @@ const Game = ({ mute, setMute }) => {
     },
   ]);
 
-  const handleMuteButtonClick = () => {
-    setMute(!mute); // Toggle between muted and unmuted state
-  };
-
   return (
     <>
       <GameContext.Provider

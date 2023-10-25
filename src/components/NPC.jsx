@@ -108,8 +108,10 @@ const NPC = ({
         <div
           className="message-box"
           style={{
-            top: `${rowIndex * tileSize - mapPosition.y - yOffset}px`,
-            left: `${colIndex * tileSize - mapPosition.x - xOffset}px`,
+            top: `${rowIndex * tileSize - mapPosition.y - yOffset - 52}px`,
+            left: `${
+              colIndex * tileSize - mapPosition.x - xOffset - tileSize / 7
+            }px`,
             width: `${tileSize + 20}px`,
             height: `${tileSize - 15}px`,
           }}
