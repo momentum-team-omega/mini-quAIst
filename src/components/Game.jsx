@@ -12,29 +12,28 @@ import Cut_Scene from 'components/Cut_Scene';
 import Menu_Keys from 'components/Menu_Keys';
 
 const Game = ({ mute, setMute }) => {
-  const [scene, setScene] = useState('dialogue');
-  const [currentMap, setCurrentMap] = useState('trollMap');
+  const [scene, setScene] = useState("intro");
+  const [currentMap, setCurrentMap] = useState("startHouse");
 
-  const [currentNPC, setCurrentNPC] = useState('troll');
   const [charStats, setCharStats] = useState({
-    name: '',
-    charClass: '',
+    name: "",
+    charClass: "",
     health: null,
     strength: null,
-    str_mod: null,
+    str_mod: 2,
     wisdom: null,
-    wis_mod: null,
+    wis_mod: -2,
     dexterity: null,
-    dex_mod: null,
+    dex_mod: 0,
   });
 
-  const [typeOfCheck, setTypeOfCheck] = useState('wis');
-  const [outcome, setOutcome] = useState('');
+  const [typeOfCheck, setTypeOfCheck] = useState("wis");
+  const [outcome, setOutcome] = useState("");
   const [makeCheck, setMakeCheck] = useState(false);
 
   const [gameWindow, setGameWindow] = useState({
-    height: '720px',
-    width: '1280px',
+    height: "720px",
+    width: "1280px",
   });
 
   const [isMoving, setIsMoving] = useState(false);
@@ -65,50 +64,54 @@ const Game = ({ mute, setMute }) => {
   const [npcs, setNpcs] = useState([
     {
       id: 1,
-      name: 'wiseman',
+      name: "wiseman",
       steps: 4,
       animationSpeed: 800,
       alive: true,
       triggered: false,
-      message: 'Greetings',
+      message: "Greetings",
     },
     {
       id: 2,
-      name: 'steve',
+      name: "steve",
       steps: 4,
       animationSpeed: 400,
       alive: true,
       triggered: false,
-      message: 'Crikey!',
+      message: "Crikey!",
     },
     {
       id: 3,
-      name: 'villageLeader',
+      name: "villageLeader",
       steps: 4,
       animationSpeed: 200,
       alive: true,
       triggered: false,
-      message: 'Hello There!',
+      message: "Hello There!",
     },
     {
       id: 4,
-      name: 'blacksmith',
+      name: "blacksmith",
       steps: 4,
       animationSpeed: 200,
       alive: true,
       triggered: false,
-      message: 'Greetings',
+      message: "Greetings",
     },
     {
       id: 5,
-      name: 'troll',
+      name: "troll",
       steps: 4,
       animationSpeed: 200,
       alive: true,
       triggered: false,
-      message: 'RAWR',
+      message: "RAWR",
     },
   ]);
+
+  const handleMuteButtonClick = () => {
+    setMute(!mute); // Toggle between muted and unmuted state
+  };
 
   return (
     <>
@@ -174,8 +177,8 @@ const Game = ({ mute, setMute }) => {
             {scene === 'characterCreation' && (
               <Create_Char charStats={charStats} setCharStats={setCharStats} />
             )}
-            {scene === 'dialogue' && <Dialogue />}
-            {scene === 'battle' && <Battle />}
+            {scene === "dialogue" && <Dialogue />}
+            {scene === "battle" && <Battle />}
           </div>
         </div>
       </GameContext.Provider>
