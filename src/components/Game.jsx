@@ -21,11 +21,11 @@ const Game = ({ mute, setMute }) => {
     charClass: '',
     health: null,
     strength: null,
-    str_mod: 2,
+    str_mod: null,
     wisdom: null,
-    wis_mod: -2,
+    wis_mod: null,
     dexterity: null,
-    dex_mod: 0,
+    dex_mod: null,
   });
 
   const [typeOfCheck, setTypeOfCheck] = useState('wis');
