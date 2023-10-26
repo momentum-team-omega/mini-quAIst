@@ -12,33 +12,33 @@ import Cut_Scene from "components/Cut_Scene";
 import Menu_Keys from "components/Menu_Keys";
 
 const Game = ({ mute, setMute }) => {
-  const [scene, setScene] = useState("intro");
-  const [currentMap, setCurrentMap] = useState("startHouse");
-  const [currentNPC, setCurrentNPC] = useState("");
-
-  const [charStats, setCharStats] = useState({
-    name: "",
-    charClass: "",
-    health: null,
-    strength: null,
-    str_mod: null,
-    wisdom: null,
-    wis_mod: null,
-    dexterity: null,
-    dex_mod: null,
-  });
+  const [scene, setScene] = useState("dialogue");
+  const [currentMap, setCurrentMap] = useState("");
+  const [currentNPC, setCurrentNPC] = useState("troll");
 
   // const [charStats, setCharStats] = useState({
-  //   name:"Nathan",
-  //   charClass: 'mage',
-  //   health: 33,
-  //   strength: 6,
-  //   str_mod: -2,
-  //   wisdom: 14,
-  //   wis_mod: 2,
-  //   dexterity: 10,
-  //   dex_mod: 0,
+  //   name: "",
+  //   charClass: "",
+  //   health: null,
+  //   strength: null,
+  //   str_mod: null,
+  //   wisdom: null,
+  //   wis_mod: null,
+  //   dexterity: null,
+  //   dex_mod: null,
   // });
+
+  const [charStats, setCharStats] = useState({
+    name:"Nathan",
+    charClass: 'mage',
+    health: 33,
+    strength: 6,
+    str_mod: -2,
+    wisdom: 14,
+    wis_mod: 2,
+    dexterity: 10,
+    dex_mod: 0,
+  });
 
   const [typeOfCheck, setTypeOfCheck] = useState("wis");
   const [outcome, setOutcome] = useState("");

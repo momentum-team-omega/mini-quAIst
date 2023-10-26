@@ -322,7 +322,7 @@ export const npcDialogues = {
       "You are a massive troll, notorious for guarding a bridge in the middle of a dense forest. You're protective of your territory and rarely allow anyone to cross. As you're lounging, a 10-year-old adventurer approaches you with intent to cross.",
     1: {
       text: "Nobody passes my bridge!",
-      options: ["str", "dex", "wis", "fight", "6"],
+      options: ["str", "dex", "wis", "fight", "leave"],
     },
     str: {
       text: " I'm not scared of you! Let me pass, or you'll regret it.",
@@ -387,7 +387,7 @@ export const npcDialogues = {
       options: ["1"],
     },
     leave: {
-      text: "The troll watches as you sheepishly back away.",
+      text: "That troll is HUGE. Time to run!",
       options: [],
     },
   },
