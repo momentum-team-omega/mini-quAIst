@@ -42,9 +42,9 @@ const Game = ({ mute, setMute }) => {
   const [isFPressed, setIsFPressed] = useState(false);
 
   const [checkpoints, setCheckpoints] = useState({
-    1: true, // talk to wise man
-    2: true, // talk to steve
-    3: true, // talk to villageLeader
+    1: false, // talk to wise man
+    2: false, // talk to steve
+    3: false, // talk to villageLeader
     4: false, // get passed troll
     5: false, // defeat troll
   });
