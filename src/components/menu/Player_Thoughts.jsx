@@ -9,6 +9,7 @@ const Player_Thoughts = ({ charPosition }) => {
     setPlayerThoughts,
     isSpacePressed,
     isFPressed,
+    checkpoints,
   } = useContext(GameContext);
 
   const [isVisible, setIsVisible] = useState(false);
@@ -71,6 +72,25 @@ const Player_Thoughts = ({ charPosition }) => {
             'The town hall says closed for lunch. I wonder if I should talk to steve in the meantime...';
         }
         break;
+        
+      case 'trollMap':
+        if (
+          charPosition.x >= 5.5 &&
+          charPosition.x <= 8.5 &&
+          charPosition.y >= 3 &&
+          charPosition.y <= 5
+        ) {
+          tempContent = `There's my cat! Now I just need to get past this troll...`;
+        } else if (
+          checkpoints[4] &&
+          charPosition.x >= 14.5 &&
+          charPosition.x <= 17.5 &&
+          charPosition.y >= 3 &&
+          charPosition.y <= 5
+        ) {
+          tempContent =
+            'That goblin had my cat! I wont let it get away...';
+        }
 
       default:
         break;
