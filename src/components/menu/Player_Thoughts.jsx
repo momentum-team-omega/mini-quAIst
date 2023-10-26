@@ -83,13 +83,13 @@ const Player_Thoughts = ({ charPosition }) => {
           tempContent = `There's my cat! Now I just need to get past this troll...`;
         } else if (
           checkpoints[4] &&
-          charPosition.x >= 18.5 &&
-          charPosition.x <= 21.5 &&
-          charPosition.y >= 8 &&
-          charPosition.y <= 13
+          charPosition.x >= 14.5 &&
+          charPosition.x <= 17.5 &&
+          charPosition.y >= 3 &&
+          charPosition.y <= 5
         ) {
           tempContent =
-            'The town hall says closed for lunch. I wonder if I should talk to steve in the meantime...';
+            'That goblin had my cat! I wont let it get away...';
         }
 
       default:
