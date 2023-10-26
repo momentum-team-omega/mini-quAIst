@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import GameContext from './GameContext';
+import GameContext from 'contexts/GameContext';
 import '/src/styles/TwentySidedDie.css';
 
 const TwentySidedDie = ({ typeOfCheck, onRollComplete }) => {
@@ -86,9 +86,7 @@ const TwentySidedDie = ({ typeOfCheck, onRollComplete }) => {
           <div className="rolled-number">{diceRoll}</div>
         )}
       </div>
-      <div>
-        {diceRoll && <div className="rolled-outcome">{outcome}</div>}
-      </div>
+      <div>{diceRoll && <div className="rolled-outcome">{outcome}</div>}</div>
       <button
         className="continue-button"
         onClick={handleContinue}
@@ -98,6 +96,6 @@ const TwentySidedDie = ({ typeOfCheck, onRollComplete }) => {
       </button>
     </div>
   );
-        };
+};
 
 export default TwentySidedDie;

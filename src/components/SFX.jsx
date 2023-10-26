@@ -4,7 +4,7 @@ import field1 from 'assets/sfx-assets/field-1.wav';
 import forest1 from 'assets/sfx-assets/forest-1.wav';
 import inside1 from 'assets/sfx-assets/inside-1.wav';
 import village1 from 'assets/sfx-assets/village-1.wav';
-import GameContext from 'components/GameContext';
+import GameContext from 'contexts/GameContext';
 
 const SFX = () => {
   const { currentMap, isMoving, isSpacePressed, mute } =
@@ -70,6 +70,12 @@ const SFX = () => {
         break;
       case 'village2inside':
         audioSrc = inside1;
+        break;
+      case 'trollMap':
+        audioSrc = forest1;
+        break;
+      case 'trollMapCat':
+        audioSrc = forest1;
         break;
       default:
         audioSrc = null;

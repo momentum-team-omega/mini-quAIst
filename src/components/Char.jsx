@@ -19,7 +19,7 @@ import barbLeft from 'assets/char-assets/barbLeft.png';
 import barbDown from 'assets/char-assets/barbDown.png';
 import barbRight from 'assets/char-assets/barbRight.png';
 import { useState, useEffect, useContext } from 'react';
-import GameContext from './GameContext';
+import GameContext from 'contexts/GameContext';
 
 const Char = ({ tileSize, direction }) => {
   const { charStats, isMoving, isSpacePressed } = useContext(GameContext);

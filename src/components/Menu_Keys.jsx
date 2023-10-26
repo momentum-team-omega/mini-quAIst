@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react';
-import GameContext from 'components/GameContext';
+import GameContext from 'contexts/GameContext';
 
 const Menu_Icon = ({}) => {
   const { setInventory, setMenu, setMute } = useContext(GameContext);

@@ -8,7 +8,7 @@ import compassUpBlue from 'assets/compass-assets/compass-up-blue.png';
 import compassRightBlue from 'assets/compass-assets/compass-right-blue.png';
 import compassDownBlue from 'assets/compass-assets/compass-down-blue.png';
 import compassLeftBlue from 'assets/compass-assets/compass-left-blue.png';
-import GameContext from './GameContext';
+import GameContext from 'contexts/GameContext';
 import '/src/styles/Compass.css';
 
 const Compass = ({ direction }) => {

@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
+import { trollMapCollisions2 } from 'utilities/collisionsData.js';
 import Menu from 'components/menu/Menu';
 import Inventory from 'components/menu/Inventory';
 import playerImage from '/src/assets/battle-assets/barbarian-test-3.png';
@@ -11,14 +12,16 @@ import battlebackground from '/src/assets/battle-assets/720p-battle-background.p
 import { opponentStats, playerStats } from '/src/shared';
 import { PlayerSummary } from './PlayerSummary';
 import '/src/styles/Battle.css';
-import GameContext from './GameContext';
+import GameContext from 'contexts/GameContext';
 
 const Battle = ({}) => {
   const {
+    setCurrentMap,
     setScene,
     currentNPC,
     charStats,
     setCheckpoints,
+    npcs,
     setNpcs,
     menu,
     inventory,
@@ -111,7 +114,7 @@ const Battle = ({}) => {
         case 'chill':
           handleChill();
           break;
-        case "special":
+        case 'special':
           handleSpecialMoves();
           break;
         default:
@@ -134,8 +137,7 @@ const Battle = ({}) => {
   // Add a useEffect to track the animation state
   useEffect(() => {
     const animationDuration = 1700; // Adjust this value to match your animation duration
-    setTimeout(() => {
-    }, animationDuration);
+    setTimeout(() => {}, animationDuration);
   }, []);
 
   const handleOpponentMove = () => {
@@ -294,22 +296,23 @@ const Battle = ({}) => {
 
   const handleContinue = () => {
     if (playerHealth >= 0) {
-      setCheckpoints((prev) => ({ ...prev, 4: true }));
-      setNpcs([
-        {
-          id: 1,
-          x: 10,
-          y: 4,
-          steps: 4,
-          animationSpeed: 200,
-          alive: false,
-          triggered: false,
-          message: 'RAWR',
-          name: 'troll',
-        },
-      ]);
-      // console.log(npcs);
-      setScene('ending');
+      setCheckpoints((prev) => ({
+        ...prev,
+        4: true,
+        5: true,
+      }));
+      const updatedNpcs = npcs.map((npc) => {
+        if (npc.name === 'troll') {
+          return {
+            ...npc,
+            alive: false,
+          };
+        }
+        return npc;
+      });
+      setNpcs(updatedNpcs);
+      setCurrentMap('trollMap');
+      setScene('end-chapter1');
     } else {
       setScene('death');
     }
@@ -387,12 +390,12 @@ const Battle = ({}) => {
           {!someoneDied && (
             <div
               className="button-box"
-              style={{ display: isPlayerTurn || isLocked ? "flex" : "none" }}
+              style={{ display: isPlayerTurn || isLocked ? 'flex' : 'none' }}
             >
               <button
                 ref={smackButtonRef}
                 className="fight-button"
-                onClick={() => handlePlayerMove("smack")}
+                onClick={() => handlePlayerMove('smack')}
                 disabled={areOptionsDisabled}
               >
                 <p className="fight-text">
@@ -408,7 +411,7 @@ const Battle = ({}) => {
               <button
                 ref={chillButtonRef}
                 className="chill-button"
-                onClick={() => handlePlayerMove("chill")}
+                onClick={() => handlePlayerMove('chill')}
                 disabled={areOptionsDisabled}
               >
                 <p className="chill-text">Potion ({healingPotions})</p>

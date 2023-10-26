@@ -6,7 +6,7 @@ import Confirm from 'components/menu/Confirm';
 import Vol_Icon from 'components/menu/Vol_Icon';
 import Inventory_Icon from 'components/menu/Inventory_Icon';
 import '/src/styles/Menu.css';
-import GameContext from '../GameContext';
+import GameContext from '../../contexts/GameContext';
 
 const Menu = ({}) => {
   const { scene, setMenu, setInventory } = useContext(GameContext);

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import GameContext from './GameContext';
+import GameContext from 'contexts/GameContext';
 
 const Char_Move = ({
   setPosition,

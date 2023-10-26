@@ -4,7 +4,7 @@ import barbGirl from 'assets/creation-assets/barbarian-girl.png';
 import mageGirl from 'assets/creation-assets/mage-girl.png';
 import rogueGirl from 'assets/creation-assets/rogue-girl.png';
 import charBackground from 'assets/creation-assets/fantasy-world.png';
-import GameContext from './GameContext';
+import GameContext from 'contexts/GameContext';
 import '/src/styles/Create_Char.css';
 
 const SelectCharacter = ({ charStats, setCharStats }) => {

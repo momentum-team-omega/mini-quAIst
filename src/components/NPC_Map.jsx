@@ -6,7 +6,7 @@ import villageLeader from 'assets/npc-assets/village-leader-sheet.png';
 import blacksmith from 'assets/npc-assets/blacksmith-sheet.png';
 import redTroll from 'assets/npc-assets/red-troll-1.png';
 import NPC from 'components/NPC';
-import GameContext from './GameContext';
+import GameContext from 'contexts/GameContext';
 
 const getNPCMap = (mapNpcs, mapColumns) => {
   const npcMap = [];

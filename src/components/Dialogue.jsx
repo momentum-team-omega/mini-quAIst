@@ -3,7 +3,7 @@ import { npcDialogues } from 'utilities/npcDialogues';
 import TwentySidedDie from 'components/TwentySidedDie';
 import Menu from 'components/menu/Menu';
 import Inventory from 'components/menu/Inventory';
-import GameContext from 'components/GameContext';
+import GameContext from 'contexts/GameContext';
 import '/src/styles/Dialogue.css';
 import axios from 'axios';
 import { TypeAnimation } from 'react-type-animation';
@@ -37,6 +37,8 @@ const Dialogue = () => {
     charStats,
     menu,
     inventory,
+    setMapPosition,
+    setCharPosition,
   } = useContext(GameContext);
 
   const [currentDialogueId, setCurrentDialogueId] = useState('1');
@@ -130,13 +132,13 @@ const Dialogue = () => {
         console.log('optionId', optionId);
 
         if (currentNPC === 'steve') {
-          if (!checkpoints[3]) {
+          if (!checkpoints[2]) {
             setCheckpoints((prev) => ({ ...prev, 2: true }));
             // console.log('checkpoint2', checkpoint2);
             setCurrentMap('village2Locked2');
           }
         } else if (currentNPC === 'villageLeader') {
-          if (!checkpoints[4]) {
+          if (!checkpoints[3]) {
             setCheckpoints((prev) => ({ ...prev, 3: true }));
             // console.log('checkpoint3', checkpoint3);
           }
@@ -200,7 +202,8 @@ const Dialogue = () => {
   const handleRollOutcome = (rollOutcome) => {
     if (rollOutcome === 'passed') {
       setCheckpoints((prev) => ({ ...prev, 4: true }));
-      setScene('ending');
+      setCurrentMap('trollMap');
+      setScene('end-chapter1');
     } else if (rollOutcome === 'failed') {
       setScene('battle');
     }

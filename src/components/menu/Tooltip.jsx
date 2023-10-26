@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import GameContext from '../GameContext';
+import GameContext from 'contexts/GameContext';
 import '/src/styles/Tooltip.css';
 
 const Tooltip = ({ charPosition }) => {

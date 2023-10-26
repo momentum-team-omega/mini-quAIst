@@ -11,7 +11,7 @@ import Compass from 'components/Compass';
 import Menu from 'components/menu/Menu';
 import Inventory from 'components/menu/Inventory';
 import '/src/styles/Overworld.css';
-import GameContext from './GameContext';
+import GameContext from 'contexts/GameContext';
 import Player_Thoughts from './menu/Player_Thoughts';
 
 const Overworld = ({}) => {

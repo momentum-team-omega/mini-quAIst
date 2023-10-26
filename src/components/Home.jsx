@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
-import Nav from "components/Nav";
-import Under from "components/Under";
-import Footer from "components/Footer";
-import playButton from "assets/home-assets/play-button.png";
-import buttonImg from "assets/home-assets/button-img.png";
-import "/src/styles/Home.css";
-import { useContext } from "react";
-import GameContext from "./GameContext";
+import { Link } from 'react-router-dom';
+import Nav from 'components/Nav';
+import Under from 'components/Under';
+import Footer from 'components/Footer';
+import playButton from 'assets/home-assets/play-button.png';
+import buttonImg from 'assets/home-assets/button-img.png';
+import '/src/styles/Home.css';
+import { useContext } from 'react';
+import GameContext from 'contexts/GameContext';
 
 const Home = () => {
   const { mute, setMute } = useContext(GameContext);
