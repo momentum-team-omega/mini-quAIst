@@ -12,20 +12,32 @@ import Cut_Scene from "components/Cut_Scene";
 import Menu_Keys from "components/Menu_Keys";
 
 const Game = ({ mute, setMute }) => {
-  const [scene, setScene] = useState("intro");
-  const [currentMap, setCurrentMap] = useState("startHouse");
+  const [scene, setScene] = useState("overworld");
+  const [currentMap, setCurrentMap] = useState("trollMapCat");
   const [currentNPC, setCurrentNPC] = useState("");
 
+  // const [charStats, setCharStats] = useState({
+  //   name: "",
+  //   charClass: "",
+  //   health: null,
+  //   strength: null,
+  //   str_mod: null,
+  //   wisdom: null,
+  //   wis_mod: null,
+  //   dexterity: null,
+  //   dex_mod: null,
+  // });
+  
   const [charStats, setCharStats] = useState({
-    name: "",
-    charClass: "",
-    health: null,
-    strength: null,
-    str_mod: null,
-    wisdom: null,
-    wis_mod: null,
-    dexterity: null,
-    dex_mod: null,
+    name:"Nathan",
+    charClass: 'mage',
+    health: 33,
+    strength: 6,
+    str_mod: -2,
+    wisdom: 14,
+    wis_mod: 2,
+    dexterity: 10,
+    dex_mod: 0,
   });
 
   const [typeOfCheck, setTypeOfCheck] = useState("wis");

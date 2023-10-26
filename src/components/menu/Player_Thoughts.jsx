@@ -73,15 +73,19 @@ const Player_Thoughts = ({ charPosition }) => {
         }
         break;
         
-      case 'trollMap':
+      case 'trollMapCat':
         if (
+          !checkpoints[4] &&
           charPosition.x >= 5.5 &&
           charPosition.x <= 8.5 &&
           charPosition.y >= 3 &&
           charPosition.y <= 5
         ) {
           tempContent = `There's my cat! Now I just need to get past this troll...`;
-        } else if (
+        } 
+        break;
+      case 'trollMap':
+        if (
           checkpoints[4] &&
           charPosition.x >= 14.5 &&
           charPosition.x <= 17.5 &&
@@ -90,8 +94,9 @@ const Player_Thoughts = ({ charPosition }) => {
         ) {
           tempContent =
             'That goblin had my cat! I wont let it get away...';
+            
         }
-
+        break;
       default:
         break;
     }
@@ -100,7 +105,7 @@ const Player_Thoughts = ({ charPosition }) => {
     setContent(tempContent);
   }, [currentMap, charPosition, playerThoughts]);
 
-  // console.log('currentMap', currentMap);
+  console.log(checkpoints[4])
 
   return (
     <>
