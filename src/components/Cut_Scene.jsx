@@ -23,7 +23,7 @@ const scenes = [
   },
   {
     imageUrls: [endImage1Upscaled],
-    textArray: ["Congratulations, you have completed Chaper One!"],
+    textArray: ["Congratulations, you have completed Chapter One!"],
     sceneHeader: ["Huzzah!"],
     sceneButton: ["End Chapter"],
   },
