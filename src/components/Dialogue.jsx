@@ -124,10 +124,7 @@ const Dialogue = () => {
         setLoading(false);
         // console.log('instruct optionId', optionId);
         setResponse(npcDialogues[currentNPC][optionId].instructions);
-        // console.log(
-          'instructions',
-          npcDialogues[currentNPC][optionId].instructions
-        );
+        'instructions', npcDialogues[currentNPC][optionId].instructions;
         setCurrentDialogueId(optionId);
         // console.log('optionId', optionId);
 
