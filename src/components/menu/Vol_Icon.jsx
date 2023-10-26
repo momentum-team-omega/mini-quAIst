@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import muteImg from '/src/assets/menu-assets/mute-icon.svg';
 import unmuteImg from '/src/assets/menu-assets/unmute-icon.svg';
-import GameContext from 'components/GameContext';
+import GameContext from 'contexts/GameContext';
 import '/src/styles/Volume.css';
 
 const Vol_Icon = ({}) => {
   const { scene, mute, setMute } = useContext(GameContext);
 
   let style;
-  if (scene === 'intro' || scene === 'ending' || scene === 'death') {
+  if (scene === 'intro' || scene === 'end-chapter1' || scene === 'death') {
     style = {
       right: '10px',
     };

@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from "react";
-import GameContext from "./GameContext";
+import { useState, useEffect, useContext } from 'react';
+import GameContext from '../contexts/GameContext';
 
 const NPC = ({
   currentMap,
@@ -53,28 +53,28 @@ const NPC = ({
 
   if (steps === 4) {
     bgPositionMap = {
-      1: "0%",
-      2: "33.33%",
-      3: "66.66%",
-      4: "100%",
+      1: '0%',
+      2: '33.33%',
+      3: '66.66%',
+      4: '100%',
     };
   } else if (steps === 2) {
     bgPositionMap = {
-      1: "0%",
-      2: "100%",
+      1: '0%',
+      2: '100%',
     };
   } else if (steps === 1) {
     bgPositionMap = {
-      1: "0%",
+      1: '0%',
     };
   }
 
-  let backgroundSizeValue = "100% 100%";
+  let backgroundSizeValue = '100% 100%';
 
   if (steps === 4) {
-    backgroundSizeValue = "400% 100%";
+    backgroundSizeValue = '400% 100%';
   } else if (steps === 2) {
-    backgroundSizeValue = "200% 100%";
+    backgroundSizeValue = '200% 100%';
   }
 
   useEffect(() => {
@@ -87,11 +87,11 @@ const NPC = ({
     width: `${tileSize}px`,
     height: `${tileSize}px`,
     backgroundImage: `url(${image})`,
-    backgroundPosition: steps > 1 ? `${bgPositionMap[frame]} 0%` : "0% 0%",
+    backgroundPosition: steps > 1 ? `${bgPositionMap[frame]} 0%` : '0% 0%',
     backgroundSize: backgroundSizeValue,
   };
 
-  if (currentNPC === "troll") {
+  if (currentNPC === 'troll') {
     styling = {
       ...styling,
       top: `${rowIndex * tileSize - mapPosition.y - yOffset - 132}px`,

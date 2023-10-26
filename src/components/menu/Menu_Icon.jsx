@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import '/src/styles/Menu.css';
-import GameContext from '../GameContext';
+import GameContext from 'contexts/GameContext';
 
 const Menu_Icon = ({ position }) => {
   const { setInventory, setMenu } = useContext(GameContext);

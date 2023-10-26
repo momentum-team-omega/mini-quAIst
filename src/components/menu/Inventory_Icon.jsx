@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import invImg from '/src/assets/menu-assets/player-icon.svg';
-import GameContext from 'components/GameContext';
+import GameContext from 'contexts/GameContext';
 import '/src/styles/Inventory.css';
 
 const Inventory_Icon = ({}) => {

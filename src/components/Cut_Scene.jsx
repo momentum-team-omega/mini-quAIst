@@ -1,35 +1,39 @@
-import React, { useState, useEffect, useContext } from "react";
-import { TypeAnimation } from "react-type-animation";
-import openImage1 from "/src/assets/gamestart-assets/KidsRoomCat.png";
-import openImage2 from "/src/assets/gamestart-assets/CatRunning.png";
-import endImage1 from "/src/assets/gamestart-assets/CatToBeContinued.png";
-import deathScene from "/src/assets/gamestart-assets/death-image.png";
-import GameContext from "./GameContext";
-import "/src/styles/Cut_Scene.css";
+import React, { useState, useEffect, useContext } from 'react';
+import { TypeAnimation } from 'react-type-animation';
+import openImage1 from 'assets/cutscene-assets/KidsRoomCat.png';
+import openImage2 from 'assets/cutscene-assets/CatRunning.png';
+import endImage1 from 'assets/cutscene-assets/CatToBeContinued.png';
+import deathScene from 'assets/cutscene-assets/death-image.png';
+import openImage1Upscaled from 'assets/cutscene-assets/KidsRoomCat-upscaled.png';
+import openImage2Upscaled from 'assets/cutscene-assets/CatRunning-upscaled.png';
+import endImage1Upscaled from 'assets/cutscene-assets/CatToBeContinued-upscaled.png';
+import deathSceneUpscaled from 'assets/cutscene-assets/death-image-upscaled.png';
+import GameContext from 'contexts/GameContext';
+import '/src/styles/Cut_Scene.css';
 
 const scenes = [
   {
-    imageUrls: [openImage1, openImage2],
+    imageUrls: [openImage1Upscaled, openImage2Upscaled],
     textArray: [
-      "Your kitty has a bad habit of running in to the forest.",
-      "As you follow your cat, the woods beside your house begin to look less familiar...",
+      'Your kitty has a bad habit of running in to the forest.',
+      'As you follow your cat, the woods beside your house begin to look less familiar...',
     ],
-    sceneHeader: ["Our story begins..."],
-    sceneButton: ["Continue"],
+    sceneHeader: ['Our story begins...'],
+    sceneButton: ['Continue'],
   },
   {
-    imageUrls: [endImage1],
-    textArray: ["Congratulations, you have completed Chaper One!"],
-    sceneHeader: ["Huzzah!"],
-    sceneButton: ["End Chapter"],
+    imageUrls: [endImage1Upscaled],
+    textArray: ['Congratulations, you have completed Chaper One!'],
+    sceneHeader: ['Huzzah!'],
+    sceneButton: ['End Chapter'],
   },
   {
-    imageUrls: [deathScene],
+    imageUrls: [deathSceneUpscaled],
     textArray: [
-      "The villagers find you washed up on the banks of the river to the south and carry you back to town.",
+      'The villagers find you washed up on the banks of the river. You are carried back to town and nursed back to full health.',
     ],
-    sceneHeader: ["You were defeated..."],
-    sceneButton: ["Try Again"],
+    sceneHeader: ['You were defeated...'],
+    sceneButton: ['Try Again'],
   },
 ];
 
@@ -60,47 +64,42 @@ const Cut_Scene = ({ sceneSelection }) => {
       setIsTyping(true);
     } else if (sceneSelection < scenes.length - 1) {
       // Check if there are more scenes
-      setScene("overworld");
+      setScene('overworld');
     }
   };
 
   return (
     <>
-      <h2 className="page-title" style={{ marginBottom: "30px" }}>
-        {selectedScene.sceneHeader}
-      </h2>
-      <div className="gamestart-images">
-        <div
-          className="image-container"
-          style={{ height: "300px", marginBottom: "225px" }}
-        >
+      <h2 className="page-title">{selectedScene.sceneHeader}</h2>
+      <div className="cutscene-images">
+        <div className="image-container">
           <img
             src={selectedScene.imageUrls[imageIndex]}
             alt={`Image ${imageIndex + 1}`}
             className="page-image"
           />
-          <div className="image-text-container">
-            <TypeAnimation
-              key={imageIndex} // This forces the component to remount when imageIndex changes
-              sequence={[selectedScene.textArray[imageIndex]]}
-              speed={50}
-              repeat={0}
-              style={{ fontSize: "2em" }}
-              cursor={false}
-              onComplete={() => setIsTyping(false)}
-            />
-          </div>
+        </div>
+        <div className="image-text-container">
+          <TypeAnimation
+            key={imageIndex} // This forces the component to remount when imageIndex changes
+            sequence={[selectedScene.textArray[imageIndex]]}
+            speed={50}
+            repeat={0}
+            style={{ fontSize: '2em' }}
+            cursor={false}
+            onComplete={() => setIsTyping(false)}
+          />
         </div>
         {showContinueButton && (
           <button
             className="continue-button"
             onClick={handleContinue}
             style={{
-              marginTop: "60px",
-              position: "absolute",
-              bottom: "20px",
-              left: "50%",
-              transform: "translateX(-50%)",
+              marginTop: '60px',
+              position: 'absolute',
+              bottom: '20px',
+              left: '50%',
+              transform: 'translateX(-50%)',
             }}
           >
             {selectedScene.sceneButton}

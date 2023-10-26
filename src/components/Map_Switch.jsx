@@ -15,10 +15,9 @@ import village2Fore from 'assets/map-assets/Village2-fore.png';
 import village2inside from 'assets/map-assets/village2inside-sheet.png';
 import village2insideFore from 'assets/map-assets/village2inside-fore.png';
 
-import GameContext from './GameContext';
+import GameContext from 'contexts/GameContext';
 
 const Map_Switch = ({
-  mapImage,
   setMapImage,
   setForeImage,
   setMapPosition,
@@ -154,21 +153,17 @@ const Map_Switch = ({
       setMapRows(8);
       setMapOffset({ x: 9.5, y: 6 });
       if (!hasMapSwitched) {
-        if (storedMapPosition) {
-          setMapPosition(JSON.parse(storedMapPosition));
-        } else {
-          setMapPosition({
-            x: -130.5,
-            y: -89,
-          });
-        }
-        setCharPosition({ x: 12.5, y: 4 });
+        setMapPosition({
+          x: 224,
+          y: -96,
+        });
+        setCharPosition({ x: 13.5, y: 4 });
       }
       setIsFPressed(false);
       setMapNpcs([
         {
           npc: npcs.find((npc) => npc.id === 5),
-          x: 10,
+          x: 11,
           y: 4,
         },
       ]);
@@ -272,7 +267,7 @@ const Map_Switch = ({
       setMapNpcs([
         {
           npc: npcs.find((npc) => npc.id === 5),
-          x: 10,
+          x: 11,
           y: 4,
         },
       ]);
@@ -601,7 +596,7 @@ const Map_Switch = ({
           id: 6,
           x: 39,
           y: 16,
-          map: checkpoints[4] ? 'trollMapCat' : 'trollMap',
+          map: checkpoints[4] ? 'trollMap' : 'trollMapCat',
           destPX: -555.5,
           destPY: -82.5,
           destX: 1,
@@ -611,7 +606,7 @@ const Map_Switch = ({
           id: 7,
           x: 39,
           y: 17,
-          map: checkpoints[4] ? 'trollMapCat' : 'trollMap',
+          map: checkpoints[4] ? 'trollMap' : 'trollMapCat',
           destPX: -555.5,
           destPY: -82.5,
           destX: 1,
@@ -621,7 +616,7 @@ const Map_Switch = ({
           id: 8,
           x: 39,
           y: 18,
-          map: checkpoints[4] ? 'trollMapCat' : 'trollMap',
+          map: checkpoints[4] ? 'trollMap' : 'trollMapCat',
           destPX: -555.5,
           destPY: -82.5,
           destX: 1,

@@ -31,14 +31,13 @@
 }
 
 .npc-text {
-  font-family: "Luckiest Guy", cursive;
+  font-family: "Luckiest Guy", sans-serif;
   font-size: 32px;
   text-shadow: 
     2px 2px 2px black,   /* North-East */
     -2px -2px 2px black, /* South-West */
     2px -2px 2px black,  /* South-East */
     -2px 2px 2px black;  /* North-West */
-  /* margin-bottom: 20px; */
   height: 160px;
 }
 
@@ -51,7 +50,7 @@
 }
 
 .option {
-  font-family: "Luckiest Guy", cursive;
+  font-family: "Luckiest Guy", sans-serif;
   font-size: 19px;
   text-shadow: 
     2px 2px 2px black,   /* North-East */

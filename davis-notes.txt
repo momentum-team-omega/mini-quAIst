@@ -53,7 +53,18 @@ added tooltips to appear at the beginning to prompt user on controls ✅
 added map animations ✅
 added unique NPC assets ✅
 buttons for main menu and volume in top right of game screen ✅
-
+map audio doesn't mute when mute is hit, waits till song is done playing ✅
+dialogue box is a little glitchy, flickers on and off when user in proximity ✅
+conditionally render NPCs based on their 'alive' value ✅
+should only have box show up if 'isFPressed' and if user is in proximity. Walking away from NPC should cause message to disappear ✅
+  -could maybe have a state for 'adjacentNpc' ?
+dialogue response loading indicator ✅
+intro cutscene with stable diffusion images ✅
+background music ? ✅
+  -mute icon in nav
+walking animation sometimes freezes on a walking frame, should implement a 'default' state for when not walking ✅
+add tool tips for early game 'to move, do this' ✅
+include charStats in the dialogue prompts ✅
 
 
 
@@ -62,15 +73,6 @@ To-Do Now: 🚨
 
 modifier values in dialoge ability check should be colored based on their value
 
-map audio doesn't mute when mute is hit, waits till song is done playing
-
-
-conditionally render NPCs based on their 'alive' value
-
-dialogue box is a little glitchy, flickers on and off when user in proximity
-
-should only have box show up if 'isFPressed' and if user is in proximity. Walking away from NPC should cause message to disappear 
-  -could maybe have a state for 'adjacentNpc' ?
 
 make only the gate the character is next to highlighted (currently they all get highlighted)
   -make 'color' variable in 'gates' state, update specific gate color when in proximity instead of all gates
@@ -81,25 +83,9 @@ collision detection version 2.0
 
 
 
-
-
-
 To-Do Later: 🤷‍♂️
 
-dialogue response loading indicator
-
-include charStats in the dialogue prompts 
-
-
-intro cutscene with stable diffusion images
-background music ?
-  -mute icon in nav
 set up back end
-
-
-walking animation sometimes freezes on a walking frame, should implement a 'default' state for when not walking
-
-add tool tips for early game 'to move, do this' 
 
 
 
@@ -120,8 +106,6 @@ add 'Luck' skill to players that determines the roll needed on item rareness whe
 
 
 ability check should render on top of other components, after dice roll should automatically return user to game. 
-
-have character stats show up during ability check 
 
 sleeping at inn saves the game?
 

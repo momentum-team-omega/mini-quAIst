@@ -1,10 +1,8 @@
 import React, { useContext, useState, useEffect, useMemo } from 'react';
-import GameContext from './GameContext';
+import GameContext from 'contexts/GameContext';
 import {
-  village1Collisions,
   trollMapCollisions,
   trollMapCollisions2,
-  testMapCollisions,
   startCollisions,
   startHouseCollisions,
   enchantedForestCollisions,
@@ -38,8 +36,9 @@ const Map_Manager = ({
     npcs,
     setNpcs,
     isFPressed,
+    checkpoints,
   } = useContext(GameContext);
-  const [collisions, setCollisions] = useState(startCollisions);
+  const [collisions, setCollisions] = useState(startHouseCollisions);
 
   // console.log('manager collisions: ', collisions);
 
@@ -73,7 +72,11 @@ const Map_Manager = ({
     } else if (currentMap === 'village2inside') {
       setCollisions(village2insideCollisions);
     } else if (currentMap === 'trollMap') {
-      setCollisions(trollMapCollisions);
+      if (!checkpoints[5]) {
+        setCollisions(trollMapCollisions);
+      } else {
+        setCollisions(trollMapCollisions2);
+      }
     } else if (currentMap === 'trollMapCat') {
       setCollisions(trollMapCollisions);
     }
@@ -252,7 +255,7 @@ const Map_Manager = ({
                   left: `${colIndex * tileSize}px`,
                   width: `${tileSize}px`,
                   height: `${tileSize}px`,
-                  // backgroundColor: 'red',
+                  backgroundColor: 'red',
                 }}
               />
             )}

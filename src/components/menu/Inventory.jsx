@@ -7,7 +7,7 @@ import barbGirl from 'assets/battle-assets/barb-girl.png';
 import mageGirl from 'assets/battle-assets/mage-girl.png';
 import rogueGirl from 'assets/battle-assets/rogue-girl.png';
 import '/src/styles/Inventory.css';
-import GameContext from '../GameContext';
+import GameContext from 'contexts/GameContext';
 
 const Inventory = ({}) => {
   const { setInventory, charStats } = useContext(GameContext);
