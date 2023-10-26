@@ -38,7 +38,7 @@ const scenes = [
 ];
 
 const Cut_Scene = ({ sceneSelection }) => {
-  const { setScene } = useContext(GameContext);
+  const { scene, setScene, setCurrentMap } = useContext(GameContext);
   const selectedScene = scenes[sceneSelection];
   const [imageIndex, setImageIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
@@ -67,8 +67,9 @@ const Cut_Scene = ({ sceneSelection }) => {
       setScene("overworld");
 
       // Check if the current scene is "death" and set setCurrentMap accordingly
-      if (currentScene === "death") {
+      if (scene === "death") {
         setCurrentMap("village2Inside");
+        setScene("overworld");
       }
     }
   };

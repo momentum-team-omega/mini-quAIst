@@ -28,6 +28,18 @@ const Game = ({ mute, setMute }) => {
     dex_mod: null,
   });
 
+  // const [charStats, setCharStats] = useState({
+  //   name:"Nathan",
+  //   charClass: 'mage',
+  //   health: 33,
+  //   strength: 6,
+  //   str_mod: -2,
+  //   wisdom: 14,
+  //   wis_mod: 2,
+  //   dexterity: 10,
+  //   dex_mod: 0,
+  // });
+
   const [typeOfCheck, setTypeOfCheck] = useState("wis");
   const [outcome, setOutcome] = useState("");
   const [makeCheck, setMakeCheck] = useState(false);
