@@ -54,7 +54,7 @@ const Dialogue = () => {
   };
 
   useEffect(() => {
-    console.log('Response has changed:', response);
+    // console.log('Response has changed:', response);
 
     // Calculate the animation time based on response length and typing speed
     const animationTime = response.length * 50 + 900;
@@ -122,14 +122,14 @@ const Dialogue = () => {
 
       case 'instruct':
         setLoading(false);
-        console.log('instruct optionId', optionId);
+        // console.log('instruct optionId', optionId);
         setResponse(npcDialogues[currentNPC][optionId].instructions);
-        console.log(
+        // console.log(
           'instructions',
           npcDialogues[currentNPC][optionId].instructions
         );
         setCurrentDialogueId(optionId);
-        console.log('optionId', optionId);
+        // console.log('optionId', optionId);
 
         if (currentNPC === 'steve') {
           if (!checkpoints[2]) {
@@ -191,7 +191,7 @@ const Dialogue = () => {
 
       const data = apiResponse.data;
       setLoading(false);
-      console.log(data.choices[0].message.content);
+      // console.log(data.choices[0].message.content);
       return data.choices[0].message.content;
     } catch (error) {
       console.error('Error:', error);

@@ -175,8 +175,8 @@ const Map_Manager = ({
       setNpcColor('transparent');
     }
 
-    console.log(mapPosition);
-    console.log(charPosition);
+    // console.log(mapPosition);
+    // console.log(charPosition);
   }, [charPosition, isFPressed, mapNpcs]);
 
   const checkCollisions = (position, collisionMap) => {
@@ -255,7 +255,7 @@ const Map_Manager = ({
                   left: `${colIndex * tileSize}px`,
                   width: `${tileSize}px`,
                   height: `${tileSize}px`,
-                  backgroundColor: 'red',
+                  // backgroundColor: 'red',
                 }}
               />
             )}

@@ -80,7 +80,7 @@ const Player_Thoughts = ({ charPosition }) => {
     setContent(tempContent);
   }, [currentMap, charPosition, playerThoughts]);
 
-  console.log('currentMap', currentMap);
+  // console.log('currentMap', currentMap);
 
   return (
     <>
