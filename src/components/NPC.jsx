@@ -111,7 +111,7 @@ const NPC = ({
   };
 
   if (currentNPC === "troll") {
-    style = {
+    messageBoxTop = {
       ...messageBoxTop,
       top: `${rowIndex * tileSize - mapPosition.y - yOffset - 185}px`,
     };
