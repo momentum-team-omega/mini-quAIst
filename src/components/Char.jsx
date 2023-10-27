@@ -26,8 +26,8 @@ const Char = ({ tileSize, direction }) => {
 
   const [frame, setFrame] = useState(1);
 
-  const DEFAULT_ANIMATION_SPEED = 80;
-  const RUN_ANIMATION_SPEED = 40;
+  const DEFAULT_ANIMATION_SPEED = 120;
+  const RUN_ANIMATION_SPEED = 90;
 
   const classToImages = {
     '': {

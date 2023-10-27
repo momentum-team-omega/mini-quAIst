@@ -54,8 +54,6 @@ const Dialogue = () => {
   };
 
   useEffect(() => {
-    // console.log('Response has changed:', response);
-
     // Calculate the animation time based on response length and typing speed
     const animationTime = response.length * 50 + 900;
 
@@ -67,14 +65,6 @@ const Dialogue = () => {
     // Clear the timeout if the component unmounts or animation completes
     return () => clearTimeout(animationTimeout);
   }, [response]);
-
-  // const npcImages = {
-  //   wiseman: wisemanImage,
-  //   blacksmith: blacksmithImage,
-  //   steve: steveImage,
-  //   troll: trollImage,
-  //   villageLeader: villageLeaderImage,
-  // };
 
   const npcImages = {
     wiseman: wisemanUpscaled,
@@ -122,22 +112,18 @@ const Dialogue = () => {
 
       case 'instruct':
         setLoading(false);
-        // console.log('instruct optionId', optionId);
         setResponse(npcDialogues[currentNPC][optionId].instructions);
         'instructions', npcDialogues[currentNPC][optionId].instructions;
         setCurrentDialogueId(optionId);
-        // console.log('optionId', optionId);
 
         if (currentNPC === 'steve') {
           if (!checkpoints[2]) {
             setCheckpoints((prev) => ({ ...prev, 2: true }));
-            // console.log('checkpoint2', checkpoint2);
             setCurrentMap('village2Locked2');
           }
         } else if (currentNPC === 'villageLeader') {
           if (!checkpoints[3]) {
             setCheckpoints((prev) => ({ ...prev, 3: true }));
-            // console.log('checkpoint3', checkpoint3);
           }
         }
 
@@ -188,7 +174,6 @@ const Dialogue = () => {
 
       const data = apiResponse.data;
       setLoading(false);
-      // console.log(data.choices[0].message.content);
       return data.choices[0].message.content;
     } catch (error) {
       console.error('Error:', error);
@@ -200,7 +185,7 @@ const Dialogue = () => {
     if (rollOutcome === 'passed') {
       setCheckpoints((prev) => ({ ...prev, 4: true }));
       setCurrentMap('trollMap');
-      setScene('end-chapter1');
+      setScene('endChapter1');
     } else if (rollOutcome === 'failed') {
       setScene('battle');
     }
@@ -228,6 +213,7 @@ const Dialogue = () => {
     <div
       style={{
         marginBottom: '50px',
+        opacity: '55%',
       }}
     >
       {children}
@@ -250,8 +236,13 @@ const Dialogue = () => {
           <div className="title-container">
             {loading && (
               <Box>
-                <SkeletonTheme color="#202020" highlightColor="#444">
-                  <Skeleton count={3} height={20} width={600} />
+                <SkeletonTheme baseColor="#E4e4e4" highlightColor="#545454">
+                  <Skeleton
+                    count={2}
+                    height={18}
+                    width={800}
+                    className="skeleton"
+                  />
                 </SkeletonTheme>
               </Box>
             )}
@@ -266,7 +257,6 @@ const Dialogue = () => {
                     marginRight: '10px',
                   }}
                 >
-                  {/* <div className="npc-text">{response}</div> */}
                   <TypeAnimation
                     key={response}
                     sequence={[response]}
@@ -284,6 +274,8 @@ const Dialogue = () => {
             backgroundImage: containerStyle.backgroundImage,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            width: '1280px',
+            height: '720px',
           }}
         ></div>
         <div className="options-wrapper">

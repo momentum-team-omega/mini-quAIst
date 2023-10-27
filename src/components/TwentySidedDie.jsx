@@ -35,7 +35,7 @@ const TwentySidedDie = ({ typeOfCheck, onRollComplete }) => {
 
   const handleAnimationEnd = () => {
     setAnimate(false);
-  }
+  };
 
   const handleContinue = () => {
     if (onRollComplete) {
@@ -56,7 +56,6 @@ const TwentySidedDie = ({ typeOfCheck, onRollComplete }) => {
         flexDirection: 'column',
       }}
     >
-      {/* <h1>Ability Check</h1> */}
       <div className="dice-text">Difficulty Score {difficultyScore}</div>
       <div className="dice-text">
         Modifiers {charStats[`${typeOfCheck}_mod`] || 0}

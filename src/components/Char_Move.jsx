@@ -8,19 +8,17 @@ const Char_Move = ({
   setCharPosition,
   allowedMovements,
   mapOffset,
+  showOverlay,
+  setShowOverlay,
 }) => {
   const {
     menu,
-    setMenu,
     inventory,
-    setInventory,
     isMoving,
     setIsMoving,
     isSpacePressed,
     setIsSpacePressed,
     setIsFPressed,
-    mute,
-    setMute,
   } = useContext(GameContext);
 
   const [keys, setKeys] = useState({
@@ -38,7 +36,6 @@ const Char_Move = ({
   };
 
   const pixelToGridPosition = (pixelPosition) => {
-    // console.log('tileSize: ', tileSize);
     return {
       x:
         Math.floor((pixelPosition.x + tileSize + 8 / 2) / tileSize) +
@@ -49,8 +46,8 @@ const Char_Move = ({
 
   const [keyOrder, setKeyOrder] = useState([]);
 
-  const DEFAULT_MOVE_SPEED = 2.5;
-  const RUN_MOVE_SPEED = 5;
+  const DEFAULT_MOVE_SPEED = 2;
+  const RUN_MOVE_SPEED = 3.5;
 
   const moveCharacter = () => {
     if (!menu && !inventory) {
@@ -62,7 +59,6 @@ const Char_Move = ({
         setPosition((currentPos) => {
           let newX = currentPos.x;
           let newY = currentPos.y;
-          // console.log(`currentPos: ${currentPos.x}, ${currentPos.y}`);
           const lastKey = keyOrder[keyOrder.length - 1];
           switch (lastKey) {
             case 'ArrowUp':
@@ -90,9 +86,6 @@ const Char_Move = ({
             'mapPosition',
             JSON.stringify(gridToPixelPosition(gridPos))
           );
-
-          // console.log(`X: ${newX}, Y: ${newY}`);
-          // console.log('gridPos: ', gridPos);
 
           return { x: newX, y: newY };
         });
@@ -212,7 +205,7 @@ const Char_Move = ({
     if (isMoving) {
       intervalId = setInterval(() => {
         moveCharacter();
-      }, 20);
+      }, 15);
     } else if (intervalId) {
       clearInterval(intervalId);
     }
@@ -223,6 +216,21 @@ const Char_Move = ({
       }
     };
   }, [isMoving, keyOrder, isSpacePressed]);
+
+  useEffect(() => {
+    const handleOverlay = (e) => {
+      if (e.key === '0') {
+        e.preventDefault();
+        setShowOverlay((prevShowOverlay) => !prevShowOverlay);
+      }
+    };
+
+    window.addEventListener('keydown', handleOverlay);
+
+    return () => {
+      window.removeEventListener('keydown', handleOverlay);
+    };
+  }, [showOverlay]);
 
   return null;
 };

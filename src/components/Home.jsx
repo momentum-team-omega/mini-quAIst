@@ -35,28 +35,7 @@ const Home = () => {
               <img className="button-img" src={buttonImg} />
             </div>
           </Link>
-          {/* <p className="link-subtext">(click on the box)</p> */}
         </div>
-        {/* <div className="battle-container">
-          <Link to="/battle" className="battle=link">
-            BATTLE (temp)
-          </Link>
-          <Link to="/dialogue" className="battle=link">
-            DIALOGUE (temp)
-          </Link>
-          <Link to="/create" className="battle=link">
-            CREATE (temp)
-          </Link>
-          <Link to="/check" className="battle=link">
-            CHECK (temp)
-          </Link>
-          <Link to="/inventory" className="battle=link">
-            INVENTORY (temp)
-          </Link>
-          <Link to="/scene" className="battle=link">
-            CUT SCENE (temp)
-          </Link>
-        </div> */}
       </div>
       <Footer />
     </div>
