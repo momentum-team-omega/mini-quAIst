@@ -47,7 +47,7 @@ const Char_Move = ({
   const [keyOrder, setKeyOrder] = useState([]);
 
   const DEFAULT_MOVE_SPEED = 2;
-  const RUN_MOVE_SPEED = 3.5;
+  const RUN_MOVE_SPEED = 3;
 
   const moveCharacter = () => {
     if (!menu && !inventory) {
