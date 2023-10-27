@@ -1,4 +1,3 @@
-// characters.js
 export const playerStats = {
   level: 1,
   maxHealth: 30,

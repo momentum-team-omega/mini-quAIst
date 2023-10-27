@@ -29,7 +29,6 @@ function NPCInteractionPage() {
   return (
     <div>
       <Dialogue />
-      {/* Additional components and UI for your NPC interaction page */}
     </div>
   );
 }

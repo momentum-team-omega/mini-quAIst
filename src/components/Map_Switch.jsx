@@ -470,11 +470,12 @@ const Map_Switch = ({
           id: 4,
           x: 19,
           y: 33,
-          map: checkpoints[2]
-            ? 'village2Locked2'
-            : checkpoints[3]
-            ? 'village2'
-            : 'village2Locked',
+          map:
+            checkpoints[2] && !checkpoints[3]
+              ? 'village2Locked2'
+              : checkpoints[3]
+              ? 'village2'
+              : 'village2Locked',
           destPX: -543,
           destPY: 1007.5,
           destX: 1,
@@ -484,11 +485,12 @@ const Map_Switch = ({
           id: 5,
           x: 19,
           y: 34,
-          map: checkpoints[2]
-            ? 'village2Locked2'
-            : checkpoints[3]
-            ? 'village2'
-            : 'village2Locked',
+          map:
+            checkpoints[2] && !checkpoints[3]
+              ? 'village2Locked2'
+              : checkpoints[3]
+              ? 'village2'
+              : 'village2Locked',
           destPX: -543,
           destPY: 1007.5,
           destX: 1,
@@ -498,11 +500,12 @@ const Map_Switch = ({
           id: 6,
           x: 19,
           y: 35,
-          map: checkpoints[2]
-            ? 'village2Locked2'
-            : checkpoints[3]
-            ? 'village2'
-            : 'village2Locked',
+          map:
+            checkpoints[2] && !checkpoints[3]
+              ? 'village2Locked2'
+              : checkpoints[3]
+              ? 'village2'
+              : 'village2Locked',
           destPX: -543,
           destPY: 1007.5,
           destX: 1,
@@ -521,11 +524,11 @@ const Map_Switch = ({
           setMapPosition(JSON.parse(storedMapPosition));
         } else {
           setMapPosition({
-            x: 10.5,
-            y: -134.5,
+            x: 634,
+            y: 424,
           });
         }
-        setCharPosition({ x: 10, y: 3 });
+        setCharPosition({ x: 19.5, y: 12 });
       }
       setIsFPressed(false);
       setMapNpcs([

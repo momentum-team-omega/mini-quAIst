@@ -7,21 +7,29 @@
   color: red;
 }
 
-.someone-died-box-win-text {
-  color: yellow;
+.win-text {
+  color: rgb(28, 192, 28);
+}
+
+.outcome-box {
+  font-family: "Luckiest Guy", sans-serif;
+  font-size: 52px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 36px;
+  text-shadow: 
+  2px 2px 2px #000000a4,   /* North-East */
+  -2px -2px 2px #000000a4, /* South-West */
+  2px -2px 2px #000000a4,  /* South-East */
+  -2px 2px 2px #000000a4;  /* North-West */
   padding: 20px;
   text-align: center;
-  text-shadow: 1px 1px 1px black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+};
 
 .battle-container {
   display: flex;
@@ -65,26 +73,6 @@
   100% {
     transform: scale(150%);
   }
-}
-
-.someone-died-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: red;
-  font-size: 36px;
-  padding: 20px;
-  text-align: center;
-  text-shadow: 1px 1px 1px black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-};
-
-.battle-options {
-  border: 1px solid black;
 }
 
 .health-change-indicator {

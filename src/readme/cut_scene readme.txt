@@ -48,7 +48,6 @@ import Cut_Scene from './path/to/Cut_Scene';
 function Game() {
   return (
     <div>
-      {/* Display the first scene */}
       <Cut_Scene sceneSelection={0} />
     </div>
   );

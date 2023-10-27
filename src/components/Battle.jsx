@@ -46,11 +46,9 @@ const Battle = ({}) => {
   const opponentMoveTimeoutRef = useRef(null);
   const [isLocked, setIsLocked] = useState(false);
   const [healingPotions, setHealingPotions] = useState(2);
-  const [specialMoves, setSpecialMoves] = useState(1);
   const [specialMovesUsed, setSpecialMovesUsed] = useState(false);
   const selectedClass = "rogue";
   const [gameOutcome, setGameOutcome] = useState(null);
-  const [animationDone, setAnimationDone] = useState(false);
   const [areOptionsDisabled, setAreOptionsDisabled] = useState(false);
 
   const containerStyle = {
@@ -295,7 +293,7 @@ const Battle = ({}) => {
   }, []);
 
   const handleContinue = () => {
-    if (playerHealth >= 0) {
+    if (playerHealth > 0) {
       setCheckpoints((prev) => ({
         ...prev,
         4: true,
@@ -362,9 +360,6 @@ const Battle = ({}) => {
               <button className="you-died-buttons" onClick={handleContinue}>
                 Continue
               </button>
-              <button className="you-died-buttons" onClick={handleTryAgain}>
-                Try Again
-              </button>
             </div>
           )}
 
@@ -387,7 +382,7 @@ const Battle = ({}) => {
             }`}
             style={overlayPlayer}
           ></div>
-          {!someoneDied && (
+          {!someoneDied && !areOptionsDisabled && (
             <div
               className="button-box"
               style={{ display: isPlayerTurn || isLocked ? "flex" : "none" }}
