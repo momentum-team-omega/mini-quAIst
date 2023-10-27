@@ -25,7 +25,7 @@ const Map_Manager = ({
   gates,
   setHasMapSwitched,
   mapNpcs,
-  setMapNpcs,
+  showOverlay,
 }) => {
   const {
     setScene,
@@ -39,8 +39,6 @@ const Map_Manager = ({
     checkpoints,
   } = useContext(GameContext);
   const [collisions, setCollisions] = useState(startHouseCollisions);
-
-  // console.log('manager collisions: ', collisions);
 
   const BLOCKED = 1025;
   const INT = 777;
@@ -119,7 +117,7 @@ const Map_Manager = ({
     });
 
     if (isNearAnyGate) {
-      setGateColor('orange');
+      setGateColor('#ffffffb1');
     } else {
       setGateColor('transparent');
     }
@@ -170,13 +168,10 @@ const Map_Manager = ({
     }
 
     if (isNearAnyNpc) {
-      setNpcColor('cyan');
+      setNpcColor('#ffffffa9');
     } else {
       setNpcColor('transparent');
     }
-
-    // console.log(mapPosition);
-    // console.log(charPosition);
   }, [charPosition, isFPressed, mapNpcs]);
 
   const checkCollisions = (position, collisionMap) => {
@@ -233,7 +228,6 @@ const Map_Manager = ({
         Math.floor(charPosition.x) === gateX &&
         Math.floor(charPosition.y) === gateY
       ) {
-        // console.log(`Character entered Gate with ID: ${gate.id}`);
         setCurrentMap(destination);
         setMapPosition({ x: gate.destPX, y: gate.destPY });
         setCharPosition({ x: gate.destX, y: gate.destY });
@@ -255,7 +249,7 @@ const Map_Manager = ({
                   left: `${colIndex * tileSize}px`,
                   width: `${tileSize}px`,
                   height: `${tileSize}px`,
-                  // backgroundColor: 'red',
+                  backgroundColor: showOverlay ? 'red' : 'transparent',
                 }}
               />
             )}
@@ -293,7 +287,7 @@ const Map_Manager = ({
                     left: `${colIndex * tileSize}px`,
                     width: `${tileSize}px`,
                     height: `${tileSize}px`,
-                    // backgroundColor: 'blue',
+                    backgroundColor: showOverlay ? 'blue' : 'transparent',
                   }}
                 />
               )}

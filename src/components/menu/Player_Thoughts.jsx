@@ -72,7 +72,7 @@ const Player_Thoughts = ({ charPosition }) => {
             'The town hall says closed for lunch. I wonder if I should talk to steve in the meantime...';
         }
         break;
-        
+
       case 'trollMapCat':
         if (
           !checkpoints[4] &&
@@ -82,7 +82,7 @@ const Player_Thoughts = ({ charPosition }) => {
           charPosition.y <= 5
         ) {
           tempContent = `There's my cat! Now I just need to get past this troll...`;
-        } 
+        }
         break;
       case 'trollMap':
         if (
@@ -92,9 +92,7 @@ const Player_Thoughts = ({ charPosition }) => {
           charPosition.y >= 3 &&
           charPosition.y <= 5
         ) {
-          tempContent =
-            'That goblin had my cat! I wont let it get away...';
-            
+          tempContent = 'That goblin had my cat! I wont let it get away...';
         }
         break;
       default:
@@ -104,8 +102,6 @@ const Player_Thoughts = ({ charPosition }) => {
     setIsVisible(tempContent !== '');
     setContent(tempContent);
   }, [currentMap, charPosition, playerThoughts]);
-
-  console.log(checkpoints[4])
 
   return (
     <>

@@ -25,13 +25,13 @@
   2px -2px 2px #000000a4,  /* South-East */
   -2px 2px 2px #000000a4;  /* North-West */
   position: absolute;
-  top: 120px;
+  top: 90px;
   z-index: 20;
 }
 
 .image-text-container {
   font-family: "Acme", sans-serif;
-  font-size: 1.5rem;
+  font-size: 2.2em;
   text-shadow: 
   2px 2px 2px #000000a4,   /* North-East */
   -2px -2px 2px #000000a4, /* South-West */
@@ -40,12 +40,22 @@
   width: 1000px;
   height: 200px;
   position: absolute;
-  bottom: 20px;
+  bottom: 0px;
   z-index: 20;
 }
 
-.cutscene-images {
+.cutscene-container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.image-container {
+  width: 1280px;
+  height: 720px;
+}
+
+.page-image {
+  background-size: cover;
+  background-position: center;
 }

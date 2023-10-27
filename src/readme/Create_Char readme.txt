@@ -46,7 +46,6 @@ function CharacterSelectionPage() {
   return (
     <div>
       <SelectCharacter charStats={characterStats} setCharStats={setCharacterStats} />
-      {/* Additional components and UI for your character selection page */}
     </div>
   );
 }
