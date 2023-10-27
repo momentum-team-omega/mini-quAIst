@@ -56,6 +56,10 @@ const Battle = ({}) => {
     width: '100%',
     height: '100vh',
     position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
   };
 
   const overlayPlayer = {
