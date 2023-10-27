@@ -40,6 +40,8 @@ const Overworld = ({}) => {
 
   const [mapNpcs, setMapNpcs] = useState([]);
 
+  const [showOverlay, setShowOverlay] = useState(false);
+
   return (
     <>
       <Char_Move
@@ -49,6 +51,8 @@ const Overworld = ({}) => {
         setCharPosition={setCharPosition}
         allowedMovements={allowedMovements}
         mapOffset={mapOffset}
+        showOverlay={showOverlay}
+        setShowOverlay={setShowOverlay}
       />
       <Map_Switch
         mapImage={mapImage}
@@ -79,6 +83,7 @@ const Overworld = ({}) => {
         setHasMapSwitched={setHasMapSwitched}
         mapNpcs={mapNpcs}
         setMapNpcs={setMapNpcs}
+        showOverlay={showOverlay}
       />
       <Map
         mapPosition={mapPosition}
