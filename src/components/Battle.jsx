@@ -370,6 +370,8 @@ const Battle = ({}) => {
             className="battle-intro-text"
             style={{
               textShadow: '2px 2px 2px black',
+              position: 'absolute',
+              top: '80px',
             }}
           >
             {charStats.name} vs {opponentStats.name}
