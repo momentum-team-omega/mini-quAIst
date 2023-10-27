@@ -32,13 +32,6 @@ const Footer = () => {
               Play
             </Link>
           </div>
-          {pathname !== '/login' && pathname !== '/register' ? (
-            <div className="footerLinkContainer">
-              <Link to="/login" className="footerLink">
-                Login
-              </Link>
-            </div>
-          ) : null}
         </div>
         <div className="contributors">
           <p className="footerText">@CRiddleNC</p>

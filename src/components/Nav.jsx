@@ -25,13 +25,6 @@ const Nav = () => {
             </Link>
           )}
         </div>
-        {/* <div className="loginContainer">
-          {pathname !== '/login' && pathname !== '/register' ? (
-            <Link to="/login">
-              <div className="loginText">login</div>
-            </Link>
-          ) : null}
-        </div> */}
       </div>
     </>
   );

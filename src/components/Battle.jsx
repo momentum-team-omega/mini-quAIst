@@ -359,9 +359,6 @@ const Battle = ({}) => {
               <button className="you-died-buttons" onClick={handleContinue}>
                 Continue
               </button>
-              {/* <button className="you-died-buttons" onClick={handleTryAgain}>
-                Try Again
-              </button> */}
             </div>
           )}
 

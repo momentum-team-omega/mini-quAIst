@@ -57,7 +57,6 @@ import Battle from './path/to/Battle';
 function Game() {
   return (
     <div>
-      {/* Display the battle component within your game */}
       <Battle />
     </div>
   );
