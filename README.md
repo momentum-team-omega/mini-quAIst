@@ -49,6 +49,7 @@ Start the server
 ```
 
 ## Screenshot
+<img width="1231" alt="Screenshot 2023-10-26 at 9 25 44 PM" src="https://github.com/momentum-team-omega/mini-quAIst/assets/139093449/d53c5f45-3d3b-426c-b128-557a1d9b83f5">
 
 ## Authors
 
